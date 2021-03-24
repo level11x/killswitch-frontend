@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect, useCallback } from 'react'
 import lpAbi from './abis/lp_abi.json'
+import tarAbi from './abis/killswitch_abi.json'
 
 function App() {
   const [acc, setAcc] = useState('')
@@ -17,7 +18,6 @@ function App() {
     console.log(err)
   }
   const lpContract = new web3.eth.Contract(lpAbi, '0xA527a61703D82139F8a06Bc30097cC9CAA2df5A6')
-  // const tarContract = new web3.eth.Contract(tarAbi, '')
 
   const fetch = useCallback(async () => {
     
@@ -44,11 +44,11 @@ function App() {
   }, [fetch])
   
   function approve() {
-    const amount = 2*10**18
+    const amount = '0x' + (10*10**18).toString(16)
     let options = {
       from: acc
     }
-    lpContract.methods.approve('0xD68a0Fc5E708bc1F70CdF2e19d64A5EcBEB8B01f', '0x' + amount.toString(16)).send(options)
+    lpContract.methods.approve('0xD68a0Fc5E708bc1F70CdF2e19d64A5EcBEB8B01f', amount).send(options)
       .on('error', (error) => setTransactionState(error))
       .on('transactionHash', (transactionHash) => setTransactionState('Submitted transaction: ' + transactionHash))
       .on('receipt', async (receipt) => {
@@ -59,7 +59,18 @@ function App() {
   }
 
   async function stake() {
-    console.log('stake')
+    let options = {
+      from: acc
+    }
+    const tarContract = new web3.eth.Contract(tarAbi, '0xD68a0Fc5E708bc1F70CdF2e19d64A5EcBEB8B01f')
+    tarContract.methods.stakeLPAllow().send(options)
+      .on('error', (error) => setTransactionState(error))
+      .on('transactionHash', (transactionHash) => setTransactionState('Submitted transaction: ' + transactionHash))
+      .on('receipt', async (receipt) => {
+        setTransactionState('Successfully stake LP')
+        const bal = await lpContract.methods.balanceOf(acc).call()
+        setLpValue(bal)
+      })
   }
 
   return (
