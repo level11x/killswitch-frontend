@@ -49,7 +49,7 @@ function App() {
           allowance === 0 ? (
             <button>Approve</button>
           ) : (
-            <button>Stake { lpValue }</button>
+            <button>Stake { (lpValue/10**18).toFixed(3) } LP</button>
           )
         }
       </header>
