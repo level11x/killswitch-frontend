@@ -1,20 +1,10 @@
-import Web3 from 'web3'
 import logo from '../logo.svg';
-
 import { useState, useEffect, useCallback } from 'react'
-// import lpAbi from './abis/lp_abi.json'
-// import tarAbi from './abis/killswitch2_abi.json'
-// import masterChefAbi from '../abis/masterchef_abi.json'
-// const tarContractAddress = '0xD68a0Fc5E708bc1F70CdF2e19d64A5EcBEB8B01f' // old
-
-import useWeb3, { Web3Provider } from "../hooks/useWeb3";
+import useWeb3  from "../hooks/useWeb3";
 import { useKillSwitchContract } from '../hooks/useKillSwitchContract'
 import { useLPContract } from '../hooks/useLPContract'
 import { useAccounts } from '../hooks/useAccount'
 import { useMasterChefContract } from '../hooks/useMasterChefContract';
-import { ConfigProvider } from 'antd';
-
-const masterChefAddress = '0x73feaa1eE314F8c655E354234017bE2193C9E24E'
 const tarContractAddress = '0x0576961aAc8eb06F6A6A6975dFB70cE51065880D'
 
 export const Index = () => {
@@ -117,7 +107,6 @@ export const Index = () => {
   }
 
   return (
-      <Web3Provider>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -136,7 +125,6 @@ export const Index = () => {
         <p>{ transactionState }</p>
         <p>You have staked { (stakedLp / 10**18).toFixed(3) } LP + { (reward / 10**18).toFixed(3) } Reward</p>
       </header>
-      </Web3Provider>
   );
 }
 
