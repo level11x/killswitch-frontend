@@ -1,5 +1,5 @@
 import Web3 from 'web3'
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import { useState, useEffect, useCallback } from 'react'
 import lpAbi from './abis/lp_abi.json'
@@ -122,22 +122,30 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} style={{height:'5em'}} className="App-logo" alt="logo" />
         <p>
-          KillSwitch, Stop loss! and Liquidate 💧
+          {/* KillSwitch, Stop loss! and Liquidate 💧 */}
+          {/* KillSwitch, Oneclick liquidate all 💧 */}
+          💧 Fastest liquidations ever on DEFI 💧
         </p>
+        <p style={{textDecoration: 'underline'}}>!!! Disclaimer (Alpha V0.0.1) - ลองกดเล่นได้ครับแต่ความเสี่ยงสูงที่จะมี Bug นะครับ !!!<br/> </p>
+        <li>ตอนนี้ใช้ได้เฉพาะ lp CAKE-BNB เท่านั้นนะครับ </li>
+        <li>ต้องทำ lp CAKE-BNB ก่อนที่จะใช้งานนะครับไม่งั้นจะ ERROR Web น่าจะพัง เดี๋ยวจะแก้ให้ใน Version หน้าครับ</li>
+        <li>ถ้าอยากลองลองแค่นิดเดียวก่อนนะครับ จริงๆ ทีมงานสามารถคืน LP ให้ทุกคนได้หากมีอะไรผิดพลาด แต่ทางที่ดีอย่าเพิ่งรีบลองเยอะๆ นะครับ </li>
+        <li>Bonus : การ liquidate position ประหยัดค่า Gas กว่าการทำปกติครับในอนาคตถ้ามีการ Optimize จะประหยัดค่า Gas มากกว่าปกติ อย่างน้อยครึ่งนึงครับ </li>
+        <br/>
         {
           allowance === 0 ? (
-            <button onClick={approve}>Approve</button>
+            <button onClick={approve} style={{color: '#008CBA'}}>Approve</button>
           ) : (
             <div>
-              <button onClick={stake}>Stake { (walletLp / 10**18).toFixed(3) } LP</button>
-              <button onClick={liquidate}>Kill Switch</button>
+              <button onClick={stake} style={{backgroundColor: '#008CBA'}}>Stake { (walletLp / 10**18).toFixed(3) } LP</button>
+              <button onClick={liquidate} style={{backgroundColor: '#008CBA'}}>KillSwitch</button>
             </div>
           )
         }
         <p>{ transactionState }</p>
-        <p>You have staked { (stakedLp / 10**18).toFixed(3) } LP + { (reward / 10**18).toFixed(3) } Reward</p>
+        <p>🏄 You have staked { (stakedLp / 10**18).toFixed(3) } LP + { (reward / 10**18).toFixed(3) } Reward 🏂</p>
       </header>
     </div>
   );
