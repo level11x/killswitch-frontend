@@ -140,12 +140,25 @@ function App() {
           ) : (
             <div>
               <button onClick={stake} style={{backgroundColor: '#008CBA'}}>Stake { (walletLp / 10**18).toFixed(3) } LP</button>
-              <button onClick={liquidate} style={{backgroundColor: '#008CBA'}}>KillSwitch</button>
+              {/* <button onClick={liquidate} style={{backgroundColor: '#008CBA'}}>KillSwitch</button> */}
             </div>
           )
         }
         <p>{ transactionState }</p>
         <p>🏄 You have staked { (stakedLp / 10**18).toFixed(3) } LP + { (reward / 10**18).toFixed(3) } Reward 🏂</p>
+        {
+          allowance !== 0 ? (
+            <div>
+              <p>⛔⛔⛔ 1) กด Killswitch ต่อเมื่อมั่นใจว่ามีค่าใน You have staked ด้านบนแล้วเท่านั้นนะครับไม่งั้นจะเสีย Gas ฟรีๆ ⛔⛔⛔</p>
+              <p>⛔⛔⛔ 2) กด Killswitch แล้ว LP จะหายไปทันที รวมถึง REWARD ที่ได้ (CAKE) และจะกลายเป็น BNB เลยครับอัตโนมัติ ⛔⛔⛔</p>
+              <p>⛔⛔⛔ 3) ทิ้งไว้สัก 1-2 วันแล้วค่อยมากดก็ได้ครับ Killswitch ไม่ต้องรีบกด จะได้เห็น BNB ว่าเพิ่มขึ้นครับ :) ⛔⛔⛔</p>
+              <button onClick={liquidate} style={{backgroundColor: '#008CBA'}}>KillSwitch (Liquidate all position)</button>
+            </div>
+          ) : (
+            null
+          )
+        }
+        <br/>
       </header>
     </div>
   );
