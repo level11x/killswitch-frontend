@@ -5,11 +5,17 @@ import { useKillSwitchContract } from '../hooks/useKillSwitchContract'
 import { useLPContract } from '../hooks/useLPContract'
 import { useAccounts } from '../hooks/useAccount'
 import { useMasterChefContract } from '../hooks/useMasterChefContract';
+import { PageLayout } from '../components/PageLayout/PageLayout';
+import { Card } from 'antd';
 
 
 export const Liquidate = () => {
   return (
-     <span>Liquidate</span>
+     <PageLayout>
+       <Card>
+         Kill
+      </Card>
+    </PageLayout>
   );
 }
 
