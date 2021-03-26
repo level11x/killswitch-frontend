@@ -13,6 +13,7 @@ export const Index = () => {
   const [allowance, setAllowance] = useState(0)
   const [walletLp, setWalletLp] = useState(0)
   const [stakedLp, setStakedLp] = useState(0)
+  const [tvl, setTvl] = useState(0)
   const [reward, setReward] = useState(0)
   const lpContract = useLPContract();
   const killSwitchContract = useKillSwitchContract()
@@ -22,7 +23,7 @@ export const Index = () => {
   const web3 = web3Val.web3;
 
 
-  const fetch = useCallback(async (myAccount , lp, killSwitch) => {
+  const fetch = useCallback(async (myAccount , lp, killSwitch, masterChef) => {
     console.log('@ lp ', lp)
     console.log('@ kill', killSwitch)
     const result = await lp.methods.allowance(myAccount, tarContractAddress).call()
@@ -37,6 +38,9 @@ export const Index = () => {
 
     const staked = await killSwitch.methods.stakeBalance(myAccount).call()
     setStakedLp(staked)
+
+    const tvl = await masterChef.methods.userInfo(1, tarContractAddress).call()
+    setTvl(tvl.amount)
   }, [])
 
   useEffect(() => {
@@ -44,10 +48,10 @@ export const Index = () => {
     console.log('@ lpContract ', lpContract)
     console.log('@ killswitchContract ', killSwitchContract)
     console.log('@ web3 ', web3)
-    if(!myAccount || !lpContract || !killSwitchContract ) return;
+    if(!myAccount || !lpContract || !killSwitchContract || !masterChefContract ) return;
     console.log('@ calling fetch')
-    fetch(myAccount, lpContract, killSwitchContract)
-  }, [myAccount, lpContract, killSwitchContract])
+    fetch(myAccount, lpContract, killSwitchContract, masterChefContract)
+  }, [myAccount, lpContract, killSwitchContract, masterChefContract])
   
   function approve() {
     const amount = '0x' + (10*10**18).toString(16)
@@ -124,6 +128,7 @@ export const Index = () => {
         }
         <p>{ transactionState }</p>
         <p>You have staked { (stakedLp / 10**18).toFixed(3) } LP + { (reward / 10**18).toFixed(3) } Reward</p>
+        <p>TVL: { (tvl / 10**18).toFixed(3) } LP</p>
       </header>
   );
 }
