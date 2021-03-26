@@ -44,8 +44,8 @@ export const Index = () => {
     const oneBnb = '0x' + (1*10**18).toString(16)
     const lpPair = await pancakeRouter.methods.getAmountsOut(oneBnb, [CAKE_CONTRACT_ADDRESS, WBNB_CONTRACT_ADDRESS]).call()
     console.log('lpPair', lpPair)
-    console.log('1 Cake is', lpPair[0]/lpPair[1], 'BUSD')
-    setCakePrice(lpPair[0]/lpPair[1])
+    console.log('1 Cake is', lpPair[1]/lpPair[0]*bnbPrice, 'BUSD')
+    setCakePrice(lpPair[1]/lpPair[0]*bnbPrice)
   }
 
   const fetch = useCallback(async (web3, myAccount , lp, killSwitch, masterChef, pancakeRouter, tarCalPool) => {
