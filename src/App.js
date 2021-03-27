@@ -5,8 +5,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Index } from './pages/Index'
-import { Liquidate } from './pages/Liquidate'
-import { PositionSummary } from './pages/PositionSummary'
+import { ZHP } from './pages/ZHP'
+import { Governance } from './pages/Governance'
 import './App.css';
 
 function App() {
@@ -15,11 +15,11 @@ function App() {
     <Web3Provider>
       <Router>
         <Switch>
-          <Route path="/liquidate">
-            <Liquidate />
+          <Route path="/zhp">
+            <ZHP />
           </Route>
-          <Route path="/position-summary">
-            <PositionSummary />
+          <Route path="/governance">
+            <Governance />
           </Route>
           <Route path="/" >
             <Index />
