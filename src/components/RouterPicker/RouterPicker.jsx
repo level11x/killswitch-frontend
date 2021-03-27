@@ -4,7 +4,6 @@ import { Card } from '../Card/Card'
 import { Checkbox } from '../Checkbox/Checkbox'
 
 const RouterItem = ({router, active}) => {
-  console.log('router ', router)
   const activeClass = active ? 'border-b-2 border-primary' : ''
   return (
     <div className={`w-40 font-semibold flex items-center  ${activeClass}`}>

@@ -3,7 +3,8 @@ import { Button } from '../Button/Button'
 import { Card } from '../Card/Card'
 import { PositionTable } from '../PositionTable/PositionTable'
 
-export const PositionSummary = ({ children, checked, onClick, group }) => {
+export const PositionSummary = ({ liquidate, position}) => {
+  console.log('position ', position)
   return (
     <Card>
       <span className='font-semibold text-xl'>
@@ -15,7 +16,7 @@ export const PositionSummary = ({ children, checked, onClick, group }) => {
         </Button>
       </div>
       <div className='mt-4'>
-        <PositionTable />
+        <PositionTable liquidate={liquidate} postion={position} />
       </div>
    </Card>
   )

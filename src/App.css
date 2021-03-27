@@ -1,3 +1,49 @@
+@import 'public/pro/css/all.min.css'
+
+:root {
+  --ks-logo-color: #1b134e;
+  --ks-logo-timing: 30s;
+  --symbol-size: 80px;
+  --text-size: 40px;
+}
+
+.icon {
+  color: var(--ks-logo-color);
+  display: flex;
+  align-items: center;
+}
+
+.icon-text {
+  width: auto;
+  height: var(--text-size);
+}
+
+.ks-symbol {
+  display: flex;
+  width: var(--symbol-size);
+  height: var(--symbol-size);
+  margin-bottom: 12px;
+}
+
+.skew {
+  display: flex;
+  transform-style: preserve-3d;
+  transform: perspective(7cm) rotateX(45deg) rotateY(31deg);
+}
+
+.spin {
+  animation: spin var(--ks-logo-timing) infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 .App {
   text-align: center;

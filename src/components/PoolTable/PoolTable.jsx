@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '../Button/Button'
 
-export const PoolTable = ({ lp }) => {
+export const PoolTable = ({ lp, approve, stake, isApprove }) => {
   const headerClass = 'pt-4 pb-4'
   return (
     <div className='p-4 text-sm'>
@@ -43,9 +43,11 @@ export const PoolTable = ({ lp }) => {
           {lp}
         </div>
         <div className={`w-2/12 ${headerClass}`}>
-          <Button type='secondary'>
-              Farm
-          </Button>
+          <div className='w-24'>
+            <Button onClick={() => {isApprove ? stake() : approve() }} type='secondary'>
+                { isApprove ? 'Farm' : 'Stake' }
+            </Button>
+          </div>
         </div>
       </div>
     </div>

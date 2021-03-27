@@ -8,12 +8,12 @@ export const TVL = ({ tvl }) => {
     <div className={styles.tvlBox}>
       <Card>
         <div className="flex items-center">
-`        <span className='text-sm'>
+        <span className='text-sm'>
         Total Value Locked : 
         </span>
         <span className="text-secondary text-xl ml-4">
           {formatUSDCurrency(tvl)}
-        </span>`
+        </span>
         </div>
       </Card>
     </div>

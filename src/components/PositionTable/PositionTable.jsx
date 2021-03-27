@@ -1,7 +1,9 @@
 import React from 'react'
 import { Button } from '../Button/Button'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRadiation } from '@fortawesome/free-solid-svg-icons'
 
-export const PositionTable = ({ positionValue, positionLP, rewardCake ,onLiquidate }) => {
+export const PositionTable = ({ liquidate, position }) => {
   const headerClass = 'pt-4 pb-4'
   return (
     <div className='p-4 text-sm'>
@@ -26,10 +28,13 @@ export const PositionTable = ({ positionValue, positionLP, rewardCake ,onLiquida
         </div>
       </div>
       <div className='flex items-center'>
+        { position && position.lp &&
+        <>
         <div className={`w-1/12 ${headerClass}`}>
           BNB #1
         </div>
         <div className={`w-4/12 flex items-center ${headerClass}`}>
+          
           <div className='mr-1 relative'>
             <img  src='/img/BSC.png' />
             <img className='absolute top-0 right-4' src='/img/logo/pancake.png' />
@@ -38,21 +43,26 @@ export const PositionTable = ({ positionValue, positionLP, rewardCake ,onLiquida
           BNB-Cake
         </div>
         <div className={`w-2/12 ${headerClass}`}>
-          {positionValue} BUSD
+          {(position && position.value) || 0} BUSD
         </div>
         <div className={`w-2/12 ${headerClass}`}>
-          {positionLP} LP
+          {(position &&position.lp) || 0} LP
         </div>
         <div className={`w-2/12 ${headerClass}`}>
-          {rewardCake} Cake
+          {(position && position.reward) || 0} Cake
         </div>
         <div className={`w-2/12 ${headerClass}`}>
           <div className='w-32'>
             <Button type='primary'>
+              <span className='mr-2'>
+                <FontAwesomeIcon icon={faRadiation} />
+              </span>
               KillSwitch
             </Button>
           </div>
         </div>
+        </>
+      }
       </div>
     </div>
   )

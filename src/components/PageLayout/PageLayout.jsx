@@ -1,5 +1,8 @@
 import React from 'react'
+import { Logo } from '../Logo/Logo'
 import styles from './PageLayout.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLandmark, faHandshake, faHome, faGlassMartini } from '@fortawesome/free-solid-svg-icons'
 
 
 const MenuToggle = ({ active,children, onClick }) => {
@@ -25,14 +28,6 @@ const Featured = () => {
   )
 }
 
-const Logo = () => {
-  return (
-    <div className="font-semibold cursor-pointer">
-      KillSwitch
-    </div>
-  )
-}
-
 export const PageLayout = ({ children }) => {
   const toggleMenu =() => {
     
@@ -41,18 +36,31 @@ export const PageLayout = ({ children }) => {
     <div className='min-h-screen bg-gray flex'>
       <div className='w-60 min-h-screen flex flex-col justify-between bg-white rounded-r-2xl shadow-md'>
         <div className='p-4'>
+        <i class="fas fa-bars"></i>
           <Logo />
           <div className='mt-3'>
             <MenuToggle onClick={toggleMenu}>
+              <span className='mr-2'>
+                <FontAwesomeIcon icon={faHandshake} />
+              </span>
               Lend
             </MenuToggle>
             <MenuToggle onClick={toggleMenu} active>
+            <span className='mr-2'>
+              <FontAwesomeIcon icon={faHome} />
+            </span>
               Farm
             </MenuToggle>
             <MenuToggle onClick={toggleMenu}>
+              <span className='mr-2'>
+                <FontAwesomeIcon icon={faGlassMartini} />
+              </span>
               ZHP
             </MenuToggle>
             <MenuToggle onClick={toggleMenu}>
+            <span className='mr-2'>
+              <FontAwesomeIcon icon={faLandmark} />
+            </span>
               Governance
             </MenuToggle>
           </div>

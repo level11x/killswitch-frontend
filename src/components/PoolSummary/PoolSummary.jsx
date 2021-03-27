@@ -1,16 +1,15 @@
 import React from 'react'
-import { Button } from '../Button/Button'
 import { Card } from '../Card/Card'
 import { PoolTable } from '../PoolTable/PoolTable'
 
-export const PoolSummary = ({ children, checked, onClick, group }) => {
+export const PoolSummary = ({ lp, approve, stake, isApprove }) => {
   return (
     <Card>
       <span className='font-semibold text-xl'>
       Active Pool
       </span>
       <div className='mt-4'>
-        <PoolTable />
+        <PoolTable lp={lp} approve={approve} isApprove={isApprove} stake={stake}  />
       </div>
    </Card>
   )

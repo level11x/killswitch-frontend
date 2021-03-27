@@ -8,6 +8,12 @@ import { useMasterChefContract } from '../hooks/useMasterChefContract'
 import { usePancakeRouterContract } from '../hooks/usePancakeRouterContract'
 import { useTarCalPoolContract } from '../hooks/useTarCalPoolContract'
 import { BUSD_CONTRACT_ADDRESS, WBNB_CONTRACT_ADDRESS, CAKE_CONTRACT_ADDRESS, LP_CONTRACT_ADDRESS } from "../config/contract";
+import { PageLayout } from '../components/PageLayout/PageLayout';
+import { TVL } from '../components/TVL/TVL';
+import { Button } from '../components/Button/Button';
+import { RouterPicker } from '../components/RouterPicker/RouterPicker';
+import { PositionSummary } from '../components/PositionSummary/PositionSummary';
+import { PoolSummary } from '../components/PoolSummary/PoolSummary';
 const tarContractAddress = '0x0576961aAc8eb06F6A6A6975dFB70cE51065880D'
 
 export const Index = () => {
@@ -49,8 +55,6 @@ export const Index = () => {
   }
 
   const fetch = useCallback(async (web3, myAccount , lp, killSwitch, masterChef, pancakeRouter, tarCalPool) => {
-    console.log('@ lp ', lp)
-    console.log('@ kill', killSwitch)
     const result = await lp.methods.allowance(myAccount, tarContractAddress).call()
     setAllowance(result/10**18)
     if (result === 0) {
@@ -71,8 +75,8 @@ export const Index = () => {
     console.log('totalLpSupply', totalLpSupply)
 
     if (tvl.amount > 0) {
-      getBNBPrice(pancakeRouter)
-      getCakePrice(pancakeRouter, tvl.amount)
+      await getBNBPrice(pancakeRouter)
+      await getCakePrice(pancakeRouter, tvl.amount)
 
       const tokens = await tarCalPool.methods.getToken(LP_CONTRACT_ADDRESS, tvl.amount).call()
       console.log('tokens', tokens)
@@ -86,12 +90,7 @@ export const Index = () => {
   }, [])
 
   useEffect(() => {
-    console.log('@ myAccount ', myAccount)
-    console.log('@ lpContract ', lpContract)
-    console.log('@ killswitchContract ', killSwitchContract)
-    console.log('@ web3 ', web3)
     if(!myAccount || !lpContract || !killSwitchContract || !masterChefContract || !pancakeRouterContract || !tarCalPoolContract) return;
-    console.log('@ calling fetch')
     fetch(web3, myAccount, lpContract, killSwitchContract, masterChefContract, pancakeRouterContract, tarCalPoolContract)
   }, [web3, myAccount, lpContract, killSwitchContract, masterChefContract, pancakeRouterContract, tarCalPoolContract])
   
@@ -152,28 +151,54 @@ export const Index = () => {
       })
   }
 
+  const formatAddress = (acc) => {
+    return `${acc.substr(0,4)}...${acc.substring(acc.length - 4, acc.length)}`
+  }
+
   return (
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          KillSwitch, Stop loss! and Liquidate 💧
-        </p>
-        {
-          allowance === 0 ? (
-            <button onClick={approve}>Approve</button>
-          ) : (
-            <div>
-              <button onClick={stake}>Stake { (walletLp / 10**18).toFixed(3) } LP</button>
-              <button onClick={liquidate}>Kill Switch</button>
-            </div>
-          )
-        }
-        <p>{ transactionState }</p>
-        <p>You have staked { (stakedLp / 10**18).toFixed(3) } LP + { (reward / 10**18).toFixed(3) } Reward</p>
-        <p>TVL: { (tvl / 10**18).toFixed(3) } LP</p>
-        <p>{ (tvlCake / 10**18).toFixed(3) } Cake - { (tvlBnb / 10**18).toFixed(3) } BNB</p>
-        <p>{ (tvlTotal / 10**18).toFixed(3) } BUSD</p>
-      </header>
+    <PageLayout>
+       <div className="flex justify-between">
+         <TVL tvl={ (tvlTotal / 10**18).toFixed(3) } />
+         <Button>
+           {myAccount &&formatAddress(myAccount)}
+         </Button>
+        </div>
+        <div className="mt-4">
+          <RouterPicker />
+        </div>
+        <div className="mt-4">
+          <PositionSummary liquidate={liquidate} position={
+            { value: (stakedLp / 10**18).toFixed(3),
+              reward: (reward / 10**18).toFixed(3),
+              lp: (stakedLp / 10**18).toFixed(3),
+            }
+          } />
+        </div>
+        <div className="mt-4 mb-4">
+          <PoolSummary approve={approve} isApprove={allowance !== 0} stake={stake} lp={ (walletLp / 10**18).toFixed(3) } />
+        </div>
+    </PageLayout>
+      // <header className="App-header">
+      //   <img src={logo} className="App-logo" alt="logo" />
+      //   <p>
+      //     KillSwitch, Stop loss! and Liquidate 💧
+      //   </p>
+      //   {
+      //     allowance === 0 ? (
+      //       <button onClick={approve}>Approve</button>
+      //     ) : (
+      //       <div>
+      //         <button onClick={stake}>Stake { (walletLp / 10**18).toFixed(3) } LP</button>
+      //         <button onClick={liquidate}>Kill Switch</button>
+      //       </div>
+      //     )
+      //   }
+      //   <p>{ transactionState }</p>
+      //   <p>You have staked { (stakedLp / 10**18).toFixed(3) } LP + { (reward / 10**18).toFixed(3) } Reward</p>
+      //   <p>TVL: { (tvl / 10**18).toFixed(3) } LP</p>
+      //   <p>{ (tvlCake / 10**18).toFixed(3) } Cake - { (tvlBnb / 10**18).toFixed(3) } BNB</p>
+      //   <p>{ (tvlTotal / 10**18).toFixed(3) } BUSD</p>
+      // </header>
   );
 }
 
