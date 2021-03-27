@@ -1,0 +1,55 @@
+import React from 'react'
+import { Button } from '../Button/Button'
+
+export const PoolTable = ({ lp }) => {
+  const headerClass = 'pt-4 pb-4'
+  return (
+    <div className='p-4 text-sm'>
+      <div className='flex border border-l-0 border-r-0 border-t-0 border-gray'>
+        <div className={`w-3/12 ${headerClass}`}>
+          Pool
+        </div>
+        <div className={`w-2/12 ${headerClass}`}>
+          APY
+        </div>
+        <div className={`w-3/12 ${headerClass}`}>
+          Yield
+        </div>
+        <div className={`w-2/12 ${headerClass}`}>
+          Current LP
+        </div>
+        <div className={`w-2/12 ${headerClass}`}>
+          Action
+        </div>
+      </div>
+      <div className='flex items-center'>
+      <div className={`flex w-3/12 ${headerClass}`}>
+          <div className='mr-1 relative'>
+            <img  src='/img/BSC.png' />
+            <img className='absolute top-0 right-4' src='/img/logo/pancake.png' />
+          </div>
+          Pancakeswap<br/>
+          BNB-Cake
+        </div>
+        <div className={`w-2/12 ${headerClass}`}>
+          <span className='text-secondary'>883.92% </span>
+        </div>
+        <div className={`w-3/12 ${headerClass}`}>
+          Yield Farming   :    442.74%<br />
+          Trading Fees    :    45.95%<br />
+          Alpaca Reward :    404.78%<br />
+        </div>
+        <div className={`w-2/12 ${headerClass}`}>
+          {lp}
+        </div>
+        <div className={`w-2/12 ${headerClass}`}>
+          <Button type='secondary'>
+              Farm
+          </Button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+

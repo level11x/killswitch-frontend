@@ -1,5 +1,14 @@
 .pageLayout{
     height: 100vh;
+    background-color:  #E5E5E5;;
+}
+
+.shuttleOneLogo{
+    width: 90px; height: 35px;
+}
+
+.scbLogo {
+    width: 87px; height: 87px;
 }
 
 .header{
