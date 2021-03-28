@@ -157,7 +157,7 @@ export const Index = () => {
   const formatAddress = (acc) => {
     return `${acc.substr(0,4)}...${acc.substring(acc.length - 4, acc.length)}`
   }
-
+  
   return (
     <PageLayout>
        <div className="flex justify-between">
@@ -171,7 +171,7 @@ export const Index = () => {
         </div>
         <div className="mt-4">
           <PositionSummary liquidate={liquidate} position={
-            { value: (stakedLp / 10**18).toFixed(3),
+            { value: ((stakedLp / tvl  * tvlTotal) / 10**18).toFixed(3),
               reward: (reward / 10**18).toFixed(3),
               lp: (stakedLp / 10**18).toFixed(3),
             }
