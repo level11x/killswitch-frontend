@@ -42,12 +42,12 @@ export const ZHPSection = ({ tvl }) => {
               <img  src='/img/BSC.png' />
               <img className='absolute top-0 right-4' src='/img/logo/pancake.png' />
             </div>
-            ALPHA<br/>
-            BNB-Cake
+            ALPACA<br/>
+            BNB-BUSD
           </>
           </div>
         </div>
-        <div className={`w-2/12 ${headerClass}`}>
+        <div className={`w-3/12 ${headerClass}`}>
           <span className='text-secondary'>100 BNB</span>
         </div>
         <div className={`w-3/12 ${headerClass}`}>
@@ -56,8 +56,8 @@ export const ZHPSection = ({ tvl }) => {
         <div className={`w-2/12 ${headerClass}`}>
         <span className='text-secondary'>50 BNB</span>
         </div>
-        <div className={`w-2/12 ${headerClass}`}>
-          <div className='w-24'>
+        <div className={`w-3/12 ${headerClass}`}>
+          <div className='w-26'>
           <Button type='primary'>
               <span className='mr-2'>
                 <FontAwesomeIcon icon={faRadiation} />
