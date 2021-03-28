@@ -43,15 +43,15 @@ export const Index = () => {
     const lpPair = (await pancakeRouter.methods.getAmountsOut(oneBnb, [WBNB_CONTRACT_ADDRESS, BUSD_CONTRACT_ADDRESS]).call())
     console.log('lpPair', lpPair)
     console.log('1 BNB is', lpPair[1]/lpPair[0], 'BUSD')
-    setBnbPrice(lpPair[1]/lpPair[0])
+    return lpPair[1]/lpPair[0]
   }
 
-  async function getCakePrice(pancakeRouter, tvl) {
+  async function getCakePrice(pancakeRouter, bnbPrice ,tvl) {
     const oneBnb = '0x' + (1*10**18).toString(16)
     const lpPair = await pancakeRouter.methods.getAmountsOut(oneBnb, [CAKE_CONTRACT_ADDRESS, WBNB_CONTRACT_ADDRESS]).call()
     console.log('lpPair', lpPair)
     console.log('1 Cake is', lpPair[1]/lpPair[0]*bnbPrice, 'BUSD')
-    setCakePrice(lpPair[1]/lpPair[0]*bnbPrice)
+    return lpPair[1]/lpPair[0]*bnbPrice
   }
 
   const fetch = useCallback(async (web3, myAccount , lp, killSwitch, masterChef, pancakeRouter, tarCalPool) => {
@@ -75,8 +75,11 @@ export const Index = () => {
     console.log('totalLpSupply', totalLpSupply)
 
     if (tvl.amount > 0) {
-      await getBNBPrice(pancakeRouter)
-      await getCakePrice(pancakeRouter, tvl.amount)
+      const bnbPrice = await getBNBPrice(pancakeRouter)
+      const cakePrice = await getCakePrice(pancakeRouter, bnbPrice, tvl.amount)
+
+      setBnbPrice(bnbPrice)
+      setCakePrice(cakePrice)
 
       const tokens = await tarCalPool.methods.getToken(LP_CONTRACT_ADDRESS, tvl.amount).call()
       console.log('tokens', tokens)
@@ -85,7 +88,7 @@ export const Index = () => {
 
       console.log('cakePrice', cakePrice)
       console.log('bnbPrice', bnbPrice)
-      setTvlTotal(tvlCake*cakePrice + tvlBnb*bnbPrice)
+      setTvlTotal(tokens[0]*cakePrice + tokens[1]*bnbPrice)
     }
   }, [])
 

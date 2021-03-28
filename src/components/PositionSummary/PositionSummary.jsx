@@ -4,7 +4,6 @@ import { Card } from '../Card/Card'
 import { PositionTable } from '../PositionTable/PositionTable'
 
 export const PositionSummary = ({ liquidate, position}) => {
-  console.log('position ', position)
   return (
     <Card>
       <span className='font-semibold text-xl'>
@@ -16,7 +15,7 @@ export const PositionSummary = ({ liquidate, position}) => {
         </Button>
       </div>
       <div className='mt-4'>
-        <PositionTable liquidate={liquidate} postion={position} />
+        <PositionTable liquidate={liquidate} position={position} />
       </div>
    </Card>
   )

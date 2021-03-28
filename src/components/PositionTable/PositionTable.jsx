@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRadiation } from '@fortawesome/free-solid-svg-icons'
 
 export const PositionTable = ({ liquidate, position }) => {
+  console.log('position ', position)
   const headerClass = 'pt-4 pb-4'
   return (
     <div className='p-4 text-sm'>
@@ -28,7 +29,7 @@ export const PositionTable = ({ liquidate, position }) => {
         </div>
       </div>
       <div className='flex items-center'>
-        { position && position.lp &&
+        { position && position.lp !== '0.000' &&
         <>
         <div className={`w-1/12 ${headerClass}`}>
           BNB #1
@@ -53,7 +54,7 @@ export const PositionTable = ({ liquidate, position }) => {
         </div>
         <div className={`w-2/12 ${headerClass}`}>
           <div className='w-32'>
-            <Button type='primary'>
+            <Button type='primary' onClick={liquidate}>
               <span className='mr-2'>
                 <FontAwesomeIcon icon={faRadiation} />
               </span>
