@@ -47,10 +47,14 @@ export const PoolTable = ({ lp, approve, stake, isApprove }) => {
           {lp}
         </div>
         <div className={`w-2/12 ${headerClass}`}>
-          <div className='w-24'>
-            <Button onClick={() => {isApprove ? stake() : approve() }} type='secondary'>
-                { isApprove ? 'Farm' : 'Approve' }
+          <div className='w-26'>
+            <Button type='secondary'>
+                {'SUSPENDED ...UPGRADING'}
             </Button>
+            {/* Due to incident V0.0.1 */}
+            {/* <Button onClick={() => {isApprove ? stake() : approve() }} type='secondary'>
+                { isApprove ? 'Farm' : 'Approve' }
+            </Button> */}
           </div>
         </div>
       </div>

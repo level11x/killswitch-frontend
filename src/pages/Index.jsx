@@ -163,7 +163,7 @@ export const Index = () => {
        <div className="flex items-center justify-between">
          <TVL tvl={ (tvlTotal / 10**18).toFixed(3) } />
           <span className='text-red-600 text-center text-xl'>
-            Do not invest now, We upgrading the Smart Contract.
+          ❌❌❌ PLEASE !!!! Do not invest now, We're upgrading the Smart Contract. !!! ❌❌❌
           </span>
          <Button>
            {myAccount &&formatAddress(myAccount)}
