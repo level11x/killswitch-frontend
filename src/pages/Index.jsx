@@ -14,7 +14,7 @@ import { Button } from '../components/Button/Button';
 import { RouterPicker } from '../components/RouterPicker/RouterPicker';
 import { PositionSummary } from '../components/PositionSummary/PositionSummary';
 import { PoolSummary } from '../components/PoolSummary/PoolSummary';
-const tarContractAddress = '0x0576961aAc8eb06F6A6A6975dFB70cE51065880D'
+const tarContractAddress = '0xbE9F794FC205D76e6Dbb613d9dB32876a08afFC9'
 
 export const Index = () => {
   const [acc, setAcc] = useState('')
@@ -163,7 +163,7 @@ export const Index = () => {
        <div className="flex items-center justify-between">
          <TVL tvl={ (tvlTotal / 10**18).toFixed(3) } />
           <span className='text-red-600 text-center text-xl'>
-          ❌❌❌ PLEASE !!!! Do not invest now, We're upgrading the Smart Contract. !!! ❌❌❌
+          ❌❌❌ V-0.0.1 (FIXED) PLEASE PRESS KILLSWITCH BUTTON TO LIQUIDATE YOUR POSITION ❌❌❌
           </span>
          <Button>
            {myAccount &&formatAddress(myAccount)}
