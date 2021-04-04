@@ -160,14 +160,16 @@ export const Index = () => {
   
   return (
     <PageLayout>
-       <div className="flex items-center justify-between">
+       <div className="flex flex-col-reverse xl:flex-row items-center xl:justify-between">
          <TVL tvl={ (tvlTotal / 10**18).toFixed(3) } />
-          <span className='text-red-600 text-center text-xl'>
+          {/* <span className='text-red-600 text-center text-xl'>
           ❌❌❌ V-0.0.1 (FIXED) PLEASE PRESS KILLSWITCH BUTTON TO LIQUIDATE YOUR POSITION ❌❌❌
-          </span>
-         <Button>
-           {myAccount &&formatAddress(myAccount)}
-         </Button>
+          </span> */}
+          <div className="flex justify-end w-screen mr-8 mb-4 xl:mb-0">
+            <Button>
+              {myAccount ? formatAddress(myAccount) : 'Connect to a Wallet'}
+            </Button>
+          </div>
         </div>
         <div className="mt-4">
           <RouterPicker />
@@ -184,27 +186,6 @@ export const Index = () => {
           <PoolSummary approve={approve} isApprove={allowance !== 0} stake={stake} lp={ (walletLp / 10**18).toFixed(3) } />
         </div>
     </PageLayout>
-      // <header className="App-header">
-      //   <img src={logo} className="App-logo" alt="logo" />
-      //   <p>
-      //     KillSwitch, Stop loss! and Liquidate 💧
-      //   </p>
-      //   {
-      //     allowance === 0 ? (
-      //       <button onClick={approve}>Approve</button>
-      //     ) : (
-      //       <div>
-      //         <button onClick={stake}>Stake { (walletLp / 10**18).toFixed(3) } LP</button>
-      //         <button onClick={liquidate}>Kill Switch</button>
-      //       </div>
-      //     )
-      //   }
-      //   <p>{ transactionState }</p>
-      //   <p>You have staked { (stakedLp / 10**18).toFixed(3) } LP + { (reward / 10**18).toFixed(3) } Reward</p>
-      //   <p>TVL: { (tvl / 10**18).toFixed(3) } LP</p>
-      //   <p>{ (tvlCake / 10**18).toFixed(3) } Cake - { (tvlBnb / 10**18).toFixed(3) } BNB</p>
-      //   <p>{ (tvlTotal / 10**18).toFixed(3) } BUSD</p>
-      // </header>
   );
 }
 

@@ -5,6 +5,13 @@
   --text-size: 40px;
 }
 
+@media screen and (max-width: 1280px) {
+   :root {
+    --symbol-size: 40px;
+    --text-size: 20px;
+  }
+}
+
 .icon {
   color: var(--ks-logo-color);
   display: flex;

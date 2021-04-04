@@ -2,7 +2,7 @@ import React from 'react'
 import { Logo } from '../Logo/Logo'
 import styles from './PageLayout.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLandmark, faHandshake, faHome, faGlassMartini } from '@fortawesome/free-solid-svg-icons'
+import { faLandmark, faHandshake, faHome, faGlassMartini, faCog, faBars } from '@fortawesome/free-solid-svg-icons'
 
 
 const MenuToggle = ({ active,children, onClick }) => {
@@ -33,8 +33,8 @@ export const PageLayout = ({ children }) => {
     
   } 
   return (
-    <div className='min-h-screen bg-gray flex'>
-      <div className='w-60 min-h-screen flex flex-col justify-between bg-white rounded-r-2xl shadow-md'>
+    <div className='min-h-screen bg-gray flex flex-col xl:flex-row'>
+      <div className='hidden xl:block w-60 min-h-screen flex flex-col justify-between bg-white rounded-r-2xl shadow-md'>
         <div className='p-4'>
         <i class="fas fa-bars"></i>
           <Logo />
@@ -67,7 +67,16 @@ export const PageLayout = ({ children }) => {
         </div>
         <Featured />
       </div>
-      <div className='pt-9 pl-4 pr-10 w-screen'>
+      <div className='flex items-center justify-between w-100 xl:hidden rounded-r-2xl shadow-md p-4 bg-white'>
+        <Logo />
+        <div className="flex items-center text-xl">
+          <span className='mr-4'>
+            <FontAwesomeIcon icon={faCog} />
+          </span>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+      </div>
+      <div className='pt-9 pl-4 pr-4 xl:pr-10 w-full xl:w-screen'>
         {children}
       </div>
     </div>

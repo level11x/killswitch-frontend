@@ -5,9 +5,9 @@ import styles from './TVL.module.css'
 
 export const TVL = ({ tvl }) => {
   return (
-    <div className={styles.tvlBox}>
+    <div className='w-full xl:w-96'>
       <Card>
-        <div className="flex items-center">
+        <div className="flex items-center justify-between">
         <span className='text-sm'>
         Total Value Locked : 
         </span>

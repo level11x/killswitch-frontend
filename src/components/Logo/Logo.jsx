@@ -1,13 +1,13 @@
 export const Logo = () => (
   <>
-    <div className="icon">
+    <div className="icon ">
       <div className="ks-symbol">
         <div className="skew">
           <div className="spin">
             <svg
               className="ks-symbol"
-              width="100"
-              height="100"
+              width="50"
+              height="50"
               viewBox="0 0 916 916"
             >
               <g
