@@ -165,7 +165,7 @@ export const Index = () => {
           {/* <span className='text-red-600 text-center text-xl'>
           ❌❌❌ V-0.0.1 (FIXED) PLEASE PRESS KILLSWITCH BUTTON TO LIQUIDATE YOUR POSITION ❌❌❌
           </span> */}
-          <div className="flex justify-end w-screen mr-8 mb-4 xl:mb-0">
+          <div className="flex justify-end w-screen  mr-8 mb-4 xl:mb-0 xl:w-full">
             <Button>
               {myAccount ? formatAddress(myAccount) : 'Connect to a Wallet'}
             </Button>

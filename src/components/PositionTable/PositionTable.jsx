@@ -2,9 +2,9 @@ import React from 'react'
 import { Button } from '../Button/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRadiation } from '@fortawesome/free-solid-svg-icons'
+import { FarmingPairBadge } from '../FarmingPairBadge/FarmingPairBadge'
 
 export const PositionTable = ({ liquidate, position }) => {
-  console.log('position ', position)
   const headerClass = 'pt-4 pb-4'
   return (
     <div className='p-4 text-sm'>
@@ -35,13 +35,10 @@ export const PositionTable = ({ liquidate, position }) => {
           BNB #1
         </div>
         <div className={`w-4/12 flex items-center ${headerClass}`}>
-          
-          <div className='mr-1 relative'>
-            <img  src='/img/BSC.png' />
-            <img className='absolute top-0 right-4' src='/img/logo/pancake.png' />
-          </div>
-          Pancakeswap<br/>
-          BNB-Cake
+          <FarmingPairBadge pair1='/img/BSC.png' pair2='/img/logo/pancake.png'>
+            Pancakeswap<br/>
+            BNB-Cake
+          </FarmingPairBadge>
         </div>
         <div className={`w-2/12 ${headerClass}`}>
           {(position && position.value) || 0} BUSD

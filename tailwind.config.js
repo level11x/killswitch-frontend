@@ -15,6 +15,7 @@ module.exports = {
       ...defaultColors,
       primary: '#1B134E',
       secondary: '#42E8E0',
+      secondaryGray: '#828282',
       gray: '#E5E5E5'
     },
     fontFamily: {

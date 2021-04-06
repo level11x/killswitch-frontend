@@ -6,7 +6,7 @@ import { Checkbox } from '../Checkbox/Checkbox'
 const RouterItem = ({router, active}) => {
   const activeClass = active ? 'border-b-2 border-primary' : ''
   return (
-    <div className={`w-40 font-semibold flex items-center  ${activeClass}`}>
+    <div className={`w-1/3 xl:w-40 font-semibold flex justify-center xl:justify-start items-center  ${activeClass}`}>
       <img className='w-6 h-6 m-4' src={`/img/${router}.png`} />
       {router}
     </div>
@@ -16,7 +16,7 @@ const RouterItem = ({router, active}) => {
 const RouterCheckbox = (props) => {
   const { children, ...checkboxProps } = props
   return (
-    <div className="w-1/5 mr-4">
+    <div className="w-1/5 mr-4 cursor-pointer">
       <Checkbox {...checkboxProps}>
         {children}
       </Checkbox>
@@ -31,6 +31,15 @@ const RouterLogo = ({src}) => {
   )
 }
 
+const MobileRouterPicker = () => {
+  return (
+    <div className='flex border-primary border rounded-2xl justify-center p-2 h-12 mt-4'>
+      <RouterLogo src="/img/logo/pancake.png" />
+      Pancakeswap
+    </div>
+  )
+}
+
 export const RouterPicker = ({ onRouterChange }) => {
   return (
     <div className='w-full'>
@@ -40,26 +49,29 @@ export const RouterPicker = ({ onRouterChange }) => {
           <RouterItem router="Ethereum" />
           <RouterItem router="Terra" />
         </div>
-        <div className="flex items-center h-14 p-4 pb-0">
+        <div className="hidden xl:flex items-center h-14 p-4 pb-0">
           <div className="cursor-pointer font-semibold text-base mr-14">
             Check All
           </div>
-          <RouterCheckbox>
+          <RouterCheckbox checked>
             <RouterLogo src="/img/logo/pancake.png" />
             Pancakeswap
           </RouterCheckbox>
-          <RouterCheckbox>
-          <RouterLogo src="/img/logo/alpaca.png" />
-            Alpaca Fin.
+          <RouterCheckbox disabled>
+            <RouterLogo src="/img/logo/alpaca.png"  />
+              Alpaca Fin.
           </RouterCheckbox>
-          <RouterCheckbox>
-          <RouterLogo src="/img/logo/ape.png" />
-            Apeswap
+          <RouterCheckbox disabled>
+            <RouterLogo src="/img/logo/ape.png"  />
+              Apeswap
           </RouterCheckbox>
-          <RouterCheckbox>
-            <RouterLogo src="/img/logo/warden.png" />
+          <RouterCheckbox disabled>
+            <RouterLogo src="/img/logo/warden.png"  />
             Warden
           </RouterCheckbox>
+        </div>
+        <div className="block xl:hidden">
+          <MobileRouterPicker />
         </div>
       </Card>
     </div>

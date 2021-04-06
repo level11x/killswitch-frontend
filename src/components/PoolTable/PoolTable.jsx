@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '../Button/Button'
+import { FarmingPairBadge } from '../FarmingPairBadge/FarmingPairBadge'
 
 export const PoolTable = ({ lp, approve, stake, isApprove }) => {
   const [easterEgg, setEasterEgg] = useState(false)
@@ -28,12 +29,10 @@ export const PoolTable = ({ lp, approve, stake, isApprove }) => {
       </div>
       <div className='flex items-center'>
       <div className={`flex w-3/12 ${headerClass}`}>
-          <div className='mr-1 relative'>
-            <img  src='/img/BSC.png' />
-            <img className='absolute top-0 right-4' src='/img/logo/pancake.png' />
-          </div>
-          Pancakeswap<br/>
-          BNB-Cake
+          <FarmingPairBadge pair1='/img/BSC.png' pair2='/img/logo/pancake.png'>
+            Pancakeswap<br/>
+            BNB-Cake
+          </FarmingPairBadge>
         </div>
         <div className={`w-2/12 ${headerClass}`}>
           <span className='text-secondary'>883.92% </span>
