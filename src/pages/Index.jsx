@@ -17,7 +17,6 @@ import { PoolSummary } from '../components/PoolSummary/PoolSummary';
 const tarContractAddress = '0x0576961aAc8eb06F6A6A6975dFB70cE51065880D'
 
 export const Index = () => {
-  const [acc, setAcc] = useState('')
   const [transactionState, setTransactionState] = useState('')
   const [allowance, setAllowance] = useState(0)
   const [walletLp, setWalletLp] = useState(0)
@@ -55,13 +54,6 @@ export const Index = () => {
   }
 
   const fetch = useCallback(async (web3, myAccount , lp, killSwitch, masterChef, pancakeRouter, tarCalPool) => {
-    const result = await lp.methods.allowance(myAccount, tarContractAddress).call()
-    setAllowance(result/10**18)
-    if (result === 0) {
-      console.log('Need to approve contract')
-    } else {
-      console.log('Already approve for', result / 10**18, 'BNB')
-    }
     const bal = await lp.methods.balanceOf(myAccount).call()
     setWalletLp(bal)
 
@@ -96,21 +88,6 @@ export const Index = () => {
     if(!myAccount || !lpContract || !killSwitchContract || !masterChefContract || !pancakeRouterContract || !tarCalPoolContract) return;
     fetch(web3, myAccount, lpContract, killSwitchContract, masterChefContract, pancakeRouterContract, tarCalPoolContract)
   }, [web3, myAccount, lpContract, killSwitchContract, masterChefContract, pancakeRouterContract, tarCalPoolContract])
-  
-  function approve() {
-    const amount = '0x' + (1000*10**18).toString(16)
-    let options = {
-      from: myAccount
-    }
-    lpContract.methods.approve(tarContractAddress, amount).send(options)
-      .on('error', (error) => setTransactionState(error))
-      .on('transactionHash', (transactionHash) => setTransactionState('Submitted transaction: ' + transactionHash))
-      .on('receipt', async (receipt) => {
-        setTransactionState('Successfully approve contract, you can now stake LP')
-        const result = await lpContract.methods.allowance(myAccount, tarContractAddress).call()
-        setAllowance(result/10**18)
-      })
-  }
 
   async function calBalanceAndReward() {
     const bal = await lpContract.methods.balanceOf(myAccount).call()
@@ -126,19 +103,6 @@ export const Index = () => {
     console.log(poolInfo)
     let pendingReward = (userInfo.amount * poolInfo.accCakePerShare) / userInfo.rewardDebt
     setReward(pendingReward)
-  }
-
-  async function stake() {
-    let options = {
-      from: myAccount
-    }
-    killSwitchContract.methods.stakeLPAllow().send(options)
-      .on('error', (error) => setTransactionState(error))
-      .on('transactionHash', (transactionHash) => setTransactionState('Submitted transaction: ' + transactionHash))
-      .on('receipt', async (receipt) => {
-        setTransactionState('Successfully stake LP')
-        calBalanceAndReward()
-      })
   }
 
   async function liquidate() {
@@ -181,7 +145,7 @@ export const Index = () => {
           } />
         </div>
         <div className="mt-4 mb-4">
-          <PoolSummary approve={approve} isApprove={allowance !== 0} stake={stake} lp={ (walletLp / 10**18).toFixed(3) } />
+          <PoolSummary lp={ (walletLp / 10**18).toFixed(3) } />
         </div>
     </PageLayout>
       // <header className="App-header">
