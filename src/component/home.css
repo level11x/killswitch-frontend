@@ -1,20 +1,16 @@
-.logo{
-      transform-origin: 50%;
-      animation-name: logo-rotation;
-      animation-duration: 2s;
 
-      @keyframes logo-rotation {
-        0%{
-          transform: rotate(0deg);
+.spin {
+  animation: spin 30s infinite linear;
+}
 
-        }
-        100%{
-          transform: rotate(360deg);
-        }
-      }
-
-
-} 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .home-container {
   padding: 12px;

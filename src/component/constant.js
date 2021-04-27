@@ -17,7 +17,7 @@ export const menu = (
 
     <Menu>
         {menuArray.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -43,7 +43,7 @@ const menu1Array = [
 export const menu1 = (
     <Menu>
       {menu1Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -70,7 +70,7 @@ const menu2Array = [
 export const menu2 = (
     <Menu>
       {menu2Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -96,7 +96,7 @@ const menu3Array = [
 export const menu3 = (
     <Menu>
       {menu3Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -122,7 +122,7 @@ const menu4Array = [
 export const menu4 = (
     <Menu>
       {menu4Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -149,7 +149,7 @@ const menu5Array = [
 export const menu5 = (
     <Menu>
       {menu5Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -176,7 +176,7 @@ const menu6Array = [
 export const menu6 = (
     <Menu>
       {menu6Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -203,7 +203,7 @@ const menu7Array = [
 export const menu7 = (
     <Menu>
       {menu7Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -230,7 +230,7 @@ const menu8Array = [
 export const menu8 = (
     <Menu>
       {menu8Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
@@ -257,7 +257,7 @@ const menu9Array = [
 export const menu9 = (
     <Menu>
       {menu9Array.map(x => (
-            <Menu.Item>
+            <Menu.Item key={x.num}>
                 <div className="sub-menu-number">
                     <div className="text-menu">{x.num}</div>
                     <div className="text-menu">{x.c}</div>
