@@ -1,0 +1,102 @@
+.logo{
+      transform-origin: 50%;
+      animation-name: logo-rotation;
+      animation-duration: 2s;
+
+      @keyframes logo-rotation {
+        0%{
+          transform: rotate(0deg);
+
+        }
+        100%{
+          transform: rotate(360deg);
+        }
+      }
+
+
+} 
+
+.home-container {
+  padding: 12px;
+  margin: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ededf2;
+}
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-logo-header {
+  display: flex;
+  align-items: center;
+}
+.home-text-logo {
+  color: #1b134e;
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 20px;
+}
+
+.home-content {
+  padding: 2rem;
+}
+.home-detail-top {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  padding-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.count-down-text {
+  color: #000000;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 110%;
+}
+.count-down-number {
+  color: #000000;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 144px;
+  line-height: 110%;
+}
+.home-detail-below {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 7rem;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 992px) {
+  .count-down-text {
+    font-size: 26px;
+  }
+  .count-down-number {
+    font-size: 70px;
+  }
+  .home-mascos > img {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .count-down-text {
+    font-size: 22px;
+  }
+  .count-down-number {
+    font-size: 40px;
+  }
+  .home-detail-below {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem;
+   
+  }
+  .home-mascos > img {
+    width: 80px;
+    margin: 0 10px;
+  }
+}

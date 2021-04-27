@@ -1,0 +1,236 @@
+.content-container {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: auto;
+  background-color: #ededf2;
+}
+.content-box {
+  padding: 0;
+  margin: auto;
+}
+.connect-to-wallet > button {
+  border-radius: 10px;
+  height: 45px;
+  color: #1b134e;
+  font-family: Manrope;
+  font-weight: 400;
+  font-size: 16px;
+  border: 1px solid #1b134e;
+  cursor: pointer;
+  width: 180px;
+  background: none;
+}
+
+.content-bid-bg {
+  margin: 0;
+  padding-left: 15rem;
+}
+.content-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+.bid-box-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.card-box-shirt {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.bid-button {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+.bid-button-modal {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
+.bid-place-btn > button {
+  width: 200px;
+  background-color: #1b134e;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 4px;
+  color: white;
+  height: 40px;
+  cursor: pointer;
+}
+.bid-cancel-btn > button {
+  width: 200px;
+  background-color: #f0eff1;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 4px;
+  color: #000000;
+  height: 40px;
+  cursor: pointer;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: white;
+  padding-top: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 15px;
+}
+.card-img {
+  margin: 12px;
+}
+.img-top {
+  padding: 15px;
+}
+.img-top-modal {
+  padding: 15px;
+  text-align: center !important;
+}
+.count-down-details {
+  padding: 0;
+  margin: 0;
+}
+.price-top-bid {
+  color: #000;
+  font-size: 64px;
+  font-weight: 800;
+}
+.price-top-current-box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.price-bid-box {
+  width: 50%;
+}
+.price-top-current {
+  font-size: 18px;
+  color: #000;
+  font-weight: 400;
+}
+.price-top-box {
+  width: 100%;
+  display: flex;
+}
+.price-top {
+  color: #000;
+  font-size: 36px;
+  font-weight: 800;
+}
+.price-top-count-down {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.time-count {
+  padding-right: 25px;
+}
+
+.time-count-number {
+  color: #000;
+  font-size: 36px;
+  font-weight: 800;
+}
+.time-count-text {
+  font-size: 18px;
+  color: #000;
+  font-weight: 400;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.number-text-font {
+  padding-top: 10px;
+  color: #000000;
+  font-size: 24px;
+}
+.container {
+  background: #1b134e;
+  padding: 15px 20px;
+  margin: 0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+.current-bid {
+  font-size: 16px;
+}
+.price-bid {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 992px) {
+  .content-bid-bg {
+    margin: 0;
+    padding-left: 0rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .price-top-current-box{
+    display: inline-block;
+  }
+  .bid-box-container{
+    padding-top: 20px;
+  }
+  .price-top-bid {
+    color: #000;
+    font-size: 30px;
+    font-weight: 800;
+    text-align: left;
+  }
+  .price-top-current{
+    margin: 6px 0;
+  }
+  .price-top {
+    font-size: 22px;
+  }
+  .time-count {
+    padding-right: 25px;
+  }
+  .time-count-number {
+    font-size: 22px;
+  }
+  .time-count-text {
+    font-size: 14px;
+  }
+  .price-top-current {
+    font-size: 14px;
+  }
+  .content-header {
+    padding: 0;
+  }
+  .card {
+    margin: 15px 0;
+  }
+  .bid-box-container{    width: 100%;}
+  .content-header {
+    padding-right: 10px;
+    padding-top: 10px;
+}
+.connect-to-wallet > button {
+  border-radius: 10px;
+  height: 35px;
+  color: #1b134e;
+  font-family: Manrope;
+  font-weight: 400;
+  font-size: 14px;
+  border: 1px solid #1b134e;
+  cursor: pointer;
+  width: 150px;
+  background: none;
+}
+}
