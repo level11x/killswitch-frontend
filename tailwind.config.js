@@ -14,12 +14,13 @@ module.exports = {
     colors: {
       ...defaultColors,
       primary: '#1B134E',
+      blue: '#2962FF',
       secondary: '#42E8E0',
       secondaryGray: '#828282',
-      gray: '#E5E5E5'
+      gray: '#9E9E9E'
     },
     fontFamily: {
-      sans: ['Prompt', 'sans-serif'],
+      sans: ['Kanit', 'sans-serif'],
     }
   },
   variants: {

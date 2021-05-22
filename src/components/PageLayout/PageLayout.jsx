@@ -3,80 +3,55 @@ import { Logo } from '../Logo/Logo'
 import styles from './PageLayout.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLandmark, faHandshake, faHome, faGlassMartini, faCog, faBars } from '@fortawesome/free-solid-svg-icons'
+import { Button } from '../Button/Button'
 
-
-const MenuToggle = ({ active,children, onClick }) => {
-  const toggle = () => {
-    onClick()
-  }
+const MenuBlock = ({ children}) => {
   return (
-    <div onClick={toggle} className={`mt-8 cursor-pointer font-semibold ${active ? 'text-secondary' : 'text-primary'}`}>
+    <div className="pt-6 pb-6 pl-8 pr-8 text-xl font-semibold">
       {children}
     </div>
   )
 }
 
-const Featured = () => {
-  return (
-    <div className='mb-24 p-4 text-sm'>
-    Featured With
-    <div className='flex items-center'>
-      <img className={styles.scbLogo} src="img/logo/scb10x.png" />
-      <img className={styles.shuttleOneLogo} src="img/logo/shuttleone.png" />
-    </div>
-  </div>
-  )
-}
-
 export const PageLayout = ({ children }) => {
-  const toggleMenu =() => {
-    
-  } 
   return (
-    <div className='min-h-screen bg-gray flex flex-col xl:flex-row'>
-      <div className='hidden xl:block w-60 min-h-screen flex flex-col justify-between bg-white rounded-r-2xl shadow-md'>
-        <div className='p-4'>
-        <i class="fas fa-bars"></i>
+    <div className='min-h-screen bg-gray flex flex-col '>
+      <div className='hidden xl:flex w-100 justify-between bg-white shadow-md'>
+        <div className="flex items-center pl-4">
           <Logo />
-          <div className='mt-3'>
-            <MenuToggle onClick={toggleMenu}>
-              <span className='mr-2'>
-                <FontAwesomeIcon icon={faHandshake} />
+        </div>
+        <div className="flex items-center text-xl">
+          <MenuBlock>
+            Home
+          </MenuBlock>
+          <MenuBlock>
+            Live Auction
+          </MenuBlock>
+          <MenuBlock>
+            Top Auction
+          </MenuBlock>
+          <div className="pl-4 pr-4">
+            <Button type='primary'>
+              <span className="font-semibold text-xl">
+                Launch App
               </span>
-              Lend
-            </MenuToggle>
-            <MenuToggle onClick={toggleMenu} active>
-            <span className='mr-2'>
-              <FontAwesomeIcon icon={faHome} />
-            </span>
-              Farm
-            </MenuToggle>
-            <MenuToggle onClick={toggleMenu}>
-              <span className='mr-2'>
-                <FontAwesomeIcon icon={faGlassMartini} />
-              </span>
-              ZHP
-            </MenuToggle>
-            <MenuToggle onClick={toggleMenu}>
-            <span className='mr-2'>
-              <FontAwesomeIcon icon={faLandmark} />
-            </span>
-              Governance
-            </MenuToggle>
+            </Button>
           </div>
         </div>
-        <Featured />
       </div>
-      <div className='flex items-center justify-between w-100 xl:hidden rounded-r-2xl shadow-md p-4 bg-white'>
-        <Logo />
-        <div className="flex items-center text-xl">
-          <span className='mr-4'>
-            <FontAwesomeIcon icon={faCog} />
-          </span>
+      <div className='flex items-center justify-between w-100 xl:hidden shadow-md p-4 bg-white'>
+        <span className="text-xl">
           <FontAwesomeIcon icon={faBars} />
+        </span>
+        <div className="flex items-center text-xl">
+          <Button type='primary'>
+            <span className="font-semibold text-xl">
+              Launch App
+            </span>
+          </Button>
         </div>
       </div>
-      <div className='pt-9 pl-4 pr-4 xl:pr-10 w-full xl:w-screen'>
+      <div>
         {children}
       </div>
     </div>

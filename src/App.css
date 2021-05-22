@@ -1,16 +1,53 @@
 :root {
   --ks-logo-color: #1b134e;
   --ks-logo-timing: 30s;
-  --symbol-size: 80px;
-  --text-size: 40px;
+  --symbol-size: 40px;
+  --text-size: 20px;
+}
+
+.screen-container{
+  width: 978px;
 }
 
 @media screen and (max-width: 1280px) {
-   :root {
-    --symbol-size: 40px;
-    --text-size: 20px;
+  .screen-container{
+    width: auto;
   }
+  .pagination li a{
+    color: black;
+    cursor: pointer;
+    background-color: #fff;
+    border-color: #dee2e6;
+    padding: 12px 21px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+
 }
+
+.pagination{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  list-style: none;
+  border-radius: .25rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.pagination li a{
+  color: black;
+  cursor: pointer;
+  background-color: #fff;
+  border-color: #dee2e6;
+  padding: 12px 21px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+
 
 .icon {
   color: var(--ks-logo-color);
@@ -87,4 +124,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#react-paginate ul {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#react-paginate li {
+  display: inline-block;
 }

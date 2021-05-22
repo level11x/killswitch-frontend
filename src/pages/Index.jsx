@@ -14,6 +14,11 @@ import { Button } from '../components/Button/Button';
 import { RouterPicker } from '../components/RouterPicker/RouterPicker';
 import { PositionSummary } from '../components/PositionSummary/PositionSummary';
 import { PoolSummary } from '../components/PoolSummary/PoolSummary';
+import { TimeBox } from '../components/TimeBox/TimeBox';
+import { AuctionTable } from '../components/AuctionTable/AuctionTable';
+import ReactPaginate from 'react-paginate';
+import { TopAuctionCard } from '../components/TopAuctionCard/TopAuctionCard';
+import useWindowDimensions from '../hooks/useWindowDimension';
 const tarContractAddress = '0xbE9F794FC205D76e6Dbb613d9dB32876a08afFC9'
 
 export const Index = () => {
@@ -35,156 +40,118 @@ export const Index = () => {
   const pancakeRouterContract = usePancakeRouterContract()
   const tarCalPoolContract = useTarCalPoolContract()
   const { accounts, myAccount, balance } = useAccounts();
+  const [auctions, setAuctions] = useState([])
+  const [paginateAuctions, setPaginationAuctions] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
+  const { height, width } = useWindowDimensions()
+  const pageSize = 25
   const [web3Val] = useWeb3()
   const web3 = web3Val.web3;
 
-  async function getBNBPrice(pancakeRouter) {
-    const oneBnb = '0x' + (1*10**18).toString(16)
-    const lpPair = (await pancakeRouter.methods.getAmountsOut(oneBnb, [WBNB_CONTRACT_ADDRESS, BUSD_CONTRACT_ADDRESS]).call())
-    console.log('lpPair', lpPair)
-    console.log('1 BNB is', lpPair[1]/lpPair[0], 'BUSD')
-    return lpPair[1]/lpPair[0]
+
+  const onPageChange = ({ selected }) => {
+    setCurrentPage(selected)
   }
 
-  async function getCakePrice(pancakeRouter, bnbPrice ,tvl) {
-    const oneBnb = '0x' + (1*10**18).toString(16)
-    const lpPair = await pancakeRouter.methods.getAmountsOut(oneBnb, [CAKE_CONTRACT_ADDRESS, WBNB_CONTRACT_ADDRESS]).call()
-    console.log('lpPair', lpPair)
-    console.log('1 Cake is', lpPair[1]/lpPair[0]*bnbPrice, 'BUSD')
-    return lpPair[1]/lpPair[0]*bnbPrice
+  const getPaginateAuctions = () => {
+    const parsePage = currentPage + 1
+    const startIndex = (parsePage - 1) * pageSize
+    const endIndex = (parsePage) * pageSize
+    return auctions.slice(startIndex, endIndex)
   }
 
-  const fetch = useCallback(async (web3, myAccount , lp, killSwitch, masterChef, pancakeRouter, tarCalPool) => {
-    const result = await lp.methods.allowance(myAccount, tarContractAddress).call()
-    setAllowance(result/10**18)
-    if (result === 0) {
-      console.log('Need to approve contract')
-    } else {
-      console.log('Already approve for', result / 10**18, 'BNB')
+  useEffect(() => {
+    let mockAuctions = []
+    for (let i = 0 ; i < 100 ; i++){
+      mockAuctions.push({
+        number: i+1,
+        price: 10 + i,
+        address: '0xDEAD'
+      })
     }
-    const bal = await lp.methods.balanceOf(myAccount).call()
-    setWalletLp(bal)
+    setAuctions(mockAuctions)
 
-    const staked = await killSwitch.methods.stakeBalance(myAccount).call()
-    setStakedLp(staked)
-
-    const tvl = await masterChef.methods.userInfo(1, tarContractAddress).call()
-    setTvl(tvl.amount)
-
-    const totalLpSupply = await lp.methods.totalSupply().call();
-    console.log('totalLpSupply', totalLpSupply)
-
-    if (tvl.amount > 0) {
-      const bnbPrice = await getBNBPrice(pancakeRouter)
-      const cakePrice = await getCakePrice(pancakeRouter, bnbPrice, tvl.amount)
-
-      setBnbPrice(bnbPrice)
-      setCakePrice(cakePrice)
-
-      const tokens = await tarCalPool.methods.getToken(LP_CONTRACT_ADDRESS, tvl.amount).call()
-      console.log('tokens', tokens)
-      setTvlCake(tokens[0])
-      setTvlBnb(tokens[1])
-
-      console.log('cakePrice', cakePrice)
-      console.log('bnbPrice', bnbPrice)
-      setTvlTotal(tokens[0]*cakePrice + tokens[1]*bnbPrice)
-    }
+    setPaginationAuctions(getPaginateAuctions())
   }, [])
 
   useEffect(() => {
-    if(!myAccount || !lpContract || !killSwitchContract || !masterChefContract || !pancakeRouterContract || !tarCalPoolContract) return;
-    fetch(web3, myAccount, lpContract, killSwitchContract, masterChefContract, pancakeRouterContract, tarCalPoolContract)
-  }, [web3, myAccount, lpContract, killSwitchContract, masterChefContract, pancakeRouterContract, tarCalPoolContract])
-  
-  function approve() {
-    const amount = '0x' + (1000*10**18).toString(16)
-    let options = {
-      from: myAccount
-    }
-    lpContract.methods.approve(tarContractAddress, amount).send(options)
-      .on('error', (error) => setTransactionState(error))
-      .on('transactionHash', (transactionHash) => setTransactionState('Submitted transaction: ' + transactionHash))
-      .on('receipt', async (receipt) => {
-        setTransactionState('Successfully approve contract, you can now stake LP')
-        const result = await lpContract.methods.allowance(myAccount, tarContractAddress).call()
-        setAllowance(result/10**18)
-      })
-  }
-
-  async function calBalanceAndReward() {
-    const bal = await lpContract.methods.balanceOf(myAccount).call()
-    setWalletLp(bal)
-
-    const staked = await killSwitchContract.methods.stakeBalance(myAccount).call()
-    setStakedLp(staked)
-
-    const userInfo = await masterChefContract.methods.userInfo(1, tarContractAddress).call()
-    const poolInfo = await masterChefContract.methods.poolInfo(1).call()
-
-    console.log(userInfo)
-    console.log(poolInfo)
-    let pendingReward = (userInfo.amount * poolInfo.accCakePerShare) / userInfo.rewardDebt
-    setReward(pendingReward)
-  }
-
-  async function stake() {
-    let options = {
-      from: myAccount
-    }
-    killSwitchContract.methods.stakeLPAllow().send(options)
-      .on('error', (error) => setTransactionState(error))
-      .on('transactionHash', (transactionHash) => setTransactionState('Submitted transaction: ' + transactionHash))
-      .on('receipt', async (receipt) => {
-        setTransactionState('Successfully stake LP')
-        calBalanceAndReward()
-      })
-  }
-
-  async function liquidate() {
-    let options = {
-      from: myAccount
-    }
-    killSwitchContract.methods.AutoRemoveAll().send(options)
-      .on('error', (error) => setTransactionState(error))
-      .on('transactionHash', (transactionHash) => setTransactionState('Submitted transaction: ' + transactionHash))
-      .on('receipt', async (receipt) => {
-        setTransactionState('Successfully liquidate')
-        calBalanceAndReward()
-      })
-  }
-
-  const formatAddress = (acc) => {
-    return `${acc.substr(0,4)}...${acc.substring(acc.length - 4, acc.length)}`
-  }
+    setPaginationAuctions(getPaginateAuctions())
+  }, [currentPage])
   
   return (
     <PageLayout>
-       <div className="flex flex-col-reverse xl:flex-row items-center xl:justify-between">
-         <TVL tvl={ (tvlTotal / 10**18).toFixed(3) } />
-          {/* <span className='text-red-600 text-center text-xl'>
-          ❌❌❌ V-0.0.1 (FIXED) PLEASE PRESS KILLSWITCH BUTTON TO LIQUIDATE YOUR POSITION ❌❌❌
-          </span> */}
-          <div className="flex justify-end w-screen  mr-8 mb-4 xl:mb-0 xl:w-full">
-            <Button>
-              {myAccount ? formatAddress(myAccount) : 'Connect to a Wallet'}
-            </Button>
+       <div className="bg-primary min-h-screen flex justify-center w-screen">
+        <div className="screen-container">
+          <h1 className="text-center pt-20 text-white font-semibold xl:text-6xl text-4xl">
+            Auction Ending in
+          </h1>
+          <div className="flex justify-center pt-10">
+            <div className="flex">
+              <div className="hidden xl:block">
+                <TimeBox unit="Days" time="03" />
+              </div>
+              <TimeBox unit="Hours" time="00" />
+              <TimeBox unit="Minutes" time="00" />
+              <TimeBox unit="Seconds" time="00" />
+            </div>
           </div>
+          <h1 className="text-center pt-16 text-white font-semibold text-6xl">
+            Top Auction
+          </h1>
+          <div className="flex justify-center  w-full mt-10">
+            <TopAuctionCard number={1} />
+          </div>
+          <div className="hidden xl:flex w-full justify-center mt-10 ">
+            <div className="xl:mr-6  mb-10 xl:mb-2">
+              <TopAuctionCard number={2} />
+            </div>
+            <div className="xl:mr-6 xl:mb-2 mb-10 ">
+              <TopAuctionCard number={3} />
+            </div>
+            <div className="xl:mr-6 xl:mb-2 mb-10">
+              <TopAuctionCard number={4} />
+            </div>
+          </div>
+          <div className=" xl:flex-row xl:hidden flex flex-col w-full justify-center mt-10 ">
+            <div className="xl:mr-6  flex justify-center mb-10 xl:mb-2">
+              <TopAuctionCard number={2} />
+            </div>
+            <div className="xl:mr-6 xl:mb-2 mb-10 flex justify-center ">
+              <TopAuctionCard number={3} />
+            </div>
+            <div className="xl:mr-6 xl:mb-2 mb-10 flex justify-center">
+              <TopAuctionCard number={4} />
+            </div>
+          </div>
+          <AuctionTable auctions={paginateAuctions} />
+          <div className="justify-center pb-96 hidden xl:flex">
+            <ReactPaginate
+              previousLabel={'<'}
+              nextLabel={'>'}
+              breakLabel={'...'}
+              initialPage={1}
+              pageCount={auctions.length / pageSize}
+              onPageChange={onPageChange}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={1 }
+              containerClassName={'pagination'}
+            />
+           </div>
+           <div className="flex justify-center pb-96 xl:hidden">
+            <ReactPaginate
+              previousLabel={'<'}
+              nextLabel={'>'}
+              breakLabel={'...'}
+              initialPage={0}
+              pageCount={auctions.length / pageSize}
+              onPageChange={onPageChange}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={1 }
+              containerClassName={'pagination'}
+            />
+           </div>
         </div>
-        <div className="mt-4">
-          <RouterPicker />
-        </div>
-        <div className="mt-4">
-          <PositionSummary liquidate={liquidate} position={
-            { value: ((stakedLp / tvl  * tvlTotal) / 10**18).toFixed(3),
-              reward: (reward / 10**18).toFixed(3),
-              lp: (stakedLp / 10**18).toFixed(3),
-            }
-          } />
-        </div>
-        <div className="mt-4 mb-4">
-          <PoolSummary approve={approve} isApprove={allowance !== 0} stake={stake} lp={ (walletLp / 10**18).toFixed(3) } />
-        </div>
+      </div>
     </PageLayout>
   );
 }
