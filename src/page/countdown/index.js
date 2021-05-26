@@ -175,7 +175,9 @@ export const CountdownPage = () => {
                         </svg>
                     </div>
                     <h2 className="text-2xl md:text-5xl font-bold text-white z-10">Are You Ready for Auction</h2>
-                    <CountdownBox className="z-20 flex justify-center space-x-4" hour minute second />
+                    {/* First month starts from 0 */}
+                    {/* Start at 27/05 18:00 end at 28/05 18:00 */}
+                    <CountdownBox className="z-20 flex justify-center space-x-4" hour minute second startMonth={4} startDay={27} startHour={18} endMonth={4} endDay={28} endHour={18} />
                 </div>
             </section>
             {/* end hero */}

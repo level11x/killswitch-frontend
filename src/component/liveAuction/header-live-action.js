@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import world from '../../svg/world.svg'
 import robotRock from '../../svg/robot-rock.svg'
-const HeaderLiveAuction = ({ day, hour, minute, second ,className,...props}) => {
+const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, startHour, endMonth, endDay, endHour ,className,...props}) => {
 
     const calculateTimeLeft = () => {
         let year = new Date().getFullYear();
-        let difference = +new Date(`05/28/${year}`) - +new Date()
+        let difference = +new Date(year, endMonth, endDay, endHour) - +new Date();
         let timeLeft = {};
 
         if (difference > 0) {

@@ -7,17 +7,30 @@ import Navigation from '../../component/navigation'
 import './liveAuction.css'
 
 export const LiveAuctionPage = () => {
-    return (
-        <>
-        <Navigation />
-        <div className="live-auction-container">
-            <HeaderLiveAuction className="z-20 flex justify-center space-x-4" day hour minute second  />
-            <div className="live-auction-content">
-                <CollectibileLiveAuction />
-                <LiveAuctionContent />
-            </div>
-            <LiveAuctionFooter />
-        </div>
-        </>
-    )
+	return (
+		<>
+			<Navigation />
+			<div className="live-auction-container">
+                {/* Start at 28/05 18:00 end at 31/05 18:00 */}
+				<HeaderLiveAuction
+					className="z-20 flex justify-center space-x-4"
+					day
+					hour
+					minute
+					second
+					startMonth={4}
+					startDay={28}
+					startHour={18}
+					endMonth={4}
+					endDay={31}
+					endHour={18}
+				/>
+				<div className="live-auction-content">
+					<CollectibileLiveAuction />
+					<LiveAuctionContent />
+				</div>
+				<LiveAuctionFooter />
+			</div>
+		</>
+	)
 }
