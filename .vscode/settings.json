@@ -1,0 +1,15 @@
+{
+    "git.ignoreLimitWarning": true,
+    "editor.tabSize": 2,
+    "search.exclude": {
+        "**/_next": true,
+        "**/.next": true,
+        "**/node_modules": true,
+    },
+    "files.exclude": {
+        "**/_next": true,
+        "**/.next": true,
+        "**/node_modules": true,
+    },
+    "C_Cpp.errorSquiggles": "Enabled",
+}

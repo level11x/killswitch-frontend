@@ -35,7 +35,17 @@ module.exports = {
         'symbol':'2rem'
       }
     },
-    colors: twColors,
+    colors: {
+      ...twColors,
+      primary: '#1B134E',
+      blue: '#2962FF',
+      secondary: '#42E8E0',
+      secondaryGray: '#828282',
+      gray: '#9E9E9E'
+    },
+    fontFamily: {
+      sans: ['Kanit', 'sans-serif'],
+    },
     screens: {
       'sm': '640px',
       'md': '768px',
