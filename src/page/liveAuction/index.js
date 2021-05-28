@@ -5,10 +5,11 @@ import LiveAuctionContent from '../../component/liveAuction/content-live-auction
 import LiveAuctionFooter from '../../component/liveAuction/footer-live-action'
 import Navigation from '../../component/navigation'
 import './liveAuction.css'
+import { Web3Provider } from "../../hooks/useWeb3";
 
 export const LiveAuctionPage = () => {
 	return (
-		<>
+		<Web3Provider>
 			<Navigation />
 			<div className="live-auction-container">
                 {/* Start at 28/05 18:00 end at 31/05 18:00 */}
@@ -31,6 +32,6 @@ export const LiveAuctionPage = () => {
 				</div>
 				<LiveAuctionFooter />
 			</div>
-		</>
+		</Web3Provider>
 	)
 }

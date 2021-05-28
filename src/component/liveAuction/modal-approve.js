@@ -1,13 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { Button, Slider, Avatar, Modal, Form, notification, } from 'antd';
 import personbid from '../../svg/logoProfile.svg'
 import ModalBid from './modal-bid'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
+import { useAccounts } from '../../hooks/useAccount'
+import { useAllowanceContract } from '../../hooks/useAllowanceContract'
+import { useBUSDContract } from "../../hooks/useBUSDContract";
+import { AUCTION_ADDRESS } from "../../config/contract";
+
+import { BigNumber } from "@ethersproject/bignumber"
+
 export default function ModalApprove({ onCancel, setIsModalApprove }) {
     const [isModalBid, setIsModalBid] = useState(false);
+    const [isApprove, setIsApprove] = useState(false);
 
-    const showModalBid = () => {
+    const { myAccount } = useAccounts();
+    const busdContract = useBUSDContract();
+    const allowance = useAllowanceContract();
+
+    useMemo(async () => {
+        console.log('useMemo', allowance)
+        let value = await allowance
+        console.log(value)
+        setIsApprove(value > 0)
+    }, [allowance]);
+
+    const approve = async () => {
+        await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
+            from: myAccount
+        })
+        console.log('done')
+        setIsModalBid(true);
+        setTimeout(() => {
+            setIsModalApprove(false);
+        }, 1000);
+    }
+    
+    const showModalBid = async () => {
+        console.log('approve click');
+        console.log('isApprove', isApprove)
         setIsModalBid(true);
         setTimeout(() => {
             setIsModalApprove(false);
@@ -82,7 +114,7 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
                 <div className="btn-approve-cancel">
                     <div className="btn-cancel"><button onClick={onCancel}>Cancel</button>
                     </div>
-                    <Button onClick={showModalBid} className="btn-approve">Approve</Button>
+                    <Button onClick={approve} className="btn-approve">Approve</Button>
                 </div>
 
                 <Modal visible={isModalBid} onCancel={handleCancelBid}
