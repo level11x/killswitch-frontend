@@ -3,10 +3,19 @@ import { Button, Slider, Avatar, InputNumber, Form } from 'antd';
 import personbid from '../../svg/logoProfile.svg'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
+import { useAuctionContract } from '../../hooks/useAuctionContract'
+import { useAccounts } from '../../hooks/useAccount'
 
 
 export default function ModalBid({ handleCancelBid }) {
+    const auctionContract = useAuctionContract()
+    const { myAccount } = useAccounts();
 
+    async function bid() {
+        await auctionContract.methods.bid(0, 0).send({
+            from: myAccount
+        })
+    }
 
     return (
         <div className="bid-modal-box">
