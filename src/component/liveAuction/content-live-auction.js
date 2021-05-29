@@ -14,21 +14,22 @@ const LiveAuctionContent = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        console.log(bidData)
         if (!bidData || bidData.length < 4) return;
         const tokenIDs = bidData[0]
         const addresses = bidData[1]
         const amounts = bidData[2]
         const time = bidData[3]
+        const value = []
         for (let i = 0; i < tokenIDs.length; i++) {
-            data.push({
+            value.push({
                 id: tokenIDs[i],
                 bidPrice: amounts[i],
                 bidAddress: addresses[i],
                 time: time[i],
             }) 
         }
-        setData(data)
+        console.log(value)
+        setData(value)
     }, [bidData]);
 
     const showModalApprove = () => {
@@ -47,7 +48,7 @@ const LiveAuctionContent = () => {
     }
     return (
         <div className="live-content-container">
-            <div className="live-content-box">
+            <div className="live-content-box">\
                 {data.map((value) => (
                         <div className="live-content-box-items" key={value.id}>
                             <Card hoverable onClick={showModalApprove} >

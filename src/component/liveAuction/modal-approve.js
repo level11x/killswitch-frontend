@@ -20,10 +20,8 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
     const allowance = useAllowance();
 
     useMemo(async () => {
-        console.log('useMemo', allowance)
-        let value = await allowance
-        console.log(value)
-        setIsApprove(value > 0)
+        console.log('allowance', allowance)
+        setIsApprove(allowance > 0)
     }, [allowance]);
 
     const approve = async () => {

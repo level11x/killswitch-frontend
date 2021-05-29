@@ -8,7 +8,7 @@ export const useAllowance = () => {
   const busdContract = useBUSDContract();
   const [allowance, setAllowance] = useState();
   const fetch = useCallback(async () => {
-    if (!busdContract) return null;
+    if (!busdContract || !myAccount) return null;
     try {
       let allow = await busdContract.methods.allowance(myAccount, AUCTION_ADDRESS).call();
       setAllowance(allow)
@@ -16,7 +16,7 @@ export const useAllowance = () => {
       console.warn(err);
       return null;
     }
-  }, [busdContract]);
+  }, [busdContract, myAccount]);
   useEffect(() => {
     fetch();
   }, [fetch]);
