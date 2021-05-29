@@ -1,20 +1,17 @@
-import { useMemo } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAuctionContract } from "./useAuctionContract";
 
 export const useBidData = () => {
   const auctionContract = useAuctionContract();
-  const data = useMemo(async () => {
-    if (!auctionContract) return null;
-    try {
-      console.log('get bidAmounts', auctionContract)
-      
-      let result = await auctionContract.methods.bidAmounts().call();
-      console.log('useBidData', result)
-      return result;
-    } catch (err) {
-      console.warn(err);
-      return null;
-    }
+  const [bidData, setBidData] = useState();
+  const fetch = useCallback(async () => {
+    if (!auctionContract) return;
+    const result = await auctionContract.methods.bidAmounts().call();
+    console.log('result ', result)
+    setBidData(result)
   }, [auctionContract]);
-  return data;
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
+  return bidData;
 };
