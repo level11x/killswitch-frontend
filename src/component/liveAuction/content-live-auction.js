@@ -5,26 +5,30 @@ import backShirt from '../../svg/back-shirt.svg'
 import fontShirt from '../../svg/font-shirt.svg'
 import logoProfile from '../../svg/logoProfile.svg'
 import Modal from 'antd/lib/modal/Modal';
-import { mockData } from './mock.js'
+// import { mockData } from './mock.js'
 import { useBidData } from '../../hooks/useBidData'
 
 const LiveAuctionContent = () => {
     const [isModalApprove, setIsModalApprove] = useState(false);
     const bidData = useBidData();
-    const data = [];
+    const [data, setData] = useState([]);
 
-    useEffect(async () => {
-
-        console.log('useMemo', bidData)
-        // for (let i = 0; i < bidData[0].length; i++) {
-        //     const element = bidData[0][i];
-        //     data.push({
-        //         id: i,
-        //         bidPrice: bidData[2][i],
-        //         bidAddress: bidData[1][i],
-        //         time: bidData[3][i],
-        //     }) 
-        // }
+    useEffect(() => {
+        console.log(bidData)
+        if (!bidData || bidData.length < 4) return;
+        const tokenIDs = bidData[0]
+        const addresses = bidData[1]
+        const amounts = bidData[2]
+        const time = bidData[3]
+        for (let i = 0; i < tokenIDs.length; i++) {
+            data.push({
+                id: tokenIDs[i],
+                bidPrice: amounts[i],
+                bidAddress: addresses[i],
+                time: time[i],
+            }) 
+        }
+        setData(data)
     }, [bidData]);
 
     const showModalApprove = () => {
@@ -44,7 +48,7 @@ const LiveAuctionContent = () => {
     return (
         <div className="live-content-container">
             <div className="live-content-box">
-                {mockData.map((value) => (
+                {data.map((value) => (
                         <div className="live-content-box-items" key={value.id}>
                             <Card hoverable onClick={showModalApprove} >
                                 <div className="box-number">{value.id}</div>
@@ -58,7 +62,7 @@ const LiveAuctionContent = () => {
                                         <div className="live-bid-text">Bid placed by</div>
                                     </div>
                                     <div className="live-bid-price">
-                                        <div className="live-bid-number">{value.bidPrice}</div>
+                                        <div className="live-bid-number">{value.bidPrice/10**18}</div>
                                         <div className="live-bid-number">{value.bidAddress}</div>
                                     </div>
                                     <div className="bid-avatar">
