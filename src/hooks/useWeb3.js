@@ -26,10 +26,8 @@ export function Web3Provider({ children }) {
   const initWeb3 = useCallback(async () => {
     if (_window.ethereum) {
       const tmpWeb3 = new Web3(_window.ethereum);
-      console.log("setting web3");
       try {
         const result = await _window.ethereum.enable();
-        console.log("connect to web3", result);
         dispatch({
           type: Web3Provider.actions.setWeb3,
           payload: {
