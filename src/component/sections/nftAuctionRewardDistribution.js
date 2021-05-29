@@ -19,7 +19,7 @@ export default function NftAuctionRewardDistribution() {
                 <RobotOnCurvePath className="w-full z-10 h-full hidden xl:block absolute -left-40 -top-10"/>
                 <RobotOnStraightPath className="xl:hidden absolute w-40 h-full top-0 -left-12 md:-left-2"/>
                 <div className="md:h-60 relative flex space-x-8 items-start xl:pl-[0%]">
-                    <Earth className="w-20 md:w-[150px] flex-shrink-0 z-[-1]" />
+                    <Earth className="w-20 md:w-[150px] flex-shrink-0 " />
                     <div className="flex flex-col justify-center font-bold text-white space-y-3 whitespace-nowrap">
                         <span className="text-lg md:text-3xl">Total auction value</span>
                         <span className="text-lg md:text-3xl font-bold">10,000 BUSD</span>
@@ -27,7 +27,7 @@ export default function NftAuctionRewardDistribution() {
                     </div>
                 </div>
                 <div className="md:h-60 flex space-x-8 items-start xl:pl-[150px]">
-                    <Moon className="w-20 md:w-[150px] flex-shrink-0 z-[-1]" />
+                    <Moon className="w-20 md:w-[150px] flex-shrink-0 " />
                     <div className="flex flex-col justify-center font-bold text-white space-y-3 whitespace-nowrap">
                         <span className="text-lg md:text-3xl">Total auction value</span>
                         <span className="text-lg md:text-3xl font-bold">30,000 BUSD</span>
@@ -36,7 +36,7 @@ export default function NftAuctionRewardDistribution() {
                     </div>
                 </div>
                 <div className="md:h-60 flex space-x-8 items-start xl:pl-[300px] flex-shrink-0">
-                    <Neptune className="w-20 md:w-[150px] flex-shrink-0 z-[-1]" />
+                    <Neptune className="w-20 md:w-[150px] flex-shrink-0 " />
                     <div className="flex flex-col justify-center font-bold text-white space-y-3 whitespace-nowrap">
                         <span className="text-lg md:text-3xl">Total auction value</span>
                         <span className="text-lg md:text-3xl font-bold">60,000 BUSD</span>
@@ -46,7 +46,7 @@ export default function NftAuctionRewardDistribution() {
                     </div>
                 </div>
                 <div className="md:h-60 flex space-x-8 items-start xl:pl-[450px]">
-                    <Uranus className="w-20 md:w-[150px] flex-shrink-0 z-[-1]" />
+                    <Uranus className="w-20 md:w-[150px] flex-shrink-0 " />
                     <div className="flex flex-col justify-center font-bold text-white space-y-3 whitespace-nowrap">
                         <span className="text-lg md:text-3xl">Total auction value</span>
                         <span className="text-lg md:text-3xl font-bold">100,000 BUSD</span>
@@ -57,7 +57,7 @@ export default function NftAuctionRewardDistribution() {
                     </div>
                 </div>
                 <div className="md:h-60 flex space-x-8 items-start md:items-center xl:pl-[600px]">
-                    <Saturn className="w-20 md:w-[150px] flex-shrink-0 origin-center transform scale-150 z-[-1]" />
+                    <Saturn className="w-20 md:w-[150px] flex-shrink-0 origin-center transform scale-150 " />
                     <div className="flex flex-col justify-center font-bold text-white space-y-3 whitespace-nowrap">
                         <span className="text-lg md:text-3xl xl:pt-20">Total auction value</span>
                         <span className="text-lg md:text-3xl font-bold">200,000 BUSD</span>

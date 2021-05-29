@@ -7,7 +7,8 @@ import { HomeBanner, MysteryBox, RobotFlag, RockFloor, RockGroup, StarParticleBl
 
 export const HomePage = () => {
 	return (
-		<div className="w-full h-screen overflow-y-auto overflow-x-hidden relative pt-nav">
+		<div className="w-full h-screen overflow-y-auto overflow-x-hidden relative pt-nav bg-primary"> 
+		
 			<Navigation />
 			<div className="w-full px-md relative bg-gradient-to-b from-[#000044]">
 				<HomeBanner className="absolute hidden md:block mlg:h-full xl:w-full top-0 left-0" />
