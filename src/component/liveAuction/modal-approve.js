@@ -5,7 +5,7 @@ import ModalBid from './modal-bid'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
 import { useAccounts } from '../../hooks/useAccount'
-import { useAllowanceContract } from '../../hooks/useAllowanceContract'
+import { useAllowance } from '../../hooks/useAllowance'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
 
@@ -17,7 +17,7 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
 
     const { myAccount } = useAccounts();
     const busdContract = useBUSDContract();
-    const allowance = useAllowanceContract();
+    const allowance = useAllowance();
 
     useMemo(async () => {
         console.log('useMemo', allowance)

@@ -9,11 +9,17 @@ export const useAuctionContract = () => {
     if (!web3) return null;
     try {
       const c = new web3.eth.Contract(AUCTION_ABI, AUCTION_ADDRESS);
+
+      c.events.OutBid((error, event) => {
+        console.log('outbid recieved', event)
+      })
+
       return c;
     } catch (err) {
       console.warn(err);
       return null;
     }
   }, [web3]);
+
   return contract;
 };

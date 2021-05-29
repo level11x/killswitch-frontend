@@ -1,22 +1,24 @@
-import { useMemo } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useAccounts } from './useAccount'
 import { useBUSDContract } from "./useBUSDContract";
 import { AUCTION_ADDRESS } from "../config/contract";
 
-export const useAllowanceContract = () => {
+export const useAllowance = () => {
   const { myAccount } = useAccounts();
   const busdContract = useBUSDContract();
-  const allowance = useMemo(async () => {
+  const [allowance, setAllowance] = useState();
+  const fetch = useCallback(async () => {
     if (!busdContract) return null;
     try {
-      
       let allow = await busdContract.methods.allowance(myAccount, AUCTION_ADDRESS).call();
-      console.log('useAllowanceContract', allow)
-      return allow;
+      setAllowance(allow)
     } catch (err) {
       console.warn(err);
       return null;
     }
   }, [busdContract]);
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
   return allowance;
 };
