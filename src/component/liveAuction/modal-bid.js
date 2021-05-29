@@ -56,8 +56,7 @@ export default function ModalBid({ handleCancelBid }) {
                         <div className="couwndown-bid-day">Secounds</div>
                     </div>
                 </div>
-                <div className="couwndown-bid-day">05:00</div>
-                <div><Slider style={{ height: 10 }} /></div>
+               
                 <div>
                     <createSliderWithTooltip style={{ height: 20 }} />
                 </div>

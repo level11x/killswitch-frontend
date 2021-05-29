@@ -99,8 +99,7 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
                         <div className="couwndown-bid-day">Secounds</div>
                     </div>
                 </div>
-                <div className="couwndown-bid-day">05:00</div>
-                <div><Slider style={{ height: 10 }} /></div>
+              
                 <div className="couwndown-bid-c">
                     <div className="couwndown-bid-s">Current Bid</div>
                     <div className="price-bid-exchange">
