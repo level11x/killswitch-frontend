@@ -7,7 +7,7 @@ import ModalApprove from './modal-approve'
 import backShirt from '../../svg/back-shirt.svg'
 import fontShirt from '../../svg/font-shirt.svg'
 import logoProfile from '../../svg/logoProfile.svg'
-import IMAGES from '../../assets/robots/robotImg';
+import IMAGES from '../../assets/auction/robots/robotImg';
 import { useBidData } from '../../hooks/useBidData'
 import { useAllowance } from '../../hooks/useAllowance'
 import './content-live-auction.css'
@@ -103,10 +103,11 @@ const LiveAuctionContent = () => {
                             <Card hoverable onClick={showModalApprove} >
                                 <div className="box-number">{current.id}</div>
                                 <div className="shirt-card-box" id="shirt">
-                                    <LazyLoadImage className="overlay" alt="shirt" src={backShirt} />
+                                    <LazyLoadImage className="overlay w-full h-full" alt="shirt" src="/img/auction/base-back-shirt.png" />
                                     <div className="shirt-image relative">
-                                    <LazyLoadImage alt="shirt" src={fontShirt} />
-                                    <LazyLoadImage alt="" src={IMAGES[current.id]} className="absolute block left-1/2 top-1/4 transform -translate-x-1/2 w-24 h-24" />
+                                    <LazyLoadImage alt="shirt" src="/img/auction/base-front-shirt.png" />
+                                    <LazyLoadImage alt="" src={IMAGES[current.id]} className="absolute block left-1/2 top-1/4 transform -translate-x-1/2 w-1/3 h-auto" />
+                                    {/* <LazyLoadImage alt="" src={IMAGES[current.id]} className="absolute block left-1/2 top-1/4 transform -translate-x-1/2 w-20 h-20" /> */}
                                     {/* <span>{current.id}</span> */}
                                     </div>
                                 </div>
@@ -117,7 +118,7 @@ const LiveAuctionContent = () => {
                                     </div>
                                     <div className="live-bid-price">
                                         <div className="live-bid-number">{current.bidPrice/10**18}</div>
-                                        <div className="live-bid-number">{current.bidAddress}</div>
+                                        <div className="live-bid-number">{current.bidAddress ? `${current.bidAddress.substring(0, 5)}...${current.bidAddress.substring(current.bidAddress.length - 4, current.bidAddress.length)}` : ''}</div>
                                     </div>
                                     <div className="bid-avatar">
                                         <Avatar src={logoProfile} alt="icon" />
