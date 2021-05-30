@@ -4,8 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Modal from 'antd/lib/modal/Modal';
 
 import ModalApprove from './modal-approve'
-import backShirt from '../../svg/back-shirt.svg'
-import fontShirt from '../../svg/font-shirt.svg'
+import ModalBid from './modal-bid'
 import logoProfile from '../../svg/logoProfile.svg'
 import IMAGES from '../../assets/auction/robots/robotImg';
 import { useBidData } from '../../hooks/useBidData'
@@ -83,24 +82,12 @@ const LiveAuctionContent = () => {
         console.log('Page: ', pageNumber);
     }
 
-
-    const showModalApprove = () => {
-        setIsModalApprove(true);
-    };
-    const handleApprove = () => {
-        setIsModalApprove(false);
-    };
-
-    const handleCancel = () => {
-        setIsModalApprove(false);
-    };
-
     return (
         <div className="live-content-container">
             <div className="live-content-box">
                 {data.map((current, index) => (
                         <div className="live-content-box-items" key={index}>
-                            <Card hoverable onClick={showModalApprove} >
+                            <Card hoverable onClick={() => showModalBidOrApprove(current.id)} >
                                 <div className="box-number">{current.id}</div>
                                 <div className="shirt-card-box" id="shirt">
                                     <LazyLoadImage className="overlay w-full h-full" alt="shirt" src="/img/auction/base-back-shirt.png" />
@@ -129,9 +116,13 @@ const LiveAuctionContent = () => {
                 ))}
             </div>
             <div className="modal-show">
-                <Modal visible={isModalApprove} onCancel={handleCancel}
-                    footer={false}>
-                    <ModalApprove onApprove={handleApprove} onCancel={handleCancel}  setIsModalApprove={setIsModalApprove}/>
+                <Modal visible={isModalApprove} onCancel={onCanceled} footer={false}>
+                    <ModalApprove onApproved={onApproved} onBid={onBid} tokenID={tokenID}/>
+                </Modal>
+            </div>
+            <div className="modal-show">
+                <Modal visible={isModalBid} onCancel={onCanceled} footer={false}>
+                    <ModalBid onBid={onBid} tokenID={tokenID}/>
                 </Modal>
             </div>
             <div className="pagination-live-auction"> <Pagination defaultCurrent={1} total={1000} onChange={onChange} /></div>
