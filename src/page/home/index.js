@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CountdownBox from '../../component/sections/countdownBox'
 import AuctionsRoadMap from '../../component/sections/auctionsRoadMap'
 import NftAuctionRewardDistribution from '../../component/sections/nftAuctionRewardDistribution'
 import Navigation from '../../component/navigation'
 import { HomeBanner, MysteryBox, RobotFlag, RockFloor, RockGroup, StarParticleBlur } from '../../component/svg'
 import { Web3Provider } from "../../hooks/useWeb3";
-
+// 
+import { AppContext } from "../../context";
+// 
 export const HomePage = () => {
+	const { wallet } = useContext(AppContext);
+
 	return (
 		<Web3Provider>
 			<div className="w-full h-screen overflow-y-auto overflow-x-hidden relative pt-nav bg-primary"> 

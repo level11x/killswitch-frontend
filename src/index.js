@@ -1,9 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Router from "./routes/index";
+// 
 import "antd/dist/antd.css";
+import "./m.css";
+// 
+import Router from "./routes/index";
+import { AppProvider } from './context'
 // import "./index.css";
 // import "./main.css";
-import "./m.css";
+// 
+const App = () => {
+  return  (
+    <AppProvider>
+      <Router />
+    </AppProvider>
+  )
+}
 
-ReactDOM.render(<Router />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
