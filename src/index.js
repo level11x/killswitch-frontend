@@ -6,7 +6,7 @@ import "./m.css";
 // 
 import Router from "./routes/index";
 // import "./index.css";
-// import "./main.css";
+import "./main.css";
 // 
 
 ReactDOM.render(<Router />, document.getElementById("root"));
