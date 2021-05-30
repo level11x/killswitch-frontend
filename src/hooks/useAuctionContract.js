@@ -5,16 +5,21 @@ import useWeb3 from "./useWeb3";
 export const useAuctionContract = () => {
   const [value] = useWeb3();
   const web3 = value.web3;
+  let _contract = null;
   const contract = useMemo(() => {
     if (!web3) return null;
-    try {
-      const c = new web3.eth.Contract(AUCTION_ABI, AUCTION_ADDRESS);
+    if (_contract) return _contract;    
 
-      c.events.OutBid((error, event) => {
+    try {
+      console.log('init auction contract!')
+      _contract = new web3.eth.Contract(AUCTION_ABI, AUCTION_ADDRESS);
+
+      _contract.events.OutBid((error, event) => {
         console.log('outbid recieved', event)
       })
 
-      return c;
+      console.log(_contract)
+      return _contract;
     } catch (err) {
       console.warn(err);
       return null;
