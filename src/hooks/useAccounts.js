@@ -15,6 +15,8 @@ export const useAccounts = () => {
       setMyAccount(acc);
       const result = await web3.eth.getBalance(acc);
       setBalance(web3.utils.fromWei(result));
+    } else {
+      setMyAccount('')
     }
   }, [web3]);
   useEffect(() => {

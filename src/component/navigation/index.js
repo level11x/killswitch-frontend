@@ -1,4 +1,4 @@
-import {React,useEffect,useRef,useState} from 'react'
+import { React, useEffect, useRef, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useAccounts } from '../../hooks/useAccounts'
 
@@ -13,14 +13,22 @@ export default function Navigation() {
         setMenuOpen(!isMenuOpen);
     }
 
-    window.ethereum.on('accountsChanged', (accounts) => {
-        setMyAccount(accounts[0])
+    useMemo(() => {
+        if (window.ethereum) {
+            window.ethereum.on('accountsChanged', (accounts) => {
+                console.log('Navigation accountsChanged', accounts)
+                if (accounts.length > 0) {
+                    setMyAccount(accounts[0])
+                } else {
+                    setMyAccount('')
+                }
+            })
+        }
     })
 
     let connectWallet;
     if (myAccount) {
         connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">{myAccount}</button>;
-        console.log(connectWallet)
     } else {
         connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">Connect Wallet</button>
     }
