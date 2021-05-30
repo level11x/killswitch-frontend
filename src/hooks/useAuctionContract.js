@@ -12,19 +12,11 @@ export const useAuctionContract = () => {
 
     try {
       console.log('init auction contract!')
-      _contract = new web3.eth.Contract(AUCTION_ABI, AUCTION_ADDRESS);
-
-      _contract.events.OutBid((error, event) => {
-        console.log('outbid recieved', event)
-      })
-
-      console.log(_contract)
-      return _contract;
+      return new web3.eth.Contract(AUCTION_ABI, AUCTION_ADDRESS);
     } catch (err) {
       console.warn(err);
       return null;
     }
   }, [web3]);
-
   return contract;
 };
