@@ -32,10 +32,8 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
         setIsConnect(true)
         setLastPrice(bidData[2][tokenID])
 
-        console.log('allowance change', allowance > 0)
         setIsApprove(allowance > 0)
         if (allowance > 0) {
-            console.log('approved')
             setIsModalBid(true);
             onApproved()
         }
@@ -48,9 +46,8 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
             await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
                 from: wallet
             })
-            console.log('allowance', allowance)
             setIsApprove(allowance > 0)
-            if (isApprove) {
+            if (allowance > 0) {
                 setIsModalBid(true);
                 onApproved()
             }
