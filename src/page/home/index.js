@@ -9,8 +9,8 @@ import { Web3Provider } from "../../hooks/useWeb3";
 import { AppContext } from "../../context";
 // 
 export const HomePage = () => {
-	const { wallet } = useContext(AppContext);
-
+	const wallet = useContext(AppContext);
+	console.log('walletwalletwallet', wallet)
 	return (
 		<Web3Provider>
 			<div className="w-full h-screen overflow-y-auto overflow-x-hidden relative pt-nav bg-primary"> 

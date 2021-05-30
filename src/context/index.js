@@ -1,22 +1,33 @@
-import React from "react";
-//
-import walletContext from "./walletContext";
-//
-const AppContext = React.createContext();
+import { createContext, useState, useEffect, useMemo } from 'react';
+
+// 
+const AppContext = createContext(); 
 
 const AppProvider = (props) => {
-  //
-  const [wallet] = walletContext();
-  //
+  const [wallet, setWallet] = useState(null)
+
+  const value = useMemo(
+    () => {
+      return {
+        wallet
+      }
+    },[wallet])
+
+  const handleSetWallet = async () => {
+    setWallet('0xTEST')
+  }
+
+  useEffect(() => {
+    handleSetWallet()
+    return () => {}
+  }, [])
+
   return (
     <AppContext.Provider
-      value={{
-        wallet
-      }}
+        value={value}
     >
       {props.children}
     </AppContext.Provider>
   );
-};
-
-export { AppProvider, AppContext };
+}
+export { AppContext, AppProvider };
