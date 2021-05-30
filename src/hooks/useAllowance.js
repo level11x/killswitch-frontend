@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { useAccounts } from './useAccount'
+import { useAccounts } from './useAccounts'
 import { useBUSDContract } from "./useBUSDContract";
 import { AUCTION_ADDRESS } from "../config/contract";
 

@@ -4,18 +4,27 @@ import personbid from '../../svg/logoProfile.svg'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
 import { useAuctionContract } from '../../hooks/useAuctionContract'
-import { useAccounts } from '../../hooks/useAccount'
+import { useAccounts } from '../../hooks/useAccounts'
+import useWeb3 from "../../hooks/useWeb3";
 
-
-export default function ModalBid({ handleCancelBid }) {
+export default function ModalBid({ handleCancelBid, onBid }) {
     const auctionContract = useAuctionContract()
     const { myAccount } = useAccounts();
+    const [value, setValue] = React.useState(10);
+    const [context] = useWeb3();
+    const web3 = context.web3;
 
     async function bid() {
-        await auctionContract.methods.bid(0, 0).send({
+        console.log('onBid', web3.utils.toWei(value.toString(), 'ether'))
+        await auctionContract.methods.bid(0, web3.utils.toWei(value.toString(), 'ether')).send({
             from: myAccount
         })
+        onBid()
     }
+
+    const handleChange = value => {
+        setValue(value);
+    };
 
     return (
         <div className="bid-modal-box">
@@ -56,7 +65,7 @@ export default function ModalBid({ handleCancelBid }) {
                         <div className="couwndown-bid-day">Secounds</div>
                     </div>
                 </div>
-               
+            
                 <div>
                     <createSliderWithTooltip style={{ height: 20 }} />
                 </div>
@@ -69,7 +78,7 @@ export default function ModalBid({ handleCancelBid }) {
                 </div>
                 <div className="bid-input-value">
                     <Form.Item name="bidding">
-                        <InputNumber type="number" min={10} placeholder="Place your bidding" />
+                        <InputNumber value={value} type="number" min={10} placeholder="Place your bidding" onChange={handleChange} />
                     </Form.Item>
                 </div>
                 <div className="min-time">Minimum in 10 BUSD</div>
@@ -78,7 +87,7 @@ export default function ModalBid({ handleCancelBid }) {
                         <button onClick={handleCancelBid}>Cancel</button>
                     </div>
 
-                    <Button htmlType="submit" className="btn-approve">Place a bid</Button>
+                    <Button onClick={bid} className="btn-approve">Place a bid</Button>
 
                 </div>
             </div>

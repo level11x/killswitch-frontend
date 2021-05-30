@@ -1,38 +1,47 @@
-import React, { useState, useMemo } from 'react'
-import { Button, Slider, Avatar, Modal, Form, notification, } from 'antd';
+import React, { useState, useEffect } from 'react'
+import { Button, Avatar, Modal, Form, notification, } from 'antd';
 import personbid from '../../svg/logoProfile.svg'
 import ModalBid from './modal-bid'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
-import { useAccounts } from '../../hooks/useAccount'
+import { useAccounts } from '../../hooks/useAccounts'
 import { useAllowance } from '../../hooks/useAllowance'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
 
 import { BigNumber } from "@ethersproject/bignumber"
 
-export default function ModalApprove({ onCancel, setIsModalApprove }) {
+export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
     const [isModalBid, setIsModalBid] = useState(false);
     const [isApprove, setIsApprove] = useState(false);
+    const [isConnect, setIsConnect] = useState(false);
 
     const { myAccount } = useAccounts();
     const busdContract = useBUSDContract();
     const allowance = useAllowance();
 
-    useMemo(async () => {
+    useEffect(async () => {
         console.log('allowance', allowance)
+        console.log('myAccount', myAccount)
+        if (!allowance || !myAccount) {
+            setIsConnect(false)
+            return
+        };
+        setIsConnect(true)
         setIsApprove(allowance > 0)
-    }, [allowance]);
+        if (isApprove) {
+            setIsModalBid(true);
+            setTimeout(() => {
+                setIsModalApprove(false);
+            }, 1000);
+        }
+    }, [allowance, myAccount]);
 
     const approve = async () => {
         await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
             from: myAccount
         })
         console.log('done')
-        setIsModalBid(true);
-        setTimeout(() => {
-            setIsModalApprove(false);
-        }, 1000);
     }
     
     const showModalBid = async () => {
@@ -43,22 +52,14 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
             setIsModalApprove(false);
         }, 1000);
     };
-    const handleBidSubmit = (value) => {
-        console.log('value', value)
-        success()
-    };
-    const success = () => {
-        notification.success({
-            message: 'Success',
-            description: 'Your bidding have been submited',
-        })
-        setIsModalBid(false);
-    }
 
     const handleCancelBid = () => {
         setIsModalBid(false);
     };
 
+    async function connect() {
+        await window.ethereum.request({ method: 'eth_requestAccounts' })
+    }
 
     return (
         <div className="bid-modal-box">
@@ -111,15 +112,12 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
                 <div className="btn-approve-cancel">
                     <div className="btn-cancel"><button onClick={onCancel}>Cancel</button>
                     </div>
-                    <Button onClick={approve} className="btn-approve">Approve</Button>
+                    { isConnect && <Button onClick={approve} className="btn-approve">Approve</Button> }
+                    { !isConnect && <Button onClick={connect} className="btn-approve">Connect Wallet</Button> }
                 </div>
 
-                <Modal visible={isModalBid} onCancel={handleCancelBid}
-                    footer={false}>
-                    <Form onFinish={handleBidSubmit}>
-                        <ModalBid handleCancelBid={handleCancelBid} />
-                    </Form>
-
+                <Modal visible={isModalBid} onCancel={handleCancelBid} footer={false}>
+                    <ModalBid handleCancelBid={handleCancelBid} onBid={onBid} />
                 </Modal>
             </div>
             <div className="box-t-shirt-b-p">
