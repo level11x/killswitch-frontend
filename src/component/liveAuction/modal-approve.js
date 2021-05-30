@@ -14,7 +14,6 @@ import { BigNumber } from "@ethersproject/bignumber"
 
 export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const [isModalBid, setIsModalBid] = useState(false);
-    const [isApprove, setIsApprove] = useState(false);
     const [isConnect, setIsConnect] = useState(false);
     const [lastPrice, setLastPrice] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -32,7 +31,6 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
         setIsConnect(true)
         setLastPrice(bidData[2][tokenID])
 
-        setIsApprove(allowance > 0)
         if (allowance > 0) {
             setIsModalBid(true);
             onApproved()
@@ -46,7 +44,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
             await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
                 from: wallet
             })
-            setIsApprove(allowance > 0)
+
             if (allowance > 0) {
                 setIsModalBid(true);
                 onApproved()
