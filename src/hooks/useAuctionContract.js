@@ -6,10 +6,10 @@ export const useAuctionContract = () => {
   const [value] = useWeb3();
   const [isAuctionContractConnect, setIsAuctionContractConnect] = useState(false)
   const web3 = value.web3;
-  let _contract = null;
+  // let _contract = null;
   const auctionContract = useMemo(() => {
     if (!web3) return null;
-    if (_contract) return _contract;    
+    // if (_contract) return _contract;
 
     try {
       console.log('init auction contract!')

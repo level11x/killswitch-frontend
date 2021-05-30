@@ -42,6 +42,7 @@ const LiveAuctionContent = () => {
         }
         console.log(value)
         setData(value)
+        return () => {}
     }, [bidData]);
 
     const showModalBidOrApprove = (tokenID) => {

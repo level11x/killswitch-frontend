@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Button, Avatar, Modal, Form, notification, } from 'antd';
 import personbid from '../../svg/logoProfile.svg'
 import ModalBid from './modal-bid'
@@ -9,6 +9,7 @@ import { useAllowance } from '../../hooks/useAllowance'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBidData } from '../../hooks/useBidData'
+import { AppContext } from "../../context";
 
 import { BigNumber } from "@ethersproject/bignumber"
 
@@ -17,33 +18,42 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const [isApprove, setIsApprove] = useState(false);
     const [isConnect, setIsConnect] = useState(false);
     const [lastPrice, setLastPrice] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const { myAccount } = useAccounts();
     const busdContract = useBUSDContract();
     const allowance = useAllowance();
     const bidData = useBidData();
+    const { wallet } = useContext(AppContext);
 
     useEffect(async () => {
-        console.log('approve-modal something changed', allowance, myAccount)
-        if (!allowance || !myAccount || !bidData) {
+        console.log('approve-modal something changed', allowance)
+        if (!allowance || !bidData) {
             setIsConnect(false)
             return
         };
         setIsConnect(true)
-        setIsApprove(allowance > 0)
-        if (isApprove) {
-            setIsModalBid(true);
-            onApproved()
-        }
 
         setLastPrice(bidData[2][tokenID])
-    }, [allowance, myAccount, tokenID, bidData]);
+    }, [allowance, tokenID, bidData]);
 
     const approve = async () => {
-        await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
-            from: myAccount
-        })
-        console.log('done')
+        setLoading(true)
+        try {
+            await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
+                from: wallet
+            })
+            console.log('allowance', allowance)
+            setIsApprove(allowance > 0)
+            if (isApprove) {
+                setIsModalBid(true);
+                onApproved()
+            }
+        } catch (error) {
+            // TODO
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
     }
     
     // const showModalBid = async () => {
@@ -60,7 +70,15 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     };
 
     async function connect() {
-        await window.ethereum.request({ method: 'eth_requestAccounts' })
+        setLoading(true)
+        try {
+            await window.ethereum.request({ method: 'eth_requestAccounts' })
+        } catch (error) {
+            // TODO
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -112,8 +130,8 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 </div>
 
                 <div className="btn-approve-cancel">
-                    { isConnect && <Button onClick={approve} className="btn-approve">Approve</Button> }
-                    { !isConnect && <Button onClick={connect} className="btn-approve">Connect Wallet</Button> }
+                    { isConnect && <Button onClick={approve} loading={loading} className="btn-approve">Approve</Button> }
+                    { !isConnect && <Button onClick={connect} loading={loading} className="btn-approve">Connect Wallet</Button> }
                 </div>
 
                 <Modal visible={isModalBid} footer={false}>

@@ -1,24 +1,24 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Button, Slider, Avatar, InputNumber, Form } from 'antd';
 import personbid from '../../svg/logoProfile.svg'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
 import { useAuctionContract } from '../../hooks/useAuctionContract'
-import { useAccounts } from '../../hooks/useAccounts'
 import useWeb3 from "../../hooks/useWeb3"
 import { useBidData } from '../../hooks/useBidData'
 
 import { BigNumber } from "@ethersproject/bignumber"
+import { AppContext } from "../../context";
 
 export default function ModalBid({ onBid, tokenID }) {
     const [auctionContract, isAuctionContractConnect] = useAuctionContract();
     const bidData = useBidData();
-    const { myAccount } = useAccounts();
     const [value, setValue] = useState(10);
     const [lastPrice, setLastPrice] = useState(0);
     const [loading, setLoading] = useState(false);
     const [context] = useWeb3();
     const web3 = context.web3;
+    const { wallet } = useContext(AppContext);
 
     async function bid() {
         setLoading(true)
@@ -27,7 +27,7 @@ export default function ModalBid({ onBid, tokenID }) {
                 console.log('tokenID', tokenID)
                 console.log('bid', web3.utils.toWei(value.toString(), 'ether'))
                 await auctionContract.methods.bid(web3.utils.toWei(value.toString(), 'ether'), tokenID).send({
-                    from: myAccount
+                    from: wallet
                 })
                 onBid()
             }
@@ -45,8 +45,11 @@ export default function ModalBid({ onBid, tokenID }) {
         let lastPrice = BigNumber.from(bidData[2][tokenID])
         setLastPrice(lastPrice)
         // suggest price +1 USD
+        console.log('updateprice', web3.utils.fromWei(lastPrice.add("1000000000000000000").toString(), 'ether'))
         setValue(web3.utils.fromWei(lastPrice.add("1000000000000000000").toString(), 'ether'))
     }, [bidData, tokenID])
+
+    console.log('value', value)
 
     const handleChange = value => {
         setValue(value);
