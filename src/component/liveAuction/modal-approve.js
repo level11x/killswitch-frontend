@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react'
-import { Button, Slider, Avatar, Modal, Form, notification, } from 'antd';
+import React, { useState, useEffect } from 'react'
+import { Button, Avatar, Modal, Form, notification, } from 'antd';
 import personbid from '../../svg/logoProfile.svg'
 import ModalBid from './modal-bid'
 import shirt from '../../svg/font-shirt.svg'
@@ -11,7 +11,7 @@ import { AUCTION_ADDRESS } from "../../config/contract";
 
 import { BigNumber } from "@ethersproject/bignumber"
 
-export default function ModalApprove({ onCancel, setIsModalApprove }) {
+export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
     const [isModalBid, setIsModalBid] = useState(false);
     const [isApprove, setIsApprove] = useState(false);
 
@@ -19,9 +19,15 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
     const busdContract = useBUSDContract();
     const allowance = useAllowance();
 
-    useMemo(async () => {
+    useEffect(async () => {
         console.log('allowance', allowance)
         setIsApprove(allowance > 0)
+        if (isApprove) {
+            setIsModalBid(true);
+            setTimeout(() => {
+                setIsModalApprove(false);
+            }, 1000);
+        }
     }, [allowance]);
 
     const approve = async () => {
@@ -29,10 +35,6 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
             from: myAccount
         })
         console.log('done')
-        setIsModalBid(true);
-        setTimeout(() => {
-            setIsModalApprove(false);
-        }, 1000);
     }
     
     const showModalBid = async () => {
@@ -43,22 +45,10 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
             setIsModalApprove(false);
         }, 1000);
     };
-    const handleBidSubmit = (value) => {
-        console.log('value', value)
-        success()
-    };
-    const success = () => {
-        notification.success({
-            message: 'Success',
-            description: 'Your bidding have been submited',
-        })
-        setIsModalBid(false);
-    }
 
     const handleCancelBid = () => {
         setIsModalBid(false);
     };
-
 
     return (
         <div className="bid-modal-box">
@@ -114,12 +104,8 @@ export default function ModalApprove({ onCancel, setIsModalApprove }) {
                     <Button onClick={approve} className="btn-approve">Approve</Button>
                 </div>
 
-                <Modal visible={isModalBid} onCancel={handleCancelBid}
-                    footer={false}>
-                    <Form onFinish={handleBidSubmit}>
-                        <ModalBid handleCancelBid={handleCancelBid} />
-                    </Form>
-
+                <Modal visible={isModalBid} onCancel={handleCancelBid} footer={false}>
+                    <ModalBid handleCancelBid={handleCancelBid} onBid={onBid} />
                 </Modal>
             </div>
             <div className="box-t-shirt-b-p">

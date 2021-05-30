@@ -1,17 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { Card, Avatar, Pagination } from 'antd';
+import React, { useState, useEffect, useMemo } from 'react'
+import { Card, Avatar, Pagination, Form, notification } from 'antd';
 import ModalApprove from './modal-approve'
+import ModalBid from './modal-bid'
 import backShirt from '../../svg/back-shirt.svg'
 import fontShirt from '../../svg/font-shirt.svg'
 import logoProfile from '../../svg/logoProfile.svg'
 import Modal from 'antd/lib/modal/Modal';
 // import { mockData } from './mock.js'
 import { useBidData } from '../../hooks/useBidData'
+import { useAllowance } from '../../hooks/useAllowance'
 
 const LiveAuctionContent = () => {
     const [isModalApprove, setIsModalApprove] = useState(false);
+    const [isModalBid, setIsModalBid] = useState(false);
     const bidData = useBidData();
     const [data, setData] = useState([]);
+    const [isApprove, setIsApprove] = useState(false);
+    const allowance = useAllowance();
+
+    useMemo(async () => {
+        console.log('allowance', allowance)
+        setIsApprove(allowance > 0)
+    }, [allowance]);
 
     useEffect(() => {
         if (!bidData || bidData.length < 4) return;
@@ -33,14 +43,35 @@ const LiveAuctionContent = () => {
     }, [bidData]);
 
     const showModalApprove = () => {
-        setIsModalApprove(true);
+        if (isApprove) {
+            setIsModalBid(true);
+        } else {
+            setIsModalApprove(true);
+        }
     };
+
     const handleApprove = () => {
         setIsModalApprove(false);
     };
 
     const handleCancel = () => {
         setIsModalApprove(false);
+    };
+
+    const onBid = () => {
+        success()
+    };
+
+    const success = () => {
+        notification.success({
+            message: 'Success',
+            description: 'Your bidding have been submited',
+        })
+        setIsModalBid(false);
+    }
+
+    const handleCancelBid = () => {
+        setIsModalBid(false);
     };
 
     const onChange = (pageNumber) => {
@@ -75,11 +106,16 @@ const LiveAuctionContent = () => {
                 ))}
             </div>
             <div className="modal-show">
-                <Modal visible={isModalApprove} onCancel={handleCancel}
-                    footer={false}>
-                    <ModalApprove onApprove={handleApprove} onCancel={handleCancel}  setIsModalApprove={setIsModalApprove}/>
+                <Modal visible={isModalApprove} onCancel={handleCancel} footer={false}>
+                    <ModalApprove onApprove={handleApprove} onCancel={handleCancel}  setIsModalApprove={setIsModalApprove} onBid={onBid}/>
                 </Modal>
             </div>
+            <div className="modal-show">
+                <Modal visible={isModalBid} onCancel={handleCancelBid} footer={false}>
+                    <ModalBid handleCancelBid={handleCancelBid} onBid={onBid} />
+                </Modal>
+            </div>
+            
             <div className="pagination-live-auction"> <Pagination defaultCurrent={1} total={1000} onChange={onChange} /></div>
         </div>
     )
