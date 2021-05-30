@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { Card, Avatar, Pagination, Form, notification } from 'antd';
+import React, { useEffect, useState, useMemo } from 'react'
+import { Card, Avatar, Pagination, notification } from 'antd';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Modal from 'antd/lib/modal/Modal';
+
 import ModalApprove from './modal-approve'
-import ModalBid from './modal-bid'
 import backShirt from '../../svg/back-shirt.svg'
 import fontShirt from '../../svg/font-shirt.svg'
 import logoProfile from '../../svg/logoProfile.svg'
-import Modal from 'antd/lib/modal/Modal';
-// import { mockData } from './mock.js'
+import IMAGES from '../../assets/robots/robotImg';
 import { useBidData } from '../../hooks/useBidData'
 import { useAllowance } from '../../hooks/useAllowance'
+import './content-live-auction.css'
 
 const LiveAuctionContent = () => {
     const [isModalApprove, setIsModalApprove] = useState(false);
@@ -80,26 +82,42 @@ const LiveAuctionContent = () => {
     const onChange = (pageNumber) => {
         console.log('Page: ', pageNumber);
     }
-    
+
+
+    const showModalApprove = () => {
+        setIsModalApprove(true);
+    };
+    const handleApprove = () => {
+        setIsModalApprove(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalApprove(false);
+    };
+
     return (
         <div className="live-content-container">
-            <div className="live-content-box">\
-                {data.map((value) => (
-                        <div className="live-content-box-items" key={value.id}>
-                            <Card hoverable onClick={() => showModalBidOrApprove(value.id)} >
-                                <div className="box-number">{value.id}</div>
+            <div className="live-content-box">
+                {data.map((current, index) => (
+                        <div className="live-content-box-items" key={index}>
+                            <Card hoverable onClick={showModalApprove} >
+                                <div className="box-number">{current.id}</div>
                                 <div className="shirt-card-box" id="shirt">
-                                    <img className="shirt-image" alt="shirt" src={backShirt} />
-                                    <img className="overlay" alt="shirt" src={fontShirt} />
+                                    <LazyLoadImage className="overlay" alt="shirt" src={backShirt} />
+                                    <div className="shirt-image relative">
+                                    <LazyLoadImage alt="shirt" src={fontShirt} />
+                                    <LazyLoadImage alt="" src={IMAGES[current.id]} className="absolute block left-1/2 top-1/4 transform -translate-x-1/2 w-24 h-24" />
+                                    {/* <span>{current.id}</span> */}
+                                    </div>
                                 </div>
                                 <div className="live-bid-box">
                                     <div className="live-bid-current">
                                         <div className="live-bid-text">Current Bid</div>
-                                        <div className="live-bid-text">Bid placed by</div>
+                                        <div className="live-bid-text">Bid placed</div>
                                     </div>
                                     <div className="live-bid-price">
-                                        <div className="live-bid-number">{value.bidPrice/10**18}</div>
-                                        <div className="live-bid-number">{value.bidAddress}</div>
+                                        <div className="live-bid-number">{current.bidPrice/10**18}</div>
+                                        <div className="live-bid-number">{current.bidAddress}</div>
                                     </div>
                                     <div className="bid-avatar">
                                         <Avatar src={logoProfile} alt="icon" />
@@ -110,16 +128,11 @@ const LiveAuctionContent = () => {
                 ))}
             </div>
             <div className="modal-show">
-                <Modal visible={isModalApprove} onCancel={onCanceled} footer={false}>
-                    <ModalApprove onApproved={onApproved} onBid={onBid} tokenID={tokenID}/>
+                <Modal visible={isModalApprove} onCancel={handleCancel}
+                    footer={false}>
+                    <ModalApprove onApprove={handleApprove} onCancel={handleCancel}  setIsModalApprove={setIsModalApprove}/>
                 </Modal>
             </div>
-            <div className="modal-show">
-                <Modal visible={isModalBid} onCancel={onCanceled} footer={false}>
-                    <ModalBid onBid={onBid} tokenID={tokenID}/>
-                </Modal>
-            </div>
-            
             <div className="pagination-live-auction"> <Pagination defaultCurrent={1} total={1000} onChange={onChange} /></div>
         </div>
     )

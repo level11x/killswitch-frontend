@@ -1,0 +1,8 @@
+
+.shirt-card-box:hover .overlay {
+  opacity: 1;
+}
+.shirt-card-box:hover .shirt-image {
+  transition:200ms;
+  opacity: 0;
+}
