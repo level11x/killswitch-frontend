@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Slider, Avatar, InputNumber, Form } from 'antd';
 import personbid from '../../svg/logoProfile.svg'
 import shirt from '../../svg/font-shirt.svg'
@@ -8,21 +8,33 @@ import { useAccounts } from '../../hooks/useAccounts'
 import useWeb3 from "../../hooks/useWeb3"
 import { useBidData } from '../../hooks/useBidData'
 
+import { BigNumber } from "@ethersproject/bignumber"
+
 export default function ModalBid({ onBid, tokenID }) {
     const auctionContract = useAuctionContract()
     const bidData = useBidData();
     const { myAccount } = useAccounts();
-    const [value, setValue] = React.useState(10);
+    const [value, setValue] = useState(10);
+    const [lastPrice, setLastPrice] = useState(0);
     const [context] = useWeb3();
     const web3 = context.web3;
 
     async function bid() {
-        console.log('onBid', web3.utils.toWei(value.toString(), 'ether'))
-        await auctionContract.methods.bid(0, web3.utils.toWei(value.toString(), 'ether')).send({
+        console.log('tokenID', tokenID)
+        console.log('bid', web3.utils.toWei(value.toString(), 'ether'))
+        await auctionContract.methods.bid(web3.utils.toWei(value.toString(), 'ether'), tokenID).send({
             from: myAccount
         })
         onBid()
     }
+
+    useEffect(() => {
+        if (!bidData) return
+        let lastPrice = BigNumber.from(bidData[2][tokenID])
+        setLastPrice(lastPrice)
+        // suggest price +1 USD
+        setValue(web3.utils.fromWei(lastPrice.add("1000000000000000000").toString(), 'ether'))
+    }, [bidData, tokenID])
 
     const handleChange = value => {
         setValue(value);
@@ -46,7 +58,7 @@ export default function ModalBid({ onBid, tokenID }) {
             </div>
             <div className="box-t-shirt-b">
                 <div className="couwndown-bid-s">Serial Number</div>
-                <div className="couwndown-bid-t">#85 / 999</div>
+                <div className="couwndown-bid-t">#{tokenID} / 999</div>
                 <div className="couwndown-bid-s">Auction Ending in</div>
                 <div className="couwndown-bid">
                     <div className="">
@@ -74,7 +86,7 @@ export default function ModalBid({ onBid, tokenID }) {
                 <div className="">
                     <div className="couwndown-bid-s">Current Bid</div>
                     <div className="price-bid-exchange">
-                        <div className="couwndown-bid-t">100</div>
+                        <div className="couwndown-bid-t">{parseFloat(web3.utils.fromWei(lastPrice.toString(), 'ether')).toFixed(2)}</div>
                         <div className="couwndown-bid-s">BUSD</div>
                     </div>
                 </div>
