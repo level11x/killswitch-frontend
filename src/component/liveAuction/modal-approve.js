@@ -4,7 +4,7 @@ import personbid from '../../svg/logoProfile.svg'
 import ModalBid from './modal-bid'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
-import { useAccounts } from '../../hooks/useAccount'
+import { useAccounts } from '../../hooks/useAccounts'
 import { useAllowance } from '../../hooks/useAllowance'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";

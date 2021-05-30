@@ -1,9 +1,11 @@
 import {React,useEffect,useRef,useState} from 'react'
 import { Link } from 'react-router-dom'
+import { useAccounts } from '../../hooks/useAccounts'
 
 export default function Navigation() {
+    const { myAccount, setMyAccount } = useAccounts()
 
-    const [isMenuOpen,setMenuOpen] = useState(false);
+    const [isMenuOpen, setMenuOpen] = useState(false);
 
     const mobileMenuRef = useRef(null);
 
@@ -11,13 +13,36 @@ export default function Navigation() {
         setMenuOpen(!isMenuOpen);
     }
 
+    window.ethereum.on('accountsChanged', (accounts) => {
+        setMyAccount(accounts[0])
+    })
+
+    let connectWallet;
+    if (myAccount) {
+        connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">{myAccount}</button>;
+        console.log(connectWallet)
+    } else {
+        connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">Connect Wallet</button>
+    }
+
     useEffect(()=>{
+        if (myAccount) {
+            connectWallet = <button className="px-4 py-2 bg-blue-900 rounded">{myAccount}</button>;
+            console.log(connectWallet)
+        } else {
+            connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">Connect Wallet</button>
+        }
         document.addEventListener('click',(e)=>{
             if(!e.path.includes(mobileMenuRef.current)){
                 setMenuOpen(false)
             }
         })
-    },[])
+    },[myAccount])
+
+    async function connect() {
+        let result = await window.ethereum.request({ method: 'eth_requestAccounts' })
+        console.log(result)
+    }
 
     return (
         <nav className="h-nav w-full bg-white fixed top-0 left-0 z-40">
@@ -45,7 +70,7 @@ export default function Navigation() {
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("home") ? 'border-b-4' : ''}`} to="/home">Home</Link>
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("live-auction") ? 'border-b-4' : ''}`} to="/live-auction">Live Auction</Link>
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("top-auction") ? 'border-b-4' : ''}`}to="/top-auction">Top Auction</Link>
-                    <button className="px-4 py-2 bg-blue-900 rounded text-white">Connect Wallet</button>
+                    {connectWallet}
                 </div>
             </div>
             {/* md:hidden  */}

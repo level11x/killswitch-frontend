@@ -27,7 +27,6 @@ export function Web3Provider({ children }) {
     if (_window.ethereum) {
       const tmpWeb3 = new Web3(_window.ethereum);
       try {
-        const result = await _window.ethereum.enable();
         dispatch({
           type: Web3Provider.actions.setWeb3,
           payload: {

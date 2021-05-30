@@ -4,7 +4,7 @@ import personbid from '../../svg/logoProfile.svg'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
 import { useAuctionContract } from '../../hooks/useAuctionContract'
-import { useAccounts } from '../../hooks/useAccount'
+import { useAccounts } from '../../hooks/useAccounts'
 import useWeb3 from "../../hooks/useWeb3";
 
 export default function ModalBid({ handleCancelBid, onBid }) {
