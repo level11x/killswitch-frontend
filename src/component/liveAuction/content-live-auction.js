@@ -19,8 +19,9 @@ const LiveAuctionContent = () => {
     const allowance = useAllowance();
 
     useMemo(async () => {
-        console.log('allowance', allowance)
-        setIsApprove(allowance > 0)
+        if (allowance) {
+            setIsApprove(allowance > 0)
+        }
     }, [allowance]);
 
     useEffect(() => {
@@ -77,6 +78,7 @@ const LiveAuctionContent = () => {
     const onChange = (pageNumber) => {
         console.log('Page: ', pageNumber);
     }
+    
     return (
         <div className="live-content-container">
             <div className="live-content-box">\

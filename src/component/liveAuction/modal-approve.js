@@ -14,6 +14,7 @@ import { BigNumber } from "@ethersproject/bignumber"
 export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
     const [isModalBid, setIsModalBid] = useState(false);
     const [isApprove, setIsApprove] = useState(false);
+    const [isConnect, setIsConnect] = useState(false);
 
     const { myAccount } = useAccounts();
     const busdContract = useBUSDContract();
@@ -21,6 +22,12 @@ export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
 
     useEffect(async () => {
         console.log('allowance', allowance)
+        console.log('myAccount', myAccount)
+        if (!allowance || !myAccount) {
+            setIsConnect(false)
+            return
+        };
+        setIsConnect(true)
         setIsApprove(allowance > 0)
         if (isApprove) {
             setIsModalBid(true);
@@ -28,7 +35,7 @@ export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
                 setIsModalApprove(false);
             }, 1000);
         }
-    }, [allowance]);
+    }, [allowance, myAccount]);
 
     const approve = async () => {
         await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
@@ -49,6 +56,10 @@ export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
     const handleCancelBid = () => {
         setIsModalBid(false);
     };
+
+    async function connect() {
+        await window.ethereum.request({ method: 'eth_requestAccounts' })
+    }
 
     return (
         <div className="bid-modal-box">
@@ -101,7 +112,8 @@ export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
                 <div className="btn-approve-cancel">
                     <div className="btn-cancel"><button onClick={onCancel}>Cancel</button>
                     </div>
-                    <Button onClick={approve} className="btn-approve">Approve</Button>
+                    { isConnect && <Button onClick={approve} className="btn-approve">Approve</Button> }
+                    { !isConnect && <Button onClick={connect} className="btn-approve">Connect Wallet</Button> }
                 </div>
 
                 <Modal visible={isModalBid} onCancel={handleCancelBid} footer={false}>

@@ -28,7 +28,6 @@ export default function Navigation() {
     useEffect(()=>{
         if (myAccount) {
             connectWallet = <button className="px-4 py-2 bg-blue-900 rounded">{myAccount}</button>;
-            console.log(connectWallet)
         } else {
             connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">Connect Wallet</button>
         }
@@ -40,8 +39,7 @@ export default function Navigation() {
     },[myAccount])
 
     async function connect() {
-        let result = await window.ethereum.request({ method: 'eth_requestAccounts' })
-        console.log(result)
+        await window.ethereum.request({ method: 'eth_requestAccounts' })
     }
 
     return (
