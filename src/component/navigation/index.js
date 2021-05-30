@@ -47,7 +47,7 @@ export default function Navigation() {
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("home") ? 'border-b-4' : ''}`} to="/home">Home</Link>
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("live-auction") ? 'border-b-4' : ''}`} to="/live-auction">Live Auction</Link>
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("top-auction") ? 'border-b-4' : ''}`}to="/top-auction">Top Auction</Link>
-                    {wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue-900 rounded">{wallet}</button>}
+                    {wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue-900 rounded text-white">{wallet}</button>}
                     {!wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue-900 rounded text-white">Connect Wallet</button>}
                 </div>
             </div>
