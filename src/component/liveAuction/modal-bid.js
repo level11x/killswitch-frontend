@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react'
-import { Button, Slider, Avatar, InputNumber, Form } from 'antd';
+import { Button, Avatar, InputNumber, Form } from 'antd';
 import personbid from '../../svg/logoProfile.svg'
 import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
@@ -96,9 +96,9 @@ export default function ModalBid({ onBid, tokenID }) {
                     </div>
                 </div>
             
-                <div>
+                {/* <div>
                     <createSliderWithTooltip style={{ height: 20 }} />
-                </div>
+                </div> */}
                 <div className="">
                     <div className="couwndown-bid-s">Current Bid</div>
                     <div className="price-bid-exchange">

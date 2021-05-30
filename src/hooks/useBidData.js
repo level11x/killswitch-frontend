@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useAuctionContract } from "./useAuctionContract";
 
 export const useBidData = () => {
