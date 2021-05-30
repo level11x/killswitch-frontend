@@ -13,6 +13,7 @@ import { useAllowance } from '../../hooks/useAllowance'
 const LiveAuctionContent = () => {
     const [isModalApprove, setIsModalApprove] = useState(false);
     const [isModalBid, setIsModalBid] = useState(false);
+    const [tokenID, setTokenID] = useState(false);
     const bidData = useBidData();
     const [data, setData] = useState([]);
     const [isApprove, setIsApprove] = useState(false);
@@ -43,7 +44,8 @@ const LiveAuctionContent = () => {
         setData(value)
     }, [bidData]);
 
-    const showModalApprove = () => {
+    const showModalBidOrApprove = (tokenID) => {
+        setTokenID(tokenID)
         if (isApprove) {
             setIsModalBid(true);
         } else {
@@ -51,12 +53,15 @@ const LiveAuctionContent = () => {
         }
     };
 
-    const handleApprove = () => {
-        setIsModalApprove(false);
+    const onApproved = () => {
+        setTimeout(() => {
+            setIsModalApprove(false);
+        }, 1000);
     };
 
-    const handleCancel = () => {
+    const onCanceled = () => {
         setIsModalApprove(false);
+        setIsModalBid(false);
     };
 
     const onBid = () => {
@@ -71,10 +76,6 @@ const LiveAuctionContent = () => {
         setIsModalBid(false);
     }
 
-    const handleCancelBid = () => {
-        setIsModalBid(false);
-    };
-
     const onChange = (pageNumber) => {
         console.log('Page: ', pageNumber);
     }
@@ -84,7 +85,7 @@ const LiveAuctionContent = () => {
             <div className="live-content-box">\
                 {data.map((value) => (
                         <div className="live-content-box-items" key={value.id}>
-                            <Card hoverable onClick={showModalApprove} >
+                            <Card hoverable onClick={() => showModalBidOrApprove(value.id)} >
                                 <div className="box-number">{value.id}</div>
                                 <div className="shirt-card-box" id="shirt">
                                     <img className="shirt-image" alt="shirt" src={backShirt} />
@@ -108,13 +109,13 @@ const LiveAuctionContent = () => {
                 ))}
             </div>
             <div className="modal-show">
-                <Modal visible={isModalApprove} onCancel={handleCancel} footer={false}>
-                    <ModalApprove onApprove={handleApprove} onCancel={handleCancel}  setIsModalApprove={setIsModalApprove} onBid={onBid}/>
+                <Modal visible={isModalApprove} onCancel={onCanceled} footer={false}>
+                    <ModalApprove onApproved={onApproved} onBid={onBid} tokenID={tokenID}/>
                 </Modal>
             </div>
             <div className="modal-show">
-                <Modal visible={isModalBid} onCancel={handleCancelBid} footer={false}>
-                    <ModalBid handleCancelBid={handleCancelBid} onBid={onBid} />
+                <Modal visible={isModalBid} onCancel={onCanceled} footer={false}>
+                    <ModalBid onBid={onBid} tokenID={tokenID}/>
                 </Modal>
             </div>
             

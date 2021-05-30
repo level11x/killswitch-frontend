@@ -5,10 +5,12 @@ import shirt from '../../svg/font-shirt.svg'
 import { mockAvatar } from './mock'
 import { useAuctionContract } from '../../hooks/useAuctionContract'
 import { useAccounts } from '../../hooks/useAccounts'
-import useWeb3 from "../../hooks/useWeb3";
+import useWeb3 from "../../hooks/useWeb3"
+import { useBidData } from '../../hooks/useBidData'
 
-export default function ModalBid({ handleCancelBid, onBid }) {
+export default function ModalBid({ onBid, tokenID }) {
     const auctionContract = useAuctionContract()
+    const bidData = useBidData();
     const { myAccount } = useAccounts();
     const [value, setValue] = React.useState(10);
     const [context] = useWeb3();
@@ -83,12 +85,7 @@ export default function ModalBid({ handleCancelBid, onBid }) {
                 </div>
                 <div className="min-time">Minimum in 10 BUSD</div>
                 <div className="btn-approve-cancel">
-                    <div className="btn-cancel">
-                        <button onClick={handleCancelBid}>Cancel</button>
-                    </div>
-
                     <Button onClick={bid} className="btn-approve">Place a bid</Button>
-
                 </div>
             </div>
             <div className="box-t-shirt-b-p">

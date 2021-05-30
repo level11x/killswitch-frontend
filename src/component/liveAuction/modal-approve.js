@@ -8,22 +8,24 @@ import { useAccounts } from '../../hooks/useAccounts'
 import { useAllowance } from '../../hooks/useAllowance'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
+import { useBidData } from '../../hooks/useBidData'
 
 import { BigNumber } from "@ethersproject/bignumber"
 
-export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
+export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const [isModalBid, setIsModalBid] = useState(false);
     const [isApprove, setIsApprove] = useState(false);
     const [isConnect, setIsConnect] = useState(false);
+    const [lastPrice, setLastPrice] = useState(false);
 
     const { myAccount } = useAccounts();
     const busdContract = useBUSDContract();
     const allowance = useAllowance();
+    const bidData = useBidData();
 
     useEffect(async () => {
-        console.log('allowance', allowance)
-        console.log('myAccount', myAccount)
-        if (!allowance || !myAccount) {
+        console.log('approve-modal something changed', allowance, myAccount)
+        if (!allowance || !myAccount || !bidData) {
             setIsConnect(false)
             return
         };
@@ -31,11 +33,11 @@ export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
         setIsApprove(allowance > 0)
         if (isApprove) {
             setIsModalBid(true);
-            setTimeout(() => {
-                setIsModalApprove(false);
-            }, 1000);
+            onApproved()
         }
-    }, [allowance, myAccount]);
+
+        setLastPrice(bidData[2][tokenID])
+    }, [allowance, myAccount, tokenID, bidData]);
 
     const approve = async () => {
         await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
@@ -44,14 +46,14 @@ export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
         console.log('done')
     }
     
-    const showModalBid = async () => {
-        console.log('approve click');
-        console.log('isApprove', isApprove)
-        setIsModalBid(true);
-        setTimeout(() => {
-            setIsModalApprove(false);
-        }, 1000);
-    };
+    // const showModalBid = async () => {
+    //     console.log('approve click');
+    //     console.log('isApprove', isApprove)
+    //     setIsModalBid(true);
+    //     setTimeout(() => {
+    //         setIsModalApprove(false);
+    //     }, 1000);
+    // };
 
     const handleCancelBid = () => {
         setIsModalBid(false);
@@ -79,7 +81,7 @@ export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
             </div>
             <div className="box-t-shirt-b">
                 <div className="couwndown-bid-s">Serial Number</div>
-                <div className="couwndown-bid-t">#85 / 999</div>
+                <div className="couwndown-bid-t">#{tokenID} / 999</div>
                 <div className="couwndown-bid-s">Auction Ending in</div>
                 <div className="couwndown-bid">
                     <div className="">
@@ -104,19 +106,17 @@ export default function ModalApprove({ onCancel, setIsModalApprove, onBid }) {
                 <div className="couwndown-bid-c">
                     <div className="couwndown-bid-s">Current Bid</div>
                     <div className="price-bid-exchange">
-                        <div className="couwndown-bid-t">100</div>
+                        <div className="couwndown-bid-t">{lastPrice/10**18}</div>
                         <div className="couwndown-bid-s">BUSD</div>
                     </div>
                 </div>
 
                 <div className="btn-approve-cancel">
-                    <div className="btn-cancel"><button onClick={onCancel}>Cancel</button>
-                    </div>
                     { isConnect && <Button onClick={approve} className="btn-approve">Approve</Button> }
                     { !isConnect && <Button onClick={connect} className="btn-approve">Connect Wallet</Button> }
                 </div>
 
-                <Modal visible={isModalBid} onCancel={handleCancelBid} footer={false}>
+                <Modal visible={isModalBid} footer={false}>
                     <ModalBid handleCancelBid={handleCancelBid} onBid={onBid} />
                 </Modal>
             </div>
