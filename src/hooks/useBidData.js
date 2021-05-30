@@ -2,26 +2,35 @@ import { useCallback, useEffect, useState, useMemo } from "react";
 import { useAuctionContract } from "./useAuctionContract";
 
 export const useBidData = () => {
-  const auctionContract = useAuctionContract();
+  const [auctionContract, isAuctionContractConnect] = useAuctionContract();
   const [bidData, setBidData] = useState();
+  const [isGetBidAmount, setIsGetBidAmount] = useState(false);
 
-  useMemo(() => {
-    if (!auctionContract) return;
+  const handleListenOutBid = async () => {
+    if (isAuctionContractConnect) {
+      await auctionContract.events.OutBid((error, event) => {
+        console.log('outbid recieved', event)
+      })
+    }
+  }
+  
+  const hanelGetBidAmounts = async () => {
+    if (isAuctionContractConnect) {
+      const result = await auctionContract.methods.bidAmounts().call();
+      setIsGetBidAmount(true)
+      setBidData(result)
+    }
+  }
 
-    console.log('init event')
-    auctionContract.events.OutBid((error, event) => {
-      console.log('outbid recieved', event)
-    })
-  }, [auctionContract])
-
-  const fetch = useCallback(async () => {
-    if (!auctionContract) return;
-    const result = await auctionContract.methods.bidAmounts().call();
-    console.log('result ', result)
-    setBidData(result)
-  }, [auctionContract]);
   useEffect(() => {
-    fetch();
-  }, [fetch]);
+      handleListenOutBid()
+  }, [])
+
+  useEffect(() => {
+    if (!isGetBidAmount) {
+      hanelGetBidAmounts()
+    }
+  })
+
   return bidData;
 };

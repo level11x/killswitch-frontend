@@ -11,7 +11,7 @@ import { useBidData } from '../../hooks/useBidData'
 import { BigNumber } from "@ethersproject/bignumber"
 
 export default function ModalBid({ onBid, tokenID }) {
-    const auctionContract = useAuctionContract()
+    const [auctionContract, isAuctionContractConnect] = useAuctionContract();
     const bidData = useBidData();
     const { myAccount } = useAccounts();
     const [value, setValue] = useState(10);
@@ -23,12 +23,14 @@ export default function ModalBid({ onBid, tokenID }) {
     async function bid() {
         setLoading(true)
         try {
-            console.log('tokenID', tokenID)
-            console.log('bid', web3.utils.toWei(value.toString(), 'ether'))
-            await auctionContract.methods.bid(web3.utils.toWei(value.toString(), 'ether'), tokenID).send({
-                from: myAccount
-            })
-            onBid()
+            if (isAuctionContractConnect) {
+                console.log('tokenID', tokenID)
+                console.log('bid', web3.utils.toWei(value.toString(), 'ether'))
+                await auctionContract.methods.bid(web3.utils.toWei(value.toString(), 'ether'), tokenID).send({
+                    from: myAccount
+                })
+                onBid()
+            }
         } catch (error) {
             // TODO
             console.log(error)
