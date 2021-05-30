@@ -41,7 +41,8 @@ export default function ModalBid({ onBid, tokenID }) {
     }
 
     useEffect(() => {
-        if (!bidData) return
+        if (!tokenID || !bidData || bidData.length < 4) return
+        console.log('bidData2', bidData[2][tokenID])
         let lastPrice = BigNumber.from(bidData[2][tokenID])
         setLastPrice(lastPrice)
         // suggest price +1 USD
