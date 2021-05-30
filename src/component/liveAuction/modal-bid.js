@@ -16,16 +16,26 @@ export default function ModalBid({ onBid, tokenID }) {
     const { myAccount } = useAccounts();
     const [value, setValue] = useState(10);
     const [lastPrice, setLastPrice] = useState(0);
+    const [loading, setLoading] = useState(false);
     const [context] = useWeb3();
     const web3 = context.web3;
 
     async function bid() {
-        console.log('tokenID', tokenID)
-        console.log('bid', web3.utils.toWei(value.toString(), 'ether'))
-        await auctionContract.methods.bid(web3.utils.toWei(value.toString(), 'ether'), tokenID).send({
-            from: myAccount
-        })
-        onBid()
+        setLoading(true)
+        try {
+            console.log('tokenID', tokenID)
+            console.log('bid', web3.utils.toWei(value.toString(), 'ether'))
+            await auctionContract.methods.bid(web3.utils.toWei(value.toString(), 'ether'), tokenID).send({
+                from: myAccount
+            })
+            onBid()
+        } catch (error) {
+            // TODO
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
+        
     }
 
     useEffect(() => {
@@ -97,7 +107,7 @@ export default function ModalBid({ onBid, tokenID }) {
                 </div>
                 <div className="min-time">Minimum in 10 BUSD</div>
                 <div className="btn-approve-cancel">
-                    <Button onClick={bid} className="btn-approve">Place a bid</Button>
+                    <Button onClick={bid} loading={loading} className="btn-approve">Place a bid</Button>
                 </div>
             </div>
             <div className="box-t-shirt-b-p">
