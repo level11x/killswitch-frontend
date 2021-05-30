@@ -106,7 +106,7 @@ const LiveAuctionContent = () => {
                                     <LazyLoadImage className="overlay w-full h-full" alt="shirt" src="/img/auction/base-back-shirt.png" />
                                     <div className="shirt-image relative">
                                     <LazyLoadImage alt="shirt" src="/img/auction/base-front-shirt.png" />
-                                    <LazyLoadImage alt="" src={IMAGES[current.id]} className="absolute block left-1/2 top-1/4 transform -translate-x-1/2 w-1/3 h-auto" />
+                                    <LazyLoadImage alt="" src={IMAGES[current.id]} className="absolute block left-1/2 top-3/10 transform -translate-x-1/2 w-1/3 h-auto" />
                                     {/* <LazyLoadImage alt="" src={IMAGES[current.id]} className="absolute block left-1/2 top-1/4 transform -translate-x-1/2 w-20 h-20" /> */}
                                     {/* <span>{current.id}</span> */}
                                     </div>
