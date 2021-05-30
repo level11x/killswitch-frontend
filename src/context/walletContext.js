@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, Fragment } from "react";
 //
-function walletContext() {
+function WalletContext() {
   const [wallet, setWallet] = useState()
 
   const handleSetWallet = async () => {
@@ -15,4 +15,4 @@ function walletContext() {
   return [wallet]
 }
 
-export default walletContext;
+export default WalletContext;
