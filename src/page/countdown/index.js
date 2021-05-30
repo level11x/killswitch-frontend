@@ -7,7 +7,7 @@ import { MysteryBox } from '../../component/svg'
 export const CountdownPage = () => {
 
     return (
-        <div className="w-full h-screen overflow-y-auto overflow-x-hidden relative">
+        <div className="w-full h-screen overflow-y-auto overflow-x-hidden relative bg-primary">
             <svg id="svg-background" className="absolute w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 2000" preserveAspectRatio="none" fill="none">
                 <g clip-path="url(#clip0)">
                     <path d="M1487.78 -104.01H-9.40039V894H1487.78V-104.01Z" fill="#000051" />
@@ -175,9 +175,7 @@ export const CountdownPage = () => {
                         </svg>
                     </div>
                     <h2 className="text-2xl md:text-5xl font-bold text-white z-10">Are You Ready for Auction</h2>
-                    {/* First month starts from 0 */}
-                    {/* Start at 27/05 18:00 end at 28/05 18:00 */}
-                    <CountdownBox className="z-20 flex justify-center space-x-4" hour minute second startMonth={4} startDay={27} startHour={18} endMonth={4} endDay={28} endHour={18} />
+                    <CountdownBox className="z-20 flex justify-center space-x-4" hour minute second start="03/06/2021 18:00:00" end="04/06/2021 18:00:00"/>
                 </div>
             </section>
             {/* end hero */}

@@ -12,18 +12,18 @@ export const LiveAuctionPage = () => {
 		<Web3Provider>
 			<Navigation />
 			<div className="live-auction-container">
-                {/* Start at 28/05 18:00 end at 31/05 18:00 */}
+                {/* Start at 04/06 18:00 end at 07/06 18:00 */}
 				<HeaderLiveAuction
 					className="z-20 flex justify-center space-x-4"
 					day
 					hour
 					minute
 					second
-					startMonth={4}
-					startDay={28}
+					startMonth={6}
+					startDay={4}
 					startHour={18}
-					endMonth={4}
-					endDay={31}
+					endMonth={6}
+					endDay={7}
 					endHour={18}
 				/>
 				<div className="live-auction-content">

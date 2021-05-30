@@ -44,7 +44,14 @@ const CollectibileLiveAuction = () => {
                                         <Option value="100-199">#100 - #199</Option>
                                         <Option value="200-299">#200 - #299</Option>
                                         <Option value="300-399">#300 - #399</Option>
-                                    </Select>
+                                        <Option value="300-399">#400 - #499</Option>
+                                        <Option value="300-399">#500 - #599</Option>
+                                        <Option value="300-399">#600 - #699</Option>
+                                        <Option value="300-399">#700 - #799</Option> 
+                                        <Option value="300-399">#800 - #899</Option> 
+                                        <Option value="300-399">#900 - #999</Option>
+
+                                 </Select>
                                 </Form.Item>
                             </div>
                             <div className="auction-search-action-items">
