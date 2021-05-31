@@ -1,11 +1,12 @@
 import { useEffect, useState, useContext } from 'react'
 import { Button, InputNumber } from 'antd';
+import { BigNumber } from "@ethersproject/bignumber"
+
+import useCountdown from '../../hooks/useCountdown'
 import shirt from '../../svg/font-shirt.svg'
 import { useAuctionContract } from '../../hooks/useAuctionContract'
 import useWeb3 from "../../hooks/useWeb3"
 import { useBidData } from '../../hooks/useBidData'
-
-import { BigNumber } from "@ethersproject/bignumber"
 import { AppContext } from "../../context";
 
 export default function ModalBid({ onBid, tokenID }) {
@@ -17,6 +18,8 @@ export default function ModalBid({ onBid, tokenID }) {
     const [context] = useWeb3();
     const web3 = context.web3;
     const { wallet } = useContext(AppContext);
+
+    const timeLeft = useCountdown({ timestamp: (expireTime * 1000) })
 
     async function bid() {
         setLoading(true)
@@ -75,19 +78,19 @@ export default function ModalBid({ onBid, tokenID }) {
                 <div className="couwndown-bid-s">Auction Ending in</div>
                 <div className="couwndown-bid">
                     <div className="">
-                        <div className="couwndown-bid-t">00</div>
+                        <div className="couwndown-bid-t">{timeLeft.days || '00'}</div>
                         <div className="couwndown-bid-day">Days</div>
                     </div>
                     <div className="couwndown-bid-items">
-                        <div className="couwndown-bid-t">00</div>
+                        <div className="couwndown-bid-t">{timeLeft.hours || '00'}</div>
                         <div className="couwndown-bid-day">Hours</div>
                     </div>
                     <div className="couwndown-bid-items">
-                        <div className="couwndown-bid-t">00</div>
+                        <div className="couwndown-bid-t">{timeLeft.minutes || '00'}</div>
                         <div className="couwndown-bid-day">Minutes</div>
                     </div>
                     <div className="couwndown-bid-items">
-                        <div className="couwndown-bid-t">00</div>
+                        <div className="couwndown-bid-t">{timeLeft.seconds || '00'}</div>
                         <div className="couwndown-bid-day">Secounds</div>
                     </div>
                 </div>
@@ -104,7 +107,14 @@ export default function ModalBid({ onBid, tokenID }) {
                 </div>
                 <div className="min-time">Minimum in 10 BUSD</div>
                 <div className="btn-approve-cancel">
-                    <Button onClick={bid} loading={loading} className="btn-approve">Place a bid</Button>
+                    <Button
+                        onClick={bid}
+                        loading={loading}
+                        className="btn-approve"
+                        disabled={timeLeft.isExpired}
+                    >
+                        Place a bid
+                    </Button>
                 </div>
             </div>
             <div className="box-t-shirt-b-p">
