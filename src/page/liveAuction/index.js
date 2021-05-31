@@ -16,6 +16,7 @@ export const LiveAuctionPage = () => {
 	const [searchSerial, setSearchSerial] = useState('');
 	const [searchMaxPrice, setSearchMaxPrice] = useState(0);
 	const [searchMinPrice, setSearchMinPrice] = useState(0);
+	const [auctionByNumber, setAuctionByNumber] = useState(0);
 
 	useEffect(() => {
 		if (!bidData || bidData.length < 4) return;
@@ -49,9 +50,13 @@ export const LiveAuctionPage = () => {
 		if (searchMinPrice && searchMinPrice > 0) {
 			fData = fData.filter((v) => v.bidPrice >= searchMinPrice)
 		}
+		console.log('auctionByNumber', auctionByNumber)
+		if (auctionByNumber > 0 && auctionByNumber <= 9) {
+			fData = fData.filter((v) => parseInt(v.id/100) == auctionByNumber-1)
+		}
 		setFilterData(fData)
 		return () => {}
-	}, [data, searchSerial, searchMaxPrice, searchMinPrice]);
+	}, [data, searchSerial, searchMaxPrice, searchMinPrice, auctionByNumber]);
 
 	console.log(filterData)
 
@@ -68,6 +73,8 @@ export const LiveAuctionPage = () => {
 		const centValueMin = BigNumber.from(parseInt(minPrice*100).toString())
 		const centValueMinInEthers = centValueMin.mul(BigNumber.from("10000000000000000"))
 		setSearchMinPrice(centValueMinInEthers)
+
+		setAuctionByNumber(values.auctionByNumber)
 	}
 
 	return (
