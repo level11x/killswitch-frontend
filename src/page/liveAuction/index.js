@@ -64,12 +64,12 @@ export const LiveAuctionPage = () => {
 		console.log(values)
 		setSearchSerial(values.serialNumber)
 
-		const maxPrice = parseInt(values.maxPrice) || 0
+		const maxPrice = parseFloat(values.maxPrice) || 0
 		const centValueMax = BigNumber.from(parseInt(maxPrice*100).toString())
 		const centValueMaxInEthers = centValueMax.mul(BigNumber.from("10000000000000000"))
 		setSearchMaxPrice(centValueMaxInEthers)
 
-		const minPrice = parseInt(values.minPrice) || 0
+		const minPrice = parseFloat(values.minPrice) || 0
 		const centValueMin = BigNumber.from(parseInt(minPrice*100).toString())
 		const centValueMinInEthers = centValueMin.mul(BigNumber.from("10000000000000000"))
 		setSearchMinPrice(centValueMinInEthers)
