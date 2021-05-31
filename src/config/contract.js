@@ -255,9 +255,6 @@ export const PANCAKEROUTER_ABI = [{"inputs":[{"internalType":"uint256","name":"a
 export const TARCALPOOL_CONTRACT_ADDRESS = '0x82EA2104fA9EdAc604a59CD93148452c2121dA23'
 export const TARCALPOOL_ABI = [{"constant":true,"inputs":[{"internalType":"address","name":"_pool","type":"address"}],"name":"getBalance","outputs":[{"internalType":"uint256","name":"balance0","type":"uint256"},{"internalType":"uint256","name":"balance1","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"_pool","type":"address"},{"internalType":"uint256","name":"_lpAmount","type":"uint256"}],"name":"getToken","outputs":[{"internalType":"uint256","name":"_tokenA","type":"uint256"},{"internalType":"uint256","name":"_tokenB","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
 
-export const WBNB_CONTRACT_ADDRESS = '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c'
-export const CAKE_CONTRACT_ADDRESS = '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'
-
 export const BUSD_CONTRACT_ADDRESS = '0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee'
 export const BUSD_ABI = [
   {
