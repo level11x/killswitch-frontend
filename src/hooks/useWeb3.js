@@ -26,7 +26,7 @@ export function Web3Provider({ children }) {
   const initWeb3 = useCallback(async () => {
     if (_window.ethereum) {
       let chainId = await window.ethereum.request({ method: 'eth_chainId' })
-			if (chainId != 0x61) { // testnet
+			if (chainId !== 0x61) { // testnet
 				await window.ethereum.request({
           method: 'wallet_addEthereumChain',
           params: [{
@@ -61,7 +61,7 @@ export function Web3Provider({ children }) {
         console.log(err);
       }
     }
-  }, []);
+  }, [_window.ethereum]);
 
   useEffect(() => {
     initWeb3();

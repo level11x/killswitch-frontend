@@ -86,7 +86,7 @@ export const LiveAuctionPage = () => {
 		
 		setFilterData(fData)
 		return () => {}
-	}, [data, searchSerial, searchMaxPrice, searchMinPrice, auctionByNumber, auctionByPrice, searchMyAuction]);
+	}, [data, searchSerial, searchMaxPrice, searchMinPrice, auctionByNumber, auctionByPrice, searchMyAuction, wallet]);
 
 	function onFinishSearch(values) {
 		console.log(values)
