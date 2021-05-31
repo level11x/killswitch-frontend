@@ -14,9 +14,7 @@ const AppProvider = (props) => {
     },[wallet, connectWallet])
 
   async function connectWallet() {
-    console.log('connectWallet click')
     let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-    console.log('connectWallet', accounts)
     setWallet(accounts[0])
   }
 

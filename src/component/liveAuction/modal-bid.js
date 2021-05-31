@@ -11,7 +11,7 @@ import { BigNumber } from "@ethersproject/bignumber"
 import { AppContext } from "../../context";
 
 export default function ModalBid({ onBid, tokenID }) {
-    const [auctionContract, isAuctionContractConnect] = useAuctionContract();
+    const [auctionContract] = useAuctionContract();
     const bidData = useBidData();
     const [value, setValue] = useState(10);
     const [lastPrice, setLastPrice] = useState(0);
@@ -23,14 +23,12 @@ export default function ModalBid({ onBid, tokenID }) {
     async function bid() {
         setLoading(true)
         try {
-            if (isAuctionContractConnect) {
-                console.log('tokenID', tokenID)
-                console.log('bid', web3.utils.toWei(value.toString(), 'ether'))
-                await auctionContract.methods.bid(web3.utils.toWei(value.toString(), 'ether'), tokenID).send({
-                    from: wallet
-                })
-                onBid()
-            }
+            console.log('tokenID', tokenID)
+            console.log('bid', web3.utils.toWei(value.toString(), 'ether'))
+            await auctionContract.methods.bid(web3.utils.toWei(value.toString(), 'ether'), tokenID).send({
+                from: wallet
+            })
+            onBid()
         } catch (error) {
             // TODO
             console.log(error)
@@ -96,9 +94,6 @@ export default function ModalBid({ onBid, tokenID }) {
                     </div>
                 </div>
             
-                {/* <div>
-                    <createSliderWithTooltip style={{ height: 20 }} />
-                </div> */}
                 <div className="">
                     <div className="couwndown-bid-s">Current Bid</div>
                     <div className="price-bid-exchange">
