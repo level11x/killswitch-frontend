@@ -6,6 +6,7 @@ import ReactPaginate from 'react-paginate';
 import { TopAuctionCard } from '../../component/topAuctionCard/topAuctionCard';
 import { useBidData } from '../../hooks/useBidData'
 import './topAuction.css'
+import useCountdown from '../../hooks/useCountdown'
 
 export const TopAuction = () => {
   const { bidData } = useBidData()
@@ -17,6 +18,8 @@ export const TopAuction = () => {
   const [top3, setTop3] = useState({})
   const [top4, setTop4] = useState({})
   const pageSize = 25
+
+  const timeLeft = useCountdown({ timestamp: 1623063600000 }) // Mon Jun 07 2021 18:00:00 GMT+0700 (Indochina Time)
 
   const onPageChange = ({ selected }) => {
     setCurrentPage(selected)
@@ -88,11 +91,11 @@ export const TopAuction = () => {
           <div className="flex justify-center pt-10">
             <div className="flex">
               <div className="hidden xl:block">
-                <TimeBox unit="Days" time="03" />
+                <TimeBox unit="Days" time={timeLeft.days || '00'} />
               </div>
-              <TimeBox unit="Hours" time="00" />
-              <TimeBox unit="Minutes" time="00" />
-              <TimeBox unit="Seconds" time="00" />
+              <TimeBox unit="Hours" time={timeLeft.hours || '00'} />
+              <TimeBox unit="Minutes" time={timeLeft.minutes || '00'} />
+              <TimeBox unit="Seconds" time={timeLeft.seconds || '00'} />
             </div>
           </div>
           <h1 className="text-center pt-16 text-white font-semibold text-6xl">
