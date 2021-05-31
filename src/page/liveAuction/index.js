@@ -6,6 +6,7 @@ import LiveAuctionFooter from '../../component/liveAuction/footer-live-action'
 import Navigation from '../../component/navigation'
 import './liveAuction.css'
 import { useBidData } from '../../hooks/useBidData'
+import { BigNumber } from "@ethersproject/bignumber"
 
 export const LiveAuctionPage = () => {
 
@@ -13,6 +14,8 @@ export const LiveAuctionPage = () => {
 	const [data, setData] = useState([]);
 	const [filterData, setFilterData] = useState([]);
 	const [searchSerial, setSearchSerial] = useState('');
+	const [searchMaxPrice, setSearchMaxPrice] = useState(0);
+	const [searchMinPrice, setSearchMinPrice] = useState(0);
 
 	useEffect(() => {
 		if (!bidData || bidData.length < 4) return;
@@ -38,17 +41,33 @@ export const LiveAuctionPage = () => {
 		
 		let fData = data
 		if (searchSerial) {
-			fData = data.filter((v) => v.id == searchSerial)
+			fData = fData.filter((v) => v.id == searchSerial)
+		}
+		if (searchMaxPrice && searchMaxPrice > 0) {
+			fData = fData.filter((v) => v.bidPrice <= searchMaxPrice)
+		}
+		if (searchMinPrice && searchMinPrice > 0) {
+			fData = fData.filter((v) => v.bidPrice >= searchMinPrice)
 		}
 		setFilterData(fData)
 		return () => {}
-	}, [data, searchSerial]);
+	}, [data, searchSerial, searchMaxPrice, searchMinPrice]);
 
 	console.log(filterData)
 
 	function onFinishSearch(values) {
 		console.log(values)
 		setSearchSerial(values.serialNumber)
+
+		const maxPrice = parseInt(values.maxPrice) || 0
+		const centValueMax = BigNumber.from(parseInt(maxPrice*100).toString())
+		const centValueMaxInEthers = centValueMax.mul(BigNumber.from("10000000000000000"))
+		setSearchMaxPrice(centValueMaxInEthers)
+
+		const minPrice = parseInt(values.minPrice) || 0
+		const centValueMin = BigNumber.from(parseInt(minPrice*100).toString())
+		const centValueMinInEthers = centValueMin.mul(BigNumber.from("10000000000000000"))
+		setSearchMinPrice(centValueMinInEthers)
 	}
 
 	return (
