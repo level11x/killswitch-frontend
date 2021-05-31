@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import HeaderLiveAuction from '../../component/liveAuction/header-live-action'
 import CollectibileLiveAuction from '../../component/liveAuction/collectibles'
 import LiveAuctionContent from '../../component/liveAuction/content-live-auction'
@@ -7,8 +7,10 @@ import Navigation from '../../component/navigation'
 import './liveAuction.css'
 import { useBidData } from '../../hooks/useBidData'
 import { BigNumber } from "@ethersproject/bignumber"
+import { AppContext } from "../../context";
 
 export const LiveAuctionPage = () => {
+	const { wallet } = useContext(AppContext);
 
 	const { bidData } = useBidData();
 	const [data, setData] = useState([]);
@@ -18,6 +20,7 @@ export const LiveAuctionPage = () => {
 	const [searchMinPrice, setSearchMinPrice] = useState(0);
 	const [auctionByNumber, setAuctionByNumber] = useState(0);
 	const [auctionByPrice, setAuctionByPrice] = useState(0);
+	const [searchMyAuction, setSearchMyAuction] = useState(0);
 	
 	useEffect(() => {
 		if (!bidData || bidData.length < 4) return;
@@ -51,9 +54,12 @@ export const LiveAuctionPage = () => {
 		if (searchMinPrice && searchMinPrice > 0) {
 			fData = fData.filter((v) => v.bidPrice >= searchMinPrice)
 		}
-		console.log('auctionByNumber', auctionByNumber)
 		if (auctionByNumber > 0 && auctionByNumber <= 9) {
 			fData = fData.filter((v) => parseInt(v.id/100) === auctionByNumber-1)
+		}
+
+		if (searchMyAuction) {
+			fData = fData.filter((v) => v.bidAddress.toLowerCase() === wallet.toLowerCase())
 		}
 
 		if (auctionByPrice === 'lowest') {
@@ -80,7 +86,7 @@ export const LiveAuctionPage = () => {
 		
 		setFilterData(fData)
 		return () => {}
-	}, [data, searchSerial, searchMaxPrice, searchMinPrice, auctionByNumber]);
+	}, [data, searchSerial, searchMaxPrice, searchMinPrice, auctionByNumber, auctionByPrice, searchMyAuction]);
 
 	function onFinishSearch(values) {
 		console.log(values)
@@ -98,6 +104,7 @@ export const LiveAuctionPage = () => {
 
 		setAuctionByNumber(values.auctionByNumber)
 		setAuctionByPrice(values.auctionByPrice)
+		setSearchMyAuction(values.switch)
 	}
 
 	return (
