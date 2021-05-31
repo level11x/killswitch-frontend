@@ -5,12 +5,28 @@ export const useBidData = () => {
   const [auctionContract] = useAuctionContract();
   const [bidData, _setBidData] = useState();
   const [expireTime, setExpireTime] = useState({})
+  const [events, setEvents] = useState([]);
 
   let bidDataRef = useRef(bidData);
   const setBidData = data => {
     bidDataRef = data;
     _setBidData(data);
   };
+
+  function updateEvents(tokenID) {
+    setEvents([])
+    getPastEvent(tokenID).then((pastEvents) => {
+        const ee = []
+        for (var i = 0; i < pastEvents.length; i++) {
+            const data = pastEvents[i].returnValues
+            ee.unshift({
+                address: data.currentBidder,
+                price: data.currentAmount,
+            });
+        }
+        setEvents(ee)
+    })
+  }
 
   function updateData(event) {
     console.log('OutBid', event)
@@ -23,6 +39,13 @@ export const useBidData = () => {
     amounts[data.tokenID] = data.currentAmount
     times[data.tokenID] = data.bidTime
     setBidData([newBidData[0], addresses, amounts, times])
+
+    events.unshift({
+      address: data.currentBidder,
+      price: data.currentAmount,
+    })
+    console.log(events)
+    setEvents(events)
   }
 
   const handleListenerOutBid = async () => {
@@ -60,5 +83,5 @@ export const useBidData = () => {
     handleGetExpireTime()
   }, [auctionContract])
 
-  return { bidData, getPastEvent, expireTime };
+  return { bidData, expireTime, updateEvents, events };
 };

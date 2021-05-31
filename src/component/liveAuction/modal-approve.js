@@ -16,38 +16,15 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const [isConnect, setIsConnect] = useState(false);
     const [lastPrice, setLastPrice] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [events, setEvents] = useState([]);
-    const { bidData, getPastEvent } = useBidData();
+    const { bidData, events, updateEvents, expireTime } = useBidData();
     const { wallet, connectWallet } = useContext(AppContext);
 
-    useEffect(() => {
-
-    }, [wallet])
-
-    function updateEvents() {
-        setEvents([])
-        getPastEvent(tokenID).then((pastEvents) => {
-            const ee = []
-            for (var i = 0; i < pastEvents.length; i++) {
-                const data = pastEvents[i].returnValues
-                ee.unshift({
-                    address: data.currentBidder,
-                    price: data.currentAmount,
-                });
-            }
-            setEvents(ee)
-        })
-    }
-
-    useEffect(() => {
-        updateEvents()
-    }, [tokenID])
-
     useEffect(async () => {
-        if (!bidData) {
+        if (!bidData || !tokenID) {
             setIsConnect(false)
             return
         };
+        updateEvents(tokenID)
         setIsConnect(true)
         setLastPrice(bidData[2][tokenID])
         return () => {}

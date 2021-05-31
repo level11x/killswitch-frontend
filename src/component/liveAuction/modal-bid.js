@@ -10,34 +10,13 @@ import { AppContext } from "../../context";
 
 export default function ModalBid({ onBid, tokenID }) {
     const [auctionContract] = useAuctionContract();
-    const { bidData, getPastEvent, expireTime } = useBidData();
+    const { bidData, events, updateEvents, expireTime } = useBidData();
     const [value, setValue] = useState(10);
     const [lastPrice, setLastPrice] = useState(0);
     const [loading, setLoading] = useState(false);
     const [context] = useWeb3();
     const web3 = context.web3;
     const { wallet } = useContext(AppContext);
-    const [events, setEvents] = useState([]);
-
-    function updateEvents() {
-        setEvents([])
-        getPastEvent(tokenID).then((pastEvents) => {
-            const ee = []
-            for (var i = 0; i < pastEvents.length; i++) {
-                const data = pastEvents[i].returnValues
-                ee.unshift({
-                    address: data.currentBidder,
-                    price: data.currentAmount,
-                });
-            }
-            setEvents(ee)
-        })
-    }
-
-    useEffect(() => {
-        updateEvents()
-        console.log('expireTime', expireTime)
-    }, [tokenID])
 
     async function bid() {
         setLoading(true)
@@ -52,13 +31,14 @@ export default function ModalBid({ onBid, tokenID }) {
             // TODO
             console.log(error)
         } finally {
-            updateEvents()
+            updateEvents(tokenID)
             setLoading(false)
         }
     }
 
     useEffect(() => {
         if (!tokenID || !bidData || bidData.length < 4) return
+        updateEvents(tokenID)
         let lastPrice = BigNumber.from(bidData[2][tokenID])
         setLastPrice(lastPrice)
         // suggest price +1 USD
