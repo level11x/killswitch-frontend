@@ -1,16 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import CountdownBox from '../../component/sections/countdownBox'
 import AuctionsRoadMap from '../../component/sections/auctionsRoadMap'
 import NftAuctionRewardDistribution from '../../component/sections/nftAuctionRewardDistribution'
 import Navigation from '../../component/navigation'
 import { HomeBanner, MysteryBox, RobotFlag, RockFloor, RockGroup, StarParticleBlur } from '../../component/svg'
 import { Web3Provider } from "../../hooks/useWeb3";
-// 
-import { AppContext } from "../../context";
-// 
+
 export const HomePage = () => {
-	const wallet = useContext(AppContext);
-	console.log('walletwalletwallet', wallet)
 	return (
 		<Web3Provider>
 			<div className="w-full h-screen overflow-y-auto overflow-x-hidden relative pt-nav bg-primary"> 
@@ -55,11 +51,11 @@ export const HomePage = () => {
 							hour
 							minute
 							second
-							startMonth={4}
-							startDay={28}
+							startMonth={5}
+							startDay={4}
 							startHour={18}
-							endMonth={4}
-							endDay={31}
+							endMonth={5}
+							endDay={7}
 							endHour={18}
 						/>
 					</div>

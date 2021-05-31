@@ -118,10 +118,10 @@ export const LiveAuctionPage = () => {
 					hour
 					minute
 					second
-					startMonth={6}
+					startMonth={5}
 					startDay={4}
 					startHour={18}
-					endMonth={6}
+					endMonth={5}
 					endDay={7}
 					endHour={18}
 				/>
