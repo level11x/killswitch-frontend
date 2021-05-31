@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useContext } from 'react'
 import { Card, Pagination, notification } from 'antd';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Modal from 'antd/lib/modal/Modal';
@@ -9,6 +9,7 @@ import IMAGES from '../../assets/auction/robots/robotImg';
 
 import { useAllowance } from '../../hooks/useAllowance'
 import './content-live-auction.css'
+import { AppContext } from "../../context";
 
 const LiveAuctionContent = ({ filterData }) => {
     const [isModalApprove, setIsModalApprove] = useState(false);
@@ -17,6 +18,11 @@ const LiveAuctionContent = ({ filterData }) => {
     
     const [isApprove, setIsApprove] = useState(false);
     const { allowance, refreshAllowance } = useAllowance();
+    const { wallet } = useContext(AppContext);
+
+    useEffect(() => {
+        refreshAllowance()
+    }, [wallet])
 
     useMemo(async () => {
         if (allowance) {
