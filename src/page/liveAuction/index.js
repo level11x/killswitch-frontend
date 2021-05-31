@@ -62,7 +62,7 @@ export const LiveAuctionPage = () => {
 			fData = fData.filter((v) => v.bidAddress.toLowerCase() === wallet.toLowerCase())
 		}
 
-		if (auctionByPrice === 'lowest') {
+		if (auctionByPrice === 'highest') {
 			fData.sort(( a, b ) => {
 				if ( a.bidPrice < b.bidPrice ){
 					return 1;
@@ -72,7 +72,7 @@ export const LiveAuctionPage = () => {
 				}
 				return 0;
 			})
-		} else if (auctionByPrice === 'highest') {
+		} else if (auctionByPrice === 'lowest') {
 			fData.sort(( a, b ) => {
 				if ( a.bidPrice < b.bidPrice ){
 					return -1;
