@@ -17,7 +17,8 @@ export const LiveAuctionPage = () => {
 	const [searchMaxPrice, setSearchMaxPrice] = useState(0);
 	const [searchMinPrice, setSearchMinPrice] = useState(0);
 	const [auctionByNumber, setAuctionByNumber] = useState(0);
-
+	const [auctionByPrice, setAuctionByPrice] = useState(0);
+	
 	useEffect(() => {
 		if (!bidData || bidData.length < 4) return;
 		const tokenIDs = bidData[0]
@@ -54,6 +55,29 @@ export const LiveAuctionPage = () => {
 		if (auctionByNumber > 0 && auctionByNumber <= 9) {
 			fData = fData.filter((v) => parseInt(v.id/100) === auctionByNumber-1)
 		}
+
+		if (auctionByPrice === 'lowest') {
+			fData.sort(( a, b ) => {
+				if ( a.bidPrice < b.bidPrice ){
+					return 1;
+				}
+				if ( a.bidPrice > b.bidPrice ){
+					return -1;
+				}
+				return 0;
+			})
+		} else if (auctionByPrice === 'highest') {
+			fData.sort(( a, b ) => {
+				if ( a.bidPrice < b.bidPrice ){
+					return -1;
+				}
+				if ( a.bidPrice > b.bidPrice ){
+					return 1;
+				}
+				return 0;
+			})
+		}
+		
 		setFilterData(fData)
 		return () => {}
 	}, [data, searchSerial, searchMaxPrice, searchMinPrice, auctionByNumber]);
@@ -73,6 +97,7 @@ export const LiveAuctionPage = () => {
 		setSearchMinPrice(centValueMinInEthers)
 
 		setAuctionByNumber(values.auctionByNumber)
+		setAuctionByPrice(values.auctionByPrice)
 	}
 
 	return (

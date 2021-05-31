@@ -67,7 +67,7 @@ const CollectibileLiveAuction = ({ onFinishSearch }) => {
                             <div className="auction-max-min">Current Bidding</div>
                             <div>
                                 <Form.Item name="switch">
-                                    <Switch  checked/>
+                                    <Switch/>
                                 </Form.Item>
                             </div>
                         </div>
