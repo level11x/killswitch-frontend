@@ -14,12 +14,22 @@ export default function ModalBid({ onBid, tokenID }) {
     const { bidData, events, updateEvents, expireTime } = useBidData();
     const [value, setValue] = useState(10);
     const [lastPrice, setLastPrice] = useState(0);
+    const [lastBidTime, setLastBidTime] = useState(0);
     const [loading, setLoading] = useState(false);
     const [context] = useWeb3();
     const web3 = context.web3;
     const { wallet } = useContext(AppContext);
+    const [expireTimeExtend, setExpireTimeExtend] = useState(false);
 
-    const timeLeft = useCountdown({ timestamp: (expireTime * 1000) })
+    const timeLeft = useCountdown({ timestamp: (expireTimeExtend * 1000) })
+
+    useEffect(() => {
+        if (lastBidTime > parseInt(expireTime) - 300) {
+            setExpireTimeExtend(parseInt(lastBidTime) + 300)
+        } else {
+            setExpireTimeExtend(expireTime)
+        }
+    }, [expireTime, lastBidTime])
 
     async function bid() {
         setLoading(true)
@@ -44,6 +54,7 @@ export default function ModalBid({ onBid, tokenID }) {
         updateEvents(tokenID)
         let lastPrice = BigNumber.from(bidData[2][tokenID])
         setLastPrice(lastPrice)
+        setLastBidTime(bidData[3][tokenID])
         // suggest price +1 USD
         if (lastPrice == 0) {
             lastPrice = BigNumber.from("9000000000000000000")

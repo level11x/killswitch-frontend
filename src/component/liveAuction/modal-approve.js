@@ -16,11 +16,21 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const [isModalBid, setIsModalBid] = useState(false);
     const [isConnect, setIsConnect] = useState(false);
     const [lastPrice, setLastPrice] = useState(false);
+    const [lastBidTime, setLastBidTime] = useState(false);
     const [loading, setLoading] = useState(false);
     const { bidData, events, updateEvents, expireTime } = useBidData();
     const { wallet, connectWallet } = useContext(AppContext);
+    const [expireTimeExtend, setExpireTimeExtend] = useState(false);
 
-    const timeLeft = useCountdown({ timestamp: (expireTime * 1000) })
+    const timeLeft = useCountdown({ timestamp: (expireTimeExtend * 1000) })
+
+    useEffect(() => {
+        if (lastBidTime > parseInt(expireTime) - 300) {
+            setExpireTimeExtend(parseInt(lastBidTime) + 300)
+        } else {
+            setExpireTimeExtend(expireTime)
+        }
+    }, [expireTime, lastBidTime])
 
     useEffect(async () => {
         if (!bidData || !tokenID) {
@@ -30,6 +40,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
         updateEvents(tokenID)
         setIsConnect(true)
         setLastPrice(bidData[2][tokenID])
+        setLastBidTime(bidData[3][tokenID])
         return () => {}
     }, [tokenID, bidData]);
 

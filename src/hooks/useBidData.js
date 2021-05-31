@@ -24,7 +24,6 @@ export const useBidData = () => {
                 address: data.currentBidder,
                 price: data.currentAmount,
             });
-            console.log(pastEvents[i].id)
         }
         setEvents(ee)
     })
