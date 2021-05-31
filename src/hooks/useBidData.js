@@ -4,7 +4,7 @@ import { useAuctionContract } from "./useAuctionContract";
 export const useBidData = () => {
   const [auctionContract] = useAuctionContract();
   const [bidData, _setBidData] = useState();
-  const [pastEvent, setPastEvent] = useState({})
+  const [expireTime, setExpireTime] = useState({})
 
   let bidDataRef = useRef(bidData);
   const setBidData = data => {
@@ -37,14 +37,18 @@ export const useBidData = () => {
   }
 
   const handleGetBidAmounts = async () => {
-    console.log('handleGetBidAmounts')
     const result = await auctionContract.methods.bidAmounts().call();
     setBidData(result)
   }
 
+  const handleGetExpireTime = async () => {
+    const result = await auctionContract.methods.expireTime().call();
+    console.log('handleGetExpireTime', result)
+    setExpireTime(result)
+  }
+
   const getPastEvent = async (tokenID) => {
     const events = await auctionContract.getPastEvents('OutBid', { filter: { tokenID: tokenID }, fromBlock: 0, toBlock: 'latest' })
-    // console.log('OutBid: ' + JSON.stringify(events));
     console.log('events', events.length)
     return events
   }
@@ -52,12 +56,9 @@ export const useBidData = () => {
   useEffect(() => {
     if (!auctionContract) return
     handleListenerOutBid()
-  }, [auctionContract])
-
-  useEffect(() => {
-    if (!auctionContract) return
     handleGetBidAmounts()
+    handleGetExpireTime()
   }, [auctionContract])
 
-  return { bidData, getPastEvent };
+  return { bidData, getPastEvent, expireTime };
 };

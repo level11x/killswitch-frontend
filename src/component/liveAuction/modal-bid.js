@@ -1,8 +1,6 @@
 import { useEffect, useState, useContext } from 'react'
-import { Button, Avatar, InputNumber, Form } from 'antd';
-import personbid from '../../svg/logoProfile.svg'
+import { Button, InputNumber } from 'antd';
 import shirt from '../../svg/font-shirt.svg'
-import { mockAvatar } from './mock'
 import { useAuctionContract } from '../../hooks/useAuctionContract'
 import useWeb3 from "../../hooks/useWeb3"
 import { useBidData } from '../../hooks/useBidData'
@@ -12,7 +10,7 @@ import { AppContext } from "../../context";
 
 export default function ModalBid({ onBid, tokenID }) {
     const [auctionContract] = useAuctionContract();
-    const { bidData, getPastEvent } = useBidData();
+    const { bidData, getPastEvent, expireTime } = useBidData();
     const [value, setValue] = useState(10);
     const [lastPrice, setLastPrice] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -38,6 +36,7 @@ export default function ModalBid({ onBid, tokenID }) {
 
     useEffect(() => {
         updateEvents()
+        console.log('expireTime', expireTime)
     }, [tokenID])
 
     async function bid() {
@@ -98,7 +97,6 @@ export default function ModalBid({ onBid, tokenID }) {
                     </div>
                     <div className="couwndown-bid-items">
                         <div className="couwndown-bid-t">00</div>
-
                         <div className="couwndown-bid-day">Hours</div>
                     </div>
                     <div className="couwndown-bid-items">
@@ -119,9 +117,7 @@ export default function ModalBid({ onBid, tokenID }) {
                     </div>
                 </div>
                 <div className="bid-input-value">
-                    <Form.Item name="bidding">
-                        <InputNumber value={value} type="number" min={10} placeholder="Place your bidding" onChange={handleChange} />
-                    </Form.Item>
+                    <InputNumber value={value} type="number" min={10} placeholder="Place your bidding" onChange={handleChange} />
                 </div>
                 <div className="min-time">Minimum in 10 BUSD</div>
                 <div className="btn-approve-cancel">
