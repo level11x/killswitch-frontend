@@ -9,6 +9,7 @@ import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBidData } from '../../hooks/useBidData'
 import { AppContext } from "../../context";
+import { useAllowance } from '../../hooks/useAllowance'
 
 export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const busdContract = useBUSDContract();
@@ -21,6 +22,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const { bidData, events, updateEvents, expireTime } = useBidData();
     const { wallet, connectWallet } = useContext(AppContext);
     const [expireTimeExtend, setExpireTimeExtend] = useState(false);
+    const { allowance, refreshAllowance } = useAllowance();
 
     const timeLeft = useCountdown({ timestamp: (expireTimeExtend * 1000) })
 
@@ -33,7 +35,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     }, [expireTime, lastBidTime])
 
     useEffect(async () => {
-        if (!bidData || !tokenID) {
+        if (!wallet || !bidData || !tokenID) {
             setIsConnect(false)
             return
         };
@@ -41,8 +43,16 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
         setIsConnect(true)
         setLastPrice(bidData[2][tokenID])
         setLastBidTime(bidData[3][tokenID])
+        refreshAllowance()
         return () => {}
-    }, [tokenID, bidData]);
+    }, [tokenID, bidData, wallet]);
+
+    useEffect(() => {
+        if (allowance > 0) {
+            setIsModalBid(true);
+            onApproved()
+        }
+    }, [allowance])
 
     const approve = async () => {
         setLoading(true)
