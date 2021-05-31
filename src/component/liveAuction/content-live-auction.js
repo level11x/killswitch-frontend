@@ -71,7 +71,7 @@ const LiveAuctionContent = ({ filterData }) => {
         <div className="live-content-container">
             <div className="live-content-box">
                 {filterData.map((current, index) => (
-                        <div className="live-content-box-items" key={index}>
+                        <div className="live-content-box-items" key={current.id}>
                             <Card hoverable onClick={() => showModalBidOrApprove(current.id)} >
                                 <div className="box-number">{current.id}</div>
                                 <div className="shirt-card-box" id="shirt">

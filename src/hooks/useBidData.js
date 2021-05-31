@@ -20,9 +20,11 @@ export const useBidData = () => {
         for (var i = 0; i < pastEvents.length; i++) {
             const data = pastEvents[i].returnValues
             ee.unshift({
+                id: pastEvents[i].id,
                 address: data.currentBidder,
                 price: data.currentAmount,
             });
+            console.log(pastEvents[i].id)
         }
         setEvents(ee)
     })

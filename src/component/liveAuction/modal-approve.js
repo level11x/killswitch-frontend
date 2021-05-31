@@ -117,7 +117,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 <p>Place Bid by</p>
                 <div className="bid-price-box-show">
                     {events.map((v, index) => (
-                        <div className="bid-by-box" key={index}>
+                        <div className="bid-by-box" key={v.id}>
                             <div className="text-bid-code">{v.address ? `${v.address.substring(0, 5)}...${v.address.substring(v.address.length - 4, v.address.length)}` : ''}</div>
                             <div className="text-bid-busd"> {`${v.price/10**18} BUSD`}</div>
                         </div>
