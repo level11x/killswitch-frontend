@@ -1,15 +1,41 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import HeaderLiveAuction from '../../component/liveAuction/header-live-action'
 import CollectibileLiveAuction from '../../component/liveAuction/collectibles'
 import LiveAuctionContent from '../../component/liveAuction/content-live-auction'
 import LiveAuctionFooter from '../../component/liveAuction/footer-live-action'
 import Navigation from '../../component/navigation'
 import './liveAuction.css'
-import { Web3Provider } from "../../hooks/useWeb3";
+import { useBidData } from '../../hooks/useBidData'
 
 export const LiveAuctionPage = () => {
+
+	const { bidData } = useBidData();
+	const [filterData, setFilterData] = useState([]);
+
+	useEffect(() => {
+		if (!bidData || bidData.length < 4) return;
+		const tokenIDs = bidData[0]
+		const addresses = bidData[1]
+		const amounts = bidData[2]
+		const time = bidData[3]
+		const value = []
+		for (let i = 0; i < tokenIDs.length; i++) {
+				value.push({
+						id: tokenIDs[i],
+						bidPrice: amounts[i],
+						bidAddress: addresses[i],
+						time: time[i],
+				}) 
+		}
+		console.log(value)
+		setFilterData(value)
+		return () => {}
+	}, [bidData]);
+
+	console.log(filterData)
+
 	return (
-		<Web3Provider>
+		<div>
 			<Navigation />
 			<div className="live-auction-container">
                 {/* Start at 04/06 18:00 end at 07/06 18:00 */}
@@ -28,10 +54,10 @@ export const LiveAuctionPage = () => {
 				/>
 				<div className="live-auction-content">
 					<CollectibileLiveAuction />
-					<LiveAuctionContent />
+					<LiveAuctionContent filterData={filterData} />
 				</div>
 				<LiveAuctionFooter />
 			</div>
-		</Web3Provider>
+		</div>
 	)
 }

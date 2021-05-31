@@ -6,44 +6,23 @@ import Modal from 'antd/lib/modal/Modal';
 import ModalApprove from './modal-approve'
 import ModalBid from './modal-bid'
 import IMAGES from '../../assets/auction/robots/robotImg';
-import { useBidData } from '../../hooks/useBidData'
+
 import { useAllowance } from '../../hooks/useAllowance'
 import './content-live-auction.css'
 
-const LiveAuctionContent = () => {
+const LiveAuctionContent = ({ filterData }) => {
     const [isModalApprove, setIsModalApprove] = useState(false);
     const [isModalBid, setIsModalBid] = useState(false);
     const [tokenID, setTokenID] = useState(false);
-    const { bidData } = useBidData();
-    const [data, setData] = useState([]);
+    
     const [isApprove, setIsApprove] = useState(false);
-    const allowance = useAllowance();
+    const { allowance, refreshAllowance } = useAllowance();
 
     useMemo(async () => {
         if (allowance) {
             setIsApprove(allowance > 0)
         }
     }, [allowance]);
-
-    useEffect(() => {
-        if (!bidData || bidData.length < 4) return;
-        const tokenIDs = bidData[0]
-        const addresses = bidData[1]
-        const amounts = bidData[2]
-        const time = bidData[3]
-        const value = []
-        for (let i = 0; i < tokenIDs.length; i++) {
-            value.push({
-                id: tokenIDs[i],
-                bidPrice: amounts[i],
-                bidAddress: addresses[i],
-                time: time[i],
-            }) 
-        }
-        console.log(value)
-        setData(value)
-        return () => {}
-    }, [bidData]);
 
     const showModalBidOrApprove = (tokenID) => {
         setTokenID(tokenID)
@@ -56,6 +35,7 @@ const LiveAuctionContent = () => {
 
     const onApproved = () => {
         setTimeout(() => {
+            refreshAllowance()
             setIsModalApprove(false);
         }, 1000);
     };
@@ -84,7 +64,7 @@ const LiveAuctionContent = () => {
     return (
         <div className="live-content-container">
             <div className="live-content-box">
-                {data.map((current, index) => (
+                {filterData.map((current, index) => (
                         <div className="live-content-box-items" key={index}>
                             <Card hoverable onClick={() => showModalBidOrApprove(current.id)} >
                                 <div className="box-number">{current.id}</div>

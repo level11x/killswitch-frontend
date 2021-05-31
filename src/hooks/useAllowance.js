@@ -12,8 +12,9 @@ export const useAllowance = () => {
   const fetch = useCallback(async () => {
     if (!busdContract || !wallet) return null;
     try {
-      let allow = await busdContract.methods.allowance(wallet, AUCTION_ADDRESS).call();
-      setAllowance(allow)
+      let value = await busdContract.methods.allowance(wallet, AUCTION_ADDRESS).call();
+      console.log('featch allowance', value)
+      setAllowance(value)
     } catch (err) {
       console.warn(err);
       return null;
@@ -22,5 +23,5 @@ export const useAllowance = () => {
   useEffect(() => {
     fetch();
   }, [fetch]);
-  return allowance;
+  return { allowance, refreshAllowance: fetch };
 };
