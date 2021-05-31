@@ -1,10 +1,8 @@
 import React from 'react'
 import { Input, Button, Select, Switch, InputNumber, Form } from 'antd';
 const { Option } = Select;
-const CollectibileLiveAuction = () => {
-    function onFinishSearch(values) {
-        console.log(`search ${values}`);
-    }
+const CollectibileLiveAuction = ({ onFinishSearch }) => {
+    
     return (
         <div className="live-auction-collectibles-container">
             <div className="collectibles-killswitch-text">KillSwitch Collectibles</div>

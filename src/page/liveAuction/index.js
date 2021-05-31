@@ -10,7 +10,9 @@ import { useBidData } from '../../hooks/useBidData'
 export const LiveAuctionPage = () => {
 
 	const { bidData } = useBidData();
+	const [data, setData] = useState([]);
 	const [filterData, setFilterData] = useState([]);
+	const [searchSerial, setSearchSerial] = useState('');
 
 	useEffect(() => {
 		if (!bidData || bidData.length < 4) return;
@@ -27,12 +29,27 @@ export const LiveAuctionPage = () => {
 						time: time[i],
 				}) 
 		}
-		console.log(value)
-		setFilterData(value)
+		setData(value)
 		return () => {}
 	}, [bidData]);
 
+	useEffect(() => {
+		if (!data) return;
+		
+		let fData = data
+		if (searchSerial) {
+			fData = data.filter((v) => v.id == searchSerial)
+		}
+		setFilterData(fData)
+		return () => {}
+	}, [data, searchSerial]);
+
 	console.log(filterData)
+
+	function onFinishSearch(values) {
+		console.log(values)
+		setSearchSerial(values.serialNumber)
+	}
 
 	return (
 		<div>
@@ -53,7 +70,7 @@ export const LiveAuctionPage = () => {
 					endHour={18}
 				/>
 				<div className="live-auction-content">
-					<CollectibileLiveAuction />
+					<CollectibileLiveAuction onFinishSearch={onFinishSearch} />
 					<LiveAuctionContent filterData={filterData} />
 				</div>
 				<LiveAuctionFooter />
