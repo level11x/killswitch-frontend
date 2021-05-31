@@ -62,8 +62,11 @@ export default function ModalBid({ onBid, tokenID }) {
         let lastPrice = BigNumber.from(bidData[2][tokenID])
         setLastPrice(lastPrice)
         // suggest price +1 USD
-        console.log('updateprice', web3.utils.fromWei(lastPrice.add("1000000000000000000").toString(), 'ether'))
-        setValue(web3.utils.fromWei(lastPrice.add("1000000000000000000").toString(), 'ether'))
+        if (lastPrice == 0) {
+            lastPrice = BigNumber.from("9000000000000000000")
+        }
+        let defaultValue = lastPrice.add("1000000000000000000")
+        setValue(web3.utils.fromWei(defaultValue.toString(), 'ether'))
     }, [bidData, tokenID])
 
     const handleChange = value => {
