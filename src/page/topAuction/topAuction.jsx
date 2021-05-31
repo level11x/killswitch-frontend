@@ -5,44 +5,72 @@ import { AuctionTable } from '../../component/auctionTable/auctionTable';
 import ReactPaginate from 'react-paginate';
 import { TopAuctionCard } from '../../component/topAuctionCard/topAuctionCard';
 import useWindowDimensions from '../../hooks/useWindowDimension';
+import { useBidData } from '../../hooks/useBidData'
 
 export const TopAuction = () => {
-
+  const { bidData } = useBidData()
   const [auctions, setAuctions] = useState([])
   const [paginateAuctions, setPaginationAuctions] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
+  const [top1, setTop1] = useState({})
   const { height, width } = useWindowDimensions()
   const pageSize = 25
-
 
   const onPageChange = ({ selected }) => {
     setCurrentPage(selected)
   }
 
-  const getPaginateAuctions = () => {
+  // const getPaginateAuctions = () => {
+  //   const parsePage = currentPage + 1
+  //   const startIndex = (parsePage - 1) * pageSize
+  //   const endIndex = (parsePage) * pageSize
+  //   return auctions.slice(startIndex, endIndex)
+  // }
+
+  useEffect(() => {
+    if (!bidData || bidData.length < 4) return;
+		const tokenIDs = bidData[0]
+		const addresses = bidData[1]
+		const amounts = bidData[2]
+		const time = bidData[3]
+		const value = []
+		for (let i = 0; i < tokenIDs.length; i++) {
+				value.push({
+						id: tokenIDs[i],
+						bidPrice: amounts[i],
+						bidAddress: addresses[i],
+						time: time[i],
+				}) 
+		}
+
+    // let mockAuctions = []
+    // for (let i = 0 ; i < 100 ; i++){
+    //   mockAuctions.push({
+    //     id: i+1,
+    //     price: 10 + i,
+    //     address: '0xDEAD'
+    //   })
+    // }
+    value.sort(( a, b ) => {
+      if ( a.bidPrice < b.bidPrice ){
+        return 1;
+      }
+      if ( a.bidPrice > b.bidPrice ){
+        return -1;
+      }
+      return 0;
+    })
+    console.log(value.slice(0, 10))
+    setTop1(value[0])
+    setAuctions(value)
+  }, [bidData])
+
+  useEffect(() => {
     const parsePage = currentPage + 1
     const startIndex = (parsePage - 1) * pageSize
     const endIndex = (parsePage) * pageSize
-    return auctions.slice(startIndex, endIndex)
-  }
-
-  useEffect(() => {
-    let mockAuctions = []
-    for (let i = 0 ; i < 100 ; i++){
-      mockAuctions.push({
-        number: i+1,
-        price: 10 + i,
-        address: '0xDEAD'
-      })
-    }
-    setAuctions(mockAuctions)
-
-    setPaginationAuctions(getPaginateAuctions())
-  }, [])
-
-  useEffect(() => {
-    setPaginationAuctions(getPaginateAuctions())
-  }, [currentPage])
+    setPaginationAuctions(auctions.slice(startIndex, endIndex))
+  }, [currentPage, auctions])
   
   return (
     <PageLayout>
@@ -65,7 +93,7 @@ export const TopAuction = () => {
             Top Auction
           </h1>
           <div className="flex justify-center  w-full mt-10">
-            <TopAuctionCard number={1} />
+            <TopAuctionCard number={1} auction={top1} />
           </div>
           <div className="hidden xl:flex w-full justify-center mt-10 ">
             <div className="xl:mr-6  mb-10 xl:mb-2">
