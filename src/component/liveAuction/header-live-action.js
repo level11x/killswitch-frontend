@@ -1,37 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import useCountdown from '../../hooks/useCountdown'
+
 import world from '../../svg/world.svg'
 import robotRock from '../../svg/robot-rock.svg'
 const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, startHour, endMonth, endDay, endHour ,className,...props}) => {
-
-    const calculateTimeLeft = () => {
-        let year = new Date().getFullYear();
-        let difference = +new Date(year, endMonth, endDay, endHour) - +new Date();
-        let timeLeft = {};
-
-        if (difference > 0) {
-            timeLeft = {
-              days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-              hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-              minutes: Math.floor((difference / 1000 / 60) % 60),
-              seconds: Math.floor((difference / 1000) % 60)
-            };
-          }
-
-        return timeLeft;
-    }
-
     const timerComponents = [];
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-    const [ ,setYear] = useState(new Date().getFullYear());
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setTimeLeft(calculateTimeLeft());
-            setYear(new Date().getFullYear());
-        }, 1000);
-        // Clear timeout if the component is unmounted
-        return () => clearTimeout(timer);
-    }, [timeLeft])
+    const timeLeft = useCountdown({ endDay, endHour, endMonth })
 
     return (
         <div className="bg-live-auction-section1">

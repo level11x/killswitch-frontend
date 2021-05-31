@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Button, Modal } from 'antd';
+import { BigNumber } from "@ethersproject/bignumber"
+
 import ModalBid from './modal-bid'
+import useCountdown from '../../hooks/useCountdown'
 import shirt from '../../svg/font-shirt.svg'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBidData } from '../../hooks/useBidData'
 import { AppContext } from "../../context";
-
-import { BigNumber } from "@ethersproject/bignumber"
 
 export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const busdContract = useBUSDContract();
@@ -18,6 +19,8 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const [loading, setLoading] = useState(false);
     const { bidData, events, updateEvents, expireTime } = useBidData();
     const { wallet, connectWallet } = useContext(AppContext);
+
+    const timeLeft = useCountdown({ timestamp: (expireTime * 1000) })
 
     useEffect(async () => {
         if (!bidData || !tokenID) {
@@ -78,20 +81,19 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 <div className="couwndown-bid-s">Auction Ending in</div>
                 <div className="couwndown-bid">
                     <div className="">
-                        <div className="couwndown-bid-t">00</div>
+                        <div className="couwndown-bid-t">{timeLeft.days || '00'}</div>
                         <div className="couwndown-bid-day">Days</div>
                     </div>
                     <div className="couwndown-bid-items">
-                        <div className="couwndown-bid-t">00</div>
-
+                        <div className="couwndown-bid-t">{timeLeft.hours || '00'}</div>
                         <div className="couwndown-bid-day">Hours</div>
                     </div>
                     <div className="couwndown-bid-items">
-                        <div className="couwndown-bid-t">00</div>
+                        <div className="couwndown-bid-t">{timeLeft.minutes || '00'}</div>
                         <div className="couwndown-bid-day">Minutes</div>
                     </div>
                     <div className="couwndown-bid-items">
-                        <div className="couwndown-bid-t">00</div>
+                        <div className="couwndown-bid-t">{timeLeft.seconds || '00'}</div>
                         <div className="couwndown-bid-day">Secounds</div>
                     </div>
                 </div>
@@ -105,7 +107,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 </div>
 
                 <div className="btn-approve-cancel">
-                    { isConnect && <Button onClick={approve} loading={loading} className="btn-approve">Approve</Button> }
+                    { isConnect && <Button disabled={timeLeft.isExpired} onClick={approve} loading={loading} className="btn-approve">Approve</Button> }
                     { !isConnect && <Button onClick={connectWallet} loading={loading} className="btn-approve">Connect Wallet</Button> }
                 </div>
 

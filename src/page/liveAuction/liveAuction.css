@@ -445,6 +445,12 @@
   height: 50px;
   border-radius: 4px;
 }
+.btn-approve-cancel > .ant-btn[disabled], .btn-approve-cancel > .ant-btn[disabled]:hover {
+  background-color: #f5f5f5;
+}
+.btn-approve-cancel > .ant-btn[disabled] span {
+  color: #70709c;
+}
 .btn-approve-cancel > .ant-btn span {
   font-family: Kanit;
   font-style: normal;
