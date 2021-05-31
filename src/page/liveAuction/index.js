@@ -16,6 +16,7 @@ export const LiveAuctionPage = () => {
 	const [searchSerial, setSearchSerial] = useState('');
 	const [searchMaxPrice, setSearchMaxPrice] = useState(0);
 	const [searchMinPrice, setSearchMinPrice] = useState(0);
+	const [auctionByNumber, setAuctionByNumber] = useState(0);
 
 	useEffect(() => {
 		if (!bidData || bidData.length < 4) return;
@@ -41,7 +42,7 @@ export const LiveAuctionPage = () => {
 		
 		let fData = data
 		if (searchSerial) {
-			fData = fData.filter((v) => v.id == searchSerial)
+			fData = fData.filter((v) => v.id === searchSerial)
 		}
 		if (searchMaxPrice && searchMaxPrice > 0) {
 			fData = fData.filter((v) => v.bidPrice <= searchMaxPrice)
@@ -49,25 +50,29 @@ export const LiveAuctionPage = () => {
 		if (searchMinPrice && searchMinPrice > 0) {
 			fData = fData.filter((v) => v.bidPrice >= searchMinPrice)
 		}
+		console.log('auctionByNumber', auctionByNumber)
+		if (auctionByNumber > 0 && auctionByNumber <= 9) {
+			fData = fData.filter((v) => parseInt(v.id/100) === auctionByNumber-1)
+		}
 		setFilterData(fData)
 		return () => {}
-	}, [data, searchSerial, searchMaxPrice, searchMinPrice]);
-
-	console.log(filterData)
+	}, [data, searchSerial, searchMaxPrice, searchMinPrice, auctionByNumber]);
 
 	function onFinishSearch(values) {
 		console.log(values)
 		setSearchSerial(values.serialNumber)
 
-		const maxPrice = parseInt(values.maxPrice) || 0
+		const maxPrice = parseFloat(values.maxPrice) || 0
 		const centValueMax = BigNumber.from(parseInt(maxPrice*100).toString())
 		const centValueMaxInEthers = centValueMax.mul(BigNumber.from("10000000000000000"))
 		setSearchMaxPrice(centValueMaxInEthers)
 
-		const minPrice = parseInt(values.minPrice) || 0
+		const minPrice = parseFloat(values.minPrice) || 0
 		const centValueMin = BigNumber.from(parseInt(minPrice*100).toString())
 		const centValueMinInEthers = centValueMin.mul(BigNumber.from("10000000000000000"))
 		setSearchMinPrice(centValueMinInEthers)
+
+		setAuctionByNumber(values.auctionByNumber)
 	}
 
 	return (

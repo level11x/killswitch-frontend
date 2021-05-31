@@ -38,17 +38,16 @@ const CollectibileLiveAuction = ({ onFinishSearch }) => {
                             <div className="auction-search-action-items">
                                 <Form.Item name="auctionByNumber">
                                     <Select placeholder="#0 - #99" >
-                                        <Option value="0-99">#0 - #99</Option>
-                                        <Option value="100-199">#100 - #199</Option>
-                                        <Option value="200-299">#200 - #299</Option>
-                                        <Option value="300-399">#300 - #399</Option>
-                                        <Option value="300-399">#400 - #499</Option>
-                                        <Option value="300-399">#500 - #599</Option>
-                                        <Option value="300-399">#600 - #699</Option>
-                                        <Option value="300-399">#700 - #799</Option> 
-                                        <Option value="300-399">#800 - #899</Option> 
-                                        <Option value="300-399">#900 - #999</Option>
-
+                                        <Option value="1">#0 - #99</Option>
+                                        <Option value="2">#100 - #199</Option>
+                                        <Option value="3">#200 - #299</Option>
+                                        <Option value="4">#300 - #399</Option>
+                                        <Option value="5">#400 - #499</Option>
+                                        <Option value="6">#500 - #599</Option>
+                                        <Option value="7">#600 - #699</Option>
+                                        <Option value="8">#700 - #799</Option> 
+                                        <Option value="9">#800 - #899</Option> 
+                                        <Option value="10">#900 - #999</Option>
                                  </Select>
                                 </Form.Item>
                             </div>

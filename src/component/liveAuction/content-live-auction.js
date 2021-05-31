@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo, useContext } from 'react'
-import { Card, Pagination, notification } from 'antd';
+import { Card, notification } from 'antd';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Modal from 'antd/lib/modal/Modal';
 
@@ -63,15 +63,11 @@ const LiveAuctionContent = ({ filterData }) => {
         setIsModalBid(false);
     }
 
-    const onChange = (pageNumber) => {
-        console.log('Page: ', pageNumber);
-    }
-
     return (
         <div className="live-content-container">
             <div className="live-content-box">
                 {filterData.map((current, index) => (
-                        <div className="live-content-box-items" key={index}>
+                        <div className="live-content-box-items" key={current.id}>
                             <Card hoverable onClick={() => showModalBidOrApprove(current.id)} >
                                 <div className="box-number">{current.id}</div>
                                 <div className="shirt-card-box" id="shirt">
@@ -107,7 +103,6 @@ const LiveAuctionContent = ({ filterData }) => {
                     <ModalBid onBid={onBid} tokenID={tokenID}/>
                 </Modal>
             </div>
-            <div className="pagination-live-auction"> <Pagination defaultCurrent={1} total={1000} onChange={onChange} /></div>
         </div>
     )
 }
