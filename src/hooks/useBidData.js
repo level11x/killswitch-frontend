@@ -4,6 +4,7 @@ import { useAuctionContract } from "./useAuctionContract";
 export const useBidData = () => {
   const [auctionContract] = useAuctionContract();
   const [bidData, _setBidData] = useState();
+  const [pastEvent, setPastEvent] = useState({})
 
   let bidDataRef = useRef(bidData);
   const setBidData = data => {
@@ -23,6 +24,7 @@ export const useBidData = () => {
     times[data.tokenID] = data.bidTime
     setBidData([newBidData[0], addresses, amounts, times])
   }
+
   const handleListenerOutBid = async () => {
     console.log('attach event OutBid')
     await auctionContract.events.OutBid((error, event) => {
@@ -40,6 +42,13 @@ export const useBidData = () => {
     setBidData(result)
   }
 
+  const getPastEvent = async (tokenID) => {
+    const events = await auctionContract.getPastEvents('OutBid', { filter: { tokenID: tokenID }, fromBlock: 0, toBlock: 'latest' })
+    // console.log('OutBid: ' + JSON.stringify(events));
+    console.log('events', events.length)
+    return events
+  }
+
   useEffect(() => {
     if (!auctionContract) return
     handleListenerOutBid()
@@ -50,5 +59,5 @@ export const useBidData = () => {
     handleGetBidAmounts()
   }, [auctionContract])
 
-  return bidData;
+  return { bidData, getPastEvent };
 };

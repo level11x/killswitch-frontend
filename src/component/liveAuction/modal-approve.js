@@ -20,7 +20,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
 
     const busdContract = useBUSDContract();
     const allowance = useAllowance();
-    const bidData = useBidData();
+    const { bidData } = useBidData();
     const { wallet, connectWallet } = useContext(AppContext);
 
     useEffect(async () => {

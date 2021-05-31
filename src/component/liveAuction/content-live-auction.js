@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useMemo } from 'react'
-import { Card, Avatar, Pagination, notification } from 'antd';
+import { Card, Pagination, notification } from 'antd';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Modal from 'antd/lib/modal/Modal';
 
 import ModalApprove from './modal-approve'
 import ModalBid from './modal-bid'
-import logoProfile from '../../svg/logoProfile.svg'
 import IMAGES from '../../assets/auction/robots/robotImg';
 import { useBidData } from '../../hooks/useBidData'
 import { useAllowance } from '../../hooks/useAllowance'
@@ -15,7 +14,7 @@ const LiveAuctionContent = () => {
     const [isModalApprove, setIsModalApprove] = useState(false);
     const [isModalBid, setIsModalBid] = useState(false);
     const [tokenID, setTokenID] = useState(false);
-    const bidData = useBidData();
+    const { bidData } = useBidData();
     const [data, setData] = useState([]);
     const [isApprove, setIsApprove] = useState(false);
     const allowance = useAllowance();
@@ -106,9 +105,6 @@ const LiveAuctionContent = () => {
                                     <div className="live-bid-price">
                                         <div className="live-bid-number">{current.bidPrice/10**18}</div>
                                         <div className="live-bid-number">{current.bidAddress ? `${current.bidAddress.substring(0, 5)}...${current.bidAddress.substring(current.bidAddress.length - 4, current.bidAddress.length)}` : ''}</div>
-                                    </div>
-                                    <div className="bid-avatar">
-                                        <Avatar src={logoProfile} alt="icon" />
                                     </div>
                                 </div>
                             </Card>

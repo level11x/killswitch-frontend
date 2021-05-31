@@ -12,13 +12,33 @@ import { AppContext } from "../../context";
 
 export default function ModalBid({ onBid, tokenID }) {
     const [auctionContract] = useAuctionContract();
-    const bidData = useBidData();
+    const { bidData, getPastEvent } = useBidData();
     const [value, setValue] = useState(10);
     const [lastPrice, setLastPrice] = useState(0);
     const [loading, setLoading] = useState(false);
     const [context] = useWeb3();
     const web3 = context.web3;
     const { wallet } = useContext(AppContext);
+    const [events, setEvents] = useState([]);
+
+    function updateEvents() {
+        setEvents([])
+        getPastEvent(tokenID).then((pastEvents) => {
+            const ee = []
+            for (var i = 0; i < pastEvents.length; i++) {
+                const data = pastEvents[i].returnValues
+                ee.unshift({
+                    address: data.currentBidder,
+                    price: data.currentAmount,
+                });
+            }
+            setEvents(ee)
+        })
+    }
+
+    useEffect(() => {
+        updateEvents()
+    }, [tokenID])
 
     async function bid() {
         setLoading(true)
@@ -33,22 +53,19 @@ export default function ModalBid({ onBid, tokenID }) {
             // TODO
             console.log(error)
         } finally {
+            updateEvents()
             setLoading(false)
         }
-        
     }
 
     useEffect(() => {
         if (!tokenID || !bidData || bidData.length < 4) return
-        console.log('bidData2', bidData[2][tokenID])
         let lastPrice = BigNumber.from(bidData[2][tokenID])
         setLastPrice(lastPrice)
         // suggest price +1 USD
         console.log('updateprice', web3.utils.fromWei(lastPrice.add("1000000000000000000").toString(), 'ether'))
         setValue(web3.utils.fromWei(lastPrice.add("1000000000000000000").toString(), 'ether'))
     }, [bidData, tokenID])
-
-    console.log('value', value)
 
     const handleChange = value => {
         setValue(value);
@@ -114,15 +131,13 @@ export default function ModalBid({ onBid, tokenID }) {
             <div className="box-t-shirt-b-p">
                 <p>Place Bid by</p>
                 <div className="bid-price-box-show">
-                    {mockAvatar.map(v => (
-                        <div className="bid-by-box" key={v.id}>
-                            <Avatar src={personbid} alt="icon" />
-                            <div className="text-bid-code">{v.bidCode}</div>
-                            <div className="text-bid-busd"> {`${v.bidPrice} BUSD`}</div>
+                    {events.map((v, index) => (
+                        <div className="bid-by-box" key={index}>
+                            <div className="text-bid-code">{v.address ? `${v.address.substring(0, 5)}...${v.address.substring(v.address.length - 4, v.address.length)}` : ''}</div>
+                            <div className="text-bid-busd"> {`${v.price/10**18} BUSD`}</div>
                         </div>
                     ))}
                 </div>
-
             </div>
         </div>
     )
