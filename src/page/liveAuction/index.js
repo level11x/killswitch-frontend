@@ -42,7 +42,7 @@ export const LiveAuctionPage = () => {
 		
 		let fData = data
 		if (searchSerial) {
-			fData = fData.filter((v) => v.id == searchSerial)
+			fData = fData.filter((v) => v.id === searchSerial)
 		}
 		if (searchMaxPrice && searchMaxPrice > 0) {
 			fData = fData.filter((v) => v.bidPrice <= searchMaxPrice)
@@ -52,13 +52,11 @@ export const LiveAuctionPage = () => {
 		}
 		console.log('auctionByNumber', auctionByNumber)
 		if (auctionByNumber > 0 && auctionByNumber <= 9) {
-			fData = fData.filter((v) => parseInt(v.id/100) == auctionByNumber-1)
+			fData = fData.filter((v) => parseInt(v.id/100) === auctionByNumber-1)
 		}
 		setFilterData(fData)
 		return () => {}
 	}, [data, searchSerial, searchMaxPrice, searchMinPrice, auctionByNumber]);
-
-	console.log(filterData)
 
 	function onFinishSearch(values) {
 		console.log(values)
