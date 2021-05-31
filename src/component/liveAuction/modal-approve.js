@@ -74,6 +74,11 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
         setIsModalBid(false);
     };
 
+    const onBidInternal = () => {
+        setIsModalBid(false)
+        onBid()
+    }
+
     return (
         <div className="bid-modal-box">
             <div className="box-t-shirt">
@@ -128,7 +133,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 </div>
 
                 <Modal visible={isModalBid} onCancel={onCanceled} footer={false}>
-                    <ModalBid onBid={onBid} tokenID={tokenID}/>
+                    <ModalBid onBid={onBidInternal} tokenID={tokenID}/>
                 </Modal>
             </div>
             <div className="box-t-shirt-b-p">
