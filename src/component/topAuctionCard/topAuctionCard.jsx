@@ -17,7 +17,7 @@ export const TopAuctionCard  = ({ auction, number }) => {
             {/* <span>{current.id}</span> */}
           </div>}
       </div>
-      <img className='left-4 top-4 absolute' src={`/img/${number}.png`} />
+      <img alt="number" className='left-4 top-4 absolute' src={`/img/${number}.png`} />
       <div className="right-4 top-4 bg-blue rounded absolute p-1 text-white ">
         #{auction && auction.id} / 999
       </div>

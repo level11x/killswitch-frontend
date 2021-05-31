@@ -4,7 +4,6 @@ import { TimeBox } from '../../component/timeBox/timeBox';
 import { AuctionTable } from '../../component/auctionTable/auctionTable';
 import ReactPaginate from 'react-paginate';
 import { TopAuctionCard } from '../../component/topAuctionCard/topAuctionCard';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useBidData } from '../../hooks/useBidData'
 import './topAuction.css'
 
@@ -17,7 +16,6 @@ export const TopAuction = () => {
   const [top2, setTop2] = useState({})
   const [top3, setTop3] = useState({})
   const [top4, setTop4] = useState({})
-  const { height, width } = useWindowDimensions()
   const pageSize = 25
 
   const onPageChange = ({ selected }) => {

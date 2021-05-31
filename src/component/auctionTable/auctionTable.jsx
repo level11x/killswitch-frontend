@@ -23,7 +23,7 @@ export const AuctionTable  = ({ auctions }) => {
           return (
             <div key={auction.id} className="rounded bg-white pl-4 pr-4 pt-2 pb-2 flex justify-between mb-4 items-center">
               <div className="flex items-center">
-                <img src='/img/shirt-thumbnail.png' />
+                <img alt="shirt" src='/img/shirt-thumbnail.png' />
                 <div className="ml-2">
                   #{auction.id} / 999
                 </div>

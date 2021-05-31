@@ -34,7 +34,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
         }
     }, [expireTime, lastBidTime])
 
-    useEffect(async () => {
+    useEffect(() => {
         if (!wallet || !bidData || !tokenID) {
             setIsConnect(false)
             return
@@ -43,7 +43,10 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
         setIsConnect(true)
         setLastPrice(bidData[2][tokenID])
         setLastBidTime(bidData[3][tokenID])
-        refreshAllowance()
+        async function fetchData() {
+            await refreshAllowance()
+        }
+        fetchData()
         return () => {}
     }, [tokenID, bidData, wallet]);
 
