@@ -232,7 +232,7 @@
 
 .shirt-card-box {
   display: flex;
-  padding: 10px;
+  margin: 10px;
   flex-wrap: wrap;
   position: relative;
 }
@@ -245,7 +245,6 @@
 
 .overlay {
   position: absolute;
-  top: 12px;
   bottom: 0;
   left: 0;
   right: 0;

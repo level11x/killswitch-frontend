@@ -1,11 +1,10 @@
-import { React, useEffect, useRef, useState, useMemo } from 'react'
+import { React, useEffect, useRef, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { useAccounts } from '../../hooks/useAccounts'
+import { AppContext } from "../../context";
 
 export default function Navigation() {
-    const { myAccount, setMyAccount } = useAccounts()
-
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const { wallet, connectWallet } = useContext(AppContext);
 
     const mobileMenuRef = useRef(null);
 
@@ -13,42 +12,14 @@ export default function Navigation() {
         setMenuOpen(!isMenuOpen);
     }
 
-    useMemo(() => {
-        if (window.ethereum) {
-            window.ethereum.on('accountsChanged', (accounts) => {
-                console.log('Navigation accountsChanged', accounts)
-                if (accounts.length > 0) {
-                    setMyAccount(accounts[0])
-                } else {
-                    setMyAccount('')
-                }
-            })
-        }
-    })
-
-    let connectWallet;
-    if (myAccount) {
-        connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">{myAccount}</button>;
-    } else {
-        connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">Connect Wallet</button>
-    }
-
     useEffect(()=>{
-        if (myAccount) {
-            connectWallet = <button className="px-4 py-2 bg-blue-900 rounded">{myAccount}</button>;
-        } else {
-            connectWallet = <button onClick={connect} className="px-4 py-2 bg-blue-900 rounded">Connect Wallet</button>
-        }
         document.addEventListener('click',(e)=>{
             if(!e.path.includes(mobileMenuRef.current)){
                 setMenuOpen(false)
             }
         })
-    },[myAccount])
-
-    async function connect() {
-        await window.ethereum.request({ method: 'eth_requestAccounts' })
-    }
+        return () => {}
+    }, [wallet])
 
     return (
         <nav className="h-nav w-full bg-white fixed top-0 left-0 z-40">
@@ -76,7 +47,8 @@ export default function Navigation() {
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("home") ? 'border-b-4' : ''}`} to="/home">Home</Link>
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("live-auction") ? 'border-b-4' : ''}`} to="/live-auction">Live Auction</Link>
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("top-auction") ? 'border-b-4' : ''}`}to="/top-auction">Top Auction</Link>
-                    {connectWallet}
+                    {wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue-900 rounded text-white">{wallet}</button>}
+                    {!wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue-900 rounded text-white">Connect Wallet</button>}
                 </div>
             </div>
             {/* md:hidden  */}

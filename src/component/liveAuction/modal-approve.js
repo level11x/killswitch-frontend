@@ -1,66 +1,59 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Avatar, Modal, Form, notification, } from 'antd';
-import personbid from '../../svg/logoProfile.svg'
+import React, { useState, useEffect, useContext } from 'react'
+import { Button, Modal } from 'antd';
 import ModalBid from './modal-bid'
 import shirt from '../../svg/font-shirt.svg'
-import { mockAvatar } from './mock'
-import { useAccounts } from '../../hooks/useAccounts'
-import { useAllowance } from '../../hooks/useAllowance'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBidData } from '../../hooks/useBidData'
+import { AppContext } from "../../context";
 
 import { BigNumber } from "@ethersproject/bignumber"
 
 export default function ModalApprove({ tokenID, onApproved, onBid }) {
+    const busdContract = useBUSDContract();
+
     const [isModalBid, setIsModalBid] = useState(false);
-    const [isApprove, setIsApprove] = useState(false);
     const [isConnect, setIsConnect] = useState(false);
     const [lastPrice, setLastPrice] = useState(false);
-
-    const { myAccount } = useAccounts();
-    const busdContract = useBUSDContract();
-    const allowance = useAllowance();
-    const bidData = useBidData();
+    const [loading, setLoading] = useState(false);
+    const { bidData, events, updateEvents, expireTime } = useBidData();
+    const { wallet, connectWallet } = useContext(AppContext);
 
     useEffect(async () => {
-        console.log('approve-modal something changed', allowance, myAccount)
-        if (!allowance || !myAccount || !bidData) {
+        if (!bidData || !tokenID) {
             setIsConnect(false)
             return
         };
+        updateEvents(tokenID)
         setIsConnect(true)
-        setIsApprove(allowance > 0)
-        if (isApprove) {
-            setIsModalBid(true);
-            onApproved()
-        }
-
         setLastPrice(bidData[2][tokenID])
-    }, [allowance, myAccount, tokenID, bidData]);
+        return () => {}
+    }, [tokenID, bidData]);
 
     const approve = async () => {
-        await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
-            from: myAccount
-        })
-        console.log('done')
-    }
-    
-    // const showModalBid = async () => {
-    //     console.log('approve click');
-    //     console.log('isApprove', isApprove)
-    //     setIsModalBid(true);
-    //     setTimeout(() => {
-    //         setIsModalApprove(false);
-    //     }, 1000);
-    // };
+        setLoading(true)
+        try {
+            await busdContract.methods.approve(AUCTION_ADDRESS, BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").toString()).send({
+                from: wallet
+            })
 
-    const handleCancelBid = () => {
+            setIsModalBid(true);
+            onApproved()
+        } catch (error) {
+            // TODO
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const onCanceled = () => {
         setIsModalBid(false);
     };
 
-    async function connect() {
-        await window.ethereum.request({ method: 'eth_requestAccounts' })
+    const onBidInternal = () => {
+        setIsModalBid(false)
+        onBid()
     }
 
     return (
@@ -112,22 +105,21 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 </div>
 
                 <div className="btn-approve-cancel">
-                    { isConnect && <Button onClick={approve} className="btn-approve">Approve</Button> }
-                    { !isConnect && <Button onClick={connect} className="btn-approve">Connect Wallet</Button> }
+                    { isConnect && <Button onClick={approve} loading={loading} className="btn-approve">Approve</Button> }
+                    { !isConnect && <Button onClick={connectWallet} loading={loading} className="btn-approve">Connect Wallet</Button> }
                 </div>
 
-                <Modal visible={isModalBid} footer={false}>
-                    <ModalBid handleCancelBid={handleCancelBid} onBid={onBid} />
+                <Modal visible={isModalBid} onCancel={onCanceled} footer={false}>
+                    <ModalBid onBid={onBidInternal} tokenID={tokenID}/>
                 </Modal>
             </div>
             <div className="box-t-shirt-b-p">
                 <p>Place Bid by</p>
                 <div className="bid-price-box-show">
-                    {mockAvatar.map(v => (
-                        <div className="bid-by-box" key={v.id}>
-                            <Avatar src={personbid} alt="icon" />
-                            <div className="text-bid-code">{v.bidCode}</div>
-                            <div className="text-bid-busd"> {`${v.bidPrice} BUSD`}</div>
+                    {events.map((v, index) => (
+                        <div className="bid-by-box" key={index}>
+                            <div className="text-bid-code">{v.address ? `${v.address.substring(0, 5)}...${v.address.substring(v.address.length - 4, v.address.length)}` : ''}</div>
+                            <div className="text-bid-busd"> {`${v.price/10**18} BUSD`}</div>
                         </div>
                     ))}
                 </div>
