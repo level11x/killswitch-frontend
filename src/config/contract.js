@@ -302,7 +302,26 @@ export const BUSD_ABI = [
     "payable": false,
     "stateMutability": "view",
     "type": "function"
-  }
+  },
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
 ]
 
 export const AUCTION_ADDRESS = '0x88847dA21DbADE585414C97770A08eCbb144ba27'
