@@ -1,11 +1,24 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import useCountdown from '../../hooks/useCountdown'
 
 import world from '../../svg/world.svg'
 import robotRock from '../../svg/robot-rock.svg'
+import { useBUSDContract } from '../../hooks/useBUSDContract'
+import { AUCTION_ADDRESS } from "../../config/contract";
+
 const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, startHour, endMonth, endDay, endHour ,className,...props}) => {
     const timerComponents = [];
     const timeLeft = useCountdown({ endDay, endHour, endMonth })
+    const busdContract = useBUSDContract();
+    const [tvl, setTVL] = useState(0);
+
+    useEffect(() => {
+        if (!busdContract) return
+        busdContract.methods.balanceOf(AUCTION_ADDRESS).call().then((balance) => {
+            console.log(balance)
+            setTVL(balance)
+        })
+    }, [busdContract])
 
     return (
         <div className="bg-live-auction-section1">
@@ -14,7 +27,7 @@ const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, sta
             <div className="world-auction">
                 <div className="live-auction-text" >
                     <div className="live-auction-text-header">Total Bidding Value Lock</div>
-                    <div className="live-auction-text-header-number">10,000,000 BUSD</div>
+                    <div className="live-auction-text-header-number">{(tvl/10**18).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} BUSD</div>
                 </div>
             </div>
             </div>
