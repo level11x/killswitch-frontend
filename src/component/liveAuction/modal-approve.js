@@ -94,9 +94,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                     <div className="show-more-shirt-items">
                         <img alt="shirt" src={shirt} />
                     </div>
-                    <div className="show-more-shirt-items">
-                        <img alt="shirt" src={shirt} />
-                    </div>
+                    
                 </div>
             </div>
             <div className="box-t-shirt-b">
@@ -118,7 +116,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                     </div>
                     <div className="couwndown-bid-items">
                         <div className="couwndown-bid-t">{timeLeft.seconds || '00'}</div>
-                        <div className="couwndown-bid-day">Secounds</div>
+                        <div className="couwndown-bid-day">Seconds</div>
                     </div>
                 </div>
               

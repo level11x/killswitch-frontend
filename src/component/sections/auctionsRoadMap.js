@@ -37,7 +37,7 @@ export default function AuctionsRoadMap(props) {
     return (
         <div id="AuctionsRoadMap" className="w-full relative overflow-visible">
             <div className="relative container max-w-screen-xl mx-auto px-6 py-20">
-                <h2 className="text-3xl md:text-5xl font-bold text-white text-center">Auctions Roadmap</h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-white text-center">Auction Roadmap</h2>
                 <div className="relative flex flex-col space-y-12 md:space-y-0 md:flex-row justify-center items-center py-14">
                     <div className="z-10 w-full flex flex-row md:items-center md:flex-col space-x-10 md:space-x-0">
                         <div className={`flex-shrink-0 w-40 h-40 lg:w-48 lg:h-48 grid place-content-center rounded-full ${auctionTime ? 'bg-[#3F51B5]' : 'bg-white'}`} style={{ border: "18px solid #C5CAE9" }}>
@@ -57,7 +57,7 @@ export default function AuctionsRoadMap(props) {
                             </svg>
                         </div>
                         <div className="text-white font-black flex flex-col justify-center text-left md:text-center space-y-3 py-6">
-                            <span>Finishing the auction</span>
+                            <span>Fill in Information</span>
                             <span>June 8 - 14, 2021</span>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ export default function AuctionsRoadMap(props) {
                             </svg>
                         </div>
                         <div className="text-white font-black flex flex-col justify-center text-left md:text-center space-y-3 py-6">
-                            <span>Production Operation</span>
+                            <span>Product Preparation</span>
                             <span>June 15 - July 15, 2021</span>
                         </div>
                     </div>

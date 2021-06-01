@@ -65,6 +65,7 @@ const LiveAuctionContent = ({ filterData }) => {
 
     return (
         <div className="live-content-container">
+            
             <div className="live-content-box">
                 {filterData.map((current, index) => (
                         <div className="live-content-box-items" key={current.id}>
