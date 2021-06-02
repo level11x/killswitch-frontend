@@ -212,13 +212,13 @@ const HomePage = () => {
                 <div className="absolute mmd:hidden mxl:hidden">
                   <div className="flex">
                     <img
-                      className="w-[230px] "
-                      style={{ marginLeft: "100px" }}
+                      className="w-[320px] "
+                      style={{ marginLeft: "120px" }}
                       src="/svg/home/road_sym.svg"
                       alt=""
                     />
                     <img
-                      className="w-[270px] "
+                      className="w-[320px] "
                       style={{ marginLeft: "120px" }}
                       src="/svg/home/road_sym.svg"
                       alt=""
@@ -227,7 +227,7 @@ const HomePage = () => {
                 </div>
                 <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
 
-                <div className="block w-266px">
+                <div className="block w-[266px]">
                   <div className="text-primaries-900 font-semibold text-4xl mb-8">
                     Q2
                   </div>
@@ -240,7 +240,7 @@ const HomePage = () => {
               </div>
               <div className="flex space-x-2 mlg:justify-center">
                 <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
-                <div className="block w-266px">
+                <div className="block w-[266px]">
                   <div className="text-primaries-900 font-semibold text-4xl mb-8">
                     Q3
                   </div>
@@ -262,7 +262,7 @@ const HomePage = () => {
               </div>
               <div className="flex space-x-2 mlg:justify-center">
                 <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
-                <div className="block w-266px">
+                <div className="block w-[266px]">
                   <div className="text-primaries-900 font-semibold text-4xl mb-8">
                     Q4
                   </div>
@@ -348,7 +348,7 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex space-x-28 justify-center mxl:mx-4 mmd:space-x-0 mmd:grid mmd:space-y-8 max-w-screen-lg m-auto px-2">
-              <div className="flex-1 max-w-310px">
+              <div className="flex-1 max-w-[310px]">
                 <div className="mb-4">
                   <img src="/img/home/partic_01.png" alt="" />
                 </div>
@@ -361,7 +361,7 @@ const HomePage = () => {
                   to farm.
                 </div>
               </div>
-              <div className="flex-1 max-w-310px">
+              <div className="flex-1 max-w-[310px]">
                 <div className="mb-4">
                   <img src="/img/home/partic_02.png" alt="" />
                 </div>
@@ -374,7 +374,7 @@ const HomePage = () => {
                   pool, earning 0.3% of the total reward in the process!
                 </div>
               </div>
-              <div className="flex-1 max-w-310px">
+              <div className="flex-1 max-w-[310px]">
                 <div className="mb-4">
                   <img src="/img/home/partic_03.png" alt="" />
                 </div>
@@ -506,7 +506,7 @@ const HomePage = () => {
         </div>
       </section>
       <footer
-        className="bg-grey-10 w-full h-full bg-cover bg-no-repeat bg-center flex justify-center h-504px"
+        className="bg-grey-10 w-full h-full bg-cover bg-no-repeat bg-center flex justify-center h-[504px]"
         style={{
           backgroundImage: `url('/svg/home/bg_footer.svg')`,
         }}
