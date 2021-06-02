@@ -21,21 +21,12 @@ export const HomePage = () => {
 							<div className="flex flex-col space-y-8 items-start py-md">
 								<div className="text-white space-y-xl">
 									<h2 className="text-4xl flex flex-col md:flex-row leading-relaxed md:space-x-sm md:text-7xl font-bold text-white z-10">
-										<span>KillSwitch</span>
-										<span>Collection</span>
+									<span>Total Bidding </span>
+										<span>Value Lock</span>
 									</h2>
-									<p className="leading-relaxed">
-										The shirt auction free of NFT will be auctioned for 3 days with a special prize when the
-										bid is reached.
-									</p>
-								</div>
-								<div className="hidden md:flex flex-col md:flex-row mmd:space-y-sm md:space-x-lg">
-									<button className="px-3 py-3 rounded font-bold text-white text-xl bg-[#00BCD4]">
-										Start Auction
-									</button>
-									<button className="px-3 py-3 rounded font-bold text-xl border text-[#00BCD4] border-[#00BCD4]">
-										KillSwitch.finance
-									</button>
+							
+						
+							 
 								</div>
 							</div>
 						</div>

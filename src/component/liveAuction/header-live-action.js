@@ -72,7 +72,8 @@ const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, sta
         </div>
                 </div>
 
-                <div className="header-robot"><img src={robotRock} alt="robotRock" /></div>
+                <div className="header-robot move-up-down">
+                    <img src={robotRock} alt="robotRock" /></div>
             </div>
 
         </div>
