@@ -202,8 +202,9 @@
 }
 .live-content-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-start;
   flex-wrap: wrap;
+  column-gap: 91px;
   padding: 15px 0;
 }
 .live-content-box-items {
