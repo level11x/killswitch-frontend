@@ -58,7 +58,7 @@ export const LiveAuctionPage = () => {
 			fData = fData.filter((v) => parseInt(v.id/100) === auctionByNumber-1)
 		}
 
-		if (searchMyAuction) {
+		if (searchMyAuction && wallet) {
 			fData = fData.filter((v) => v.bidAddress.toLowerCase() === wallet.toLowerCase())
 		}
 
