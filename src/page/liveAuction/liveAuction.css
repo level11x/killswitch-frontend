@@ -1,3 +1,8 @@
+
+.top-3\/10 {
+	top: 30%;
+}
+
 .live-auction-container {
   padding-top: 3rem;
   background: linear-gradient(0deg, #000051 100%, #000000 0%);

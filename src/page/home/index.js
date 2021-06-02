@@ -7,6 +7,8 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
+// import '../../full-tailwind.css'
+
 const Container = ({ children }) => {
   return (
     <div className="w-full" style={{ maxWidth: "1440px" }}>
@@ -25,8 +27,10 @@ const HomePage = () => {
   };
 
   const handleOpenModal = () => {
-    document.body.style.overflow = "hidden";
-    setIsShowModal(true);
+    if (!isPopupShow) {
+      document.body.style.overflow = "hidden";
+      setIsShowModal(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -46,7 +50,7 @@ const HomePage = () => {
         <Container>
           <div className="mmd:hidden w-full h-full flex items-center ">
             <a href="">
-              <img src="/svg/logo.svg" alt="" />
+              <img src="/svg/home/logo.svg" alt="" />
             </a>
             <div className="pr-8 h-full flex items-center flex-1 justify-end">
               <a
@@ -65,7 +69,7 @@ const HomePage = () => {
               ) : (
                 <div
                   className="px-6 flex h-full items-center border-transparent border-b-4 text-xl font-semibold py-6 cursor-pointer "
-                  onClick={!isPopupShow ? handleOpenModal : () => {}}
+                  onClick={handleOpenModal}
                 >
                   Auction
                 </div>
@@ -78,7 +82,7 @@ const HomePage = () => {
               <FontAwesomeIcon icon={faBars} size="2x" />
             </button>
             <div className="h-full flex items-center flex-1 justify-end space-x-lg ">
-              <button className="px-4 py-2 bg-primary-1000 rounded text-white">
+              <button className="px-4 py-2 bg-primaries-1000 rounded text-white">
                 Launch App
               </button>
             </div>
@@ -107,31 +111,32 @@ const HomePage = () => {
       <section className="Hero">
         <div className="bg-blue-900 w-full">
           <div
-            className="w-full h-full bg-cover bg-no-repeat bg-bottom-center flex justify-center h-830px mmd:h-full"
+            className="w-full h-full bg-cover bg-no-repeat bg-bottom-center flex justify-center h-[830px] mmd:h-full"
             style={{
-              backgroundImage: `url('/svg/bg_large.svg')`,
+              backgroundImage: `url('/svg/home/bg_large.svg')`,
             }}
           >
             <Container>
-              <div className="block ml-16 w-675px mmd:m-4 mmd:mt-48 mmd:w-auto">
-                <div className="font-semibold text-5xl flex flex-wrap text-white mb-4 leading-normal mmd:text-3xl mmd:mt-24 mt-32">
-                  KillSwitch is a Smart Yield Farming Aggregator
+              <div className="block ml-16 w-[675px] mmd:m-4 mmd:mt-48 mmd:w-auto">
+                <div className="font-semibold text-5xl flex flex-wrap text-white mb-4 leading-normal mmd:text-3xl mmd:mt-24 mt-32 whitespace-pre-line">
+                  {`KillSwitch is a Smart Yield
+                  Farming Aggregator`}
                 </div>
-                <div className="text-base flex flex-wrap text-white leading-relaxed mb-12 mmd:mb-8">
-                  KillSwitch is a smart yield farming aggregator targeting to
+                <div className="text-base flex flex-wrap text-white leading-relaxed mb-12 mmd:mb-8 whitespace-pre-line">
+                  {`KillSwitch is a smart yield farming aggregator targeting to
                   increase convenience and security for Binance Smart Chain
                   yield farmers. Users are free to unstake, withdraw Liquidity
                   Position from their funds and sell their high risk coins
-                  instantly in one click.
+                  instantly in one click.`}
                 </div>
 
                 <div className="flex space-x-5 mb-24 mmd:block mmd:space-x-0 mmd:mb-8">
-                  <button className="bg-secondary-500 px-4 py-2 rounded text-white font-semibold  mmd:block mmd:mb-4">
+                  <button className="bg-secondaries-500 px-4 py-2 rounded text-white font-semibold  mmd:block mmd:mb-4">
                     White paper
                   </button>
                   <button
-                    className="border-secondary-500 border-2 px-4 py-2 rounded text-secondary-500 font-semibold  mmd:block"
-                    onClick={!isPopupShow ? handleOpenModal : () => {}}
+                    className="border-secondaries-500 border-2 px-4 py-2 rounded text-secondaries-500 font-semibold  mmd:block"
+                    onClick={handleOpenModal}
                   >
                     KillSwitch Auction
                   </button>
@@ -139,15 +144,15 @@ const HomePage = () => {
 
                 <div className="block w-max mmd:w-auto">
                   <img
-                    className="shadow-md rounded mb-4 cursor-pointer w-540px h-220px mmd:h-auto "
-                    onClick={!isPopupShow ? handleOpenModal : () => {}}
-                    src="/images/banner.png"
+                    className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
+                    onClick={handleOpenModal}
+                    src="/img/home/banner.png"
                     alt="banner"
                   />
 
                   <div className="flex space-x-2 justify-center">
                     <div className="rounded-full bg-white w-4 h-4 mmd:w-3 mmd:h-3"></div>
-                    <div className="rounded-full bg-secondary-400 w-4 h-4 mmd:w-3 mmd:h-3"></div>
+                    <div className="rounded-full bg-secondaries-400 w-4 h-4 mmd:w-3 mmd:h-3"></div>
                     <div className="rounded-full bg-white w-4 h-4 mmd:w-3 mmd:h-3"></div>
                   </div>
                 </div>
@@ -157,14 +162,14 @@ const HomePage = () => {
         </div>
       </section>
       <section className="Hero-detail">
-        <div className="bg-primary-600 w-full flex justify-center">
+        <div className="bg-primaries-600 w-full flex justify-center">
           <Container>
             <div className="block ml-16 mb-8 mt-16 mmd:mx-4 mmd:my-6">
-              <div className="font-semibold text-4xl flex flex-wrap text-white mb-4 leading-normal w-916px mmd:w-auto mmd:text-2xl">
+              <div className="font-semibold text-4xl flex flex-wrap text-white mb-4 leading-normal w-[916px] mmd:w-auto mmd:text-2xl">
                 KillSwitch is created for high risk yield farmers by high risk
                 yield farmers (HRYF).
               </div>
-              <div className="block w-640px mmd:w-auto">
+              <div className="block w-[640px] mmd:w-auto">
                 <div className="text-base flex flex-wrap text-white leading-relaxed mb-10 mmd:mb-4">
                   The original idea is that while the Shit coin price keeps
                   falling, everyone wants to withdraw it. Besides, it takes
@@ -181,7 +186,7 @@ const HomePage = () => {
                   just for one click, so we developed KillSwitch.
                 </div>
               </div>
-              <button className="text-xl text-secondary-300 border-transparent border-2 px-4 py-2 rounded font-semibold">
+              <button className="text-xl text-secondaries-300 border-transparent border-2 px-4 py-2 rounded font-semibold">
                 <div className="flex items-center space-x-4">
                   <div>Learn more</div>
                   <FontAwesomeIcon icon={faChevronRight} size="xs" />
@@ -192,10 +197,10 @@ const HomePage = () => {
         </div>
       </section>
       <section className="roadmap">
-        <div className="bg-grey-10 w-full flex justify-center py-20 h-616px mlg:h-auto">
+        <div className="bg-grey-10 w-full flex justify-center py-20 h-[616px] mlg:h-auto">
           <Container>
             <div className="flex space-x-4 justify-center mb-16 mmd:mb-8">
-              <div className="text-primary-1000 font-semibold text-5xl mmd:text-4xl">
+              <div className="text-primaries-1000 font-semibold text-5xl mmd:text-4xl">
                 KillSwitch
               </div>
               <div className="text-black font-semibold text-5xl mmd:text-4xl">
@@ -207,23 +212,23 @@ const HomePage = () => {
                 <div className="absolute mmd:hidden mxl:hidden">
                   <div className="flex">
                     <img
-                      className="w-339px "
-                      style={{ marginLeft: "120px" }}
-                      src="/svg/road_sym.svg"
+                      className="w-[230px] "
+                      style={{ marginLeft: "100px" }}
+                      src="/svg/home/road_sym.svg"
                       alt=""
                     />
                     <img
-                      className="w-339px "
+                      className="w-[270px] "
                       style={{ marginLeft: "120px" }}
-                      src="/svg/road_sym.svg"
+                      src="/svg/home/road_sym.svg"
                       alt=""
                     />
                   </div>
                 </div>
-                <img className="self-start" src="/svg/cube.svg" alt="cube" />
+                <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
 
                 <div className="block w-266px">
-                  <div className="text-primary-900 font-semibold text-4xl mb-8">
+                  <div className="text-primaries-900 font-semibold text-4xl mb-8">
                     Q2
                   </div>
 
@@ -234,9 +239,9 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="flex space-x-2 mlg:justify-center">
-                <img className="self-start" src="/svg/cube.svg" alt="cube" />
+                <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
                 <div className="block w-266px">
-                  <div className="text-primary-900 font-semibold text-4xl mb-8">
+                  <div className="text-primaries-900 font-semibold text-4xl mb-8">
                     Q3
                   </div>
                   <div className="text-black text-base mb-4">
@@ -256,9 +261,9 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="flex space-x-2 mlg:justify-center">
-                <img className="self-start" src="/svg/cube.svg" alt="cube" />
+                <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
                 <div className="block w-266px">
-                  <div className="text-primary-900 font-semibold text-4xl mb-8">
+                  <div className="text-primaries-900 font-semibold text-4xl mb-8">
                     Q4
                   </div>
                   <div className="text-black text-base mb-4">
@@ -272,10 +277,10 @@ const HomePage = () => {
         </div>
       </section>
       <section className="feature">
-        <div className="bg-primary-1000 w-full flex justify-center px-4 py-16">
+        <div className="bg-primaries-1000 w-full flex justify-center px-4 py-16">
           <Container>
             <div className="flex space-x-4 justify-center mb-16">
-              <div className="text-secondary-400 font-semibold text-5xl mmd:text-4xl">
+              <div className="text-secondaries-400 font-semibold text-5xl mmd:text-4xl">
                 KillSwitch
               </div>
               <div className="text-white font-semibold text-5xl mmd:text-4xl">
@@ -283,11 +288,11 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex justify-center space-x-4 mmd:flex-wrap mxl:space-x-0 mxl:space-y-4 mxl:flex-wrap">
-              <div className="bg-white p-8 rounded h-664px w-642px mxl:h-auto">
-                <img src="/images/feature_banner.png" alt="" />
+              <div className="bg-white p-8 rounded h-[664px] w-[642px] mxl:h-auto">
+                <img src="/img/home/feature_banner.png" alt="" />
               </div>
-              <div className="block space-y-4 h-664px w-642px mxl:h-auto">
-                <div className="bg-grey-30 rounded p-4 cursor-pointer h-154px mxl:h-auto">
+              <div className="block space-y-4 h-[664px] w-[642px] mxl:h-auto">
+                <div className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto">
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
                     One click Stake V.1
                   </div>
@@ -296,7 +301,7 @@ const HomePage = () => {
                     step
                   </div>
                 </div>
-                <div className="bg-grey-30 rounded p-4 cursor-pointer h-154px mxl:h-auto">
+                <div className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto">
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
                     One click Stake V.1
                   </div>
@@ -307,7 +312,7 @@ const HomePage = () => {
                     action.
                   </div>
                 </div>
-                <div className="bg-grey-30 rounded p-4 cursor-pointer h-154px mxl:h-auto">
+                <div className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto">
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
                     Kill Position V.1
                   </div>
@@ -318,7 +323,7 @@ const HomePage = () => {
                     another token user can chose.
                   </div>
                 </div>
-                <div className="bg-white rounded p-4 cursor-pointer h-154px mxl:h-auto">
+                <div className="bg-white rounded p-4 cursor-pointer h-[154px] mxl:h-auto">
                   <div className="text-grey-90 font-semibold text-2xl mb-4">
                     Stop loss / Take profit V.2
                   </div>
@@ -338,14 +343,14 @@ const HomePage = () => {
         <div className="bg-grey-10 w-full flex justify-center py-28 mmd:py-20 ">
           <Container>
             <div className="flex justify-center mb-16">
-              <div className="text-primary-900 font-semibold text-5xl mmd:text-4xl">
+              <div className="text-primaries-900 font-semibold text-5xl mmd:text-4xl">
                 How to Participate?
               </div>
             </div>
-            <div className="flex space-x-28 justify-center mxl:mx-4 mmd:space-x-0 mmd:grid mmd:space-y-8 ">
-              <div className="block max-w-310px">
+            <div className="flex space-x-28 justify-center mxl:mx-4 mmd:space-x-0 mmd:grid mmd:space-y-8 max-w-screen-lg m-auto px-2">
+              <div className="flex-1 max-w-310px">
                 <div className="mb-4">
-                  <img src="/images/partic_01.png" alt="" />
+                  <img src="/img/home/partic_01.png" alt="" />
                 </div>
                 <div className="flex flex-warp text-black font-semibold text-xl mb-2">
                   Yield farmer
@@ -356,9 +361,9 @@ const HomePage = () => {
                   to farm.
                 </div>
               </div>
-              <div className="block max-w-310px">
+              <div className="flex-1 max-w-310px">
                 <div className="mb-4">
-                  <img src="/images/partic_02.png" alt="" />
+                  <img src="/img/home/partic_02.png" alt="" />
                 </div>
                 <div className="flex flex-warp text-black font-semibold text-xl mb-2">
                   Guardian of the Galaxy (Reinvestor)
@@ -369,9 +374,9 @@ const HomePage = () => {
                   pool, earning 0.3% of the total reward in the process!
                 </div>
               </div>
-              <div className="block max-w-310px">
+              <div className="flex-1 max-w-310px">
                 <div className="mb-4">
-                  <img src="/images/partic_03.png" alt="" />
+                  <img src="/img/home/partic_03.png" alt="" />
                 </div>
                 <div className="flex flex-warp text-black font-semibold text-xl mb-2">
                   Space sweepers (TP/SL Master)
@@ -389,7 +394,7 @@ const HomePage = () => {
         <div className="bg-grey-10 w-full flex justify-center">
           <Container>
             <div className="flex justify-center px-16 mlg:px-8">
-              <div className="bg-primary-1000 rounded-2xl w-full bg-bottom-custom bg-auto bg-no-repeat flex items-center px-16 bg-ksw-work h-286px mlg:px-4 mlg:py-8 mlg:bg-ksw-work-mobile mlg:bg-bottom-custom-mobile mlg:h-178px mlg:items-start">
+              <div className="bg-primaries-1000 rounded-2xl w-full bg-bottom-custom bg-auto bg-no-repeat flex items-center px-16 bg-ksw-work h-[286px] mlg:px-4 mlg:py-8 mlg:bg-ksw-work-mobile mlg:bg-bottom-custom-mobile mlg:h-[178px] mlg:items-start">
                 <div className="block">
                   <div className="text-white font-semibold text-4xl mb-4 mmd:text-xl mmd:mb-2">
                     How does KillSwitch work?
@@ -413,22 +418,22 @@ const HomePage = () => {
               <div className="text-black font-semibold text-5xl mmd:text-4xl">
                 Join our
               </div>
-              <div className="text-primary-900 font-semibold text-5xl mmd:text-4xl mmd:hidden">
+              <div className="text-primaries-900 font-semibold text-5xl mmd:text-4xl mmd:hidden">
                 KillSwitch community
               </div>
-              <div className="text-primary-900 font-semibold text-5xl mmd:text-4xl md:hidden">
+              <div className="text-primaries-900 font-semibold text-5xl mmd:text-4xl md:hidden">
                 KillSwitch
               </div>
-              <div className="text-primary-900 font-semibold text-5xl mmd:text-4xl md:hidden">
+              <div className="text-primaries-900 font-semibold text-5xl mmd:text-4xl md:hidden">
                 community
               </div>
             </div>
             <div className="flex justify-center flex-wrap mmd:px-0">
               <a href="/">
-                <div className="rounded-2xl bg-white p-4 w-200px mmd:w-40 m-4">
+                <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40 m-4">
                   <img
                     className="m-auto mb-2"
-                    src="/images/finance_logo.png"
+                    src="/img/home/finance_logo.png"
                     alt="Finance"
                   />
                   <div className="flex flex-warp text-black text-base justify-center">
@@ -437,10 +442,10 @@ const HomePage = () => {
                 </div>
               </a>
               <a href="/">
-                <div className="rounded-2xl bg-white p-4 m-2 w-200px mmd:w-40">
+                <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
-                    src="/images/medium_logo.png"
+                    src="/img/home/medium_logo.png"
                     alt="Medium"
                   />
                   <div className="flex flex-warp text-black text-base justify-center">
@@ -449,10 +454,10 @@ const HomePage = () => {
                 </div>
               </a>
               <a href="/">
-                <div className="rounded-2xl bg-white p-4 m-2 w-200px mmd:w-40">
+                <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
-                    src="/images/gitbook_logo.png"
+                    src="/img/home/gitbook_logo.png"
                     alt="GitBook"
                   />
                   <div className="flex flex-warp text-black text-base justify-center">
@@ -461,10 +466,10 @@ const HomePage = () => {
                 </div>
               </a>
               <a href="/">
-                <div className="rounded-2xl bg-white p-4 m-2 w-200px mmd:w-40">
+                <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
-                    src="/images/twitter_logo.png"
+                    src="/img/home/twitter_logo.png"
                     alt="Twitter"
                   />
                   <div className="flex flex-warp text-black text-base justify-center">
@@ -473,10 +478,10 @@ const HomePage = () => {
                 </div>
               </a>
               <a href="/">
-                <div className="rounded-2xl bg-white p-4 m-2 w-200px mmd:w-40">
+                <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
-                    src="/images/telegram_logo.png"
+                    src="/img/home/telegram_logo.png"
                     alt="Telegram"
                   />
                   <div className="flex flex-warp text-black text-base justify-center text-center">
@@ -485,10 +490,10 @@ const HomePage = () => {
                 </div>
               </a>
               <a href="/">
-                <div className="rounded-2xl bg-white p-4 m-2 w-200px mmd:w-40">
+                <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
-                    src="/images/telegram_logo.png"
+                    src="/img/home/telegram_logo.png"
                     alt=""
                   />
                   <div className="flex flex-warp text-black text-base justify-center text-center">
@@ -503,26 +508,26 @@ const HomePage = () => {
       <footer
         className="bg-grey-10 w-full h-full bg-cover bg-no-repeat bg-center flex justify-center h-504px"
         style={{
-          backgroundImage: `url('/svg/bg_footer.svg')`,
+          backgroundImage: `url('/svg/home/bg_footer.svg')`,
         }}
       >
         <div className="block self-end space-y-10  mb-16 ">
-          <img src="/images/killswitch_logo_white.png" alt="killswitch_logo" />
+          <img src="/img/home/killswitch_logo_white.png" alt="killswitch_logo" />
           <div className="flex space-x-6 justify-center ">
             <div className="cursor-pointer">
-              <img src="/svg/medium.svg" alt="medium" />
+              <img src="/svg/home/medium.svg" alt="medium" />
             </div>
             <div className="cursor-pointer">
-              <img src="/svg/git.svg" alt="git" />
+              <img src="/svg/home/git.svg" alt="git" />
             </div>
             <div className="cursor-pointer">
-              <img src="/svg/telegram.svg" alt="telegram" />
+              <img src="/svg/home/telegram.svg" alt="telegram" />
             </div>
             <div className="cursor-pointer">
-              <img src="/svg/telegram.svg" alt="telegram" />
+              <img src="/svg/home/telegram.svg" alt="telegram" />
             </div>
             <div className="cursor-pointer">
-              <img src="/svg/twitter.svg" alt="twitter" />
+              <img src="/svg/home/twitter.svg" alt="twitter" />
             </div>
           </div>
           <div className="text-sm text-white">
@@ -534,7 +539,7 @@ const HomePage = () => {
       {isShowModal && (
         <div className="absolute top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 flex  justify-center">
           <div
-            className="bg-white rounded-xl p-8 w-490px mx-auto my-0 top-32 fixed msm:w-auto msm:mx-8"
+            className="bg-white rounded-xl p-8 w-[490px] mx-auto my-0 top-32 fixed msm:w-auto msm:mx-8"
             style={{ height: "min-content" }}
           >
             <div className="flex justify-between">
@@ -572,7 +577,7 @@ const HomePage = () => {
               </li>
             </ul>
             <button
-              className="bg-primary-1000 px-4 py-3 rounded text-white text-base font-semibold w-full"
+              className="bg-primaries-1000 px-4 py-3 rounded text-white text-base font-semibold w-full"
               onClick={handleCloseModal}
             >
               I have read and agree
