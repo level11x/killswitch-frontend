@@ -1,3 +1,8 @@
+
+.top-3\/10 {
+	top: 30%;
+}
+
 .live-auction-container {
   padding-top: 3rem;
   background: linear-gradient(0deg, #000051 100%, #000000 0%);
@@ -92,15 +97,6 @@
   font-weight: 600;
   font-size: 56px;
   line-height: 150%;
-  color: #fff;
-}
-.curentbid-text {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 150%;
-  padding-top: 50px;
   color: #fff;
 }
 .collectibles-box {

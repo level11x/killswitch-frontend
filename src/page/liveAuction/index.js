@@ -21,7 +21,6 @@ export const LiveAuctionPage = () => {
 	const [auctionByNumber, setAuctionByNumber] = useState(0);
 	const [auctionByPrice, setAuctionByPrice] = useState(0);
 	const [searchMyAuction, setSearchMyAuction] = useState(0);
-	const [isSwitch, setIsSwitch]  =  useState(false)
 	
 	useEffect(() => {
 		if (!bidData || bidData.length < 4) return;
@@ -42,11 +41,6 @@ export const LiveAuctionPage = () => {
 		return () => {}
 	}, [bidData]);
 
-	const onSwitch=(checked)=> {
-		//console.log(`switch to ${checked}`);
-		setIsSwitch(checked)
-	  }
-
 	useEffect(() => {
 		if (!data) return;
 		
@@ -64,7 +58,7 @@ export const LiveAuctionPage = () => {
 			fData = fData.filter((v) => parseInt(v.id/100) === auctionByNumber-1)
 		}
 
-		if (searchMyAuction) {
+		if (searchMyAuction && wallet) {
 			fData = fData.filter((v) => v.bidAddress.toLowerCase() === wallet.toLowerCase())
 		}
 
@@ -135,11 +129,10 @@ export const LiveAuctionPage = () => {
 					endHour={18}
 				/>
 				<div className="live-auction-content">
-					<CollectibileLiveAuction onFinishSearch={onFinishSearch}  onSwitch={onSwitch}  />
-					<div className="curentbid-text">{isSwitch ?<div >Current bidding </div>: ''}</div>
-					<LiveAuctionContent filterData={filterData}  />
+					<CollectibileLiveAuction onFinishSearch={onFinishSearch} />
+					<LiveAuctionContent filterData={filterData} />
 				</div>
-				<LiveAuctionFooter/>
+				<LiveAuctionFooter />
 			</div>
 		</div>
 	)
