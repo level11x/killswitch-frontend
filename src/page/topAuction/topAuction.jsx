@@ -82,7 +82,7 @@ export const TopAuction = () => {
   
   return (
     <div className="top-auction">
-       <div className="bg-primary min-h-screen flex justify-center w-screen">
+       <div className=" min-h-screen flex justify-center w-screen">
         <Navigation />
         <div className="screen-container">
           <h1 className="text-center pt-20 text-white font-semibold xl:text-6xl text-4xl">
@@ -134,7 +134,7 @@ export const TopAuction = () => {
               previousLabel={'<'}
               nextLabel={'>'}
               breakLabel={'...'}
-              initialPage={1}
+              initialPage={0}
               pageCount={auctions.length / pageSize}
               onPageChange={onPageChange}
               marginPagesDisplayed={1}

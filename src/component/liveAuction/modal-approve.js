@@ -138,7 +138,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 </Modal>
             </div>
             <div className="box-t-shirt-b-p">
-                <p>Place Bid by</p>
+                <p>History of bidder</p>
                 <div className="bid-price-box-show">
                     {events.map((v, index) => (
                         <div className="bid-by-box" key={v.id}>

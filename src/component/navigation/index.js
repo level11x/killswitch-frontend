@@ -53,7 +53,7 @@ export default function Navigation() {
                 </div>
             </div>
             {/* md:hidden  */}
-            <div ref={mobileMenuRef} className="h-full flex items-center px-md md:hidden mlg:hidden lg:hidden">
+            <div ref={mobileMenuRef} className="h-full flex items-center px-md md:hidden lg:hidden">
                 <button className="cursor-pointer" onClick={toggleMenuOpen}>
                     <svg arial-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
                         <path d="M5 30H35V26.6667H5V30ZM5 21.6667H35V18.3333H5V21.6667ZM5 10V13.3333H35V10H5Z" fill="black" />

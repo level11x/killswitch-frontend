@@ -1,5 +1,8 @@
 .top-auction{
   font-family: Kanit;
+  background-image: url("/src/svg/BG-TopAuction.png");
+  background-size: cover;
+  height: fit-content;
 }
 .screen-container{
   width: 978px;

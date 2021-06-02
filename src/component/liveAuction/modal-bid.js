@@ -129,7 +129,7 @@ export default function ModalBid({ onBid, tokenID }) {
                 </div>
             </div>
             <div className="box-t-shirt-b-p">
-                <p>Place Bid by</p>
+                <p>History of bidders</p>
                 <div className="bid-price-box-show">
                     {events.map((v, index) => (
                         <div className="bid-by-box" key={v.id}>
