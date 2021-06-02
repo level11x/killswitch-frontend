@@ -134,7 +134,7 @@ export const TopAuction = () => {
               previousLabel={'<'}
               nextLabel={'>'}
               breakLabel={'...'}
-              initialPage={1}
+              initialPage={0}
               pageCount={auctions.length / pageSize}
               onPageChange={onPageChange}
               marginPagesDisplayed={1}
