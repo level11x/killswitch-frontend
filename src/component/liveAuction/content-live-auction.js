@@ -73,13 +73,12 @@ const LiveAuctionContent = ({ filterData }) => {
     const onHoverShirtFront = () => {
         setIsShowFront(!isShowFront);
         setIsShowBack(false);
-      };
-      const onHoverShirtBack = () => {
+    };
+    
+    const onHoverShirtBack = () => {
         setIsShowBack(!isShowBack);
         setIsShowFront(false);
-      };
-      console.log("isShowfront: ", isShowFront);
-      console.log("isShowBack : ", isShowBack);
+    };
 
     return (
         <div className="live-content-container">
