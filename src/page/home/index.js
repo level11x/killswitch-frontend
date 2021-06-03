@@ -514,7 +514,7 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex justify-center flex-wrap mmd:px-0">
-              <a href="/">
+              <a target="_blank" href="https://killswitch.finance" rel="noreferrer">
                 <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40 m-4">
                   <img
                     className="m-auto mb-2"
@@ -526,7 +526,7 @@ const HomePage = () => {
                   </div>
                 </div>
               </a>
-              <a href="/">
+              <a target="_blank" href="https://killswitch-official.medium.com" rel="noreferrer">
                 <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
@@ -538,7 +538,7 @@ const HomePage = () => {
                   </div>
                 </div>
               </a>
-              <a href="/">
+              <a target="_blank" href="https://killswitchofficial.gitbook.io/killswitch/" rel="noreferrer">
                 <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
@@ -550,7 +550,7 @@ const HomePage = () => {
                   </div>
                 </div>
               </a>
-              <a href="/">
+              <a target="_blank" href="https://twitter.com/KillSwitch_Defi" rel="noreferrer">
                 <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
@@ -562,7 +562,7 @@ const HomePage = () => {
                   </div>
                 </div>
               </a>
-              <a href="/">
+              <a target="_blank" href="https://t.me/killswitch_global" rel="noreferrer">
                 <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
@@ -574,7 +574,7 @@ const HomePage = () => {
                   </div>
                 </div>
               </a>
-              <a href="/">
+              <a target="_blank" href="https://t.me/killswitchofficial" rel="noreferrer">
                 <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40">
                   <img
                     className="m-auto mb-2"
