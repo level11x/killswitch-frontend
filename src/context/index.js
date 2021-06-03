@@ -30,13 +30,10 @@ const AppProvider = (props) => {
       })
 
       window.ethereum.on('connect', (chainId) => {
-        console.log('chainId', chainId)
         let account = window.ethereum.selectedAddress
-        console.log('account', account)
         setWallet(account)
       })
 
-      console.log('isConnected()', window.ethereum.isConnected(), window.ethereum.selectedAddress)
       if (window.ethereum.isConnected()) {
         
         let account = window.ethereum.selectedAddress
