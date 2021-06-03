@@ -63,7 +63,7 @@ export default function Navigation() {
                     </svg>
                 </button>
                 <div className="h-full flex items-center flex-1 justify-end space-x-lg">
-                    <button className="px-4 py-2 bg-blue-900 rounded text-black">Connect Wallet</button>
+                    <button className="px-4 py-2 bg-blue-900 rounded text-white">Connect Wallet</button>
                 </div>
                 <div className={`transform ${isMenuOpen ? 'scale-y-100' : 'scale-y-0' } w-full fixed top-nav left-0 bg-white flex flex-col`}>
                     <Link className={`px-md py-sm flex font-bold h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("home") ? 'bg-blue-100' : 'hover:bg-blue-50 '}`} to="/home">Home</Link>
