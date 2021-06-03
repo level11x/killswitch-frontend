@@ -5,10 +5,9 @@ import {
   faChevronRight,
   faTimes,
   faBars,
-} from "@fortawesome/free-solid-svg-icons"
-import { Carousel } from 'antd';
-import './home.css'
-
+} from "@fortawesome/free-solid-svg-icons";
+import { Carousel } from "antd";
+import "./home.css";
 
 const Container = ({ children }) => {
   return (
@@ -22,6 +21,10 @@ const HomePage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isPopupShow, setIsPopupShow] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isOneClick, setIsOneClick] = useState(true);
+  const [isAutoCompound, setIsAutoCompound] = useState(false);
+  const [isKillPosition, setIsKillPosition] = useState(false);
+  const [isStopLoss, setIsStopLoss] = useState(false);
 
   const toggleMenuOpen = () => {
     setMenuOpen(!isMenuOpen);
@@ -44,9 +47,31 @@ const HomePage = () => {
     document.body.style.overflow = "unset";
     setIsShowModal(false);
   };
+  const handleOneClick = () => {
+    setIsOneClick(!isOneClick);
+    setIsAutoCompound(false);
+    setIsKillPosition(false);
+    setIsStopLoss(false);
+  };
 
- 
- 
+  const handleAutoCompound = () => {
+    setIsAutoCompound(!isAutoCompound);
+    setIsOneClick(false);
+    setIsKillPosition(false);
+    setIsStopLoss(false);
+  };
+  const handleKillPosition = () => {
+    setIsKillPosition(!isKillPosition);
+    setIsOneClick(false);
+    setIsAutoCompound(false);
+    setIsStopLoss(false);
+  };
+  const handleStopLoss = () => {
+    setIsStopLoss(!isStopLoss);
+    setIsKillPosition(false);
+    setIsOneClick(false);
+    setIsAutoCompound(false);
+  };
 
   return (
     <div className="w-full h-full overflow-y-auto overflow-x-hidden relative">
@@ -145,7 +170,7 @@ const HomePage = () => {
                     KillSwitch Auction
                   </button>
                 </div>
-                <div style={{width: '80%'}}>
+                <div style={{ width: "80%" }}>
                   <Carousel>
                     <div>
                       <img
@@ -163,7 +188,8 @@ const HomePage = () => {
                         alt="banner"
                       />
                     </div>
-                  </Carousel></div>
+                  </Carousel>
+                </div>
                 {/* <div className="block w-max mmd:w-auto">
                     <img
                     className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
@@ -178,7 +204,7 @@ const HomePage = () => {
                     <div className="rounded-full bg-white w-4 h-4 mmd:w-3 mmd:h-3"></div>
                   </div> 
                   </div>*/}
-              </div> 
+              </div>
             </Container>
           </div>
         </div>
@@ -247,7 +273,11 @@ const HomePage = () => {
                     />
                   </div>
                 </div>
-                <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
+                <img
+                  className="self-start"
+                  src="/svg/home/cube.svg"
+                  alt="cube"
+                />
 
                 <div className="block w-[266px]">
                   <div className="text-primaries-900 font-semibold text-4xl mb-8">
@@ -261,7 +291,11 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="flex space-x-2 mlg:justify-center">
-                <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
+                <img
+                  className="self-start"
+                  src="/svg/home/cube.svg"
+                  alt="cube"
+                />
                 <div className="block w-[266px]">
                   <div className="text-primaries-900 font-semibold text-4xl mb-8">
                     Q3
@@ -283,7 +317,11 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="flex space-x-2 mlg:justify-center">
-                <img className="self-start" src="/svg/home/cube.svg" alt="cube" />
+                <img
+                  className="self-start"
+                  src="/svg/home/cube.svg"
+                  alt="cube"
+                />
                 <div className="block w-[266px]">
                   <div className="text-primaries-900 font-semibold text-4xl mb-8">
                     Q4
@@ -311,10 +349,26 @@ const HomePage = () => {
             </div>
             <div className="flex justify-center space-x-4 mmd:flex-wrap mxl:space-x-0 mxl:space-y-4 mxl:flex-wrap">
               <div className="bg-white p-8 rounded h-[664px] w-[642px] mxl:h-auto">
-                <img src="/img/home/feature_banner.png" alt="" />
+                {isOneClick ? (
+                  <img src="/img/home/Oneclick.png" alt="" />
+                ) : null}
+
+                {isAutoCompound ? (
+                  <img src="/img/home/Auto.png" alt="" />
+                ) : null}
+                {isKillPosition ? (
+                  <img src="/img/home/Kill.png" alt="" />
+                ) : null}
+
+                {isStopLoss ? (
+                  <img src="/img/home/feature_banner.png" alt="" />
+                ) : null}
               </div>
               <div className="block space-y-4 h-[664px] w-[642px] mxl:h-auto">
-                <div className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto">
+                <div
+                  className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto"
+                  onClick={handleOneClick}
+                >
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
                     One click Stake V.1
                   </div>
@@ -323,9 +377,12 @@ const HomePage = () => {
                     step
                   </div>
                 </div>
-                <div className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto">
+                <div
+                  className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto"
+                  onClick={handleAutoCompound}
+                >
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
-                    One click Stake V.1
+                    Auto Compound V.1
                   </div>
                   <div className="flex flex-warp text-grey-70 font-semibold text-base">
                     All the farmed tokens will be automatically converted to add
@@ -334,7 +391,10 @@ const HomePage = () => {
                     action.
                   </div>
                 </div>
-                <div className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto">
+                <div
+                  className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto"
+                  onClick={handleKillPosition}
+                >
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
                     Kill Position V.1
                   </div>
@@ -345,7 +405,10 @@ const HomePage = () => {
                     another token user can chose.
                   </div>
                 </div>
-                <div className="bg-white rounded p-4 cursor-pointer h-[154px] mxl:h-auto">
+                <div
+                  className="bg-white rounded p-4 cursor-pointer h-[154px] mxl:h-auto"
+                  onClick={handleStopLoss}
+                >
                   <div className="text-grey-90 font-semibold text-2xl mb-4">
                     Stop loss / Take profit V.2
                   </div>
@@ -534,7 +597,10 @@ const HomePage = () => {
         }}
       >
         <div className="block self-end space-y-10  mb-16 ">
-          <img src="/img/home/killswitch_logo_white.png" alt="killswitch_logo" />
+          <img
+            src="/img/home/killswitch_logo_white.png"
+            alt="killswitch_logo"
+          />
           <div className="flex space-x-6 justify-center ">
             <div className="cursor-pointer">
               <img src="/svg/home/medium.svg" alt="medium" />

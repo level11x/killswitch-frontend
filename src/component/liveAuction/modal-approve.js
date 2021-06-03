@@ -4,7 +4,6 @@ import { BigNumber } from "@ethersproject/bignumber"
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ModalBid from './modal-bid'
 import useCountdown from '../../hooks/useCountdown'
-import shirt from '../../svg/font-shirt.svg'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBidData } from '../../hooks/useBidData'
