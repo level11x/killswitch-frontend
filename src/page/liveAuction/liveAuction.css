@@ -377,8 +377,8 @@
 .robot-approv-bid {
     position: absolute;
     width: 140px;
-    left: 8rem;
-    top: 130px;
+    left: 7rem;
+    top: 120px;
     transform: translateX(1/2);
 }
 
@@ -704,7 +704,7 @@
     }
     .robot-approv-bid {
         width: 140px;
-        left: 7rem;
+        left: 6.6rem;
         top: 110px;
     }
     .robot-approv-bid-s {
@@ -981,8 +981,8 @@
     }
     .robot-approv-bid {
         width: 100px;
-        left: 6rem;
-        top: 90px;
+        left: 3.8rem;
+        top: 70px;
     }
     .robot-approv-bid-s {
         width: 28px;

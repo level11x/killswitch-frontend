@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-export default function CountdownBox({ day, hour, minute, second , startMonth, startDay, startHour, endMonth, endDay, endHour, className,...props}) {
+export default function CountdownBox({ day, hour, minute, second , startMonth, startDay, startHour, endMonth, endDay, endHour, end, className,...props}) {
 
 
     const calculateTimeLeft = () => {
         let year = new Date().getFullYear();
-        let difference = +new Date(year, endMonth, endDay, endHour) - +new Date();
+        let difference = +new Date(end) - +new Date();
+
         let timeLeft = {};
 
         if (difference > 0) {

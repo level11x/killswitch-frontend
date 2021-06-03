@@ -3,8 +3,8 @@
 }
 
 .ant-carousel .slick-dots li.slick-active button {
+    background:  #00BCD4;
     opacity: 1;
-    background: #00BCD4;
     border-radius: 50%;
     width: 16px;
     height: 16px;
