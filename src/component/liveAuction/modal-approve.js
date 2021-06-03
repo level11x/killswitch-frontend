@@ -12,7 +12,7 @@ import { AppContext } from "../../context";
 import { useAllowance } from '../../hooks/useAllowance'
 import IMAGES from '../../assets/auction/robots/robotImg';
 
-export default function ModalApprove({ tokenID, onApproved, onBid }) {
+export default function ModalApprove({ tokenID, onApproved, onBid ,onHoverShirtFront,onHoverShirtBack,setIsShowFront,setIsShowBack,isShowBack,isShowFront}) {
     const busdContract = useBUSDContract();
 
     const [isModalBid, setIsModalBid] = useState(false);
@@ -24,9 +24,8 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const { wallet, connectWallet } = useContext(AppContext);
     const [expireTimeExtend, setExpireTimeExtend] = useState(false);
     const { allowance, refreshAllowance } = useAllowance();
-
     const timeLeft = useCountdown({ timestamp: (expireTimeExtend * 1000) })
-
+ 
     useEffect(() => {
         if (lastBidTime > parseInt(expireTime) - 300) {
             setExpireTimeExtend(parseInt(lastBidTime) + 300)
@@ -77,27 +76,33 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
 
     const onCanceled = () => {
         setIsModalBid(false);
+        setIsShowFront(false);
+        setIsShowBack(false);
     };
 
     const onBidInternal = () => {
         setIsModalBid(false)
         onBid()
     }
+   
 
     return (
         <div className="bid-modal-box">
             <div className="box-t-shirt" >
-            {/* <LazyLoadImage className="overlay-bid-shirt" alt="shirt" src="/img/auction/base-back-shirt.png"/>  */}
-                <div className="top-t-shirt relative">     
-                <LazyLoadImage className="overlay-bid-shirt-front" alt="shirt" src="/img/auction/base-front-shirt.png"/>
-                <LazyLoadImage className="overlay-bid-shirt-front" alt="" src={IMAGES[tokenID]} className="robot-approv-bid" />
-                </div>
+            {isShowFront ? (
+            <div className="top-t-shirt relative">     
+            <LazyLoadImage className="overlay-bid-shirt-front" alt="shirt" src="/img/auction/base-front-shirt.png"/>
+            <LazyLoadImage className="overlay-bid-shirt-front" alt="" src={IMAGES[tokenID]} className="robot-approv-bid" />
+            </div>):(
+            <div className="top-t-shirt relative">
+            <LazyLoadImage alt="shirt" src="/img/auction/base-back-shirt.png" />
+            </div>)}
                 <div className="show-more-shirt">
-                    <div className="show-more-shirt-items">
+                    <div className="show-more-shirt-items" onClick={onHoverShirtFront}>
                     <LazyLoadImage alt="shirt" src="/img/auction/base-front-shirt.png"/>
                     <LazyLoadImage alt="" src={IMAGES[tokenID]} className="robot-approv-bid-s" />
                     </div>
-                    <div className="show-more-shirt-items">
+                    <div className="show-more-shirt-items" onClick={onHoverShirtBack}>
                     <LazyLoadImage alt="shirt" src="/img/auction/base-back-shirt.png"/>
                     </div>
                 </div>
