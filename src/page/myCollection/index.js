@@ -77,6 +77,7 @@ const ShirtCard = (props) => {
 
 export const MyCollectionPage = () => {
     const { wallet } = useContext(AppContext);
+    const [form] = Form.useForm();
     const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
     const { bidData } = useBidData();
@@ -101,15 +102,29 @@ export const MyCollectionPage = () => {
         setData(
             value.filter(
                 (v, idx) =>
-                    idx < 5 || // for mock purpose
+                    idx < 2 || // for mock purpose
                     v.bidAddress.toLowerCase() === wallet.toLowerCase()
             )
         );
         return () => {};
     }, [bidData]);
 
-    const handleSubmitForm = () => {
-        console.log("submitted");
+    const handleFormSubmit = () => {
+        console.log("submit");
+        form.validateFields()
+            .then((values) => {
+                // form.resetFields();
+                console.log(values);
+                setIsConfirmModalOpen(true);
+                setIsInfoModalOpen(false);
+            })
+            .catch((info) => {
+                console.log("Validate Failed:", info);
+            });
+    };
+
+    const handleConfirmSubmit = () => {
+        console.log("confirm");
         setIsConfirmModalOpen(false);
     };
 
@@ -144,19 +159,23 @@ export const MyCollectionPage = () => {
                 onCancel={() => setIsInfoModalOpen(false)}
                 footer={[
                     <Button
+                        key="s"
                         type="primary"
                         size="large"
                         block
-                        onClick={() => {
-                            setIsConfirmModalOpen(true);
-                            setIsInfoModalOpen(false);
-                        }}
+                        onClick={handleFormSubmit}
                     >
                         Submit
                     </Button>,
                 ]}
             >
-                <Form layout="vertical">
+                <Form
+                    layout="vertical"
+                    form={form}
+                    scrollToFirstError={true}
+                    // eslint-disable-next-line no-template-curly-in-string
+                    validateMessages={{ required: "please input ${name}" }}
+                >
                     <span className="text-2xl font-bold">
                         Receiver Information
                     </span>
@@ -218,9 +237,15 @@ export const MyCollectionPage = () => {
                                 name="phone"
                                 rules={[
                                     {
+                                        pattern: /^[-0-9]*$/,
+                                        message: "Please input valid number",
+                                    },
+                                    {
                                         required: true,
                                         message:
                                             "Please input your phone number",
+                                        // type: "regexp",
+                                        // eslint-disable-next-line no-useless-escape
                                     },
                                 ]}
                             >
@@ -237,6 +262,10 @@ export const MyCollectionPage = () => {
                                     {
                                         required: true,
                                         message: "Please input your email",
+                                    },
+                                    {
+                                        type: "email",
+                                        message: "Please input valid email",
                                     },
                                 ]}
                             >
@@ -317,10 +346,10 @@ export const MyCollectionPage = () => {
                             ]}
                         >
                             <Input placeholder="Address" />
-                            <Input
+                            {/* <Input
                                 placeholder="Address (Cont.)"
                                 className="mt-4"
-                            />
+                            /> */}
                         </Form.Item>
                     </div>
                     <Row gutter={16}>
@@ -385,10 +414,15 @@ export const MyCollectionPage = () => {
             </Modal>
             <Modal
                 visible={isConfirmModalOpen}
-                onOk={handleSubmitForm}
-                onCancel={() => setIsConfirmModalOpen(false)}
+                onOk={handleConfirmSubmit}
+                onCancel={() => {
+                    setIsConfirmModalOpen(false);
+                    setIsInfoModalOpen(true);
+                }}
             >
-                something
+                <span className="text-xl">
+                    Once you submitted, your response cannot be edited
+                </span>
             </Modal>
         </div>
     );
