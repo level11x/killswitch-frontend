@@ -1581,6 +1581,10 @@ video {
 	text-align: left;
 }
 
+.align-middle {
+	vertical-align: middle;
+}
+
 .text-sm {
 	font-size: 0.875rem;
 	line-height: 1.25rem;

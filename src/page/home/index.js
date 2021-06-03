@@ -7,6 +7,8 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { Carousel } from "antd";
+import { useHistory } from 'react-router-dom'
+
 import "./home.css";
 
 const Container = ({ children }) => {
@@ -18,6 +20,7 @@ const Container = ({ children }) => {
 };
 
 const HomePage = () => {
+  const history = useHistory();
   const [isShowModal, setIsShowModal] = useState(false);
   const [isPopupShow, setIsPopupShow] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -41,6 +44,7 @@ const HomePage = () => {
     document.body.style.overflow = "unset";
     setIsShowModal(false);
     setIsPopupShow(true);
+    history.push('/live-auction');
   };
 
   const handleCloseDefultModal = () => {
@@ -160,9 +164,11 @@ const HomePage = () => {
                 </div>
 
                 <div className="flex space-x-5 mb-24 mmd:block mmd:space-x-0 mmd:mb-8">
-                  <button className="bg-secondaries-500 px-4 py-2 rounded text-white font-semibold  mmd:block mmd:mb-4">
-                    Documents
-                  </button>
+                  <a className="cursor-pointer h-auto" href="https://killswitchofficial.gitbook.io/killswitch/" target="_blank" rel="noreferrer">
+                    <button className="bg-secondaries-500 px-4 py-2 rounded text-white font-semibold  mmd:block mmd:mb-4 h-full">
+                      Documents
+                    </button>
+                  </a>
                   <button
                     className="border-secondaries-500 border-2 px-4 py-2 rounded text-secondaries-500 font-semibold  mmd:block"
                     onClick={handleOpenModal}
@@ -602,21 +608,18 @@ const HomePage = () => {
             alt="killswitch_logo"
           />
           <div className="flex space-x-6 justify-center ">
-            <div className="cursor-pointer">
+            <a className="cursor-pointer" href="https://killswitch-official.medium.com" target="_blank" rel="noreferrer">
               <img src="/svg/home/medium.svg" alt="medium" />
-            </div>
-            <div className="cursor-pointer">
+            </a>
+            <a className="cursor-pointer" href="https://killswitchofficial.gitbook.io/killswitch/" target="_blank" rel="noreferrer">
               <img src="/svg/home/git.svg" alt="git" />
-            </div>
-            <div className="cursor-pointer">
+            </a>
+            <a className="cursor-pointer" href="https://t.me/killswitch_global" target="_blank" rel="noreferrer">
               <img src="/svg/home/telegram.svg" alt="telegram" />
-            </div>
-            <div className="cursor-pointer">
-              <img src="/svg/home/telegram.svg" alt="telegram" />
-            </div>
-            <div className="cursor-pointer">
+            </a>
+            <a className="cursor-pointer" href="https://twitter.com/KillSwitch_Defi" target="_blank" rel="noreferrer">
               <img src="/svg/home/twitter.svg" alt="twitter" />
-            </div>
+            </a>
           </div>
           <div className="text-sm text-white">
             Copyright © 2021 KillSwitch. All Rights Reserved.
