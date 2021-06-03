@@ -22,12 +22,13 @@ export const InfoPage = () => {
 							hour
 							minute
 							second
+							end="June 7, 2021 18:00:00 GMT+0700"
 							startMonth={5}
 							startDay={4}
 							startHour={18}
-							endMonth={5}
-							endDay={7}
-							endHour={18}
+							// endMonth={5}
+							// endDay={7}
+							// endHour={18}
 						/>
 					</div>
 					<div className="relative pt-40 md:bg-contain">
