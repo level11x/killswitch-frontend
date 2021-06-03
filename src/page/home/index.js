@@ -5,9 +5,10 @@ import {
   faChevronRight,
   faTimes,
   faBars,
-} from "@fortawesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons"
+import { Carousel } from 'antd';
+import './home.css'
 
-// import '../../full-tailwind.css'
 
 const Container = ({ children }) => {
   return (
@@ -43,6 +44,9 @@ const HomePage = () => {
     document.body.style.overflow = "unset";
     setIsShowModal(false);
   };
+
+ 
+ 
 
   return (
     <div className="w-full h-full overflow-y-auto overflow-x-hidden relative">
@@ -132,7 +136,7 @@ const HomePage = () => {
 
                 <div className="flex space-x-5 mb-24 mmd:block mmd:space-x-0 mmd:mb-8">
                   <button className="bg-secondaries-500 px-4 py-2 rounded text-white font-semibold  mmd:block mmd:mb-4">
-                    White paper
+                    Documents
                   </button>
                   <button
                     className="border-secondaries-500 border-2 px-4 py-2 rounded text-secondaries-500 font-semibold  mmd:block"
@@ -141,9 +145,27 @@ const HomePage = () => {
                     KillSwitch Auction
                   </button>
                 </div>
-
-                <div className="block w-max mmd:w-auto">
-                  <img
+                <div style={{width: '80%'}}>
+                  <Carousel>
+                    <div>
+                      <img
+                        className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
+                        onClick={handleOpenModal}
+                        src="/img/home/banner.png"
+                        alt="banner"
+                      />
+                    </div>
+                    <div>
+                      <img
+                        className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
+                        onClick={handleOpenModal}
+                        src="/img/home/banner2.png"
+                        alt="banner"
+                      />
+                    </div>
+                  </Carousel></div>
+                {/* <div className="block w-max mmd:w-auto">
+                    <img
                     className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
                     onClick={handleOpenModal}
                     src="/img/home/banner.png"
@@ -154,9 +176,9 @@ const HomePage = () => {
                     <div className="rounded-full bg-white w-4 h-4 mmd:w-3 mmd:h-3"></div>
                     <div className="rounded-full bg-secondaries-400 w-4 h-4 mmd:w-3 mmd:h-3"></div>
                     <div className="rounded-full bg-white w-4 h-4 mmd:w-3 mmd:h-3"></div>
-                  </div>
-                </div>
-              </div>
+                  </div> 
+                  </div>*/}
+              </div> 
             </Container>
           </div>
         </div>

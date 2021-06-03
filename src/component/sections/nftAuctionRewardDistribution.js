@@ -22,7 +22,7 @@ export default function NftAuctionRewardDistribution() {
                 </div>
                 <div className="z-10 w-full flex flex-row md:items-center md:flex-col space-x-10 md:space-x-0">
                     <div className={`flex-shrink-0 w-40 h-40 lg:w-48 lg:h-48 grid place-content-center rounded-full`} style={{ backgroundColor: "white" }}>
-                        <img src="img/Unlock-hover/Gap.png" alt="img" />
+                        <img  id="img-gap" src="img/Unlock-hover/Gap.png" alt="img" />
                     </div>
                 </div>
                 <div className="z-10 w-full flex flex-row md:items-center md:flex-col space-x-10 md:space-x-0">
