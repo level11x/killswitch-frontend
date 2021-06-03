@@ -107,14 +107,20 @@ export const TopAuction = () => {
             </div>
           </div>
           <div className=" xl:flex row-mobile-col-desktop w-full justify-center mt-10 ">
-            <div className="xl:mr-6  mb-10 xl:mb-2">
-              <TopAuctionCard number={2} auction={top2} />
+            <div className="xl:mr-6  flex justify-center mb-10 xl:mb-2">
+              <div className="auction-width ">
+                <TopAuctionCard number={2} auction={top2} />
+              </div>
             </div>
-            <div className="xl:mr-6 xl:mb-2 mb-10 ">
-              <TopAuctionCard number={3} auction={top3} />
+            <div className="xl:mr-6 flex justify-center xl:mb-2 mb-10 ">
+              <div className="auction-width">
+                <TopAuctionCard number={3} auction={top3} />
+              </div>
             </div>
-            <div className="xl:mr-6 xl:mb-2 mb-10">
-              <TopAuctionCard number={4} auction={top4} />
+            <div className="xl:mr-6 flex justify-center xl:mb-2 mb-10">
+              <div className="auction-width">
+                <TopAuctionCard number={4} auction={top4} />
+              </div>
             </div>
           </div>
           {/* <div className=" xl:flex-row  flex flex-col w-full justify-center mt-10 ">
