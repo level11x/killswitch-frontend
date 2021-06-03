@@ -72,7 +72,7 @@ export const useBidData = () => {
   }
 
   const getPastEvent = async (tokenID) => {
-    const events = await auctionContract.getPastEvents('OutBid', { filter: { tokenID: tokenID }, fromBlock: 0, toBlock: 'latest' })
+    const events = await auctionContract.getPastEvents('OutBid', { filter: { tokenID: tokenID }, fromBlock: 7972867, toBlock: 'latest' })
     console.log('events', events.length)
     return events
   }
