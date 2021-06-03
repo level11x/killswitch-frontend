@@ -5,6 +5,7 @@ import NftAuctionRewardDistribution from '../../component/sections/nftAuctionRew
 import Navigation from '../../component/navigation'
 import { HomeBanner, MysteryBox, RobotFlag, RockFloor, RockGroup, StarParticleBlur } from '../../component/svg'
 import { Web3Provider } from "../../hooks/useWeb3";
+import { END_AUCTION_DATE_STRING } from '../../config/common'
 // home
 export const InfoPage = () => {
 	return (
@@ -22,7 +23,8 @@ export const InfoPage = () => {
 							hour
 							minute
 							second
-							end="June 7, 2021 18:00:00 GMT+0700"
+							end={END_AUCTION_DATE_STRING}
+							// end="June 7, 2021 18:00:00 GMT+0700"
 							startMonth={5}
 							startDay={4}
 							startHour={18}

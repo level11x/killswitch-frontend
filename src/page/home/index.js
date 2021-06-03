@@ -88,7 +88,7 @@ const HomePage = () => {
             <div className="pr-8 h-full flex items-center flex-1 justify-end">
               <a
                 className="px-6 flex h-full items-center border-blue-500 border-b-4 text-xl font-semibold py-6 "
-                href="/home"
+                href="/"
               >
                 Home
               </a>
