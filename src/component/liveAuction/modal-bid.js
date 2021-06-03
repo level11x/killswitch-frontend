@@ -71,19 +71,19 @@ export default function ModalBid({ onBid, tokenID ,onHoverShirtBack,isShowFront,
         <div className="bid-modal-box">
             <div className="box-t-shirt" >
             {isShowFront ? (
-            <div className="top-t-shirt relative">     
+            <div className="top-t-shirt relative" onMouseEnter={onHoverShirtBack}>     
             <LazyLoadImage className="overlay-bid-shirt-front" alt="shirt" src="/img/auction/base-front-shirt.png"/>
-            <LazyLoadImage className="overlay-bid-shirt-front" alt="" src={IMAGES[tokenID]} className="robot-approv-bid" />
+            <LazyLoadImage alt="" src={IMAGES[tokenID]} className="robot-approv-bid" />
             </div>):(
-            <div className="top-t-shirt relative">
+            <div className="top-t-shirt relative" onMouseLeave={onHoverShirtFront}>
             <LazyLoadImage alt="shirt" src="/img/auction/base-back-shirt.png" />
             </div>)}
                 <div className="show-more-shirt">
-                    <div className="show-more-shirt-items" onClick={onHoverShirtFront}>
+                    <div className="show-more-shirt-items relative">
                     <LazyLoadImage alt="shirt" src="/img/auction/base-front-shirt.png"/>
                     <LazyLoadImage alt="" src={IMAGES[tokenID]} className="robot-approv-bid-s" />
                     </div>
-                    <div className="show-more-shirt-items" onClick={onHoverShirtBack}>
+                    <div className="show-more-shirt-items relative">
                     <LazyLoadImage alt="shirt" src="/img/auction/base-back-shirt.png"/>
                     </div>
                 </div>

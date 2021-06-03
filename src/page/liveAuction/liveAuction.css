@@ -376,18 +376,20 @@
 
 .robot-approv-bid {
     position: absolute;
-    width: 140px;
-    left: 7rem;
-    top: 120px;
-    transform: translateX(1/2);
+    width: 36%;
+    height: auto;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
 }
 
 .robot-approv-bid-s {
     position: absolute;
-    width: 50px;
-    left: 6rem;
-    bottom: 7rem;
-    transform: translateX(1/2);
+    width: 33%;
+    height: auto;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
 }
 
 .ant-slider-handle.ant-tooltip-open {
@@ -520,15 +522,17 @@
     border-radius: 4px;
     padding: 20px 0;
     margin: 0 10px;
+    cursor: pointer;
 }
 
 .top-t-shirt img {
-    padding: 0 18px;
+    /* padding: 0 18px; */
 }
 
 .show-more-shirt {
     display: flex;
     padding: 10px 0;
+    /* cursor: pointer; */
 }
 
 .show-more-shirt-items-l {
@@ -702,12 +706,12 @@
     .live-auction-content .ant-form-item-control-input-content {
         padding: 0;
     }
-    .robot-approv-bid {
+    .no-robot-approv-bid {
         width: 140px;
         left: 6.6rem;
         top: 110px;
     }
-    .robot-approv-bid-s {
+    .no-robot-approv-bid-s {
         width: 50px;
         left: 5.8rem;
         bottom: 7rem;
@@ -765,13 +769,13 @@
         bottom: 2rem;
         width: 85%;
     }
-    .robot-approv-bid {
+    .no-robot-approv-bid {
         position: absolute;
         width: 140px;
         left: 7rem;
         top: 115px;
     }
-    .robot-approv-bid-s {
+    .no-robot-approv-bid-s {
         width: 50px;
         left: 5.7rem;
         bottom: 7rem;
@@ -847,12 +851,12 @@
     .box-t-shirt-b-p>p {
         width: 20%;
     }
-    .robot-approv-bid {
+    .no-robot-approv-bid {
         width: 130px;
         left: 6rem;
         top: 100px;
     }
-    .robot-approv-bid-s {
+    .no-robot-approv-bid-s {
         width: 45px;
         left: 4.7rem;
         bottom: 6.5rem;
@@ -979,12 +983,12 @@
         top: 3rem;
         padding-left: 0;
     }
-    .robot-approv-bid {
+    .no-robot-approv-bid {
         width: 100px;
         left: 3.8rem;
         top: 70px;
     }
-    .robot-approv-bid-s {
+    .no-robot-approv-bid-s {
         width: 28px;
         left: 4.4rem;
         bottom: 5.4rem;
@@ -1101,12 +1105,12 @@
     .nav-destop {
         display: none;
     }
-    .robot-approv-bid {
+    .no-robot-approv-bid {
         width: 120px;
         left: 4.3rem;
         top: 78px;
     }
-    .robot-approv-bid-s {
+    .no-robot-approv-bid-s {
         width: 80px;
         left: 7rem;
         top: 37.5rem;
@@ -1224,12 +1228,12 @@
         height: 600px;
         padding-bottom: 0;
     }
-    .robot-approv-bid {
+    .no-robot-approv-bid {
         width: 160px;
         left: 9.5rem;
         top: 140px;
     }
-    .robot-approv-bid-s {
+    .no-robot-approv-bid-s {
         width: 80px;
         left: 7rem;
         /* top: 10rem; */
@@ -1387,16 +1391,16 @@
     .couwndown-bid-c {
         margin-top: 1.5rem;
     }
-    .robot-approv-bid {
+    /* .no-robot-approv-bid {
         width: 140px;
         left: 8.5rem;
         top: 120px;
-    }
-    .robot-approv-bid-s {
+    } */
+    /* .no-robot-approv-bid-s {
         width: 50px;
         left: 5.7rem;
         top: 27rem
-    }
+    } */
     .btn-approve-cancel>.ant-btn span {
         position: relative;
         bottom: 2px;
