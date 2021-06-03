@@ -1,292 +1,327 @@
-
 .top-3\/10 {
-	top: 30%;
+    top: 30%;
 }
 
 .live-auction-container {
-  padding-top: 3rem;
-  background: linear-gradient(0deg, #000051 100%, #000000 0%);
+    padding-top: 3rem;
+    background: linear-gradient(0deg, #000051 100%, #000000 0%);
 }
+
 .live-auction-content {
-  padding: 0 50px;
+    padding: 0 50px;
 }
+
 .bg-live-auction-section1 {
-  font-size: 20px;
-  height: 800px;
-  padding-bottom: 50px;
+    font-size: 20px;
+    height: 800px;
+    padding-bottom: 50px;
 }
+
 .world-box {
-  display: flex;
-  width: 100%;
-  background-image: url("/src/svg/stars.svg");
-  background-position: bottom;
-  background-repeat: repeat-x;
+    display: flex;
+    width: 100%;
+    background-image: url("/src/svg/stars.svg");
+    background-position: bottom;
+    background-repeat: repeat-x;
 }
+
 .world-box img {
-  position: relative;
-  top: -4rem;
+    position: relative;
+    top: -4rem;
 }
-.bg-live-auction-section1 > .world-auction img {
-  position: relative;
-  top: -4.5rem;
+
+.bg-live-auction-section1>.world-auction img {
+    position: relative;
+    top: -4.5rem;
 }
+
 .world-auction {
-  width: 100%;
+    width: 100%;
 }
+
 .live-auction-text {
-  position: relative;
-  top: 7rem;
-  padding-left: 5rem;
+    position: relative;
+    top: 7rem;
+    padding-left: 5rem;
 }
 
 .live-auction-text-header {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 56px;
-  line-height: 150%;
-  color: #fff;
-}
-.live-auction-text-header-number {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 80px;
-  line-height: 150%;
-  color: #fff;
-}
-.box-liveAuction {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  bottom: 15rem;
-  padding: 30px;
-}
-.live-auction-ending {
-  display: inline-block;
-  padding: 0 30px;
-}
-.live-countdown-content {
-  display: flex;
-}
-.live-auction-text-header-ending {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 56px;
-  line-height: 150%;
-  color: #fff;
-}
-.header-robot img {
-  position: relative;
-  right: 8rem;
-  bottom: 5rem;
-}
-.live-auction-collectibles-container {
-  padding: 0;
-  margin: 0;
-  position: relative;
-  top: 2rem;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 150%;
+    color: #fff;
 }
 
+.live-auction-text-header-number {
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 80px;
+    line-height: 150%;
+    color: #fff;
+}
+
+.box-liveAuction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    bottom: 15rem;
+    padding: 30px;
+}
+
+.live-auction-ending {
+    display: inline-block;
+    padding: 0 30px;
+}
+
+.live-countdown-content {
+    display: flex;
+}
+
+.live-auction-text-header-ending {
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 150%;
+    color: #fff;
+}
+
+.header-robot img {
+    position: relative;
+    right: 8rem;
+    bottom: 5rem;
+}
+
+.live-auction-collectibles-container {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 2rem;
+}
+
+
 /* Collectiblbe-page */
+
 .collectibles-killswitch-text {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 56px;
-  line-height: 150%;
-  color: #fff;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 150%;
+    color: #fff;
 }
 
 .curentbid-text {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 150%;
-  padding-top: 50px;
-  color: #fff;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 150%;
+    padding-top: 50px;
+    color: #fff;
 }
+
 .collectibles-box {
-  display: inline-block;
-  width: 100%;
-  background: white;
-  padding: 20px;
-  border-radius: 4px;
-  align-items: center;
-  margin-top: 1.5rem;
+    display: inline-block;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    align-items: center;
+    margin-top: 1.5rem;
 }
+
 .collectibles-box-search {
-  display: flex;
-  width: 100%;
-  align-items: center;
+    display: flex;
+    width: 100%;
+    align-items: center;
 }
+
 .collectibles-search {
-  width: 70%;
+    width: 70%;
 }
+
 .search-box {
-  padding-right: 1%;
+    padding-right: 1%;
 }
-.search-box > .ant-form-item {
-  margin-bottom: 0px;
+
+.search-box>.ant-form-item {
+    margin-bottom: 0px;
 }
-.search-box > .ant-input-affix-wrapper {
-  height: 40px;
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  color: #fff;
-  font-size: 20px;
-  line-height: 150%;
-  width: 100%;
+
+.search-box>.ant-input-affix-wrapper {
+    height: 40px;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    color: #fff;
+    font-size: 20px;
+    line-height: 150%;
+    width: 100%;
 }
 
 .collectibles-search-buttom {
-  width: 30%;
+    width: 30%;
 }
+
 .button-box {
-  padding-left: 1%;
+    padding-left: 1%;
 }
-.button-box > .ant-btn {
-  width: 100%;
-  background-color: #000051;
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  color: #fff;
-  font-size: 18px;
-  line-height: 150%;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 5px;
-  height: 40px;
+
+.button-box>.ant-btn {
+    width: 100%;
+    background-color: #000051;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    color: #fff;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 40px;
 }
-.button-box > .ant-btn:hover {
-  background-color: #000051;
-  border-color: none;
+
+.button-box>.ant-btn:hover {
+    background-color: #000051;
+    border-color: none;
 }
-.button-box > .ant-btn:focus {
-  background-color: #000051;
-  border-color: #fff;
-  color: #fff;
+
+.button-box>.ant-btn:focus {
+    background-color: #000051;
+    border-color: #fff;
+    color: #fff;
 }
-.button-box > .ant-btn span {
-  position: relative;
-  bottom: 4px;
+
+.button-box>.ant-btn span {
+    position: relative;
+    bottom: 4px;
 }
 
 .action-search-selection {
-  display: flex;
-  width: 100%;
-  padding: 20px 0;
-  align-items: center;
-}
-.auction-search-action {
-  display: flex;
-  width: 70%;
-  justify-content: left;
-  align-items: flex-end;
-}
-.auction-bidding-box {
-  width: 30%;
-  text-align: left;
-  padding-left: 1%;
-}
-.auction-search-action-items {
-  width: 25%;
-  padding-right: 1%;
+    display: flex;
+    width: 100%;
+    padding: 20px 0;
+    align-items: center;
 }
 
-.auction-search-action-items > .ant-select {
-  width: 100%;
+.auction-search-action {
+    display: flex;
+    width: 70%;
+    justify-content: left;
+    align-items: flex-end;
 }
+
+.auction-bidding-box {
+    width: 30%;
+    text-align: left;
+    padding-left: 1%;
+}
+
+.auction-search-action-items {
+    width: 25%;
+    padding-right: 1%;
+}
+
+.auction-search-action-items>.ant-select {
+    width: 100%;
+}
+
 .auction-max-min {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
-  padding: 6px 0;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    padding: 6px 0;
 }
 
 .live-content-container {
-  padding: 4% 0;
-  margin: 0;
-}
-.live-content-box {
-  display: flex;
-  justify-content: space-start;
-  flex-wrap: wrap;
-  column-gap: 91px;
-  padding: 15px 0;
-}
-.live-content-box-items {
-  width: 20%;
-  margin: 20px 1px;
+    padding: 4% 0;
+    margin: 0;
 }
 
-.live-content-box-items > .ant-card-bordered > .ant-card-body {
-  padding: 15px;
+.live-content-box {
+    display: flex;
+    justify-content: space-start;
+    flex-wrap: wrap;
+    column-gap: 91px;
+    padding: 15px 0;
 }
+
+.live-content-box-items {
+    width: 20%;
+    margin: 20px 1px;
+}
+
+.live-content-box-items>.ant-card-bordered>.ant-card-body {
+    padding: 15px;
+}
+
 .box-number {
-  position: absolute;
-  text-align: center;
-  right: 15px;
-  top: 15px;
-  padding: 0 2px;
-  width: 80px;
-  background: #2962ff;
-  height: 22px;
-  border-radius: 8px;
-  color: #ffffff;
-  font-family: Kanit;
-  font-size: 14px;
-  z-index: 10;
+    position: absolute;
+    text-align: center;
+    right: 15px;
+    top: 15px;
+    padding: 0 2px;
+    width: 80px;
+    background: #2962ff;
+    height: 22px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: Kanit;
+    font-size: 14px;
+    z-index: 10;
 }
 
 .shirt-card-box {
-  display: flex;
-  margin: 10px;
-  flex-wrap: wrap;
-  position: relative;
+    display: flex;
+    margin: 10px;
+    flex-wrap: wrap;
+    position: relative;
 }
 
 .shirt-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  cursor: pointer;
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
 }
 
 .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 80%;
-  width: 100%;
-  opacity: 0;
-  transition: 0.5s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
 }
 
 .overlay-robot {
-  position: absolute;
-  bottom: 35px;
-  left: 45px;
-  right: 0;
-  height: 65%;
-  width: 55%;
-  opacity: 0;
-  transition: 0.5s ease;
+    position: absolute;
+    bottom: 35px;
+    left: 45px;
+    right: 0;
+    height: 65%;
+    width: 55%;
+    opacity: 0;
+    transition: 0.5s ease;
 }
+
 .shirt-card-box:hover .overlay-robot {
-  opacity: 1;
-  cursor: pointer;
+    opacity: 1;
+    cursor: pointer;
 }
+
 .overlay-shirt {
-  position: absolute;
+    position: absolute;
     bottom: 0;
     left: 14px;
     right: 0;
@@ -295,1313 +330,1341 @@
     opacity: 0;
     transition: 0.5s ease;
 }
+
 .shirt-card-box:hover .overlay-shirt {
-  opacity: 1;
-  cursor: pointer;
+    opacity: 1;
+    cursor: pointer;
 }
+
 .overlay-hoodie {
-  position: absolute;
-  bottom: 10px;
-  left: 30px;
-  right: 0;
-  height: 94%;
-  width: 70%;
-  opacity: 0;
-  transition: 0.5s ease;
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+    right: 0;
+    height: 96%;
+    width: 70%;
+    opacity: 0;
+    transition: 0.5s ease;
 }
+
 .shirt-card-box:hover .overlay-hoodie {
-  opacity: 1;
-  cursor: pointer;
+    opacity: 1;
+    cursor: pointer;
 }
+
 .overlay-polo {
-  position: absolute;
-  bottom: 10px;
-  left: 27px;
-  right: 0;
-  height: 96%;
-  width: 72%;
-  opacity: 0;
-  transition: 0.5s ease;
-
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    right: 0;
+    height: 92%;
+    width: 80%;
+    opacity: 0;
+    transition: 0.5s ease;
 }
+
+#img-gap:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    cursor: pointer;
+}
+
 .shirt-card-box:hover .overlay-polo {
-  opacity: 1;
-  cursor: pointer;
+    opacity: 1;
+    cursor: pointer;
 }
 
-.robot-approv-bid{
-  position: absolute;
-  width: 140px;
-  left: 8rem;
-  top: 130px;
-  transform: translateX(1/2);
+.robot-approv-bid {
+    position: absolute;
+    width: 140px;
+    left: 8rem;
+    top: 130px;
+    transform: translateX(1/2);
 }
-.robot-approv-bid-s{
-  position: absolute;
-  width: 50px;
-  left: 6rem;
-  bottom: 7rem;
-  transform: translateX(1/2);
+
+.robot-approv-bid-s {
+    position: absolute;
+    width: 50px;
+    left: 6rem;
+    bottom: 7rem;
+    transform: translateX(1/2);
 }
 
 .ant-slider-handle.ant-tooltip-open {
-  border-color: #303f9f !important;
+    border-color: #303f9f !important;
 }
+
 .ant-slider-handle {
-  width: 14px;
-  height: 14px;
-  margin-top: -2px;
-  background-color: #fff;
-  border: solid 2px #303f9f !important;
+    width: 14px;
+    height: 14px;
+    margin-top: -2px;
+    background-color: #fff;
+    border: solid 2px #303f9f !important;
 }
 
 .ant-slider:hover .ant-slider-track {
-  background-color: #303f9f !important;
+    background-color: #303f9f !important;
 }
+
 .ant-slider-track {
-  background-color: #303f9f !important;
-  border-radius: 4px;
+    background-color: #303f9f !important;
+    border-radius: 4px;
 }
+
 .shirt-card-box:hover .overlay {
-  opacity: 1;
-  cursor: pointer;
+    opacity: 1;
+    cursor: pointer;
 }
 
 .live-bid-box {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
 }
 
 .live-bid-current {
-  width: 45%;
+    width: 45%;
 }
 
 .live-bid-price {
-  width: 40%;
+    width: 40%;
 }
+
 .bid-avatar {
-  width: 15%;
+    width: 15%;
 }
+
 .bid-avatar .ant-avatar-image {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  padding: 2px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 2px;
 }
 
 .live-bid-text {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
-  color: black;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    color: black;
 }
 
 .live-bid-number {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 150%;
-  color: black;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: black;
 }
+
 .pagination-live-auction {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
 .live-auction-footer {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .bottom-img {
-  display: block;
-  width: 100%;
-  height: auto;
+    display: block;
+    width: 100%;
+    height: auto;
 }
-.top-img {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  transition: 0.5s ease;
-}
-.bid-modal-box {
-  display: flex;
-}
-.modal-show > .ant-modal {
-  width: 50%;
-}
-.box-t-shirt {
-  width: 40%;
-}
-.box-t-shirt-b {
-  width: 35%;
-  padding: 0 12px;
-}
-.box-t-shirt-b-p {
-  width: 25%;
-  padding: 0 10px;
-  overflow-y: scroll;
-  height: 500px;
-}
-.top-t-shirt {
-  display: flex; 
-  justify-content: center;
-  position: relative;
-  background-color: #f5f5f5;
-  border-radius: 4px;
-  padding: 20px 0;
-  margin: 0 10px;
 
+.top-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transition: 0.5s ease;
+}
+
+.bid-modal-box {
+    display: flex;
+}
+
+.modal-show>.ant-modal {
+    width: 50%;
+}
+
+.box-t-shirt {
+    width: 40%;
+}
+
+.box-t-shirt-b {
+    width: 35%;
+    padding: 0 12px;
+}
+
+.box-t-shirt-b-p {
+    width: 25%;
+    padding: 0 10px;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.top-t-shirt {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    padding: 20px 0;
+    margin: 0 10px;
 }
 
 .top-t-shirt img {
-  padding: 0 18px;
+    padding: 0 18px;
 }
+
 .show-more-shirt {
-  display: flex;
-  padding: 10px 0;
+    display: flex;
+    padding: 10px 0;
 }
+
 .show-more-shirt-items-l {
-  background-color: #f5f5f5;
-  border-radius: 4px;
-  padding: 10px;
-  margin: 10px;
-  cursor: pointer;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
 }
 
 .ant-modal {
-  width: 1000px !important;
+    width: 1000px !important;
 }
+
 .couwndown-bid {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
 }
 
 .couwndown-bid-t {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 150%;
-  color: #000000;
-  padding-right: 10px;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 150%;
+    color: #000000;
+    padding-right: 10px;
 }
+
 .couwndown-bid-day {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 150%;
-  color: #757575;
-  padding-right: 10px;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    color: #757575;
+    padding-right: 10px;
 }
+
 .couwndown-bid-items {
-  padding: 5px 0;
-  width: 25%;
+    padding: 5px 0;
+    width: 25%;
 }
+
 .couwndown-bid-s {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 150%;
-  color: #757575;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+    color: #757575;
 }
+
 .price-bid-exchange {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn-approve-cancel {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
+
 .btn-cancel {
-  display: none;
+    display: none;
 }
 
 .btn-approve {
-  width: 100%;
-}
-.btn-approve-cancel > .ant-btn {
-  background-color: #000051;
-  height: 50px;
-  border-radius: 4px;
-}
-.btn-approve-cancel > .ant-btn[disabled], .btn-approve-cancel > .ant-btn[disabled]:hover {
-  background-color: #f5f5f5;
-}
-.btn-approve-cancel > .ant-btn[disabled] span {
-  color: #70709c;
-}
-.btn-approve-cancel > .ant-btn span {
-  font-family: Kanit;
-  font-style: normal;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 600;
-  position: relative;
-  bottom: 2px;
-}
-.btn-approve-cancel > .ant-btn:hover {
-  background-color: #000051;
+    width: 100%;
 }
 
-.btn-approve-cancel > .ant-btn:focus {
-  background-color: #000051;
+.btn-approve-cancel>.ant-btn {
+    background-color: #000051;
+    height: 50px;
+    border-radius: 4px;
 }
-.box-t-shirt-b-p > p {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 150%;
-  color: #000000;
-  position: fixed;
-  z-index: 2;
-  background-color: #fff;
-  width: 12%;
+
+.btn-approve-cancel>.ant-btn[disabled],
+.btn-approve-cancel>.ant-btn[disabled]:hover {
+    background-color: #f5f5f5;
 }
+
+.btn-approve-cancel>.ant-btn[disabled] span {
+    color: #70709c;
+}
+
+.btn-approve-cancel>.ant-btn span {
+    font-family: Kanit;
+    font-style: normal;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    position: relative;
+    bottom: 2px;
+}
+
+.btn-approve-cancel>.ant-btn:hover {
+    background-color: #000051;
+}
+
+.btn-approve-cancel>.ant-btn:focus {
+    background-color: #000051;
+}
+
+.box-t-shirt-b-p>p {
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+    color: #000000;
+    position: fixed;
+    z-index: 2;
+    background-color: #fff;
+    width: 12%;
+}
+
 .bid-price-box-show {
-  padding-top: 28px;
-  z-index: 1;
+    padding-top: 28px;
+    z-index: 1;
 }
+
 .bid-by-box {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
 }
+
 .text-bid-code {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
-
-  color: #000000;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    color: #000000;
 }
-.text-bid-busd {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 150%;
 
-  color: #000000;
+.text-bid-busd {
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #000000;
 }
 
 .min-time {
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 150%;
-  margin: 10px 0;
-  color: #808080;
+    font-family: Kanit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    margin: 10px 0;
+    color: #808080;
 }
 
 .ant-input-number {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .bid-price-box-show {
-  padding-top: 20px;
-  z-index: 0;
+    padding-top: 20px;
+    z-index: 0;
 }
+
 @media only screen and (min-width: 1367px) and (max-width: 1440px) {
-  .live-auction-content .ant-form-item-control-input-content {
-    padding: 0;
-  }
-  .robot-approv-bid{
-    width: 140px;
-    left: 7rem;
-    top: 110px;
-  }
-  .robot-approv-bid-s{
-    width: 50px;
-    left: 5.8rem;
-    bottom: 7rem;;
-  }
-  .box-t-shirt-b-p > p {
-    width: 15%;
-  }
-  .live-auction-text {
-    position: relative;
-    top: 4rem;
-  }
-  .live-content-box {
-    padding: 10px 0;
-  }
-  .live-auction-text-header {
-    font-size: 45px;
-  }
-  .live-auction-text-header-number {
-    font-size: 60px;
-  }
-  .live-auction-content {
-    position: relative;
-    bottom: 6rem;
-  }
-  .box-liveAuction {
-    bottom: 20rem;
-    padding: 20px;
-  }
-  .bg-live-auction-section1 {
-    height: 750px;
-    padding-bottom: 20px;
-  }
-  .live-auction-text-header-ending {
-    font-size: 45px;
-  }
-  .header-robot img {
-    right: 4rem;
-    bottom: 7rem;
-  }
-  .live-auction-collectibles-container {
-    padding: 0;
-    margin: 0;
-  }
-  .collectibles-killswitch-text {
-    font-size: 45px;
-  }
-  .ant-modal {
-    width: 980px !important;
-  }
+    .live-auction-content .ant-form-item-control-input-content {
+        padding: 0;
+    }
+    .robot-approv-bid {
+        width: 140px;
+        left: 7rem;
+        top: 110px;
+    }
+    .robot-approv-bid-s {
+        width: 50px;
+        left: 5.8rem;
+        bottom: 7rem;
+        ;
+    }
+    .box-t-shirt-b-p>p {
+        width: 15%;
+    }
+    .live-auction-text {
+        position: relative;
+        top: 4rem;
+    }
+    .live-content-box {
+        padding: 10px 0;
+    }
+    .live-auction-text-header {
+        font-size: 45px;
+    }
+    .live-auction-text-header-number {
+        font-size: 60px;
+    }
+    .live-auction-content {
+        position: relative;
+        bottom: 6rem;
+    }
+    .box-liveAuction {
+        bottom: 20rem;
+        padding: 20px;
+    }
+    .bg-live-auction-section1 {
+        height: 750px;
+        padding-bottom: 20px;
+    }
+    .live-auction-text-header-ending {
+        font-size: 45px;
+    }
+    .header-robot img {
+        right: 4rem;
+        bottom: 7rem;
+    }
+    .live-auction-collectibles-container {
+        padding: 0;
+        margin: 0;
+    }
+    .collectibles-killswitch-text {
+        font-size: 45px;
+    }
+    .ant-modal {
+        width: 980px !important;
+    }
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1366px) {
-  .header-robot img {
-    right: 0;
-    bottom: 2rem;
-    width: 85%;
-  }
-  .robot-approv-bid{
-    position: absolute;
-    width: 140px;
-    left: 7rem;
-    top: 115px;
-  }
-  .robot-approv-bid-s{
-    width: 50px;
-    left: 5.7rem;
-    bottom: 7rem;;
-  }
-  .box-t-shirt-b-p > p {
-    width: 16%;
-  }
-  .ant-modal {
-    width: 960px !important;
-  }
-  .live-auction-text-header {
-    font-size: 50px;
-  }
-  .live-auction-text-header-number {
-    font-size: 70px;
-  }
-  .live-auction-text-header-ending {
-    font-size: 50px;
-  }
-  .collectibles-killswitch-text {
-    font-size: 50px;
-  }
-  .live-auction-text {
-    top: 5rem;
-    padding-left: 1rem;
-  }
-  .world-box img {
-    width: 40%;
-  }
-
-  .live-auction-ending {
-    padding: 0;
-  }
-  .box-liveAuction {
-    padding: 0 35px;
-  }
-
-  .live-auction-collectibles-container {
-    padding: 0 10px;
-  }
-  .live-auction-content {
-    padding: 0 30px;
-    position: relative;
-    bottom: 9rem;
-  }
-  .live-content-box {
-    padding: 15px 10px;
-  }
-  .button-box > .ant-btn {
-    height: 32px;
-  }
-  .live-content-box-items > .ant-card-bordered > .ant-card-body {
-    padding: 8px;
-  }
-  .live-bid-text {
-    font-size: 14px;
-  }
-  .live-bid-number {
-    font-size: 14px;
-  }
-  .bid-avatar .ant-avatar-image {
-    width: 40px;
-    height: 40px;
-  }
+    .header-robot img {
+        right: 0;
+        bottom: 2rem;
+        width: 85%;
+    }
+    .robot-approv-bid {
+        position: absolute;
+        width: 140px;
+        left: 7rem;
+        top: 115px;
+    }
+    .robot-approv-bid-s {
+        width: 50px;
+        left: 5.7rem;
+        bottom: 7rem;
+        ;
+    }
+    .box-t-shirt-b-p>p {
+        width: 16%;
+    }
+    .ant-modal {
+        width: 960px !important;
+    }
+    .live-auction-text-header {
+        font-size: 50px;
+    }
+    .live-auction-text-header-number {
+        font-size: 70px;
+    }
+    .live-auction-text-header-ending {
+        font-size: 50px;
+    }
+    .collectibles-killswitch-text {
+        font-size: 50px;
+    }
+    .live-auction-text {
+        top: 5rem;
+        padding-left: 1rem;
+    }
+    .world-box img {
+        width: 40%;
+    }
+    .live-auction-ending {
+        padding: 0;
+    }
+    .box-liveAuction {
+        padding: 0 35px;
+    }
+    .live-auction-collectibles-container {
+        padding: 0 10px;
+    }
+    .live-auction-content {
+        padding: 0 30px;
+        position: relative;
+        bottom: 9rem;
+    }
+    .live-content-box {
+        padding: 15px 10px;
+    }
+    .button-box>.ant-btn {
+        height: 32px;
+    }
+    .live-content-box-items>.ant-card-bordered>.ant-card-body {
+        padding: 8px;
+    }
+    .live-bid-text {
+        font-size: 14px;
+    }
+    .live-bid-number {
+        font-size: 14px;
+    }
+    .bid-avatar .ant-avatar-image {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1024px) {
-  .world-box img {
-    width: 300px;
-  }
-  .ant-modal {
-    width: 880px !important;
-  }
-  .box-t-shirt-b-p > p {
-    width: 20%;
-  }
-  .robot-approv-bid{
-    width: 130px;
-    left: 6rem;
-    top: 100px;
-  }
-  .robot-approv-bid-s{
-    width: 45px;
-    left: 4.7rem;
-    bottom: 6.5rem;;
-  }
-  .live-auction-text {
-    top: 4rem;
-    padding-left: 1rem;
-  }
-  .live-auction-text-header {
-    font-size: 45px;
-  }
-  .live-auction-text-header-number {
-    font-size: 70px;
-  }
-  .ant-modal-body {
-    padding: 20px 12px !important;
-  }
-
-  .box-t-shirt-b-p > p {
-    width: 15%;
-  }
-  .box-liveAuction {
-    bottom: 8rem;
-    padding: 0 10px;
-  }
-  .header-robot img {
-    right: -5rem;
-    bottom: 4rem;
-    width: 70%;
-  }
-  .live-auction-content {
-    padding: 0 20px;
-  }
-  .live-auction-ending {
-    padding: 0px 15px;
-  }
-  .live-auction-text-header-ending {
-    font-size: 45px;
-  }
-  .bg-live-auction-section1 {
-    height: 610px;
-    padding-bottom: 20px;
-  }
-  .box-number {
-    right: 8px;
-    top: 10px;
-    width: 60px;
-    height: 20px;
-    font-size: 12px;
-  }
-  .button-box > .ant-btn {
-    height: 32px;
-  }
-  .collectibles-box {
-    margin-top: 10px;
-  }
-  .collectibles-killswitch-text {
-    font-size: 45px;
-  }
-
-  .live-content-box-items > .ant-card-bordered > .ant-card-body {
-    padding: 6px;
-  }
-  .live-bid-text {
-    font-size: 12px;
-  }
-  .live-bid-number {
-    font-size: 12px;
-  }
-  .bid-avatar .ant-avatar-image {
-    width: 35px;
-    height: 35px;
-  }
-  .couwndown-bid-t {
-    font-size: 28px;
-  }
-  .couwndown-bid-day {
-    font-size: 13px;
-  }
-  .couwndown-bid-c {
-    margin-top: 1.5rem;
-  }
-  .btn-approve-cancel > .ant-btn {
-    height: 35px;
-  }
-  .btn-approve-cancel > .ant-btn span {
-    position: relative;
-    bottom: 2px;
-    font-size: 18px;
-  }
-  .couwndown-bid-s {
-    font-size: 18px;
-  }
-  .box-t-shirt-b-p > p {
-    font-size: 18px;
-  }
-  .box-t-shirt-b {
-    padding: 0 4px;
-  }
-  .text-bid-busd {
-    font-size: 14px;
-  }
-  .box-t-shirt-b-p {
-    padding: 0 4px;
-  }
-  .text-bid-code {
-    font-size: 14px;
-  }
+    .world-box img {
+        width: 300px;
+    }
+    .ant-modal {
+        width: 880px !important;
+    }
+    .box-t-shirt-b-p>p {
+        width: 20%;
+    }
+    .robot-approv-bid {
+        width: 130px;
+        left: 6rem;
+        top: 100px;
+    }
+    .robot-approv-bid-s {
+        width: 45px;
+        left: 4.7rem;
+        bottom: 6.5rem;
+        ;
+    }
+    .live-auction-text {
+        top: 4rem;
+        padding-left: 1rem;
+    }
+    .live-auction-text-header {
+        font-size: 45px;
+    }
+    .live-auction-text-header-number {
+        font-size: 70px;
+    }
+    .ant-modal-body {
+        padding: 20px 12px !important;
+    }
+    .box-t-shirt-b-p>p {
+        width: 15%;
+    }
+    .box-liveAuction {
+        bottom: 8rem;
+        padding: 0 10px;
+    }
+    .header-robot img {
+        right: -5rem;
+        bottom: 4rem;
+        width: 70%;
+    }
+    .live-auction-content {
+        padding: 0 20px;
+    }
+    .live-auction-ending {
+        padding: 0px 15px;
+    }
+    .live-auction-text-header-ending {
+        font-size: 45px;
+    }
+    .bg-live-auction-section1 {
+        height: 610px;
+        padding-bottom: 20px;
+    }
+    .box-number {
+        right: 8px;
+        top: 10px;
+        width: 60px;
+        height: 20px;
+        font-size: 12px;
+    }
+    .button-box>.ant-btn {
+        height: 32px;
+    }
+    .collectibles-box {
+        margin-top: 10px;
+    }
+    .collectibles-killswitch-text {
+        font-size: 45px;
+    }
+    .live-content-box-items>.ant-card-bordered>.ant-card-body {
+        padding: 6px;
+    }
+    .live-bid-text {
+        font-size: 12px;
+    }
+    .live-bid-number {
+        font-size: 12px;
+    }
+    .bid-avatar .ant-avatar-image {
+        width: 35px;
+        height: 35px;
+    }
+    .couwndown-bid-t {
+        font-size: 28px;
+    }
+    .couwndown-bid-day {
+        font-size: 13px;
+    }
+    .couwndown-bid-c {
+        margin-top: 1.5rem;
+    }
+    .btn-approve-cancel>.ant-btn {
+        height: 35px;
+    }
+    .btn-approve-cancel>.ant-btn span {
+        position: relative;
+        bottom: 2px;
+        font-size: 18px;
+    }
+    .couwndown-bid-s {
+        font-size: 18px;
+    }
+    .box-t-shirt-b-p>p {
+        font-size: 18px;
+    }
+    .box-t-shirt-b {
+        padding: 0 4px;
+    }
+    .text-bid-busd {
+        font-size: 14px;
+    }
+    .box-t-shirt-b-p {
+        padding: 0 4px;
+    }
+    .text-bid-code {
+        font-size: 14px;
+    }
 }
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .live-auction-text-header {
-    font-size: 38px;
-  }
-  .world-box img {
-    width: 35%;
-  }
-  .box-t-shirt-b-p > p {
-    width: 25%;
-  }
-  .box-t-shirt-b-p {
-    height: 350px;
-  }
-  .live-auction-text {
-    top: 3rem;
-    padding-left: 0;
-  }
-  .robot-approv-bid{
-    width: 100px;
-    left: 6rem;
-    top: 90px;
-  }
-  .robot-approv-bid-s{
-    width: 28px;
-    left: 4.4rem;
-    bottom: 5.4rem;;
-  }
-  .live-auction-text-header-number {
-    font-size: 45px;
-  }
-  .box-liveAuction {
-    justify-content: center;
-    flex-wrap: wrap;
-    bottom: 6rem;
-    padding: 0;
-  }
-  .live-auction-ending {
-    padding: 0;
-    position: relative;
-    right: 3rem;
-    top: 3rem;
-  }
-  .header-robot img {
-    position: relative;
-    width: 80%;
-    bottom: 22rem;
-    left: 16rem;
-  }
-  .live-auction-text-header-ending {
-    font-size: 38px;
-    padding-bottom: 12px;
-  }
-  .couwndown-bid-t {
-    font-size: 28px;
-  }
-  .couwndown-bid-day {
-    font-size: 10px;
-  }
-
-  .couwndown-bid-c {
-    margin-top: 1.5rem;
-  }
-  .btn-approve-cancel > .ant-btn {
-    height: 35px;
-  }
-  .btn-approve-cancel > .ant-btn span {
-    position: relative;
-    bottom: 2px;
-    font-size: 18px;
-  }
-  .couwndown-bid-s {
-    font-size: 18px;
-  }
-  .box-t-shirt-b-p > p {
-    font-size: 18px;
-  }
-  .bid-price-box-show {
-    padding-top: 20px;
-    z-index: 1;
-  }
-  .live-auction-content {
-    position: relative;
-    bottom: 15rem;
-    z-index: 20;
-    padding: 0 20px;
-  }
-  .button-box > .ant-btn {
-    height: 32px;
-  }
-  .collectibles-killswitch-text {
-    font-size: 40px;
-  }
-  .action-search-selection {
-    padding: 20px 0 0 0;
-  }
-  .live-content-box-items {
-    width: 48%;
-    margin: 12px 0px;
-  }
-  .collectibles-box {
-    padding: 20px 20px 0 20px;
-  }
-  .box-t-shirt-b {
-    padding: 0 10px;
-  }
-  .couwndown-bid-s {
-    font-size: 16px;
-  }
-  .couwndown-bid-t {
-    font-size: 26px;
-  }
-  .box-t-shirt-b-p > p {
-    font-size: 16px;
-  }
-  .text-bid-code {
-    font-size: 12px;
-  }
-  .bid-by-box {
-    margin: 6px 0;
-  }
-  .text-bid-busd {
-    font-size: 14px;
-    text-align: left;
-  }
-  .box-t-shirt {
-    width: 35%;
-  }
-  .top-t-shirt-b {
-    width: 35%;
-  }
-  .box-t-shirt-b-p {
-    width: 30%;
-  }
+    .live-auction-text-header {
+        font-size: 38px;
+    }
+    .world-box img {
+        width: 35%;
+    }
+    .box-t-shirt-b-p>p {
+        width: 25%;
+    }
+    .box-t-shirt-b-p {
+        height: 350px;
+    }
+    .live-auction-text {
+        top: 3rem;
+        padding-left: 0;
+    }
+    .robot-approv-bid {
+        width: 100px;
+        left: 6rem;
+        top: 90px;
+    }
+    .robot-approv-bid-s {
+        width: 28px;
+        left: 4.4rem;
+        bottom: 5.4rem;
+        ;
+    }
+    .live-auction-text-header-number {
+        font-size: 45px;
+    }
+    .box-liveAuction {
+        justify-content: center;
+        flex-wrap: wrap;
+        bottom: 6rem;
+        padding: 0;
+    }
+    .live-auction-ending {
+        padding: 0;
+        position: relative;
+        right: 3rem;
+        top: 3rem;
+    }
+    .header-robot img {
+        position: relative;
+        width: 80%;
+        bottom: 22rem;
+        left: 16rem;
+    }
+    .live-auction-text-header-ending {
+        font-size: 38px;
+        padding-bottom: 12px;
+    }
+    .couwndown-bid-t {
+        font-size: 28px;
+    }
+    .couwndown-bid-day {
+        font-size: 10px;
+    }
+    .couwndown-bid-c {
+        margin-top: 1.5rem;
+    }
+    .btn-approve-cancel>.ant-btn {
+        height: 35px;
+    }
+    .btn-approve-cancel>.ant-btn span {
+        position: relative;
+        bottom: 2px;
+        font-size: 18px;
+    }
+    .couwndown-bid-s {
+        font-size: 18px;
+    }
+    .box-t-shirt-b-p>p {
+        font-size: 18px;
+    }
+    .bid-price-box-show {
+        padding-top: 20px;
+        z-index: 1;
+    }
+    .live-auction-content {
+        position: relative;
+        bottom: 15rem;
+        z-index: 20;
+        padding: 0 20px;
+    }
+    .button-box>.ant-btn {
+        height: 32px;
+    }
+    .collectibles-killswitch-text {
+        font-size: 40px;
+    }
+    .action-search-selection {
+        padding: 20px 0 0 0;
+    }
+    .live-content-box-items {
+        width: 48%;
+        margin: 12px 0px;
+    }
+    .collectibles-box {
+        padding: 20px 20px 0 20px;
+    }
+    .box-t-shirt-b {
+        padding: 0 10px;
+    }
+    .couwndown-bid-s {
+        font-size: 16px;
+    }
+    .couwndown-bid-t {
+        font-size: 26px;
+    }
+    .box-t-shirt-b-p>p {
+        font-size: 16px;
+    }
+    .text-bid-code {
+        font-size: 12px;
+    }
+    .bid-by-box {
+        margin: 6px 0;
+    }
+    .text-bid-busd {
+        font-size: 14px;
+        text-align: left;
+    }
+    .box-t-shirt {
+        width: 35%;
+    }
+    .top-t-shirt-b {
+        width: 35%;
+    }
+    .box-t-shirt-b-p {
+        width: 30%;
+    }
 }
+
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-  .nav-destop{
-    display: none;
-  }
-  .robot-approv-bid{
-    width: 120px;
-    left: 4.3rem;
-    top: 78px;
-  }
-  .robot-approv-bid-s{
-    width: 80px;
-    left: 7rem;
-    top: 37.5rem;
-  }
-  .world-box img {
-    display: none;
-  }
-  .world-box {
-    text-align: center;
-  }
-  .live-auction-text {
-    top: 3rem;
-    padding-left: 0;
-  }
-  .box-t-shirt-b-p > p{
-    position: relative;
-    width: 100%;
-    padding-top: 1rem;
-    font-size: 20px !important;
-  }
+    .nav-destop {
+        display: none;
+    }
+    .robot-approv-bid {
+        width: 120px;
+        left: 4.3rem;
+        top: 78px;
+    }
+    .robot-approv-bid-s {
+        width: 80px;
+        left: 7rem;
+        top: 37.5rem;
+    }
+    .world-box img {
+        display: none;
+    }
+    .world-box {
+        text-align: center;
+    }
+    .live-auction-text {
+        top: 3rem;
+        padding-left: 0;
+    }
+    .box-t-shirt-b-p>p {
+        position: relative;
+        width: 100%;
+        padding-top: 1rem;
+        font-size: 20px !important;
+    }
+    .live-auction-text-header-number {
+        font-size: 50px;
+    }
+    .box-liveAuction {
+        flex-wrap: wrap;
+        text-align: left;
+        padding: 0 20px;
+        bottom: 0;
+        z-index: 20;
+    }
+    .live-auction-text-header {
+        font-size: 35px;
+    }
+    .live-auction-text-header-ending {
+        font-size: 35px;
+    }
+    .live-auction-ending {
+        position: relative;
+        top: 6.5rem;
+        right: 2rem;
+        z-index: 2;
+    }
+    .couwndown-bid-c {
+        margin-top: 1.5rem;
+    }
+    .btn-approve-cancel>.ant-btn span {
+        position: relative;
+        bottom: 2px;
+        font-size: 18px;
+    }
+    .box-t-shirt-b-p>p {
+        font-size: 16px;
+    }
+    .text-bid-code {
+        font-size: 12px;
+    }
+    .header-robot img {
+        width: 55%;
+        text-align: center;
+        left: 22rem;
+        bottom: 11rem;
+        z-index: 1;
+    }
+    .bg-live-auction-section1 {
+        font-size: 20px;
+        height: 420px;
+        padding-bottom: 0;
+    }
+    .live-auction-content {
+        padding: 0 20px;
+        z-index: 21;
+    }
+    .collectibles-killswitch-text {
+        font-size: 38px;
+    }
+    .button-box>.ant-btn {
+        height: 32px;
+        font-size: 16px;
+    }
+    .collectibles-box {
+        margin-top: 0;
+        padding: 10px 10px 0 10px;
+    }
+    .action-search-selection {
+        padding: 10px 0 0 0;
+    }
+    .auction-max-min {
+        font-size: 14px;
+    }
+    .live-content-box-items {
+        width: 48%;
+        margin: 12px 0;
+    }
+    .bid-modal-box {
+        flex-wrap: wrap;
+    }
+    .box-t-shirt {
+        width: 100%;
+    }
+    .box-t-shirt-b {
+        width: 100%;
+        padding: 0 12px;
+    }
+    .box-t-shirt-b-p {
+        width: 100%;
+    }
+}
 
-  .live-auction-text-header-number {
-    font-size: 50px;
-  }
-  .box-liveAuction {
-    flex-wrap: wrap;
-    text-align: left;
-    padding: 0 20px;
-    bottom: 0;
-    z-index: 20;
-  }
-
-  .live-auction-text-header {
-    font-size: 35px;
-  }
-  .live-auction-text-header-ending {
-    font-size: 35px;
-  }
-  .live-auction-ending {
-    position: relative;
-    top: 6.5rem;
-    right: 2rem;
-    z-index: 2;
-  }
- 
-  
-  .couwndown-bid-c {
-    margin-top: 1.5rem;
-  }
- 
- 
-  .btn-approve-cancel > .ant-btn span {
-    position: relative;
-    bottom: 2px;
-    font-size: 18px;
-  }
-  .box-t-shirt-b-p > p {
-    font-size: 16px;
-  }
-  .text-bid-code {
-    font-size: 12px;
-  }
-  .header-robot img {
-    width: 55%;
-    text-align: center;
-    left: 22rem;
-    bottom: 11rem;
-    z-index: 1;
-  }
-  .bg-live-auction-section1 {
-    font-size: 20px;
-    height: 420px;
-    padding-bottom: 0;
-  }
-  .live-auction-content {
-    padding: 0 20px;
-    z-index: 21;
-  }
-  .collectibles-killswitch-text {
-    font-size: 38px;
-  }
-  .button-box > .ant-btn {
-    height: 32px;
-    font-size: 16px;
-  }
-  .collectibles-box {
-    margin-top: 0;
-    padding: 10px 10px 0 10px;
-  }
-  .action-search-selection {
-    padding: 10px 0 0 0;
-  }
-  .auction-max-min {
-    font-size: 14px;
-  }
-  .live-content-box-items {
-    width: 48%;
-    margin: 12px 0;
-  }
-  .bid-modal-box {
-    flex-wrap: wrap;
-}
-  .box-t-shirt {
-    width: 100%;
-}
-.box-t-shirt-b {
-  width: 100%;
-  padding: 0 12px;
-}
-.box-t-shirt-b-p {
-  width: 100%;
-}
-}
 @media only screen and (min-width: 480px) and (max-width: 575px) {
-  .world-box img {
-    display: none;
-  }
-  .bg-live-auction-section1 {
-    font-size: 20px;
-    height: 600px;
-    padding-bottom: 0;
-  }
-  .robot-approv-bid{
-    width: 160px;
-    left: 9.5rem;
-    top: 140px;
-  }
-  .robot-approv-bid-s{
-    width: 80px;
-    left: 7rem;
-    /* top: 10rem; */
-  }
-  .box-t-shirt-b-p > p{
-    position: relative;
-    width: 100%;
-    padding-top: 1rem;
-    font-size: 20px !important;
-  }
+    .world-box img {
+        display: none;
+    }
+    .bg-live-auction-section1 {
+        font-size: 20px;
+        height: 600px;
+        padding-bottom: 0;
+    }
+    .robot-approv-bid {
+        width: 160px;
+        left: 9.5rem;
+        top: 140px;
+    }
+    .robot-approv-bid-s {
+        width: 80px;
+        left: 7rem;
+        /* top: 10rem; */
+    }
+    .box-t-shirt-b-p>p {
+        position: relative;
+        width: 100%;
+        padding-top: 1rem;
+        font-size: 20px !important;
+    }
+    .live-auction-text-header {
+        font-size: 35px;
+    }
+    .live-auction-text-header-ending {
+        font-size: 35px;
+    }
+    .couwndown-bid-c {
+        margin-top: 1.5rem;
+    }
+    .btn-approve-cancel>.ant-btn span {
+        position: relative;
+        bottom: 2px;
+        font-size: 18px;
+    }
+    .box-t-shirt-b-p>p {
+        font-size: 16px;
+    }
+    .text-bid-code {
+        font-size: 12px;
+    }
+    .live-auction-content {
+        padding: 0 20px;
+        z-index: 20;
+    }
+    .collectibles-killswitch-text {
+        font-size: 35px;
+    }
+    .button-box>.ant-btn {
+        height: 32px;
+    }
+    .collectibles-box {
+        margin-top: 0;
+        padding: 10px;
+    }
+    .live-content-box-items {
+        width: 100%;
+        margin: 12px 0;
+    }
+    .live-auction-container {
+        padding-top: 0;
+    }
+    .live-auction-text {
+        top: 4rem;
+        text-align: center;
+    }
+    .live-auction-text-header-number {
+        font-size: 55px;
+    }
+    .live-auction-ending {
+        padding: 0;
+        position: relative;
+        top: 12.5rem;
+        width: 100%;
+        z-index: 2;
+    }
+    .live-auction-text {
+        padding-left: 0;
+        padding: 20px;
+    }
+    .box-liveAuction {
+        flex-wrap: wrap;
+        padding: 20px 10px;
+        text-align: center;
+        bottom: 0;
+    }
+    .header-robot img {
+        position: relative;
+        display: flex;
+        bottom: 16rem;
+        left: 17rem;
+        z-index: 1;
+        width: 52%;
+    }
+    .live-auction-collectibles-container {
+        top: 3rem;
+        text-align: center;
+    }
+    .action-search-selection {
+        padding: 0;
+    }
+    .live-content-container {
+        margin-top: 2rem;
+    }
+    .auction-search-action-items {
+        width: 50%;
+    }
+    .auction-search-action {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .collectibles-box-search {
+        flex-wrap: wrap;
+    }
+    .collectibles-search {
+        width: 100%;
+    }
+    .collectibles-search-buttom {
+        width: 100%;
+    }
+    .button-box {
+        padding-left: 0;
+        margin: 12px 0;
+    }
+    .auction-bidding-box {
+        display: none;
+    }
+    .bid-modal-box {
+        flex-wrap: wrap;
+    }
+    .box-t-shirt {
+        width: 100%;
+    }
+    .box-t-shirt-b {
+        width: 100%;
+        padding: 0 12px;
+    }
+    .box-t-shirt-b-p {
+        width: 100%;
+    }
+}
 
-  .live-auction-text-header {
-    font-size: 35px;
-  }
-  .live-auction-text-header-ending {
-    font-size: 35px;
-  }
-  .couwndown-bid-c {
-    margin-top: 1.5rem;
-  }
- 
-  
-  .btn-approve-cancel > .ant-btn span {
-    position: relative;
-    bottom: 2px;
-    font-size: 18px;
-  }
-  .box-t-shirt-b-p > p {
-    font-size: 16px;
-  }
-  .text-bid-code {
-    font-size: 12px;
-  }
-  .live-auction-content {
-    padding: 0 20px;
-    z-index: 20;
-  }
-  .collectibles-killswitch-text {
-    font-size: 35px;
-  }
-  .button-box > .ant-btn {
-    height: 32px;
-  }
-  .collectibles-box {
-    margin-top: 0;
-    padding: 10px;
-  }
-  .live-content-box-items {
-    width: 100%;
-    margin: 12px 0;
-  }
-  .live-auction-container {
-    padding-top: 0;
-  }
-  .live-auction-text {
-    top: 4rem;
-    text-align: center;
-  }
-  .live-auction-text-header-number {
-    font-size: 55px;
-  }
-
-  .live-auction-ending {
-    padding: 0;
-    position: relative;
-    top: 12.5rem;
-    width: 100%;
-    z-index: 2;
-  }
-  .live-auction-text {
-    padding-left: 0;
-    padding: 20px;
-  }
-  .box-liveAuction {
-    flex-wrap: wrap;
-    padding: 20px 10px;
-    text-align: center;
-    bottom: 0;
-  }
-  .header-robot img {
-    position: relative;
-    display: flex;
-    bottom: 16rem;
-    left: 17rem;
-    z-index: 1;
-    width: 52%;
-  }
-  .live-auction-collectibles-container {
-    top: 3rem;
-    text-align: center;
-  }
-  .action-search-selection {
-    padding: 0;
-  }
-  .live-content-container {
-    margin-top: 2rem;
-  }
-  .auction-search-action-items {
-    width: 50%;
-  }
-  .auction-search-action {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-  .collectibles-box-search {
-    flex-wrap: wrap;
-  }
-  .collectibles-search {
-    width: 100%;
-  }
-  .collectibles-search-buttom {
-    width: 100%;
-  }
-  .button-box {
-    padding-left: 0;
-    margin: 12px 0;
-  }
-  .auction-bidding-box {
-    display: none;
-  }
-  .bid-modal-box {
-    flex-wrap: wrap;
-}
-  .box-t-shirt {
-    width: 100%;
-}
-.box-t-shirt-b {
-  width: 100%;
-  padding: 0 12px;
-}
-.box-t-shirt-b-p {
-  width: 100%;
-}
-}
 @media only screen and (min-width: 376px) and (max-width: 479px) {
-  .live-auction-container {
-    background: #01012b;
-  }
-  .box-t-shirt-b-p > p{
-    position: relative;
-    width: 100%;
-    padding-top: 1rem;
-    font-size: 20px !important;
-  }
-  .world-box img {
-    display: none;
-  }
-  .live-auction-text {
-    top: 2rem;
-    padding-left: 0;
-  }
-  .live-auction-text-header {
-    font-size: 30px;
-  }
-  .live-auction-text-header-ending {
-    font-size: 30px;
-  }
-  .couwndown-bid-c {
-    margin-top: 1.5rem;
-  }
-
-  .robot-approv-bid{
-    width: 140px;
-    left: 8.5rem;
-    top: 120px;
-  }
-  .robot-approv-bid-s{
-    width:  50px;
-    left: 5.7rem;
-    top: 27rem
-  }
-  .btn-approve-cancel > .ant-btn span {
-    position: relative;
-    bottom: 2px;
-    font-size: 18px;
-  }
-  .box-t-shirt-b-p > p {
-    font-size: 16px;
-  }
-  .text-bid-code {
-    font-size: 12px;
-  }
-  .bg-live-auction-section1 {
-    font-size: 20px;
-    height: 710px;
-    padding-bottom: 0;
-  }
-  .live-auction-content {
-    padding: 0 20px;
-    z-index: 18;
-  }
-  .collectibles-killswitch-text {
-    font-size: 30px;
-  }
-  .button-box > .ant-btn {
-    height: 32px;
-  }
-  .collectibles-box {
-    margin-top: 0;
-    padding: 10px;
-  }
-  .action-search-selection {
-    padding: 0;
-  }
-  .live-content-box-items {
-    width: 100%;
-    margin: 12px 0;
-  }
-  .live-auction-container {
-    padding-top: 0;
-  }
-  .live-auction-text {
-    top: 6rem;
-    text-align: center;
-  }
-  .live-auction-text-header-number {
-    font-size: 45px;
-  }
-
-  .live-auction-ending {
-    padding: 0;
-    position: relative;
-    top: 29rem;
-    width: 100%;
-    z-index: 2;
-  }
-  .live-auction-text {
-    padding-left: 0;
-    padding: 0 20px;
-  }
-  .box-liveAuction {
-    flex-wrap: wrap;
-    padding: 20px 10px;
-    text-align: center;
-    bottom: 0;
-  }
-  .header-robot img {
-    position: relative;
-    display: flex;
-    bottom: 3rem;
-    left: 9rem;
-    z-index: 1;
-    width: 60%;
-  }
-  .live-auction-collectibles-container {
-    top: 3rem;
-    text-align: center;
-  }
-  .live-content-container {
-    margin-top: 2rem;
-  }
-  .auction-search-action {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-  .auction-search-action-items {
-    width: 50%;
-    padding-right: 1%;
-  }
-  .collectibles-box-search {
-    flex-wrap: wrap;
-  }
-  .collectibles-search {
-    width: 100%;
-  }
-  .collectibles-search-buttom {
-    width: 100%;
-  }
-  .button-box {
-    padding-left: 0;
-    margin: 12px 0;
-  }
-  .auction-bidding-box {
-    display: none;
-  }
-  .bid-modal-box {
-    flex-wrap: wrap;
+    .live-auction-container {
+        background: #01012b;
+    }
+    .box-t-shirt-b-p>p {
+        position: relative;
+        width: 100%;
+        padding-top: 1rem;
+        font-size: 20px !important;
+    }
+    .world-box img {
+        display: none;
+    }
+    .live-auction-text {
+        top: 2rem;
+        padding-left: 0;
+    }
+    .live-auction-text-header {
+        font-size: 30px;
+    }
+    .live-auction-text-header-ending {
+        font-size: 30px;
+    }
+    .couwndown-bid-c {
+        margin-top: 1.5rem;
+    }
+    .robot-approv-bid {
+        width: 140px;
+        left: 8.5rem;
+        top: 120px;
+    }
+    .robot-approv-bid-s {
+        width: 50px;
+        left: 5.7rem;
+        top: 27rem
+    }
+    .btn-approve-cancel>.ant-btn span {
+        position: relative;
+        bottom: 2px;
+        font-size: 18px;
+    }
+    .box-t-shirt-b-p>p {
+        font-size: 16px;
+    }
+    .text-bid-code {
+        font-size: 12px;
+    }
+    .bg-live-auction-section1 {
+        font-size: 20px;
+        height: 710px;
+        padding-bottom: 0;
+    }
+    .live-auction-content {
+        padding: 0 20px;
+        z-index: 18;
+    }
+    .collectibles-killswitch-text {
+        font-size: 30px;
+    }
+    .button-box>.ant-btn {
+        height: 32px;
+    }
+    .collectibles-box {
+        margin-top: 0;
+        padding: 10px;
+    }
+    .action-search-selection {
+        padding: 0;
+    }
+    .live-content-box-items {
+        width: 100%;
+        margin: 12px 0;
+    }
+    .live-auction-container {
+        padding-top: 0;
+    }
+    .live-auction-text {
+        top: 6rem;
+        text-align: center;
+    }
+    .live-auction-text-header-number {
+        font-size: 45px;
+    }
+    .live-auction-ending {
+        padding: 0;
+        position: relative;
+        top: 29rem;
+        width: 100%;
+        z-index: 2;
+    }
+    .live-auction-text {
+        padding-left: 0;
+        padding: 0 20px;
+    }
+    .box-liveAuction {
+        flex-wrap: wrap;
+        padding: 20px 10px;
+        text-align: center;
+        bottom: 0;
+    }
+    .header-robot img {
+        position: relative;
+        display: flex;
+        bottom: 3rem;
+        left: 9rem;
+        z-index: 1;
+        width: 60%;
+    }
+    .live-auction-collectibles-container {
+        top: 3rem;
+        text-align: center;
+    }
+    .live-content-container {
+        margin-top: 2rem;
+    }
+    .auction-search-action {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .auction-search-action-items {
+        width: 50%;
+        padding-right: 1%;
+    }
+    .collectibles-box-search {
+        flex-wrap: wrap;
+    }
+    .collectibles-search {
+        width: 100%;
+    }
+    .collectibles-search-buttom {
+        width: 100%;
+    }
+    .button-box {
+        padding-left: 0;
+        margin: 12px 0;
+    }
+    .auction-bidding-box {
+        display: none;
+    }
+    .bid-modal-box {
+        flex-wrap: wrap;
+    }
+    .box-t-shirt {
+        width: 100%;
+    }
+    .box-t-shirt-b {
+        width: 100%;
+        padding: 0 12px;
+    }
+    .box-t-shirt-b-p {
+        width: 100%;
+    }
 }
-  .box-t-shirt {
-    width: 100%;
-}
-.box-t-shirt-b {
-  width: 100%;
-  padding: 0 12px;
-}
-.box-t-shirt-b-p {
-  width: 100%;
-}
-}
-
 
 @media only screen and (max-width: 375px) {
-  .live-auction-container {
-    background: #01012b;
-  }
-  .box-t-shirt-b-p > p{
-    position: relative;
-    width: 100%;
-    padding-top: 1rem;
-    font-size: 20px !important;
-  }
-  .world-box img {
-    display: none;
-  }
-  .live-auction-text {
-    top: 2rem;
-    padding-left: 0;
-  }
-  .live-auction-text-header {
-    font-size: 30px;
-  }
-  .live-auction-text-header-ending {
-    font-size: 30px;
-  }
-  .couwndown-bid-c {
-    margin-top: 1.5rem;
-  }
-
- 
-  .btn-approve-cancel > .ant-btn span {
-    position: relative;
-    bottom: 2px;
-    font-size: 18px;
-  }
-  .box-t-shirt-b-p > p {
-    font-size: 16px;
-  }
-  .text-bid-code {
-    font-size: 12px;
-  }
-  .bg-live-auction-section1 {
-    font-size: 20px;
-    height: 710px;
-    padding-bottom: 0;
-  }
-  .live-auction-content {
-    padding: 0 20px;
-    z-index: 18;
-    position: relative;
-    top: 4rem;
-  }
-  .collectibles-killswitch-text {
-    font-size: 30px;
-  }
-  .button-box > .ant-btn {
-    height: 32px;
-  }
-  .collectibles-box {
-    margin-top: 0;
-    padding: 10px;
-  }
-  .action-search-selection {
-    padding: 0;
-  }
-  .live-content-box-items {
-    width: 100%;
-    margin: 12px 0;
-  }
-  .live-auction-container {
-    padding-top: 0;
-  }
-  .live-auction-text {
-    top: 6rem;
-    text-align: center;
-  }
-  .live-auction-text-header-number {
-    font-size: 45px;
-  }
-
-  .live-auction-ending {
-    padding: 0;
-    position: relative;
-    top: 29rem;
-    width: 100%;
-    z-index: 2;
-  }
-  .live-auction-text {
-    padding-left: 0;
-    padding: 0 20px;
-  }
-  .box-liveAuction {
-    flex-wrap: wrap;
-    padding: 20px 10px;
-    text-align: center;
-    bottom: 0;
-  }
-  .header-robot img {
-    position: relative;
-    display: flex;
-    bottom: 8rem;
-    left: 6rem;
-    z-index: 1;
-    width: 60%;
-  }
-  .live-auction-ending {
-    padding: 0;
-    position: relative;
-    top: 25rem;
-    width: 100%;
-    z-index: 2;
-}
-  .live-auction-collectibles-container {
-    top: 3rem;
-    text-align: center;
-  }
-  .live-content-container {
-    margin-top: 2rem;
-  }
-  .auction-search-action {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-  .auction-search-action-items {
-    width: 50%;
-    padding-right: 1%;
-  }
-  .collectibles-box-search {
-    flex-wrap: wrap;
-  }
-  .collectibles-search {
-    width: 100%;
-  }
-  .collectibles-search-buttom {
-    width: 100%;
-  }
-  .button-box {
-    padding-left: 0;
-    margin: 12px 0;
-  }
-  .auction-bidding-box {
-    display: none;
-  }
-  .bid-modal-box {
-    flex-wrap: wrap;
-}
-  .box-t-shirt {
-    width: 100%;
-}
-.box-t-shirt-b {
-  width: 100%;
-  padding: 0 12px;
-}
-.box-t-shirt-b-p {
-  width: 100%;
-}
+    .live-auction-container {
+        background: #01012b;
+    }
+    .box-t-shirt-b-p>p {
+        position: relative;
+        width: 100%;
+        padding-top: 1rem;
+        font-size: 20px !important;
+    }
+    .world-box img {
+        display: none;
+    }
+    .live-auction-text {
+        top: 2rem;
+        padding-left: 0;
+    }
+    .live-auction-text-header {
+        font-size: 30px;
+    }
+    .live-auction-text-header-ending {
+        font-size: 30px;
+    }
+    .couwndown-bid-c {
+        margin-top: 1.5rem;
+    }
+    .btn-approve-cancel>.ant-btn span {
+        position: relative;
+        bottom: 2px;
+        font-size: 18px;
+    }
+    .box-t-shirt-b-p>p {
+        font-size: 16px;
+    }
+    .text-bid-code {
+        font-size: 12px;
+    }
+    .bg-live-auction-section1 {
+        font-size: 20px;
+        height: 710px;
+        padding-bottom: 0;
+    }
+    .live-auction-content {
+        padding: 0 20px;
+        z-index: 18;
+        position: relative;
+        top: 4rem;
+    }
+    .collectibles-killswitch-text {
+        font-size: 30px;
+    }
+    .button-box>.ant-btn {
+        height: 32px;
+    }
+    .collectibles-box {
+        margin-top: 0;
+        padding: 10px;
+    }
+    .action-search-selection {
+        padding: 0;
+    }
+    .live-content-box-items {
+        width: 100%;
+        margin: 12px 0;
+    }
+    .live-auction-container {
+        padding-top: 0;
+    }
+    .live-auction-text {
+        top: 6rem;
+        text-align: center;
+    }
+    .live-auction-text-header-number {
+        font-size: 45px;
+    }
+    .live-auction-ending {
+        padding: 0;
+        position: relative;
+        top: 29rem;
+        width: 100%;
+        z-index: 2;
+    }
+    .live-auction-text {
+        padding-left: 0;
+        padding: 0 20px;
+    }
+    .box-liveAuction {
+        flex-wrap: wrap;
+        padding: 20px 10px;
+        text-align: center;
+        bottom: 0;
+    }
+    .header-robot img {
+        position: relative;
+        display: flex;
+        bottom: 8rem;
+        left: 6rem;
+        z-index: 1;
+        width: 60%;
+    }
+    .live-auction-ending {
+        padding: 0;
+        position: relative;
+        top: 25rem;
+        width: 100%;
+        z-index: 2;
+    }
+    .live-auction-collectibles-container {
+        top: 3rem;
+        text-align: center;
+    }
+    .live-content-container {
+        margin-top: 2rem;
+    }
+    .auction-search-action {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .auction-search-action-items {
+        width: 50%;
+        padding-right: 1%;
+    }
+    .collectibles-box-search {
+        flex-wrap: wrap;
+    }
+    .collectibles-search {
+        width: 100%;
+    }
+    .collectibles-search-buttom {
+        width: 100%;
+    }
+    .button-box {
+        padding-left: 0;
+        margin: 12px 0;
+    }
+    .auction-bidding-box {
+        display: none;
+    }
+    .bid-modal-box {
+        flex-wrap: wrap;
+    }
+    .box-t-shirt {
+        width: 100%;
+    }
+    .box-t-shirt-b {
+        width: 100%;
+        padding: 0 12px;
+    }
+    .box-t-shirt-b-p {
+        width: 100%;
+    }
 }
