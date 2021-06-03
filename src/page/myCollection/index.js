@@ -1,18 +1,41 @@
 import { useState, useEffect, useContext } from "react";
 import { Button, Modal, Row, Col, Form, Input, Space, Select } from "antd";
-import HeaderLiveAuction from "../../component/liveAuction/header-live-action";
-import CollectibileLiveAuction from "../../component/liveAuction/collectibles";
-import LiveAuctionContent from "../../component/liveAuction/content-live-auction";
 import LiveAuctionFooter from "../../component/liveAuction/footer-live-action";
 import Navigation from "../../component/navigation";
 // import "./liveAuction.css";
 import { useBidData } from "../../hooks/useBidData";
-import { BigNumber } from "@ethersproject/bignumber";
 import { AppContext } from "../../context";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Card } from "antd";
 import IMAGES from "../../assets/auction/robots/robotImg";
+import { Moon } from "../../component/svg";
 import countryCodes from "../../countryCode.json";
+import { AUCTION_ADDRESS } from "../../config/contract";
+import { useBUSDContract } from "../../hooks/useBUSDContract";
+
+const rewards = [
+    {
+        name: "shirt",
+        optionText: "Size",
+        options: ["S", "M", "L"],
+        imgSrc: "/img/auction/base-front-shirt.png",
+        unlockAt: 0,
+    },
+    {
+        name: "gap",
+        optionText: "Size",
+        options: ["S", "test", "L"],
+        imgSrc: "/img/auction/base-front-shirt.png",
+        unlockAt: 1000,
+    },
+    {
+        name: "hoodie",
+        optionText: "Size",
+        options: ["S", "M", "L"],
+        imgSrc: "/img/auction/base-front-shirt.png",
+        unlockAt: 2000,
+    },
+];
 
 const ShirtCard = (props) => {
     return (
@@ -83,6 +106,23 @@ export const MyCollectionPage = () => {
     const { bidData } = useBidData();
     const [data, setData] = useState([]);
 
+    const busdContract = useBUSDContract();
+    const [tvl, setTVL] = useState(0);
+    useEffect(() => {
+        if (!busdContract) return;
+        busdContract.methods
+            .balanceOf(AUCTION_ADDRESS)
+            .call()
+            .then((balance) => {
+                console.log(balance);
+                setTVL(
+                    (balance / 10 ** 18)
+                        .toFixed(2)
+                        .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+                );
+            });
+    }, [busdContract]);
+
     useEffect(() => {
         if (!bidData || bidData.length < 4) return;
         const tokenIDs = bidData[0];
@@ -131,6 +171,28 @@ export const MyCollectionPage = () => {
     return (
         <div>
             <Navigation />
+            <div className="pt-16 flex flex-row">
+                <Moon className="" />
+                <div className="flex flex-col text-white">
+                    <div className="">Total Bidding Value Lock</div>
+                    <div>{tvl} BUSD</div>
+                </div>
+            </div>
+            <div className="flex align-middle space-x-8">
+                {rewards
+                    .filter((r) => r.unlockAt < tvl)
+                    .map((reward) => (
+                        <div
+                            className="bg-white rounded-full"
+                            style={{ padding: "2rem" }}
+                        >
+                            <LazyLoadImage
+                                alt={reward.name}
+                                src={reward.imgSrc}
+                            />
+                        </div>
+                    ))}
+            </div>
             <div className="pt-16">
                 <h1 className="text-4xl text-white font-bold">My Collection</h1>
                 {/* <CollectibileLiveAuction onFinishSearch={onFinishSearch} /> */}
@@ -288,52 +350,58 @@ export const MyCollectionPage = () => {
                         </Col>
                     </Row>
                     <span className="text-2xl font-bold">Size</span>
-                    {data.map((current) => (
-                        <div className="flex flex-row items-center">
-                            {/* <div className="">{current.id}</div> */}
-                            <div className="shirt-card-box" id="shirt">
-                                <LazyLoadImage
-                                    className="overlay w-full h-full"
-                                    alt="shirt"
-                                    src="/img/auction/base-back-shirt.png"
-                                />
-                                <div className="shirt-image relative">
+                    <div className="flex flex-col space-y-3 mt-4">
+                        {rewards
+                            .filter((r) => r.unlockAt < 2001)
+                            .map((reward) => (
+                                <div className="flex border rounded border-gray p-4 space-x-8 items-center">
                                     <LazyLoadImage
-                                        alt="shirt"
-                                        src="/img/auction/base-front-shirt.png"
+                                        alt={reward.name}
+                                        src={reward.imgSrc}
+                                        width="20%"
                                     />
-                                    <LazyLoadImage
-                                        alt=""
-                                        src={IMAGES[current.id]}
-                                        className="absolute block left-1/2 top-3/10 transform -translate-x-1/2 w-1/3 h-auto"
-                                    />
-                                    {/* <LazyLoadImage alt="" src={IMAGES[props.id]} className="absolute block left-1/2 top-1/4 transform -translate-x-1/2 w-20 h-20" /> */}
-                                    {/* <span>{props.id}</span> */}
+                                    <div style={{ width: "30%" }}>
+                                        {/* <span className="text-xl">
+                                            {reward.optionText}
+                                        </span> */}
+                                        <Form.Item
+                                            label={reward.optionText}
+                                            name={reward.name}
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message:
+                                                        "Please select your " +
+                                                        reward.optionText,
+                                                },
+                                            ]}
+                                        >
+                                            <Select
+                                                size="large"
+                                                // defaultValue={reward.options[0]}
+                                                placeholder={
+                                                    "Select your " +
+                                                    reward.optionText
+                                                }
+                                            >
+                                                {reward.options.map(
+                                                    (option) => (
+                                                        <Select.Option
+                                                            value={option}
+                                                        >
+                                                            {option}
+                                                        </Select.Option>
+                                                    )
+                                                )}
+                                            </Select>
+                                        </Form.Item>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <Form.Item
-                                    label="Size"
-                                    name={`size${current.id}`}
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: "Please select your size",
-                                        },
-                                    ]}
-                                >
-                                    <Select>
-                                        {["S", "M", "L", "XL"].map((c) => (
-                                            <Select.Option value={c}>
-                                                {c}
-                                            </Select.Option>
-                                        ))}
-                                    </Select>
-                                </Form.Item>
-                            </div>
-                        </div>
-                    ))}
-                    <span className="text-2xl font-bold">Shipping Address</span>
+                            ))}
+                    </div>
+                    <span className="text-2xl font-bold mt-4">
+                        Shipping Address
+                    </span>
                     <div className="mt-4">
                         <Form.Item
                             label="Address"
