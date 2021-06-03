@@ -99,6 +99,16 @@
   line-height: 150%;
   color: #fff;
 }
+
+.curentbid-text {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 150%;
+  padding-top: 50px;
+  color: #fff;
+}
 .collectibles-box {
   display: inline-block;
   width: 100%;
@@ -319,7 +329,20 @@
   cursor: pointer;
 }
 
-
+.robot-approv-bid{
+  position: absolute;
+  width: 140px;
+  left: 8rem;
+  top: 130px;
+  transform: translateX(1/2);
+}
+.robot-approv-bid-s{
+  position: absolute;
+  width: 50px;
+  left: 6rem;
+  bottom: 7rem;
+  transform: translateX(1/2);
+}
 
 .ant-slider-handle.ant-tooltip-open {
   border-color: #303f9f !important;
@@ -431,13 +454,16 @@
   height: 500px;
 }
 .top-t-shirt {
-  display: flex;
+  display: flex; 
   justify-content: center;
+  position: relative;
   background-color: #f5f5f5;
   border-radius: 4px;
   padding: 20px 0;
   margin: 0 10px;
+
 }
+
 .top-t-shirt img {
   padding: 0 18px;
 }
@@ -445,12 +471,14 @@
   display: flex;
   padding: 10px 0;
 }
-.show-more-shirt-items {
+.show-more-shirt-items-l {
   background-color: #f5f5f5;
   border-radius: 4px;
   padding: 10px;
   margin: 10px;
+  cursor: pointer;
 }
+
 .ant-modal {
   width: 1000px !important;
 }
@@ -598,6 +626,16 @@
   .live-auction-content .ant-form-item-control-input-content {
     padding: 0;
   }
+  .robot-approv-bid{
+    width: 140px;
+    left: 7rem;
+    top: 110px;
+  }
+  .robot-approv-bid-s{
+    width: 50px;
+    left: 5.8rem;
+    bottom: 7rem;;
+  }
   .box-t-shirt-b-p > p {
     width: 15%;
   }
@@ -650,6 +688,17 @@
     right: 0;
     bottom: 2rem;
     width: 85%;
+  }
+  .robot-approv-bid{
+    position: absolute;
+    width: 140px;
+    left: 7rem;
+    top: 115px;
+  }
+  .robot-approv-bid-s{
+    width: 50px;
+    left: 5.7rem;
+    bottom: 7rem;;
   }
   .box-t-shirt-b-p > p {
     width: 16%;
@@ -722,6 +771,16 @@
   }
   .box-t-shirt-b-p > p {
     width: 20%;
+  }
+  .robot-approv-bid{
+    width: 130px;
+    left: 6rem;
+    top: 100px;
+  }
+  .robot-approv-bid-s{
+    width: 45px;
+    left: 4.7rem;
+    bottom: 6.5rem;;
   }
   .live-auction-text {
     top: 4rem;
@@ -845,6 +904,16 @@
     top: 3rem;
     padding-left: 0;
   }
+  .robot-approv-bid{
+    width: 100px;
+    left: 6rem;
+    top: 90px;
+  }
+  .robot-approv-bid-s{
+    width: 28px;
+    left: 4.4rem;
+    bottom: 5.4rem;;
+  }
   .live-auction-text-header-number {
     font-size: 45px;
   }
@@ -955,6 +1024,16 @@
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .nav-destop{
     display: none;
+  }
+  .robot-approv-bid{
+    width: 120px;
+    left: 4.3rem;
+    top: 78px;
+  }
+  .robot-approv-bid-s{
+    width: 80px;
+    left: 7rem;
+    top: 37.5rem;
   }
   .world-box img {
     display: none;
@@ -1073,6 +1152,16 @@
     font-size: 20px;
     height: 600px;
     padding-bottom: 0;
+  }
+  .robot-approv-bid{
+    width: 160px;
+    left: 9.5rem;
+    top: 140px;
+  }
+  .robot-approv-bid-s{
+    width: 80px;
+    left: 7rem;
+    /* top: 10rem; */
   }
   .box-t-shirt-b-p > p{
     position: relative;
@@ -1231,7 +1320,16 @@
     margin-top: 1.5rem;
   }
 
- 
+  .robot-approv-bid{
+    width: 140px;
+    left: 8.5rem;
+    top: 120px;
+  }
+  .robot-approv-bid-s{
+    width:  50px;
+    left: 5.7rem;
+    top: 27rem
+  }
   .btn-approve-cancel > .ant-btn span {
     position: relative;
     bottom: 2px;

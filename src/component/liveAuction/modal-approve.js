@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Button, Modal } from 'antd';
 import { BigNumber } from "@ethersproject/bignumber"
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ModalBid from './modal-bid'
 import useCountdown from '../../hooks/useCountdown'
 import shirt from '../../svg/font-shirt.svg'
@@ -10,6 +10,7 @@ import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBidData } from '../../hooks/useBidData'
 import { AppContext } from "../../context";
 import { useAllowance } from '../../hooks/useAllowance'
+import IMAGES from '../../assets/auction/robots/robotImg';
 
 export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const busdContract = useBUSDContract();
@@ -85,16 +86,20 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
 
     return (
         <div className="bid-modal-box">
-            <div className="box-t-shirt">
-                <div className="top-t-shirt"><img className="" alt="shirt" src={shirt} /></div>
+            <div className="box-t-shirt" >
+            {/* <LazyLoadImage className="overlay-bid-shirt" alt="shirt" src="/img/auction/base-back-shirt.png"/>  */}
+                <div className="top-t-shirt relative">     
+                <LazyLoadImage className="overlay-bid-shirt-front" alt="shirt" src="/img/auction/base-front-shirt.png"/>
+                <LazyLoadImage className="overlay-bid-shirt-front" alt="" src={IMAGES[tokenID]} className="robot-approv-bid" />
+                </div>
                 <div className="show-more-shirt">
                     <div className="show-more-shirt-items">
-                        <img alt="shirt" src={shirt} />
+                    <LazyLoadImage alt="shirt" src="/img/auction/base-front-shirt.png"/>
+                    <LazyLoadImage alt="" src={IMAGES[tokenID]} className="robot-approv-bid-s" />
                     </div>
                     <div className="show-more-shirt-items">
-                        <img alt="shirt" src={shirt} />
+                    <LazyLoadImage alt="shirt" src="/img/auction/base-back-shirt.png"/>
                     </div>
-                    
                 </div>
             </div>
             <div className="box-t-shirt-b">
@@ -138,7 +143,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 </Modal>
             </div>
             <div className="box-t-shirt-b-p">
-                <p>History of bidder</p>
+                <p>History of bidders</p>
                 <div className="bid-price-box-show">
                     {events.map((v, index) => (
                         <div className="bid-by-box" key={v.id}>

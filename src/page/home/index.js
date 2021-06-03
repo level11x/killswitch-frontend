@@ -132,7 +132,7 @@ const HomePage = () => {
 
                 <div className="flex space-x-5 mb-24 mmd:block mmd:space-x-0 mmd:mb-8">
                   <button className="bg-secondaries-500 px-4 py-2 rounded text-white font-semibold  mmd:block mmd:mb-4">
-                    White paper
+                  Documents
                   </button>
                   <button
                     className="border-secondaries-500 border-2 px-4 py-2 rounded text-secondaries-500 font-semibold  mmd:block"

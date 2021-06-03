@@ -1,19 +1,13 @@
-import { useRef } from 'react'
+import React from 'react'
 import { Input, Button, Select, Switch, InputNumber, Form } from 'antd';
 const { Option } = Select;
-const CollectibileLiveAuction = ({ onFinishSearch }) => {
+const CollectibileLiveAuction = ({ onFinishSearch, onSwitch }) => {
     
-    const ref = useRef();
-
-    function autoSubmit(event) {
-        ref.current.submit();
-    }
-
     return (
         <div className="live-auction-collectibles-container">
             <div className="collectibles-killswitch-text">KillSwitch Collectibles</div>
             <div className="collectibles-box">
-                <Form ref={ref} onFinish={onFinishSearch}>
+                <Form onFinish={onFinishSearch}>
                     <div className="collectibles-box-search">
                         <div className="collectibles-search">
                             <div className="search-box">
@@ -34,7 +28,7 @@ const CollectibileLiveAuction = ({ onFinishSearch }) => {
                         <div className="auction-search-action">
                             <div className="auction-search-action-items">
                                 <Form.Item name="auctionByPrice">
-                                    <Select placeholder="All Auction" onChange={autoSubmit}>
+                                    <Select placeholder="All Auction" >
                                         <Option value="all">All Auction</Option>
                                         <Option value="highest">Price (Highest)</Option>
                                         <Option value="lowest"> Price (Lowest)</Option>
@@ -43,7 +37,7 @@ const CollectibileLiveAuction = ({ onFinishSearch }) => {
                             </div>
                             <div className="auction-search-action-items">
                                 <Form.Item name="auctionByNumber">
-                                    <Select placeholder="#0 - #99" onChange={autoSubmit}>
+                                    <Select placeholder="#0 - #99" >
                                         <Option value="1">#0 - #99</Option>
                                         <Option value="2">#100 - #199</Option>
                                         <Option value="3">#200 - #299</Option>
@@ -54,7 +48,7 @@ const CollectibileLiveAuction = ({ onFinishSearch }) => {
                                         <Option value="8">#700 - #799</Option> 
                                         <Option value="9">#800 - #899</Option> 
                                         <Option value="10">#900 - #999</Option>
-                                    </Select>
+                                 </Select>
                                 </Form.Item>
                             </div>
                             <div className="auction-search-action-items">
@@ -73,7 +67,7 @@ const CollectibileLiveAuction = ({ onFinishSearch }) => {
                             <div className="auction-max-min">Current Bidding</div>
                             <div>
                                 <Form.Item name="switch">
-                                    <Switch onChange={autoSubmit}/>
+                                    <Switch onChange={onSwitch} />
                                 </Form.Item>
                             </div>
                         </div>
