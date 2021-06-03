@@ -149,7 +149,8 @@ export default function ModalApprove({ tokenID, onApproved, onBid ,onHoverShirtF
             <div className="box-t-shirt-b-p">
                 <p>History of bidders</p>
                 <div className="bid-price-box-show">
-                    {events.map((v, index) => (
+                    {/* {events.map((v, index) => ( */}
+                    {[...Array(100).keys()].map(() => ({address: '0x00000123', price: '120000000000'})).map((v, index) => (
                         <div className="bid-by-box" key={v.id}>
                             <div className="text-bid-code">{v.address ? `${v.address.substring(0, 5)}...${v.address.substring(v.address.length - 4, v.address.length)}` : ''}</div>
                             <div className="text-bid-busd"> {`${v.price/10**18} BUSD`}</div>
