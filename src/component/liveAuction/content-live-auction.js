@@ -64,8 +64,8 @@ const LiveAuctionContent = ({ filterData }) => {
 
     const success = () => {
         notification.success({
-            message: 'Success',
-            description: 'Your bidding have been submited',
+            message: <div className="success-bid"><img alt="bid" src="/img/MaskGroup.png"/></div>,
+            description: <div className="success-bid-text">You are the highest bidder</div>,
         })
         setIsModalBid(false);
     }
@@ -83,7 +83,6 @@ const LiveAuctionContent = ({ filterData }) => {
 
     return (
         <div className="live-content-container">
-            
             <div className="live-content-box">
                 {filterData.map((current, index) => (
                         <div className="live-content-box-items" key={current.id}>
