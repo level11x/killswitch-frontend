@@ -48,8 +48,8 @@ export default function Navigation() {
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("live-auction") ? 'border-b-4' : ''}`} to="/live-auction">Live Auction</Link>
                     <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("top-auction") ? 'border-b-4' : ''}`}to="/top-auction">Top Auction</Link>
            
-                    {wallet && <button className="px-4 py-2 bg-blue-900 rounded text-white">{`${wallet.substr(0,4)}...${wallet.substring(wallet.length - 4, wallet.length)}`}</button>}
-                    {!wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue-900 rounded text-white">Connect Wallet</button>}
+                    {wallet && <button className="px-4 py-2 bg-blue rounded text-white">{`${wallet.substr(0,4)}...${wallet.substring(wallet.length - 4, wallet.length)}`}</button>}
+                    {!wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue rounded text-white">Connect Wallet</button>}
        
                    
                     
@@ -63,8 +63,8 @@ export default function Navigation() {
                     </svg>
                 </button>
                 <div className="h-full flex items-center flex-1 justify-end space-x-lg">
-                    {wallet && <button className="px-4 py-2 bg-blue-900 rounded text-white">{`${wallet.substr(0,4)}...${wallet.substring(wallet.length - 4, wallet.length)}`}</button>}
-                    {!wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue-900 rounded text-white">Connect Wallet</button>}
+                    {wallet && <button className="px-4 py-2 bg-blue rounded text-white">{`${wallet.substr(0,4)}...${wallet.substring(wallet.length - 4, wallet.length)}`}</button>}
+                    {!wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue rounded text-white">Connect Wallet</button>}
                 </div>
                 <div className={`transform ${isMenuOpen ? 'scale-y-100' : 'scale-y-0' } w-full fixed top-nav left-0 bg-white flex flex-col`}>
                     <Link className={`px-md py-sm flex font-bold h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("home") ? 'bg-blue-100' : 'hover:bg-blue-50 '}`} to="/home">Home</Link>
