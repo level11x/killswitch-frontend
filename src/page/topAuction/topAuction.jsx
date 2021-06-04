@@ -50,10 +50,12 @@ export const TopAuction = () => {
 		}
 
     value.sort(( a, b ) => {
-      if (BigNumber.from(a.bidPrice).lt(BigNumber.from(b.bidPrice))) {
+      const aa = BigNumber.from(a.bidPrice)
+      const bb = BigNumber.from(b.bidPrice)
+      if (aa.lt(bb)) {
         return 1;
       }
-      if (BigNumber.from(a.bidPrice).gt(BigNumber.from(b.bidPrice))) {
+      if (aa.gt(bb)) {
         return -1;
       }
       return 0;
