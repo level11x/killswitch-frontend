@@ -1,5 +1,6 @@
 .ant-carousel .slick-dots-bottom {
     bottom: 0;
+    z-index: 0;
 }
 
 .ant-carousel .slick-dots li.slick-active button {

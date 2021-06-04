@@ -630,7 +630,7 @@ const HomePage = () => {
         <div className="absolute top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 flex  justify-center">
           <div
             className="bg-white rounded-xl p-8 w-[490px] mx-auto my-0 top-32 fixed msm:w-auto msm:mx-8"
-            style={{ height: "min-content" }}
+            style={{ height: "min-content", overflowY: 'scroll', maxHeight: "70vh" }}
           >
             <div className="flex justify-between">
               <div className="text-black font-semibold text-base mb-4">

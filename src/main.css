@@ -2231,7 +2231,3 @@ body {
 		margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 	}
 }
-
-.bg-blue-900 {
-  background-color: #1b134e;
-}
