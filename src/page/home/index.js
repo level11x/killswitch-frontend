@@ -490,10 +490,10 @@ const HomePage = () => {
                     How does KillSwitch work?
                   </div>
                   <button className="text-xl text-white border-transparent border-2 px-4 rounded mmd:text-base mmd:px-0">
-                    <div className="flex items-center space-x-4">
+                    <a href="https://killswitchofficial.gitbook.io/killswitch/feature/how-can-killswitch-work" target="_blank" className="flex items-center space-x-4" rel="noreferrer">
                       <div>Learn more</div>
                       <FontAwesomeIcon icon={faChevronRight} size="xs" />
-                    </div>
+                    </a>
                   </button>
                 </div>
               </div>
