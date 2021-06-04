@@ -417,7 +417,7 @@ const HomePage = () => {
                   <div className={`font-semibold text-2xl mb-4 ${isStopLoss ? 'text-black' : 'text-grey-70'}`}>
                     Stop loss / Take profit V.2
                   </div>
-                  <div className={`flex flex-warp text-base ${isStopLoss ? 'text-black' : 'text-grey-70'}`}>
+                  <div className={`flex flex-warp font-semibold text-base ${isStopLoss ? 'text-black' : 'text-grey-70'}`}>
                     Users can set TP and SL when use one-click stake and can
                     edit . A stop loss (SL) is a value of pool limit entered by
                     a trader. When the value limit is reached the open position
