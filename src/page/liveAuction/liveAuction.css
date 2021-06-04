@@ -515,8 +515,6 @@
 }
 
 .top-t-shirt {
-    display: flex;
-    justify-content: center;
     position: relative;
     background-color: #f5f5f5;
     border-radius: 4px;
