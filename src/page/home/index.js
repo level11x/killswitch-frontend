@@ -186,14 +186,13 @@ const HomePage = () => {
                         alt="banner"
                       />
                     </div>
-                    <div>
+                    <a href="https://northbridge.link/" target="_blank" rel="noreferrer">
                       <img
                         className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
-                        onClick={handleOpenModal}
                         src="/img/home/banner2.png"
                         alt="banner"
                       />
-                    </div>
+                    </a>
                   </Carousel>
                 </div>
                 {/* <div className="block w-max mmd:w-auto">
