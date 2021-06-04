@@ -115,7 +115,7 @@ const HomePage = () => {
               <FontAwesomeIcon icon={faBars} size="2x" />
             </button>
             <div className="h-full flex items-center flex-1 justify-end space-x-lg ">
-              <button className="px-4 py-2 bg-primaries-1000 rounded text-white">
+              <button className="px-4 py-2 bg-primaries-1000 rounded text-white" onClick={handleOpenModal}>
                 Launch App
               </button>
             </div>
