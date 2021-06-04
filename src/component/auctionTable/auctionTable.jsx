@@ -21,18 +21,18 @@ export const AuctionTable  = ({ auctions }) => {
       {
         auctions && auctions.map((auction) => {
           return (
-            <div className="rounded bg-white pl-4 pr-4 pt-2 pb-2 flex justify-between mb-4 items-center">
+            <div key={auction.id} className="rounded bg-white pl-4 pr-4 pt-2 pb-2 flex justify-between mb-4 items-center">
               <div className="flex items-center">
-                <img src='/img/shirt-thumbnail.png' />
+                <img alt="shirt" src='/img/shirt-thumbnail.png' />
                 <div className="ml-2">
-                  #{auction.number} / 999
+                  #{auction.id} / 999
                 </div>
               </div>
               <div>
-                {auction.price} BUSD
+                {auction.bidPrice/10**18} BUSD
               </div>
               <div>
-                {formatAddress(auction.address)}
+                {formatAddress(auction.bidAddress)}
               </div>
             </div>
           )

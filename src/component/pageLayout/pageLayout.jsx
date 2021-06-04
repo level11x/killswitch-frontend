@@ -1,8 +1,7 @@
 import React from 'react'
 import { Logo } from '../logo/Logo'
-import styles from './PageLayout.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLandmark, faHandshake, faHome, faGlassMartini, faCog, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../button/button'
 
 const MenuBlock = ({ children}) => {

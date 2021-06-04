@@ -255,7 +255,7 @@ export const PANCAKEROUTER_ABI = [{"inputs":[{"internalType":"uint256","name":"a
 export const TARCALPOOL_CONTRACT_ADDRESS = '0x82EA2104fA9EdAc604a59CD93148452c2121dA23'
 export const TARCALPOOL_ABI = [{"constant":true,"inputs":[{"internalType":"address","name":"_pool","type":"address"}],"name":"getBalance","outputs":[{"internalType":"uint256","name":"balance0","type":"uint256"},{"internalType":"uint256","name":"balance1","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"_pool","type":"address"},{"internalType":"uint256","name":"_lpAmount","type":"uint256"}],"name":"getToken","outputs":[{"internalType":"uint256","name":"_tokenA","type":"uint256"},{"internalType":"uint256","name":"_tokenB","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
 
-export const BUSD_CONTRACT_ADDRESS = '0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee'
+export const BUSD_CONTRACT_ADDRESS = '0xe9e7cea3dedca5984780bafc599bd69add087d56'
 export const BUSD_ABI = [
   {
     "constant": false,
@@ -302,8 +302,27 @@ export const BUSD_ABI = [
     "payable": false,
     "stateMutability": "view",
     "type": "function"
-  }
+  },
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
 ]
 
-export const AUCTION_ADDRESS = '0x88847dA21DbADE585414C97770A08eCbb144ba27'
+export const AUCTION_ADDRESS = '0xdFdf97109047158a4c30EE5258eDA288464feE7b'
 export const AUCTION_ABI = [{"inputs":[{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"address","name":"_busdAddress","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"bidder","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenID","type":"uint256"}],"name":"ClaimReward","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"tokenID","type":"uint256"},{"indexed":true,"internalType":"address","name":"prevBidder","type":"address"},{"indexed":true,"internalType":"address","name":"currentBidder","type":"address"},{"indexed":false,"internalType":"uint256","name":"prevAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"currentAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"bidTime","type":"uint256"}],"name":"OutBid","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"uint256","name":"_tokenID","type":"uint256"}],"name":"bid","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"bidAddr","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"bidAddrLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"bidAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"bidAmounts","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"},{"internalType":"address[]","name":"","type":"address[]"},{"internalType":"uint256[]","name":"","type":"uint256[]"},{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"bidTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenID","type":"uint256"}],"name":"claimReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimRewardOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"expireTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenID","type":"uint256"}],"name":"isReady","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isStart","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_expireTime","type":"uint256"}],"name":"setExpireTime","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_startTime","type":"uint256"}],"name":"setStartTime","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"startTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]

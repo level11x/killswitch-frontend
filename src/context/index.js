@@ -8,15 +8,15 @@ const AppProvider = (props) => {
 
   const value = useMemo(
     () => {
+      async function connectWallet() {
+        let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+        setWallet(accounts[0])
+      }
       return {
         wallet, connectWallet
       }
-    },[wallet, connectWallet])
+    },[wallet])
 
-  async function connectWallet() {
-    let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-    setWallet(accounts[0])
-  }
 
   const handleETHListener = async () => {
     if (window.ethereum) {
@@ -30,13 +30,10 @@ const AppProvider = (props) => {
       })
 
       window.ethereum.on('connect', (chainId) => {
-        console.log('chainId', chainId)
         let account = window.ethereum.selectedAddress
-        console.log('account', account)
         setWallet(account)
       })
 
-      console.log('isConnected()', window.ethereum.isConnected(), window.ethereum.selectedAddress)
       if (window.ethereum.isConnected()) {
         
         let account = window.ethereum.selectedAddress
