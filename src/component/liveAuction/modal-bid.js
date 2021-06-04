@@ -107,7 +107,7 @@ export default function ModalBid({ onBid, tokenID ,onHoverShirtBack,isShowFront,
                     </div>
                     <div className="couwndown-bid-items">
                         <div className="couwndown-bid-t">{timeLeft.seconds || '00'}</div>
-                        <div className="couwndown-bid-day">Secounds</div>
+                        <div className="couwndown-bid-day">Seconds</div>
                     </div>
                 </div>
             
