@@ -7,6 +7,7 @@ import { TopAuctionCard } from '../../component/topAuctionCard/topAuctionCard';
 import { useBidData } from '../../hooks/useBidData'
 import './topAuction.css'
 import useCountdown from '../../hooks/useCountdown'
+import { BigNumber } from "@ethersproject/bignumber"
 
 export const TopAuction = () => {
   const { bidData } = useBidData()
@@ -48,19 +49,11 @@ export const TopAuction = () => {
 				}) 
 		}
 
-    // let mockAuctions = []
-    // for (let i = 0 ; i < 100 ; i++){
-    //   mockAuctions.push({
-    //     id: i+1,
-    //     price: 10 + i,
-    //     address: '0xDEAD'
-    //   })
-    // }
     value.sort(( a, b ) => {
-      if ( a.bidPrice < b.bidPrice ){
+      if (BigNumber.from(a.bidPrice).lt(BigNumber.from(b.bidPrice))) {
         return 1;
       }
-      if ( a.bidPrice > b.bidPrice ){
+      if (BigNumber.from(a.bidPrice).gt(BigNumber.from(b.bidPrice))) {
         return -1;
       }
       return 0;

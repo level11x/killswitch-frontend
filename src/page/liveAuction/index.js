@@ -69,21 +69,23 @@ export const LiveAuctionPage = () => {
 		}
 
 		if (auctionByPrice === 'highest') {
+			console.log('auctionByPrice highest')
 			fData.sort(( a, b ) => {
-				if ( a.bidPrice < b.bidPrice ){
+				if (BigNumber.from(a.bidPrice).lt(BigNumber.from(b.bidPrice))) {
 					return 1;
 				}
-				if ( a.bidPrice > b.bidPrice ){
+				if (BigNumber.from(a.bidPrice).gt(BigNumber.from(b.bidPrice))) {
 					return -1;
 				}
 				return 0;
 			})
 		} else if (auctionByPrice === 'lowest') {
+			console.log('auctionByPrice lowest')
 			fData.sort(( a, b ) => {
-				if ( a.bidPrice < b.bidPrice ){
+				if (BigNumber.from(a.bidPrice).lt(BigNumber.from(b.bidPrice))) {
 					return -1;
 				}
-				if ( a.bidPrice > b.bidPrice ){
+				if (BigNumber.from(a.bidPrice).gt(BigNumber.from(b.bidPrice))) {
 					return 1;
 				}
 				return 0;
