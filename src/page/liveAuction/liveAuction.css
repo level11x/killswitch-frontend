@@ -376,7 +376,7 @@
 
 .robot-approv-bid {
     position: absolute !important;
-    width: 36% !important;
+    width: 45% !important;
     height: auto !important;
     left: 50% !important;
     top: 30% !important;
@@ -385,7 +385,7 @@
 
 .robot-approv-bid-s {
     position: absolute;
-    width: 33%;
+    width: 32%;
     height: auto;
     left: 50%;
     top: 30%;
