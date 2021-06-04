@@ -240,10 +240,10 @@ const HomePage = () => {
                 </div>
               </div>
               <button className="text-xl text-secondaries-300 border-transparent border-2 px-4 py-2 rounded font-semibold">
-                <div className="flex items-center space-x-4">
+                <a href="https://killswitchofficial.gitbook.io/killswitch" target="_blank" className="flex items-center space-x-4" rel="noreferrer">
                   <div>Learn more</div>
                   <FontAwesomeIcon icon={faChevronRight} size="xs" />
-                </div>
+                </a>
               </button>
             </div>
           </Container>
