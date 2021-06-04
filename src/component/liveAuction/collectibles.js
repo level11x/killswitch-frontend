@@ -18,16 +18,14 @@ const CollectibileLiveAuction = ({ onFinishSearch, onSwitch }) => {
                         <div className="collectibles-search">
                             <div className="search-box">
                                 <Form.Item name="serialNumber">
-                                    <Input.Search allowClear placeholder="Search serial number" />
+                                    <Input allowClear placeholder="Search serial number" />
                                 </Form.Item>
-
                             </div>
                         </div>
                         <div className="collectibles-search-buttom">
                             <div className="button-box">
                                 <Button htmlType="submit">Search </Button>
                             </div>
-
                         </div>
                     </div>
                     <div className="action-search-selection">
