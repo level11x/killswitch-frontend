@@ -362,7 +362,8 @@
   height: 500px;
 }
 .top-t-shirt {
-  display: flex;
+  position: relative;
+  display: block;
   justify-content: center;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -370,13 +371,17 @@
   margin: 0 10px;
 }
 .top-t-shirt img {
+  position: relative;
+  width: 100%;
   padding: 0 18px;
 }
 .show-more-shirt {
   display: flex;
+  flex-direction: row;
   padding: 10px 0;
 }
 .show-more-shirt-items {
+  position: relative;
   background-color: #f5f5f5;
   border-radius: 4px;
   padding: 10px;
