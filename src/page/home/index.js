@@ -374,10 +374,10 @@ const HomePage = () => {
                   className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isOneClick ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={handleOneClick}
                 >
-                  <div className="text-grey-70 font-semibold text-2xl mb-4">
+                  <div className={`font-semibold text-2xl mb-4 ${isOneClick ? 'text-black' : 'text-grey-70'}`}>
                     One click Stake V.1
                   </div>
-                  <div className="flex flex-warp text-grey-70 font-semibold text-base">
+                  <div className={`flex flex-warp font-semibold text-base ${isOneClick ? 'text-black' : 'text-grey-70'}`}>
                     Swap, Provide Liquidity and Stake your position in one easy
                     step
                   </div>
@@ -386,10 +386,10 @@ const HomePage = () => {
                   className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isAutoCompound ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={handleAutoCompound}
                 >
-                  <div className="text-grey-70 font-semibold text-2xl mb-4">
+                  <div className={`font-semibold text-2xl mb-4 ${isAutoCompound ? 'text-black' : 'text-grey-70'}`}>
                     Auto Compound V.1
                   </div>
-                  <div className="flex flex-warp text-grey-70 font-semibold text-base">
+                  <div className={`flex flex-warp font-semibold text-base ${isAutoCompound ? 'text-black' : 'text-grey-70'}`}>
                     All the farmed tokens will be automatically converted to add
                     into users' positions every 24 hours or will be
                     automatically reinvested when Guardian of the Galaxy takes
@@ -400,10 +400,10 @@ const HomePage = () => {
                   className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isKillPosition ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={handleKillPosition}
                 >
-                  <div className="text-grey-70 font-semibold text-2xl mb-4">
+                  <div className={`font-semibold text-2xl mb-4 ${isKillPosition ? 'text-black' : 'text-grey-70'}`}>
                     Kill Position V.1
                   </div>
-                  <div className="flex flex-warp text-grey-70 font-semibold text-base">
+                  <div className={`flex flex-warp font-semibold text-base ${isKillPosition ? 'text-black' : 'text-grey-70'}`}>
                     Users can kill position any time. KillSwitch will
                     automatically Unstake LP tokens , withdraw liquidity form
                     liquidity providing pool and swap assets to BNB or BUSD or
@@ -414,10 +414,10 @@ const HomePage = () => {
                   className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isStopLoss ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={handleStopLoss}
                 >
-                  <div className="text-grey-90 font-semibold text-2xl mb-4">
+                  <div className={`font-semibold text-2xl mb-4 ${isStopLoss ? 'text-black' : 'text-grey-70'}`}>
                     Stop loss / Take profit V.2
                   </div>
-                  <div className="flex flex-warp text-grey-90 font-semibold text-base">
+                  <div className={`flex flex-warp font-semibold text-base ${isStopLoss ? 'text-black' : 'text-grey-70'}`}>
                     Users can set TP and SL when use one-click stake and can
                     edit . A stop loss (SL) is a value of pool limit entered by
                     a trader. When the value limit is reached the open position
