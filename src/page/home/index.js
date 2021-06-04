@@ -520,7 +520,7 @@ const HomePage = () => {
             </div>
             <div className="flex justify-center flex-wrap mmd:px-0">
               <a target="_blank" href="https://killswitch.finance" rel="noreferrer">
-                <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40 m-4">
+                <div className="rounded-2xl bg-white p-4 m-2 w-[200px] mmd:w-40 m-2">
                   <img
                     className="m-auto mb-2"
                     src="/img/home/finance_logo.png"
