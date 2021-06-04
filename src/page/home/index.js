@@ -52,26 +52,26 @@ const HomePage = () => {
     setIsShowModal(false);
   };
   const handleOneClick = () => {
-    setIsOneClick(!isOneClick);
+    setIsOneClick(true);
     setIsAutoCompound(false);
     setIsKillPosition(false);
     setIsStopLoss(false);
   };
 
   const handleAutoCompound = () => {
-    setIsAutoCompound(!isAutoCompound);
+    setIsAutoCompound(true);
     setIsOneClick(false);
     setIsKillPosition(false);
     setIsStopLoss(false);
   };
   const handleKillPosition = () => {
-    setIsKillPosition(!isKillPosition);
+    setIsKillPosition(true);
     setIsOneClick(false);
     setIsAutoCompound(false);
     setIsStopLoss(false);
   };
   const handleStopLoss = () => {
-    setIsStopLoss(!isStopLoss);
+    setIsStopLoss(true);
     setIsKillPosition(false);
     setIsOneClick(false);
     setIsAutoCompound(false);
@@ -208,7 +208,7 @@ const HomePage = () => {
                     <div className="rounded-full bg-white w-4 h-4 mmd:w-3 mmd:h-3"></div>
                     <div className="rounded-full bg-secondaries-400 w-4 h-4 mmd:w-3 mmd:h-3"></div>
                     <div className="rounded-full bg-white w-4 h-4 mmd:w-3 mmd:h-3"></div>
-                  </div> 
+                  </div>
                   </div>*/}
               </div>
             </Container>
@@ -372,7 +372,7 @@ const HomePage = () => {
               </div>
               <div className="block space-y-4 h-[664px] w-[642px] mxl:h-auto">
                 <div
-                  className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto"
+                  className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isOneClick ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={handleOneClick}
                 >
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
@@ -384,7 +384,7 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div
-                  className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto"
+                  className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isAutoCompound ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={handleAutoCompound}
                 >
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
@@ -398,7 +398,7 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div
-                  className="bg-grey-30 rounded p-4 cursor-pointer h-[154px] mxl:h-auto"
+                  className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isKillPosition ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={handleKillPosition}
                 >
                   <div className="text-grey-70 font-semibold text-2xl mb-4">
@@ -412,7 +412,7 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div
-                  className="bg-white rounded p-4 cursor-pointer h-[154px] mxl:h-auto"
+                  className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isStopLoss ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={handleStopLoss}
                 >
                   <div className="text-grey-90 font-semibold text-2xl mb-4">
