@@ -60,7 +60,6 @@ export const TopAuction = () => {
       }
       return 0;
     })
-    console.log(value.slice(0, 10))
     setTop1(value[0])
     setTop2(value[1])
     setTop3(value[2])
