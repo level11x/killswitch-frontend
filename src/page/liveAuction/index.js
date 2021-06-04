@@ -60,12 +60,12 @@ export const LiveAuctionPage = () => {
 		if (searchMinPrice && searchMinPrice > 0) {
 			fData = fData.filter((v) => v.bidPrice >= searchMinPrice)
 		}
-		if (auctionByNumber > 0 && auctionByNumber <= 9) {
+		if (auctionByNumber > 0 && auctionByNumber <= 10) {
 			fData = fData.filter((v) => parseInt(v.id/100) === auctionByNumber-1)
 		}
 
 		if (searchMyAuction) {
-			fData = fData.filter((v) => v.bidAddress.toLowerCase() === wallet.toLowerCase())
+			fData = fData.filter((v) => v.bidAddress.toLowerCase() === wallet && wallet.toLowerCase())
 		}
 
 		if (auctionByPrice === 'highest') {
