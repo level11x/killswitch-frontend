@@ -1356,7 +1356,7 @@
         margin: 12px 0;
     }
     .auction-bidding-box {
-        display: none;
+        /* display: none; */
     }
     .bid-modal-box {
         flex-wrap: wrap;
@@ -1510,7 +1510,7 @@
         margin: 12px 0;
     }
     .auction-bidding-box {
-        display: none;
+        /* display: none; */
     }
     .bid-modal-box {
         flex-wrap: wrap;
@@ -1663,7 +1663,7 @@
         margin: 12px 0;
     }
     .auction-bidding-box {
-        display: none;
+        /* display: none; */
     }
     .bid-modal-box {
         flex-wrap: wrap;

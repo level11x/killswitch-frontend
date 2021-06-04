@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Input, Button, Select, Switch, InputNumber, Form } from 'antd';
 const { Option } = Select;
 const CollectibileLiveAuction = ({ onFinishSearch, onSwitch }) => {
-    
+
     const ref = useRef();
 
     function autoSubmit(event) {
@@ -51,8 +51,8 @@ const CollectibileLiveAuction = ({ onFinishSearch, onSwitch }) => {
                                         <Option value="5">#400 - #499</Option>
                                         <Option value="6">#500 - #599</Option>
                                         <Option value="7">#600 - #699</Option>
-                                        <Option value="8">#700 - #799</Option> 
-                                        <Option value="9">#800 - #899</Option> 
+                                        <Option value="8">#700 - #799</Option>
+                                        <Option value="9">#800 - #899</Option>
                                         <Option value="10">#900 - #999</Option>
                                  </Select>
                                 </Form.Item>
