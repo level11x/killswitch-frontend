@@ -661,7 +661,7 @@ const HomePage = () => {
                 please be careful before placing a bid
               </li>
               <li>
-                KillSwitch reserves the right for retruning bidding amount if
+                KillSwitch reserves the right for returning bidding amount if
                 the shipping information is not completed within 7 days after
                 the auction has been ended.
               </li>
