@@ -17,10 +17,16 @@ export const useBidData = () => {
     _setBidData(data);
   };
 
-  function updateEvents(tokenID) {
+  async function updateEvents(tokenID) {
     setEvents([])
-    getPastEvent(tokenID).then((pastEvents) => {
-        const ee = []
+
+    const currentBlock = await web3.eth.getBlockNumber()
+    console.log('currentBlock', currentBlock)
+
+    var block = 7972867
+    const ee = []
+    while (block < currentBlock) {
+      getPastEvent(tokenID, block, block+4999).then((pastEvents) => {
         for (var i = 0; i < pastEvents.length; i++) {
             const data = pastEvents[i].returnValues
             ee.unshift({
@@ -30,7 +36,9 @@ export const useBidData = () => {
             });
         }
         setEvents(ee)
-    })
+      })
+      block += 5000
+    }
   }
 
   function updateData(event) {
@@ -74,12 +82,9 @@ export const useBidData = () => {
     setExpireTime(result)
   }
 
-  const getPastEvent = async (tokenID) => {
-    const currentBlock = await web3.eth.getBlockNumber()
-    console.log('currentBlock', currentBlock)
-
-    const events = await auctionContract.getPastEvents('OutBid', { filter: { tokenID: tokenID }, fromBlock: currentBlock-4000, toBlock: 'latest' })
-    console.log('events', events.length)
+  const getPastEvent = async (tokenID, start, end) => {
+    const events = await auctionContract.getPastEvents('OutBid', { filter: { tokenID: tokenID }, fromBlock: start, toBlock: end })
+    console.log('from', start, 'to', end, 'events', events.length)
     return events
   }
 
