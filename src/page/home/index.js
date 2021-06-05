@@ -446,8 +446,8 @@ const HomePage = () => {
                   Yield farmer
                 </div>
                 <div className="flex flex-warp text-black text-base">
-                  As a farmer, you can earn yield by chose farm on KillSwitch
-                  and add you money (BUSD , BNB , any asset on pancake router)
+                  As a farmer, you can earn yield by choosing farm on KillSwitch
+                  and add your money (BUSD , BNB , any asset on pancake router)
                   to farm.
                 </div>
               </div>
