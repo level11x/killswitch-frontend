@@ -19,7 +19,29 @@ const AppProvider = (props) => {
 
 
   const handleETHListener = async () => {
-    if (window.ethereum) {
+    
+    if (window && window.ethereum && window.ethereum.isTrust) {
+      let chainId = await window.ethereum.request({ method: 'eth_chainId' })
+      
+      if (chainId === '0x38') {
+        let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+       
+        if(accounts.length > 0 ) {
+          
+          setWallet(accounts[0])
+        }
+        window.ethereum.on('accountsChanged', (accounts) => {
+          
+          console.log('Navigation accountsChanged', accounts)
+          if (accounts.length > 0) {
+            
+              setWallet(accounts[0])
+          } else {
+              setWallet('')
+          }
+        })
+      }
+    } else if (window.ethereum) {
       window.ethereum.on('accountsChanged', (accounts) => {
           console.log('Navigation accountsChanged', accounts)
           if (accounts.length > 0) {
