@@ -26,7 +26,7 @@ export const useBidData = () => {
     var block = 7972867
     const ee = []
     while (block < currentBlock) {
-      getPastEvent(tokenID, block, block+4999).then((pastEvents) => {
+      await getPastEvent(tokenID, block, block+4999).then((pastEvents) => {
         for (var i = 0; i < pastEvents.length; i++) {
             const data = pastEvents[i].returnValues
             ee.unshift({
