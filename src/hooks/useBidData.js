@@ -1,7 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import { useAuctionContract } from "./useAuctionContract";
+import useWeb3 from "./useWeb3";
 
 export const useBidData = () => {
+  const [value] = useWeb3();
+  const web3 = value.web3;
+
   const [auctionContract] = useAuctionContract();
   const [bidData, _setBidData] = useState();
   const [expireTime, setExpireTime] = useState({})
@@ -13,10 +17,16 @@ export const useBidData = () => {
     _setBidData(data);
   };
 
-  function updateEvents(tokenID) {
+  async function updateEvents(tokenID) {
     setEvents([])
-    getPastEvent(tokenID).then((pastEvents) => {
-        const ee = []
+
+    const currentBlock = await web3.eth.getBlockNumber()
+    console.log('currentBlock', currentBlock)
+
+    var block = 7972867
+    const ee = []
+    while (block < currentBlock) {
+      await getPastEvent(tokenID, block, block+4999).then((pastEvents) => {
         for (var i = 0; i < pastEvents.length; i++) {
             const data = pastEvents[i].returnValues
             ee.unshift({
@@ -26,7 +36,9 @@ export const useBidData = () => {
             });
         }
         setEvents(ee)
-    })
+      })
+      block += 5000
+    }
   }
 
   function updateData(event) {
@@ -67,13 +79,12 @@ export const useBidData = () => {
 
   const handleGetExpireTime = async () => {
     const result = await auctionContract.methods.expireTime().call();
-    console.log('handleGetExpireTime', result)
     setExpireTime(result)
   }
 
-  const getPastEvent = async (tokenID) => {
-    const events = await auctionContract.getPastEvents('OutBid', { filter: { tokenID: tokenID }, fromBlock: 0, toBlock: 'latest' })
-    console.log('events', events.length)
+  const getPastEvent = async (tokenID, start, end) => {
+    const events = await auctionContract.getPastEvents('OutBid', { filter: { tokenID: tokenID }, fromBlock: start, toBlock: end })
+    console.log('from', start, 'to', end, 'events', events.length)
     return events
   }
 

@@ -13,10 +13,10 @@ export default function Navigation() {
         setMenuOpen(!isMenuOpen);
     };
 
-    useEffect(() => {
-        document.addEventListener("click", (e) => {
-            if (!e.path.includes(mobileMenuRef.current)) {
-                setMenuOpen(false);
+    useEffect(()=>{
+        document.addEventListener('click',(e)=>{
+            if(e && e.path && !e.path.includes(mobileMenuRef.current)){
+                setMenuOpen(false)
             }
         });
         return () => {};
@@ -94,81 +94,19 @@ export default function Navigation() {
                     </svg>
                 </Link>
                 <div className="h-full flex items-center flex-1 justify-end space-x-lg">
-                    <Link
-                        className={`px-6 flex h-full items-center border-blue-900 ${
-                            window.location.pathname
-                                .toLocaleLowerCase()
-                                .includes("unlock Rewards")
-                                ? "border-b-4"
-                                : ""
-                        }`}
-                        to="/home"
-                    >
-                        Info
-                    </Link>
-                    {timeLeft.isExpired ? (
-                        <Link
-                            className={`px-6 flex h-full items-center border-blue-900 ${
-                                window.location.pathname
-                                    .toLocaleLowerCase()
-                                    .includes("live-auction")
-                                    ? "border-b-4"
-                                    : ""
-                            }`}
-                            to="/live-auction"
-                        >
-                            My Collection
-                        </Link>
-                    ) : (
-                        <Link
-                            className={`px-6 flex h-full items-center border-blue-900 ${
-                                window.location.pathname
-                                    .toLocaleLowerCase()
-                                    .includes("live-auction")
-                                    ? "border-b-4"
-                                    : ""
-                            }`}
-                            to="/live-auction"
-                        >
-                            Live Auction
-                        </Link>
-                    )}
-                    <Link
-                        className={`px-6 flex h-full items-center border-blue-900 ${
-                            window.location.pathname
-                                .toLocaleLowerCase()
-                                .includes("top-auction")
-                                ? "border-b-4"
-                                : ""
-                        }`}
-                        to="/top-auction"
-                    >
-                        Top Auction
-                    </Link>
-                    {wallet && (
-                        <button
-                            onClick={connectWallet}
-                            className="px-4 py-2 bg-blue-900 rounded text-white"
-                        >{`${wallet.substr(0, 4)}...${wallet.substring(
-                            wallet.length - 4,
-                            wallet.length
-                        )}`}</button>
-                    )}
-                    {!wallet && (
-                        <button
-                            onClick={connectWallet}
-                            className="px-4 py-2 bg-blue-900 rounded text-white"
-                        >
-                            Connect Wallet
-                        </button>
-                    )}
+                    <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("info") ? 'border-b-4' : ''}`} to="/info">Info</Link>
+                    <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("live-auction") ? 'border-b-4' : ''}`} to="/live-auction">Live Auction</Link>
+                    <Link className={`px-6 flex h-full items-center border-blue-900 ${window.location.pathname.toLocaleLowerCase().includes("top-auction") ? 'border-b-4' : ''}`}to="/top-auction">Top Auction</Link>
+           
+                    {wallet && <button className="px-4 py-2 bg-blue rounded text-white">{`${wallet.substr(0,4)}...${wallet.substring(wallet.length - 4, wallet.length)}`}</button>}
+                    {!wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue rounded text-white">Connect Wallet</button>}
+       
+                   
+                    
                 </div>
             </div>
             {/* md:hidden  */}
-            <div
-                ref={mobileMenuRef}
-                className="h-full flex items-center px-md md:hidden mlg:hidden lg:hidden"
-            >
+            <div ref={mobileMenuRef} className="h-full flex items-center px-md md:hidden lg:hidden">
                 <button className="cursor-pointer" onClick={toggleMenuOpen}>
                     <svg
                         arial-hidden="true"
@@ -185,9 +123,8 @@ export default function Navigation() {
                     </svg>
                 </button>
                 <div className="h-full flex items-center flex-1 justify-end space-x-lg">
-                    <button className="px-4 py-2 bg-blue-900 rounded text-white">
-                        Connect Wallet
-                    </button>
+                    {wallet && <button className="px-4 py-2 bg-blue rounded text-white">{`${wallet.substr(0,4)}...${wallet.substring(wallet.length - 4, wallet.length)}`}</button>}
+                    {!wallet && <button onClick={connectWallet} className="px-4 py-2 bg-blue rounded text-white">Connect Wallet</button>}
                 </div>
                 <div
                     className={`transform ${

@@ -22,31 +22,52 @@ export function Web3Provider({ children }) {
   const [state, dispatch] = React.useReducer(reducer, {
     web3: null,
   });
-  const _window = window
+  
   const initWeb3 = useCallback(async () => {
+    const _window = window
+    
+    if (_window && _window.ethereum && _window.ethereum.isTrust) {
+     
+      let chainId = await _window.ethereum.request({ method: 'eth_chainId' })
+    
+      if (chainId === '0x38') {
+        const tmpWeb3 = new Web3(_window.ethereum);
+      
+        try {
+          dispatch({
+            type: Web3Provider.actions.setWeb3,
+            payload: {
+              web3: tmpWeb3,
+            },
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    } else
     if (_window.ethereum) {
       let chainId = await window.ethereum.request({ method: 'eth_chainId' })
-			if (chainId !== 0x61) { // testnet
-				await window.ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [{
-            chainId: '0x61',
-            chainName: 'Binance Smart Chain (Testnet)',
-            nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-            rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
-            blockExplorerUrls: ['https://testnet.bscscan.com/']
-          }]
-        })
-        // window.ethereum.request({
+			if (chainId != 0x61) { // testnet
+				// await window.ethereum.request({
         //   method: 'wallet_addEthereumChain',
         //   params: [{
-        //     chainId: '0x38',
-        //     chainName: 'Binance Smart Chain',
+        //     chainId: '0x61',
+        //     chainName: 'Binance Smart Chain (Testnet)',
         //     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-        //     rpcUrls: ['https://bsc-dataseed.binance.org/'],
-        //     blockExplorerUrls: ['https://bscscan.com/']
+        //     rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
+        //     blockExplorerUrls: ['https://testnet.bscscan.com/']
         //   }]
         // })
+        window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{
+            chainId: '0x38',
+            chainName: 'Binance Smart Chain',
+            nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+            rpcUrls: ['https://bsc-dataseed.binance.org/'],
+            blockExplorerUrls: ['https://bscscan.com/']
+          }]
+        })
 			}
       
       const tmpWeb3 = new Web3(_window.ethereum);
@@ -61,9 +82,10 @@ export function Web3Provider({ children }) {
         console.log(err);
       }
     }
-  }, [_window.ethereum]);
+  }, []);
 
   useEffect(() => {
+    
     initWeb3();
   }, [initWeb3]);
 

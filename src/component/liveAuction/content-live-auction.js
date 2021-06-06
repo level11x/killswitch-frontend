@@ -20,6 +20,9 @@ const LiveAuctionContent = ({ filterData }) => {
     const { allowance, refreshAllowance } = useAllowance();
     const { wallet } = useContext(AppContext);
 
+    const [isShowFront, setIsShowFront] = useState(true);
+    const [isShowBack, setIsShowBack] = useState(false);
+
     useEffect(() => {
         refreshAllowance()
     }, [wallet])
@@ -34,8 +37,10 @@ const LiveAuctionContent = ({ filterData }) => {
         setTokenID(tokenID)
         if (isApprove) {
             setIsModalBid(true);
+            setIsShowFront(true);
         } else {
             setIsModalApprove(true);
+            setIsShowFront(true);
         }
     };
 
@@ -49,6 +54,8 @@ const LiveAuctionContent = ({ filterData }) => {
     const onCanceled = () => {
         setIsModalApprove(false);
         setIsModalBid(false);
+        setIsShowFront(false);
+        setIsShowBack(false);
     };
 
     const onBid = () => {
@@ -57,15 +64,24 @@ const LiveAuctionContent = ({ filterData }) => {
 
     const success = () => {
         notification.success({
-            message: 'Success',
-            description: 'Your bidding have been submited',
+            message: <div className="success-bid"><img alt="bid" src="/img/MaskGroup.png"/></div>,
+            description: <div className="success-bid-text">You are the highest bidder</div>,
         })
         setIsModalBid(false);
     }
 
+    const onHoverShirtFront = () => {
+        setIsShowFront(!isShowFront);
+        setIsShowBack(false);
+    };
+    
+    const onHoverShirtBack = () => {
+        setIsShowBack(!isShowBack);
+        setIsShowFront(false);
+    };
+
     return (
         <div className="live-content-container">
-            
             <div className="live-content-box">
                 {filterData.map((current, index) => (
                         <div className="live-content-box-items" key={current.id}>
@@ -96,12 +112,18 @@ const LiveAuctionContent = ({ filterData }) => {
             </div>
             <div className="modal-show">
                 <Modal visible={isModalApprove} onCancel={onCanceled} footer={false}>
-                    <ModalApprove onApproved={onApproved} onBid={onBid} tokenID={tokenID}/>
+                    <ModalApprove onApproved={onApproved} onBid={onBid} tokenID={tokenID} onHoverShirtFront={onHoverShirtFront}
+                    onHoverShirtBack ={onHoverShirtBack }
+                    setIsShowFront={setIsShowFront} setIsShowBack={setIsShowBack} isShowBack={isShowBack} isShowFront={isShowFront}
+                    />
                 </Modal>
             </div>
             <div className="modal-show">
                 <Modal visible={isModalBid} onCancel={onCanceled} footer={false}>
-                    <ModalBid onBid={onBid} tokenID={tokenID}/>
+                    <ModalBid onBid={onBid} tokenID={tokenID} 
+                    onHoverShirtFront={onHoverShirtFront}
+                    onHoverShirtBack ={onHoverShirtBack }
+                    setIsShowFront={setIsShowFront} setIsShowBack={setIsShowBack} isShowBack={isShowBack} isShowFront={isShowFront}/>
                 </Modal>
             </div>
         </div>

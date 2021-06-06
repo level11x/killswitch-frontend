@@ -7,6 +7,7 @@ import { TopAuctionCard } from '../../component/topAuctionCard/topAuctionCard';
 import { useBidData } from '../../hooks/useBidData'
 import './topAuction.css'
 import useCountdown from '../../hooks/useCountdown'
+import { BigNumber } from "@ethersproject/bignumber"
 
 export const TopAuction = () => {
   const { bidData } = useBidData()
@@ -48,24 +49,17 @@ export const TopAuction = () => {
 				}) 
 		}
 
-    // let mockAuctions = []
-    // for (let i = 0 ; i < 100 ; i++){
-    //   mockAuctions.push({
-    //     id: i+1,
-    //     price: 10 + i,
-    //     address: '0xDEAD'
-    //   })
-    // }
     value.sort(( a, b ) => {
-      if ( a.bidPrice < b.bidPrice ){
+      const aa = BigNumber.from(a.bidPrice)
+      const bb = BigNumber.from(b.bidPrice)
+      if (aa.lt(bb)) {
         return 1;
       }
-      if ( a.bidPrice > b.bidPrice ){
+      if (aa.gt(bb)) {
         return -1;
       }
       return 0;
     })
-    console.log(value.slice(0, 10))
     setTop1(value[0])
     setTop2(value[1])
     setTop3(value[2])
@@ -82,7 +76,7 @@ export const TopAuction = () => {
   
   return (
     <div className="top-auction">
-       <div className="bg-primary min-h-screen flex justify-center w-screen">
+       <div className=" min-h-screen flex justify-center w-screen">
         <Navigation />
         <div className="screen-container">
           <h1 className="text-center pt-20 text-white font-semibold xl:text-6xl text-4xl">
@@ -107,14 +101,20 @@ export const TopAuction = () => {
             </div>
           </div>
           <div className=" xl:flex row-mobile-col-desktop w-full justify-center mt-10 ">
-            <div className="xl:mr-6  mb-10 xl:mb-2">
-              <TopAuctionCard number={2} auction={top2} />
+            <div className="xl:mr-6  flex justify-center mb-10 xl:mb-2">
+              <div className="auction-width ">
+                <TopAuctionCard number={2} auction={top2} />
+              </div>
             </div>
-            <div className="xl:mr-6 xl:mb-2 mb-10 ">
-              <TopAuctionCard number={3} auction={top3} />
+            <div className="xl:mr-6 flex justify-center xl:mb-2 mb-10 ">
+              <div className="auction-width">
+                <TopAuctionCard number={3} auction={top3} />
+              </div>
             </div>
-            <div className="xl:mr-6 xl:mb-2 mb-10">
-              <TopAuctionCard number={4} auction={top4} />
+            <div className="xl:mr-6 flex justify-center xl:mb-2 mb-10">
+              <div className="auction-width">
+                <TopAuctionCard number={4} auction={top4} />
+              </div>
             </div>
           </div>
           {/* <div className=" xl:flex-row  flex flex-col w-full justify-center mt-10 ">
