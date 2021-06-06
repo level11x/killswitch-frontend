@@ -797,6 +797,10 @@ video {
 	margin-top: 2.5rem;
 }
 
+.mb-6 {
+	margin-bottom: 1.5rem;
+}
+
 .block {
 	display: block;
 }
@@ -979,6 +983,10 @@ video {
 
 .w-screen {
 	width: 100vw;
+}
+
+.w-1\/4 {
+	width: 25%;
 }
 
 .max-w-screen-lg {
@@ -1199,6 +1207,18 @@ video {
 	margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
+.space-x-1 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-x-reverse: 0;
+	margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+	margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
 .self-start {
 	align-self: flex-start;
 }
@@ -1217,6 +1237,10 @@ video {
 
 .overflow-x-hidden {
 	overflow-x: hidden;
+}
+
+.overflow-auto {
+	overflow: auto;
 }
 
 .whitespace-nowrap {
@@ -1731,6 +1755,41 @@ body {
 
 	.sm\:bottom-10 {
 		bottom: 2.5rem;
+	}
+
+	.sm\:mr-6 {
+		margin-right: 1.5rem;
+	}
+
+	.sm\:mb-0 {
+		margin-bottom: 0px;
+	}
+
+	.sm\:w-40 {
+		width: 10rem;
+	}
+
+	.sm\:flex-col {
+		flex-direction: column;
+	}
+
+	.sm\:flex-row {
+		flex-direction: row;
+	}
+
+	.sm\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
+		--tw-space-x-reverse: 0;
+		margin-right: calc(1rem * var(--tw-space-x-reverse));
+		margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+	}
+
+	.sm\:p-3 {
+		padding: 0.75rem;
+	}
+
+	.sm\:px-0 {
+		padding-left: 0px;
+		padding-right: 0px;
 	}
 }
 
