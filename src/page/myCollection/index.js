@@ -1,8 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import { Button, Modal, Row, Col, Form, Input, Space, Select } from "antd";
+import { Button, Modal, Row, Col, Form, Input, Select } from "antd";
 import LiveAuctionFooter from "../../component/liveAuction/footer-live-action";
 import Navigation from "../../component/navigation";
-// import "./liveAuction.css";
 import { useBidData } from "../../hooks/useBidData";
 import { AppContext } from "../../context";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -12,57 +11,6 @@ import { Moon } from "../../component/svg";
 import countryCodes from "../../countryCode.json";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBUSDContract } from "../../hooks/useBUSDContract";
-
-const rewards = [
-    {
-        name: "tshirt1",
-        displayName: "T-Shirt",
-        optionText: "Size",
-        options: ['S 38"', 'M 40"', 'L 42"', 'XL 44"', '2XL 46"', '3XL 48"'],
-        imgSrc: "/img/auction/base-front-shirt.png",
-        unlockAt: 10000,
-    },
-    {
-        name: "cap",
-        displayName: "Cap",
-        optionText: "Size",
-        options: ["S", "test", "L"],
-        imgSrc: "/img/auction/base-front-shirt.png",
-        unlockAt: 30000,
-    },
-    {
-        name: "poloshirt1",
-        displayName: "Polo Shirt",
-        optionText: "Size",
-        options: ["S", "M", "L"],
-        imgSrc: "/img/auction/base-front-shirt.png",
-        unlockAt: 60000,
-    },
-    {
-        name: "hoodie",
-        displayName: "Hoodie",
-        optionText: "Size",
-        options: ['S 38"', 'M 40"', 'L 42"', 'XL 44"', '2XL 46"'],
-        imgSrc: "/img/auction/base-front-shirt.png",
-        unlockAt: 100000,
-    },
-    {
-        name: "tshirt2",
-        displayName: "T-Shirt",
-        optionText: "Size",
-        options: ['S 38"', 'M 40"', 'L 42"', 'XL 44"', '2XL 46"', '3XL 48"'],
-        imgSrc: "/img/auction/base-front-shirt.png",
-        unlockAt: 100000,
-    },
-    {
-        name: "poloshirt2",
-        displayName: "Polo Shirt",
-        optionText: "Size",
-        options: ["S", "M", "L"],
-        imgSrc: "/img/auction/base-front-shirt.png",
-        unlockAt: 100000,
-    },
-];
 
 const rewardHeroName = ["T-Shirt", "Cap", "Polo Shirt", "Hoodie", "Mascot"];
 const rewardHeroNum = [
