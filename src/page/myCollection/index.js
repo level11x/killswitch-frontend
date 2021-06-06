@@ -317,7 +317,7 @@ export const MyCollectionPage = () => {
         // setData(value);
         setData(
             value.filter(
-                (v, idx) => v.bidAddress.toLowerCase() === wallet.toLowerCase()
+                (v, idx) => v.bidAddress.toLowerCase() === wallet && wallet.toLowerCase()
             )
         );
         return () => {};
