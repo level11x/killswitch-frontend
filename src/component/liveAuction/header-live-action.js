@@ -5,10 +5,11 @@ import world from '../../svg/world.svg'
 import robotRock from '../../svg/robot-rock.svg'
 import { useBUSDContract } from '../../hooks/useBUSDContract'
 import { AUCTION_ADDRESS } from "../../config/contract";
+import { END_AUCTION_DATE_STRING } from '../../config/common'
 
-const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, startHour, endMonth, endDay, endHour ,className,...props}) => {
+const HeaderLiveAuction = ({ day, hour, minute, second, className,...props}) => {
     const timerComponents = [];
-    const timeLeft = useCountdown({ endDay, endHour, endMonth })
+    const { days, hours, minutes, seconds, isExpired } = useCountdown({ timestamp: END_AUCTION_DATE_STRING })
     const busdContract = useBUSDContract();
     const [tvl, setTVL] = useState(0);
 
@@ -41,7 +42,7 @@ const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, sta
                 day ?
                     <div className="h-24 w-24 md:h-36 md:w-36 2xl:h-48 2xl:w-48 rounded-2xl bg-white flex flex-col p-2 z-10">
                         <span className="font-bold text-base md:text-2xl text-gray-400 text-center">Days</span>
-                        <span className="flex-1 font-bold text-4xl md:text-7xl grid place-items-center">{timeLeft.days}</span>
+                        <span className="flex-1 font-bold text-4xl md:text-7xl grid place-items-center">{!isExpired ? days : '00' }</span>
                     </div>
                     : null
             }
@@ -49,7 +50,7 @@ const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, sta
                 hour ?
                     <div className="h-24 w-24 md:w-36 md:h-36 2xl:h-48 2xl:w-48 rounded-2xl bg-white flex flex-col p-2 z-10">
                         <span className="font-bold text-base md:text-2xl text-gray-400 text-center">Hours</span>
-                        <span className="flex-1 font-bold text-4xl md:text-7xl grid place-items-center">{timeLeft.hours}</span>
+                        <span className="flex-1 font-bold text-4xl md:text-7xl grid place-items-center">{!isExpired ? hours : '00' }</span>
                     </div>
                     : null
             }
@@ -57,7 +58,7 @@ const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, sta
                 minute ?
                     <div className="h-24 w-24 md:w-36 md:h-36 2xl:h-48 2xl:w-48 rounded-2xl bg-white flex flex-col p-2 z-10">
                         <span className="font-bold text-base md:text-2xl text-gray-400 text-center">Minutes</span>
-                        <span className="flex-1 font-bold text-4xl md:text-7xl grid place-items-center">{timeLeft.minutes}</span>
+                        <span className="flex-1 font-bold text-4xl md:text-7xl grid place-items-center">{!isExpired ? minutes : '00' }</span>
                     </div>
                     : null
             }
@@ -65,7 +66,7 @@ const HeaderLiveAuction = ({ day, hour, minute, second,startMonth, startDay, sta
                 second ?
                     <div className="h-24 w-24 md:w-36 md:h-36 2xl:h-48 2xl:w-48 rounded-2xl bg-white flex flex-col p-2 z-10">
                         <span className="font-bold text-base md:text-2xl text-gray-400 text-center">Seconds</span>
-                        <span className="flex-1 font-bold text-4xl md:text-7xl grid place-items-center">{timeLeft.seconds}</span>
+                        <span className="flex-1 font-bold text-4xl md:text-7xl grid place-items-center">{!isExpired ? seconds : '00' }</span>
                     </div>
                     : null
             }

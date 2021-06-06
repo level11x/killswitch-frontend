@@ -1,4 +1,6 @@
 import { useState, useEffect  } from 'react'
+import { BigNumber } from "@ethersproject/bignumber"
+
 import Navigation from '../../component/navigation'
 import { TimeBox } from '../../component/timeBox/timeBox';
 import { AuctionTable } from '../../component/auctionTable/auctionTable';
@@ -7,7 +9,7 @@ import { TopAuctionCard } from '../../component/topAuctionCard/topAuctionCard';
 import { useBidData } from '../../hooks/useBidData'
 import './topAuction.css'
 import useCountdown from '../../hooks/useCountdown'
-import { BigNumber } from "@ethersproject/bignumber"
+import { END_AUCTION_DATE_STRING } from '../../config/common'
 
 export const TopAuction = () => {
   const { bidData } = useBidData()
@@ -20,7 +22,7 @@ export const TopAuction = () => {
   const [top4, setTop4] = useState({})
   const pageSize = 25
 
-  const timeLeft = useCountdown({ timestamp: 1623063600000 }) // Mon Jun 07 2021 18:00:00 GMT+0700 (Indochina Time)
+  const timeLeft = useCountdown({ timestamp: END_AUCTION_DATE_STRING })
 
   const onPageChange = ({ selected }) => {
     setCurrentPage(selected)

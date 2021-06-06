@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { Route } from "react-router";
+import { Route, Redirect } from "react-router";
 import {
-    CountdownPage,
     LiveAuctionPage,
     InfoPage,
     HomePage,
@@ -11,23 +10,23 @@ import {
 } from "../page";
 import { AppProvider } from "../context";
 import { Web3Provider } from "../hooks/useWeb3";
-import { START_AUCTION_DATE_STRING } from "../config/common";
+import { END_AUCTION_REDIRECT_DATE_STRING } from "../config/common";
 
 const Router = () => {
-    const [isOpenProject, setIsOpenProject] = useState(
-        new Date() >= new Date(START_AUCTION_DATE_STRING)
+    const [isCloseAuction, setIsCloseAuction] = useState(
+        new Date() >= new Date(END_AUCTION_REDIRECT_DATE_STRING)
     );
 
     useEffect(() => {
-        if (!isOpenProject) {
-            const diffTime = new Date(START_AUCTION_DATE_STRING) - new Date();
+        if (!isCloseAuction) {
+            const diffTime = new Date(END_AUCTION_REDIRECT_DATE_STRING) - new Date();
             console.log("diffTime", diffTime);
             const timeout = setTimeout(() => {
-                setIsOpenProject(true);
+                setIsCloseAuction(true);
             }, diffTime);
             return () => clearTimeout(timeout);
         }
-    }, [isOpenProject]);
+    }, [isCloseAuction]);
 
     return (
         <AppProvider>
@@ -36,16 +35,19 @@ const Router = () => {
                     <Route
                         exact
                         path={"/"}
-                        component={isOpenProject ? HomePage : CountdownPage}
+                        component={HomePage}
                     />
                     <Route
                         exact
                         path={"/live-auction"}
-                        component={LiveAuctionPage}
-                    />
+                    >
+                        {isCloseAuction ? <Redirect to="/my-collection" /> : <LiveAuctionPage />}
+                    </Route>
                     <Route exact path={"/home"} component={HomePage} />
                     <Route exact path={"/info"} component={InfoPage} />
-                    <Route exact path={"/top-auction"} component={TopAuction} />
+                    <Route exact path={"/top-auction"} >
+                        {isCloseAuction ? <Redirect to="/my-collection" /> : <TopAuction />}
+                    </Route>
                     <Route
                         exact
                         path={"/my-collection"}
