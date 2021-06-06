@@ -402,6 +402,8 @@ export const MyCollectionPage = () => {
             .then((result) => {
                 console.log('result', result)
                 const params = new URLSearchParams()
+                params.append('wallet', wallet)
+                params.append("tokenID", isModalOpenForTokneID)
                 return axios.post("https://www.formbackend.com/f/bf68bb6574b69f0c", params, config)
             })
             .then(() => {
