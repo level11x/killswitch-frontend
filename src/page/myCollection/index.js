@@ -335,13 +335,13 @@ export const MyCollectionPage = () => {
 
     const busdContract = useBUSDContract();
     const [tvl, setTVL] = useState(0);
+
     useEffect(() => {
         if (!busdContract) return;
         busdContract.methods
             .balanceOf(AUCTION_ADDRESS)
             .call()
             .then((balance) => {
-                console.log(balance);
                 setTVL(balance);
             });
     }, [busdContract]);
@@ -369,19 +369,18 @@ export const MyCollectionPage = () => {
         // setData(value);
         setData(
             value.filter(
-                (v, idx) =>
-                    idx < 4 || // for mock purpose
-                    v.bidAddress.toLowerCase() === wallet.toLowerCase()
+                (v, idx) => v.bidAddress.toLowerCase() === wallet.toLowerCase()
             )
         );
         return () => {};
     }, [bidData]);
 
     const tvlToRewardIndex = (tvl) => {
-        if (tvl >= 100000) return 4;
-        if (tvl >= 60000) return 3;
-        if (tvl >= 30000) return 2;
-        if (tvl >= 10000) return 1;
+        if (tvl >= 200000) return 4;
+        if (tvl >= 100000) return 3;
+        if (tvl >= 60000) return 2;
+        if (tvl >= 30000) return 1;
+        if (tvl >= 10000) return 0;
         return 0;
     };
 
@@ -417,15 +416,16 @@ export const MyCollectionPage = () => {
                         </span>
                         <div className="flex flex-col space-y-2 mt-2">
                             {rewardHeroNum[tvlToRewardIndex(tvl)].map(
-                                (num, idx) => (
-                                    <div className="flex space-x-2 items-center">
-                                        <Star className="w-4" />
-                                        <div>
-                                            Get {num} {rewardHeroName[idx]} per
-                                            auction
+                                (num, idx) =>
+                                    num === 0 ? null : (
+                                        <div className="flex space-x-2 items-center">
+                                            <Star className="w-4" />
+                                            <div>
+                                                Get {num} {rewardHeroName[idx]}{" "}
+                                                per auction
+                                            </div>
                                         </div>
-                                    </div>
-                                )
+                                    )
                             )}
                         </div>
                     </div>
