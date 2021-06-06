@@ -51,7 +51,13 @@ export default function ModalBid({ onBid, tokenID ,onHoverShirtBack,isShowFront,
 
     useEffect(() => {
         if (!tokenID || !bidData || bidData.length < 4) return
-        updateEvents(tokenID)
+        
+        if (BigNumber.from(bidData[2][tokenID]).gte(BigNumber.from("10"))) {
+            updateEvents(tokenID)
+        } else {
+            console.log('skip event no auction')
+        }
+
         let lastPrice = BigNumber.from(bidData[2][tokenID])
         setLastPrice(lastPrice)
         setLastBidTime(bidData[3][tokenID])

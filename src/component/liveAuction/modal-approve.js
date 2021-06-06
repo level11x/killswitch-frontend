@@ -38,7 +38,12 @@ export default function ModalApprove({ tokenID, onApproved, onBid ,onHoverShirtF
             setIsConnect(false)
             return
         };
-        updateEvents(tokenID)
+        if (BigNumber.from(bidData[2][tokenID]).gte(BigNumber.from("10"))) {
+            updateEvents(tokenID)
+        } else {
+            console.log('skip event no auction')
+        }
+        
         setIsConnect(true)
         setLastPrice(bidData[2][tokenID])
         setLastBidTime(bidData[3][tokenID])

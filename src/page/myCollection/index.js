@@ -11,6 +11,9 @@ import { Moon } from "../../component/svg";
 import countryCodes from "../../countryCode.json";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBUSDContract } from "../../hooks/useBUSDContract";
+import { useAuctionContract } from '../../hooks/useAuctionContract'
+import { useShirtContract } from '../../hooks/useShirtContract'
+import axios from "axios"
 
 const rewardHeroName = ["T-Shirt", "Cap", "Polo Shirt", "Hoodie", "Mascot"];
 const rewardHeroNum = [
@@ -262,13 +265,20 @@ const ShirtCard = (props) => {
                     </div>
                 </div>
             </div>
-            <Button
-                className="btn-approve mt-4"
-                size="large"
-                onClick={() => props.setIsInfoModalOpen(true)}
-            >
-                Claim it now
-            </Button>
+            {
+                props.isClaimed ? <Button className="btn-approve mt-4" size="large" disabled={true}>Already Claimed</Button> :
+                    <Button
+                    className="btn-approve mt-4"
+                    size="large"
+                    onClick={() => {
+                        props.setIsInfoModalOpen(true)
+                        props.setIsModalOpenForTokneID(props.id)
+                    }}
+                    >
+                        Claim it now
+                    </Button>
+            }
+            
         </Card>
     );
 };
@@ -280,8 +290,12 @@ export const MyCollectionPage = () => {
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
     const { bidData } = useBidData();
     const [data, setData] = useState([]);
+    const [isModalOpenForTokneID, setIsModalOpenForTokneID] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const busdContract = useBUSDContract();
+    const [auctionContract] = useAuctionContract();
+    const [shirtContract] = useShirtContract();
     const [tvl, setTVL] = useState(0);
 
     useEffect(() => {
@@ -292,18 +306,19 @@ export const MyCollectionPage = () => {
             .then((balance) => {
                 setTVL(balance);
             });
+        return () => {};
     }, [busdContract]);
 
     const displayTVL = (tvl) =>
         (tvl / 10 ** 18).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
     useEffect(() => {
-        if (!bidData || bidData.length < 4) return;
+        if (!wallet || !bidData || bidData.length < 4) return;
         const tokenIDs = bidData[0];
         const addresses = bidData[1];
         const amounts = bidData[2];
         const time = bidData[3];
-        const value = [];
+        let value = [];
         for (let i = 0; i < tokenIDs.length; i++) {
             value.push({
                 id: tokenIDs[i],
@@ -312,14 +327,28 @@ export const MyCollectionPage = () => {
                 time: time[i],
             });
         }
-        // setData(value);
-        setData(
-            value.filter(
-                (v, idx) => v.bidAddress.toLowerCase() === wallet && wallet.toLowerCase()
-            )
-        );
+
+        value = value.filter(
+            (v, idx) => v.bidAddress.toLowerCase() === wallet && wallet.toLowerCase()
+        )
+
+        const pp = []
+        for (let i = 0; i < value.length; i++) {
+            pp.push(shirtContract.methods.ownerOf(value[i].id).call().then((result) => {
+                if (wallet) {
+                    value[i].isClaimed = result.toLowerCase() == wallet.toLowerCase()
+                } else {
+                    value[i].isClaimed = false
+                }
+            }))
+        }
+        Promise.all(pp).then(() => {
+            console.log('setValue', value)
+            setData(value);
+        });
+        
         return () => {};
-    }, [bidData]);
+    }, [bidData, wallet]);
 
     const tvlToRewardIndex = (_tvl) => {
         const tvl = _tvl / 10 ** 18;
@@ -332,11 +361,8 @@ export const MyCollectionPage = () => {
     };
 
     const handleFormSubmit = () => {
-        console.log("submit");
         form.validateFields()
             .then((values) => {
-                // form.resetFields();
-                console.log(values);
                 setIsConfirmModalOpen(true);
                 setIsInfoModalOpen(false);
             })
@@ -346,8 +372,51 @@ export const MyCollectionPage = () => {
     };
 
     const handleConfirmSubmit = () => {
-        console.log("confirm");
-        setIsConfirmModalOpen(false);
+        setLoading(true)
+        console.log("confirm", isModalOpenForTokneID);
+        const _form = form
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+
+        form.validateFields()
+            .then((values) => {
+                const params = new URLSearchParams()
+                params.append('wallet', wallet)
+                params.append("tokenID", isModalOpenForTokneID)
+                for (const [key, value] of Object.entries(values)) {
+                    // console.log(`${key}: ${value}`);
+                    params.append(key, value)
+                }
+                
+                return axios.post("https://www.formbackend.com/f/e91eb102c26633b2", params, config)
+            })
+            .then(() => {
+                return auctionContract.methods.claimReward(isModalOpenForTokneID).send({
+                    from: wallet
+                })
+            })
+            .then((result) => {
+                console.log('result', result)
+                const params = new URLSearchParams()
+                return axios.post("https://www.formbackend.com/f/bf68bb6574b69f0c", params, config)
+            })
+            .then(() => {
+                const objIndex = data.findIndex((obj => obj.id == isModalOpenForTokneID));
+                data[objIndex].isClaimed = true
+                setData(data);
+                _form.resetFields();
+                setIsConfirmModalOpen(false);
+            })
+            .catch((info) => {
+                console.log("Validate Failed:", info);
+            })
+            .finally(() => {
+                setLoading(false)
+            });
     };
 
     return (
@@ -365,7 +434,7 @@ export const MyCollectionPage = () => {
                             {rewardHeroNum[tvlToRewardIndex(tvl)].map(
                                 (num, idx) =>
                                     num === 0 ? null : (
-                                        <div className="flex space-x-2 items-center">
+                                        <div className="flex space-x-2 items-center" key={idx}>
                                             <Star className="w-4" />
                                             <div>
                                                 Get {num} {rewardHeroName[idx]}{" "}
@@ -382,6 +451,7 @@ export const MyCollectionPage = () => {
                         .slice(0, tvlToRewardIndex(tvl) + 1)
                         .map((url, idx) => (
                             <div
+                                key={idx}
                                 className={`bg-white rounded-full ${
                                     tvlToRewardIndex(tvl) > 2 ? "p-2" : "p-3"
                                 } w-40`}
@@ -412,15 +482,15 @@ export const MyCollectionPage = () => {
                     <div className="">
                         <Row>
                             {data.map((current, index) => (
-                                <Col sm={12} md={8}>
-                                    <div className="" key={current.id}>
+                                <Col sm={12} md={8} key={current.id}>
+                                    <div className="">
                                         <ShirtCard
                                             id={current.id}
                                             bidPrice={current.bidPrice}
                                             bidAddress={current.bidAddress}
-                                            setIsInfoModalOpen={
-                                                setIsInfoModalOpen
-                                            }
+                                            isClaimed={current.isClaimed}
+                                            setIsInfoModalOpen={setIsInfoModalOpen}
+                                            setIsModalOpenForTokneID={setIsModalOpenForTokneID}
                                         />
                                     </div>
                                 </Col>
@@ -510,7 +580,7 @@ export const MyCollectionPage = () => {
                                     }
                                 >
                                     {countryCodes.map((c) => (
-                                        <Select.Option value={c.code}>
+                                        <Select.Option value={c.code} key={c.code}>
                                             {`${c.name} (${c.dial_code})`}
                                         </Select.Option>
                                     ))}
@@ -652,6 +722,7 @@ export const MyCollectionPage = () => {
                                                                     value={
                                                                         option
                                                                     }
+                                                                    key={option}
                                                                 >
                                                                     {option}
                                                                 </Select.Option>
@@ -823,6 +894,7 @@ export const MyCollectionPage = () => {
                                 setIsInfoModalOpen(true);
                             }}
                             size="large"
+                            loading={loading}
                         >
                             Cancel
                         </Button>
@@ -832,6 +904,7 @@ export const MyCollectionPage = () => {
                             className="bg-primary px-8"
                             onClick={handleConfirmSubmit}
                             size="large"
+                            loading={loading}
                         >
                             Submit
                         </Button>
