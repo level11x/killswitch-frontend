@@ -3,6 +3,7 @@ import { Logo } from '../logo/Logo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../button/button'
+import useCountdownCloseAuction from '../../hooks/useCountdownCloseAuction'
 
 const MenuBlock = ({ children}) => {
   return (
@@ -13,6 +14,8 @@ const MenuBlock = ({ children}) => {
 }
 
 export const PageLayout = ({ children }) => {
+  const { isCloseAuction } = useCountdownCloseAuction()
+  console.log('isCloseAuction', isCloseAuction)
   return (
     <div className='min-h-screen bg-gray flex flex-col '>
       <div className='hidden xl:flex w-100 justify-between bg-white shadow-md'>
@@ -24,7 +27,7 @@ export const PageLayout = ({ children }) => {
             Home
           </MenuBlock>
           <MenuBlock>
-            Live Auction
+            {isCloseAuction ? 'My Collection' : 'Live Auction'}
           </MenuBlock>
           <MenuBlock>
             Top Auction

@@ -9,6 +9,8 @@ import {
 import { Carousel } from "antd";
 import { useHistory } from 'react-router-dom'
 
+import useCountdownCloseAuction from '../../hooks/useCountdownCloseAuction'
+
 import "./home.css";
 
 const Container = ({ children }) => {
@@ -21,6 +23,7 @@ const Container = ({ children }) => {
 
 const HomePage = () => {
   const history = useHistory();
+  const { isCloseAuction } = useCountdownCloseAuction()
   const [isShowModal, setIsShowModal] = useState(false);
   const [isPopupShow, setIsPopupShow] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -135,7 +138,7 @@ const HomePage = () => {
                 className="px-4 flex h-full items-center text-xl font-semibold py-4 bg-grey-10"
                 href="/"
               >
-                Live Auction
+                {isCloseAuction ? 'My Collection' : 'Live Auction'}
               </a>
             </div>
           )}
