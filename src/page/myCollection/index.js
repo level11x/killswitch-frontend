@@ -295,9 +295,7 @@ export const MyCollectionPage = () => {
     }, [busdContract]);
 
     const displayTVL = (tvl) =>
-        ((tvl * 100000) / 10 ** 18)
-            .toFixed(2)
-            .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        (tvl / 10 ** 18).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
     useEffect(() => {
         if (!bidData || bidData.length < 4) return;
@@ -323,7 +321,8 @@ export const MyCollectionPage = () => {
         return () => {};
     }, [bidData]);
 
-    const tvlToRewardIndex = (tvl) => {
+    const tvlToRewardIndex = (_tvl) => {
+        const tvl = _tvl / 10 ** 18;
         if (tvl >= 200000) return 4;
         if (tvl >= 100000) return 3;
         if (tvl >= 60000) return 2;
@@ -354,9 +353,9 @@ export const MyCollectionPage = () => {
     return (
         <div className="bg-primary">
             <Navigation />
-            <div className="pt-12 container mx-auto mb-16">
-                <div className="pt-16 flex flex-row items-center">
-                    <Moon className="h-24 mr-6" />
+            <div className="pt-12 container mx-auto mb-16 sm:px-0 px-4">
+                <div className="pt-16 flex sm:flex-row flex-col items-center">
+                    <Moon className="h-24 sm:mr-6 sm:mb-0 mb-6" />
                     <div className="flex flex-col text-white space-y-2">
                         <span className="font-semibold text-xl">
                             <div>Total Bidding Value Lock</div>
@@ -378,11 +377,15 @@ export const MyCollectionPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-12 flex align-middle space-x-4">
+                <div className="mt-12 flex align-middle sm:space-x-4 space-x-1">
                     {rewardHeroImg
                         .slice(0, tvlToRewardIndex(tvl) + 1)
                         .map((url, idx) => (
-                            <div className="bg-white rounded-full p-3 w-40">
+                            <div
+                                className={`bg-white rounded-full ${
+                                    tvlToRewardIndex(tvl) > 2 ? "p-2" : "p-3"
+                                } w-40`}
+                            >
                                 <LazyLoadImage
                                     alt={rewardHeroName[idx]}
                                     src={url}
