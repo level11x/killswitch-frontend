@@ -10,23 +10,10 @@ import {
 } from "../page";
 import { AppProvider } from "../context";
 import { Web3Provider } from "../hooks/useWeb3";
-import { END_AUCTION_REDIRECT_DATE_STRING } from "../config/common";
+import useCountdownCloseAuction from '../hooks/useCountdownCloseAuction'
 
 const Router = () => {
-    const [isCloseAuction, setIsCloseAuction] = useState(
-        new Date() >= new Date(END_AUCTION_REDIRECT_DATE_STRING)
-    );
-
-    useEffect(() => {
-        if (!isCloseAuction) {
-            const diffTime = new Date(END_AUCTION_REDIRECT_DATE_STRING) - new Date();
-            console.log("diffTime", diffTime);
-            const timeout = setTimeout(() => {
-                setIsCloseAuction(true);
-            }, diffTime);
-            return () => clearTimeout(timeout);
-        }
-    }, [isCloseAuction]);
+    const { isCloseAuction } = useCountdownCloseAuction()
 
     return (
         <AppProvider>
@@ -45,9 +32,7 @@ const Router = () => {
                     </Route>
                     <Route exact path={"/home"} component={HomePage} />
                     <Route exact path={"/info"} component={InfoPage} />
-                    <Route exact path={"/top-auction"} >
-                        {isCloseAuction ? <Redirect to="/my-collection" /> : <TopAuction />}
-                    </Route>
+                    <Route exact path={"/top-auction"} component={TopAuction} />
                     <Route
                         exact
                         path={"/my-collection"}
