@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Button, Modal, Row, Col, Form, Input, Select } from "antd";
+// 
 import LiveAuctionFooter from "../../component/liveAuction/footer-live-action";
 import Navigation from "../../component/navigation";
 import { useBidData } from "../../hooks/useBidData";
@@ -177,6 +178,7 @@ const QuestionRobot = (props) => (
 );
 
 const ShirtCard = (props) => {
+ 
     return (
         <Card
             hoverable
@@ -233,7 +235,7 @@ const ShirtCard = (props) => {
                 </Button>
             )}
             <Button
-                className="btn-approve mt-2"
+                className="btn-approve mt-2 mmd:hidden"
                 size="large"
                 onClick={() => {
                     window.open(window.location.origin + `/download/${props.id}`);
@@ -241,6 +243,13 @@ const ShirtCard = (props) => {
             >
                 Download File
             </Button>
+
+            <a
+                className="md:hidden lg:hidden"
+                href={window.location.origin + `/download/${props.id}`}
+                target="_blank">
+                <Button className="btn-approve mt-2" size="large">Download File</Button>
+            </a>
         </Card>
     );
 };
