@@ -501,6 +501,7 @@ export const MyCollectionPage = () => {
                                         message: "Please select your country code",
                                     },
                                 ]}
+                                initialValue="Thailand (+66)"
                             >
                                 <Select
                                     showSearch
@@ -508,7 +509,6 @@ export const MyCollectionPage = () => {
                                     filterOption={(input, option) =>
                                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                                     }
-                                    defaultValue="Thailand (+66)"
                                 >
                                     {countryCodes.map((c) => (
                                         <Select.Option value={c.code} key={c.code}>
