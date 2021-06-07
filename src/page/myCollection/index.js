@@ -11,9 +11,9 @@ import { Moon } from "../../component/svg";
 import countryCodes from "../../countryCode.json";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBUSDContract } from "../../hooks/useBUSDContract";
-import { useAuctionContract } from '../../hooks/useAuctionContract'
-import { useShirtContract } from '../../hooks/useShirtContract'
-import axios from "axios"
+import { useAuctionContract } from "../../hooks/useAuctionContract";
+import { useShirtContract } from "../../hooks/useShirtContract";
+import axios from "axios";
 
 const rewardHeroName = ["T-Shirt", "Cap", "Polo Shirt", "Hoodie", "Mascot"];
 const rewardHeroNum = [
@@ -24,28 +24,16 @@ const rewardHeroNum = [
     [2, 2, 2, 2, 1],
 ];
 const rewardHeroImg = [
-    "/img/auction/base-front-shirt.png",
-    "/img/auction/base-front-shirt.png",
-    "/img/auction/base-front-shirt.png",
-    "/img/auction/base-front-shirt.png",
-    "/img/auction/base-front-shirt.png",
+    "/img/Unlock-hover/T-Shirt-Front.png",
+    "/img/Unlock-hover/Gap.png",
+    "/img/Unlock-hover/Polo-Front.png",
+    "/img/Unlock-hover/Hoodie-Front.png",
+    "/img/Unlock-hover/Robot-Front.png",
 ];
-const shirtOptions = [
-    'S 38"',
-    'M 40"',
-    'L 42"',
-    'XL 44"',
-    '2XL 46"',
-    '3XL 48"',
-];
+const shirtOptions = ['S 38"', 'M 40"', 'L 42"', 'XL 44"', '2XL 46"', '3XL 48"'];
 
 const Star = (props) => (
-    <svg
-        {...props}
-        viewBox="0 0 20 20"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg {...props} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z"
             fill="#00BCD4"
@@ -54,36 +42,10 @@ const Star = (props) => (
 );
 
 const QuestionRobot = (props) => (
-    <svg
-        width="103"
-        height="105"
-        viewBox="0 0 103 105"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <ellipse
-            cx="51.8736"
-            cy="52.7467"
-            rx="50.4869"
-            ry="52.158"
-            fill="#C5CAE9"
-        />
-        <mask
-            id="mask0"
-            mask-type="alpha"
-            maskUnits="userSpaceOnUse"
-            x="0"
-            y="0"
-            width="102"
-            height="105"
-        >
-            <ellipse
-                cx="51.1256"
-                cy="52.7467"
-                rx="50.4869"
-                ry="52.158"
-                fill="#5C6BC0"
-            />
+    <svg width="103" height="105" viewBox="0 0 103 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="51.8736" cy="52.7467" rx="50.4869" ry="52.158" fill="#C5CAE9" />
+        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="102" height="105">
+            <ellipse cx="51.1256" cy="52.7467" rx="50.4869" ry="52.158" fill="#5C6BC0" />
         </mask>
         <g mask="url(#mask0)">
             <path
@@ -224,16 +186,9 @@ const ShirtCard = (props) => {
         >
             <div className="box-number">{props.id}</div>
             <div className="shirt-card-box" id="shirt">
-                <LazyLoadImage
-                    className="overlay w-full h-full"
-                    alt="shirt"
-                    src="/img/auction/base-back-shirt.png"
-                />
+                <LazyLoadImage className="overlay w-full h-full" alt="shirt" src="/img/auction/base-back-shirt.png" />
                 <div className="shirt-image relative">
-                    <LazyLoadImage
-                        alt="shirt"
-                        src="/img/auction/base-front-shirt.png"
-                    />
+                    <LazyLoadImage alt="shirt" src="/img/auction/base-front-shirt.png" />
                     <LazyLoadImage
                         alt="nong egg"
                         src={IMAGES[props.id]}
@@ -249,15 +204,10 @@ const ShirtCard = (props) => {
                     <div className="live-bid-text">Bid placed</div>
                 </div>
                 <div className="live-bid-price">
-                    <div className="live-bid-number">
-                        {props.bidPrice / 10 ** 18}
-                    </div>
+                    <div className="live-bid-number">{props.bidPrice / 10 ** 18}</div>
                     <div className="live-bid-number">
                         {props.bidAddress
-                            ? `${props.bidAddress.substring(
-                                  0,
-                                  5
-                              )}...${props.bidAddress.substring(
+                            ? `${props.bidAddress.substring(0, 5)}...${props.bidAddress.substring(
                                   props.bidAddress.length - 4,
                                   props.bidAddress.length
                               )}`
@@ -265,19 +215,23 @@ const ShirtCard = (props) => {
                     </div>
                 </div>
             </div>
-            {
-                props.isClaimed ? <Button className="btn-approve mt-4" size="large" disabled={true}>Already Claimed</Button> :
-                    <Button
-                    className="btn-approve mt-4"
+            {props.isClaimed ? (
+                <Button className="btn-approve mt-4" size="large" disabled={true}>
+                    Already Claimed
+                </Button>
+            ) : (
+                <Button
+                    className="btn-approve mt-4 bg-primary"
+                    type="primary"
                     size="large"
                     onClick={() => {
-                        props.setIsInfoModalOpen(true)
-                        props.setIsModalOpenForTokneID(props.id)
+                        props.setIsInfoModalOpen(true);
+                        props.setIsModalOpenForTokneID(props.id);
                     }}
-                    >
-                        Claim it now
-                    </Button>
-            }
+                >
+                    Claim it now
+                </Button>
+            )}
             <Button
                 className="btn-approve mt-2"
                 size="large"
@@ -317,8 +271,7 @@ export const MyCollectionPage = () => {
         return () => {};
     }, [busdContract]);
 
-    const displayTVL = (tvl) =>
-        (tvl / 10 ** 18).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    const displayTVL = (tvl) => (tvl / 10 ** 18).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
     useEffect(() => {
         if (!wallet || !bidData || bidData.length < 4) return;
@@ -336,25 +289,28 @@ export const MyCollectionPage = () => {
             });
         }
 
-        value = value.filter(
-            (v, idx) => v.bidAddress.toLowerCase() === wallet && wallet.toLowerCase()
-        )
+        value = value.filter((v) => v.bidAddress.toLowerCase() === wallet && wallet.toLowerCase());
 
-        const pp = []
+        const pp = [];
         for (let i = 0; i < value.length; i++) {
-            pp.push(shirtContract.methods.ownerOf(value[i].id).call().then((result) => {
-                if (wallet) {
-                    value[i].isClaimed = result.toLowerCase() == wallet.toLowerCase()
-                } else {
-                    value[i].isClaimed = false
-                }
-            }))
+            pp.push(
+                shirtContract.methods
+                    .ownerOf(value[i].id)
+                    .call()
+                    .then((result) => {
+                        if (wallet) {
+                            value[i].isClaimed = result.toLowerCase() === wallet.toLowerCase();
+                        } else {
+                            value[i].isClaimed = false;
+                        }
+                    })
+            );
         }
         Promise.all(pp).then(() => {
-            console.log('setValue', value)
+            console.log("setValue", value);
             setData(value);
         });
-        
+
         return () => {};
     }, [bidData, wallet]);
 
@@ -380,44 +336,44 @@ export const MyCollectionPage = () => {
     };
 
     const handleConfirmSubmit = () => {
-        setLoading(true)
+        setLoading(true);
         console.log("confirm", isModalOpenForTokneID);
-        const _form = form
+        const _form = form;
 
         const config = {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+        };
 
         form.validateFields()
             .then((values) => {
-                const params = new URLSearchParams()
-                params.append('wallet', wallet)
-                params.append("tokenID", isModalOpenForTokneID)
+                const params = new URLSearchParams();
+                params.append("wallet", wallet);
+                params.append("tokenID", isModalOpenForTokneID);
                 for (const [key, value] of Object.entries(values)) {
                     // console.log(`${key}: ${value}`);
-                    params.append(key, value)
+                    params.append(key, value);
                 }
-                
-                return axios.post("https://www.formbackend.com/f/e91eb102c26633b2", params, config)
+
+                return axios.post("https://www.formbackend.com/f/e91eb102c26633b2", params, config);
             })
             .then(() => {
                 return auctionContract.methods.claimReward(isModalOpenForTokneID).send({
-                    from: wallet
-                })
+                    from: wallet,
+                });
             })
             .then((result) => {
-                console.log('result', result)
-                const params = new URLSearchParams()
-                params.append('wallet', wallet)
-                params.append("tokenID", isModalOpenForTokneID)
-                params.append("transactionHash", result.transactionHash)
-                return axios.post("https://www.formbackend.com/f/bf68bb6574b69f0c", params, config)
+                console.log("result", result);
+                const params = new URLSearchParams();
+                params.append("wallet", wallet);
+                params.append("tokenID", isModalOpenForTokneID);
+                params.append("transactionHash", result.transactionHash);
+                return axios.post("https://www.formbackend.com/f/bf68bb6574b69f0c", params, config);
             })
             .then(() => {
-                const objIndex = data.findIndex((obj => obj.id == isModalOpenForTokneID));
-                data[objIndex].isClaimed = true
+                const objIndex = data.findIndex((obj) => obj.id == isModalOpenForTokneID);
+                data[objIndex].isClaimed = true;
                 setData(data);
                 _form.resetFields();
                 setIsConfirmModalOpen(false);
@@ -426,7 +382,7 @@ export const MyCollectionPage = () => {
                 console.log("Validate Failed:", info);
             })
             .finally(() => {
-                setLoading(false)
+                setLoading(false);
             });
     };
 
@@ -442,68 +398,45 @@ export const MyCollectionPage = () => {
                             <div>{displayTVL(tvl)} BUSD</div>
                         </span>
                         <div className="flex flex-col space-y-2 mt-2">
-                            {rewardHeroNum[tvlToRewardIndex(tvl)].map(
-                                (num, idx) =>
-                                    num === 0 ? null : (
-                                        <div className="flex space-x-2 items-center" key={idx}>
-                                            <Star className="w-4" />
-                                            <div>
-                                                Get {num} {rewardHeroName[idx]}{" "}
-                                                per auction
-                                            </div>
+                            {rewardHeroNum[tvlToRewardIndex(tvl)].map((num, idx) =>
+                                num === 0 ? null : (
+                                    <div className="flex space-x-2 items-center" key={idx}>
+                                        <Star className="w-4" />
+                                        <div>
+                                            Get {num} {rewardHeroName[idx]} per auction
                                         </div>
-                                    )
+                                    </div>
+                                )
                             )}
                         </div>
                     </div>
                 </div>
-                <div className="mt-12 flex align-middle sm:space-x-4 space-x-1">
-                    {rewardHeroImg
-                        .slice(0, tvlToRewardIndex(tvl) + 1)
-                        .map((url, idx) => (
-                            <div
-                                key={idx}
-                                className={`bg-white rounded-full ${
-                                    tvlToRewardIndex(tvl) > 2 ? "p-2" : "p-3"
-                                } w-40`}
-                            >
-                                <LazyLoadImage
-                                    alt={rewardHeroName[idx]}
-                                    src={url}
-                                />
-                            </div>
-                        ))}
-                    {/* {rewards
-                        .filter((r) => r.unlockAt < tvl)
-                        .map((reward) => (
-                            <div className="bg-white rounded-full p-3 w-40">
-                                <LazyLoadImage
-                                    alt={reward.name}
-                                    src={reward.imgSrc}
-                                />
-                            </div>
-                        ))} */}
+                <div className="mt-12 flex sm:flex-row flex-col align-middle items-center sm:space-x-4 space-x-0 sm:space-y-0 space-y-2">
+                    {rewardHeroImg.slice(0, tvlToRewardIndex(tvl) + 1).map((url, idx) => (
+                        <div
+                            key={idx}
+                            className={`bg-white rounded-full ${
+                                tvlToRewardIndex(tvl) > 2 ? "p-2" : "p-3"
+                            } h-48 w-48 flex justify-center items-center`}
+                        >
+                            <LazyLoadImage alt={rewardHeroName[idx]} src={url} />
+                        </div>
+                    ))}
                 </div>
                 <div className="mt-12">
-                    <h1 className="text-4xl text-white font-semibold my-6">
-                        My Collection
-                    </h1>
-                    {/* <CollectibileLiveAuction onFinishSearch={onFinishSearch} /> */}
-                    {/* <LiveAuctionContent filterData={filterData} /> */}
+                    <h1 className="text-4xl text-white font-semibold my-6">My Collection</h1>
                     <div className="">
-                        <Row>
-                            {data.map((current, index) => (
+                        <Row gutter={[16, 16]}>
+                            {data.map((current) => (
                                 <Col sm={12} md={8} key={current.id}>
-                                    <div className="">
-                                        <ShirtCard
-                                            id={current.id}
-                                            bidPrice={current.bidPrice}
-                                            bidAddress={current.bidAddress}
-                                            isClaimed={current.isClaimed}
-                                            setIsInfoModalOpen={setIsInfoModalOpen}
-                                            setIsModalOpenForTokneID={setIsModalOpenForTokneID}
-                                        />
-                                    </div>
+                                    <ShirtCard
+                                        id={current.id}
+                                        bidPrice={current.bidPrice}
+                                        bidAddress={current.bidAddress}
+                                        isClaimed={current.isClaimed}
+                                        setIsInfoModalOpen={setIsInfoModalOpen}
+                                        setIsModalOpenForTokneID={setIsModalOpenForTokneID}
+                                    />
                                 </Col>
                             ))}
                         </Row>
@@ -516,14 +449,7 @@ export const MyCollectionPage = () => {
                 visible={isInfoModalOpen}
                 onCancel={() => setIsInfoModalOpen(false)}
                 footer={[
-                    <Button
-                        key="s"
-                        className="bg-primary"
-                        type="primary"
-                        size="large"
-                        block
-                        onClick={handleFormSubmit}
-                    >
+                    <Button key="s" className="bg-primary" type="primary" size="large" block onClick={handleFormSubmit}>
                         Submit
                     </Button>,
                 ]}
@@ -535,11 +461,9 @@ export const MyCollectionPage = () => {
                     // eslint-disable-next-line no-template-curly-in-string
                     validateMessages={{ required: "please input ${name}" }}
                 >
-                    <span className="text-2xl font-bold">
-                        Receiver Information
-                    </span>
+                    <span className="text-2xl font-bold">Receiver Information</span>
                     <Row gutter={16} className="mt-4">
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="First Name"
                                 name="firstname"
@@ -550,10 +474,10 @@ export const MyCollectionPage = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="Name" />
                             </Form.Item>
                         </Col>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="Last Name"
                                 name="lastname"
@@ -564,20 +488,17 @@ export const MyCollectionPage = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="Last name" />
                             </Form.Item>
                         </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="Country Code"
                                 name="countryCode"
                                 rules={[
                                     {
                                         required: true,
-                                        message:
-                                            "Please select your country code",
+                                        message: "Please select your country code",
                                     },
                                 ]}
                             >
@@ -585,10 +506,9 @@ export const MyCollectionPage = () => {
                                     showSearch
                                     optionFilterProp="children"
                                     filterOption={(input, option) =>
-                                        option.children
-                                            .toLowerCase()
-                                            .indexOf(input.toLowerCase()) >= 0
+                                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                                     }
+                                    defaultValue="Thailand (+66)"
                                 >
                                     {countryCodes.map((c) => (
                                         <Select.Option value={c.code} key={c.code}>
@@ -598,7 +518,7 @@ export const MyCollectionPage = () => {
                                 </Select>
                             </Form.Item>
                         </Col>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="Phone Number"
                                 name="phone"
@@ -609,19 +529,16 @@ export const MyCollectionPage = () => {
                                     },
                                     {
                                         required: true,
-                                        message:
-                                            "Please input your phone number",
+                                        message: "Please input your phone number",
                                         // type: "regexp",
                                         // eslint-disable-next-line no-useless-escape
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="Phone number" />
                             </Form.Item>
                         </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="Email Address"
                                 name="email"
@@ -636,10 +553,10 @@ export const MyCollectionPage = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="Email" />
                             </Form.Item>
                         </Col>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="Telegram"
                                 name="telegram"
@@ -650,166 +567,93 @@ export const MyCollectionPage = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="username" />
                             </Form.Item>
                         </Col>
                     </Row>
                     <span className="text-2xl font-bold">Size</span>
                     <div className="flex flex-col space-y-3 my-4">
-                        {rewardHeroNum[tvlToRewardIndex(tvl)].map(
-                            (num, idx) => {
-                                let options, name, imgUrl;
-                                switch (idx) {
-                                    case 0:
-                                        name = rewardHeroName[idx];
-                                        options = shirtOptions;
-                                        imgUrl = rewardHeroImg[idx];
-                                        break;
-                                    case 1:
-                                        name = rewardHeroName[idx];
-                                        options = null;
-                                        imgUrl = rewardHeroImg[idx];
-                                        break;
-                                    case 2:
-                                        name = rewardHeroName[idx];
-                                        options = shirtOptions;
-                                        imgUrl = rewardHeroImg[idx];
-                                        break;
-                                    case 3:
-                                        name = rewardHeroName[idx];
-                                        options = shirtOptions.slice(
-                                            0,
-                                            shirtOptions.length - 2
-                                        );
-                                        imgUrl = rewardHeroImg[idx];
-                                        break;
-                                    case 4:
-                                        name = rewardHeroName[idx];
-                                        options = null;
-                                        imgUrl = rewardHeroImg[idx];
-                                        break;
+                        {rewardHeroNum[tvlToRewardIndex(tvl)].map((num, idx) => {
+                            let options, name, imgUrl;
+                            switch (idx) {
+                                case 0:
+                                    name = rewardHeroName[idx];
+                                    options = shirtOptions;
+                                    imgUrl = rewardHeroImg[idx];
+                                    break;
+                                case 1:
+                                    name = rewardHeroName[idx];
+                                    options = null;
+                                    imgUrl = rewardHeroImg[idx];
+                                    break;
+                                case 2:
+                                    name = rewardHeroName[idx];
+                                    options = shirtOptions;
+                                    imgUrl = rewardHeroImg[idx];
+                                    break;
+                                case 3:
+                                    name = rewardHeroName[idx];
+                                    options = shirtOptions.slice(0, shirtOptions.length - 2);
+                                    imgUrl = rewardHeroImg[idx];
+                                    break;
+                                case 4:
+                                    name = rewardHeroName[idx];
+                                    options = null;
+                                    imgUrl = rewardHeroImg[idx];
+                                    break;
 
-                                    default:
-                                        break;
-                                }
+                                default:
+                                    break;
+                            }
 
-                                return options ? (
-                                    Array.from(Array(num)).map((_, idx) => (
-                                        <div
-                                            key={name + idx}
-                                            className="flex border rounded border-warmGray-300 p-4 space-x-8 items-center"
-                                        >
-                                            <LazyLoadImage
-                                                alt={name}
-                                                src={imgUrl}
-                                                className="h-24"
-                                            />
-                                            <div style={{ width: "30%" }}>
-                                                <span className="text-xl">
-                                                    {name}
-                                                </span>
-
-                                                <Form.Item
-                                                    label="Size"
-                                                    name={name + idx}
-                                                    rules={[
-                                                        {
-                                                            required: true,
-                                                            message:
-                                                                "Please select your size",
-                                                        },
-                                                    ]}
-                                                >
-                                                    <Select
-                                                        size="large"
-                                                        // defaultValue={options[0]}
-                                                        placeholder={
-                                                            "Select your size"
-                                                        }
-                                                    >
-                                                        {options.map(
-                                                            (option) => (
-                                                                <Select.Option
-                                                                    value={
-                                                                        option
-                                                                    }
-                                                                    key={option}
-                                                                >
-                                                                    {option}
-                                                                </Select.Option>
-                                                            )
-                                                        )}
-                                                    </Select>
-                                                </Form.Item>
-                                            </div>
-                                        </div>
-                                    ))
-                                ) : (
+                            return options ? (
+                                Array.from(Array(num)).map((_, idx) => (
                                     <div
-                                        key={name}
+                                        key={name + idx}
                                         className="flex border rounded border-warmGray-300 p-4 space-x-8 items-center"
                                     >
-                                        <LazyLoadImage
-                                            alt={name}
-                                            src={imgUrl}
-                                            className="h-24"
-                                        />
-                                        <div style={{ width: "30%" }}>
-                                            <span className="text-xl">
-                                                {name} x{num}
-                                            </span>
-                                        </div>
-                                    </div>
-                                );
-                            }
-                        )}
-                        {/* {rewards
-                            .filter((r) => r.unlockAt < tvl)
-                            .map((reward) => (
-                                <div className="flex border rounded border-warmGray-300 p-4 space-x-8 items-center">
-                                    <LazyLoadImage
-                                        alt={reward.name}
-                                        src={reward.imgSrc}
-                                        className="h-24"
-                                    />
-                                    <div style={{ width: "30%" }}>
-                                        {/* <span className="text-xl">
-                                            {reward.optionText}
-                                        </span> 
-                                        <Form.Item
-                                            label={reward.optionText}
-                                            name={reward.name}
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message:
-                                                        "Please select your " +
-                                                        reward.optionText,
-                                                },
-                                            ]}
-                                        >
-                                            <Select
-                                                size="large"
-                                                // defaultValue={reward.options[0]}
-                                                placeholder={
-                                                    "Select your " +
-                                                    reward.optionText
-                                                }
+                                        <LazyLoadImage alt={name} src={imgUrl} className="h-24" />
+                                        <div className="sm:w-1/3 w-full">
+                                            <span className="text-lg sm:text-xl">{name}</span>
+
+                                            <Form.Item
+                                                label="Size"
+                                                name={name + idx}
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: "Please select your size",
+                                                    },
+                                                ]}
                                             >
-                                                {reward.options.map(
-                                                    (option) => (
-                                                        <Select.Option
-                                                            value={option}
-                                                        >
+                                                <Select
+                                                    // defaultValue={options[0]}
+                                                    placeholder={"Select your size"}
+                                                >
+                                                    {options.map((option) => (
+                                                        <Select.Option value={option} key={option}>
                                                             {option}
                                                         </Select.Option>
-                                                    )
-                                                )}
-                                            </Select>
-                                        </Form.Item>
+                                                    ))}
+                                                </Select>
+                                            </Form.Item>
+                                        </div>
+                                    </div>
+                                ))
+                            ) : num > 0 ? (
+                                <div
+                                    key={name}
+                                    className="flex border rounded border-warmGray-300 p-4 space-x-8 items-center"
+                                >
+                                    <LazyLoadImage alt={name} src={imgUrl} className="h-24" />
+                                    <div style={{ width: "30%" }}>
+                                        <span className="text-lg sm:text-xl">
+                                            {name} x{num}
+                                        </span>
                                     </div>
                                 </div>
-                            ))} */}
+                            ) : null;
+                        })}
                     </div>
                     <span className="text-2xl font-bold">Shipping Address</span>
                     <div className="mt-4">
@@ -823,7 +667,7 @@ export const MyCollectionPage = () => {
                                 },
                             ]}
                         >
-                            <Input placeholder="Address" />
+                            <Input.TextArea rows={3} placeholder="Address" />
                             {/* <Input
                                 placeholder="Address (Cont.)"
                                 className="mt-4"
@@ -831,7 +675,7 @@ export const MyCollectionPage = () => {
                         </Form.Item>
                     </div>
                     <Row gutter={16}>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="Country"
                                 name="country"
@@ -842,10 +686,10 @@ export const MyCollectionPage = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="Country" />
                             </Form.Item>
                         </Col>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="State"
                                 name="state"
@@ -856,10 +700,10 @@ export const MyCollectionPage = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="State" />
                             </Form.Item>
                         </Col>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="City"
                                 name="city"
@@ -870,10 +714,10 @@ export const MyCollectionPage = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="City" />
                             </Form.Item>
                         </Col>
-                        <Col sm={24} md={12}>
+                        <Col xs={24} md={12}>
                             <Form.Item
                                 label="Post code"
                                 name="postal"
@@ -884,7 +728,7 @@ export const MyCollectionPage = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input placeholder="Post code" />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -893,9 +737,7 @@ export const MyCollectionPage = () => {
             <Modal visible={isConfirmModalOpen} footer={null}>
                 <div className="flex flex-col items-center space-y-4">
                     <QuestionRobot />
-                    <span className="text-xl text-center">
-                        Once you submitted, your response cannot be edited
-                    </span>
+                    <span className="text-xl text-center">Once you submitted, your response cannot be edited</span>
                     <div className="flex space-x-4">
                         <Button
                             key="cancel"
