@@ -167,7 +167,7 @@ export default function Navigation() {
             {/* md:hidden  */}
             <div
                 ref={mobileMenuRef}
-                className="h-full flex items-center px-md md:hidden mlg:hidden lg:hidden"
+                className="h-full flex items-center px-md md:hidden lg:hidden"
             >
                 <button className="cursor-pointer" onClick={toggleMenuOpen}>
                     <svg
@@ -185,9 +185,23 @@ export default function Navigation() {
                     </svg>
                 </button>
                 <div className="h-full flex items-center flex-1 justify-end space-x-lg">
-                    <button className="px-4 py-2 bg-blue-900 rounded text-white">
-                        Connect Wallet
-                    </button>
+                    {wallet && (
+                        <button
+                            onClick={connectWallet}
+                            className="px-4 py-2 bg-blue-900 rounded text-white"
+                        >{`${wallet.substr(0, 4)}...${wallet.substring(
+                            wallet.length - 4,
+                            wallet.length
+                        )}`}</button>
+                    )}
+                    {!wallet && (
+                        <button
+                            onClick={connectWallet}
+                            className="px-4 py-2 bg-blue-900 rounded text-white"
+                        >
+                            Connect Wallet
+                        </button>
+                    )}
                 </div>
                 <div
                     className={`transform ${
