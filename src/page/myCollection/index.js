@@ -30,7 +30,7 @@ const rewardHeroImg = [
     "/img/Unlock-hover/Hoodie-Front.png",
     "/img/Unlock-hover/Robot-Front.png",
 ];
-const shirtOptions = ['S 38"', 'M 40"', 'L 42"', 'XL 44"', '2XL 46"', '3XL 48"'];
+const shirtOptions = ['S 38"', 'M 40"', 'L 42"', 'XL 44"', '2XL 46"', '3XL 48"', '4XL 50"', '5XL 52"'];
 
 const Star = (props) => (
     <svg {...props} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
