@@ -278,7 +278,15 @@ const ShirtCard = (props) => {
                         Claim it now
                     </Button>
             }
-            
+            <Button
+                className="btn-approve mt-2"
+                size="large"
+                onClick={() => {
+                    window.open(window.location.origin + `/download/${props.id}`);
+                }}
+            >
+                Download File
+            </Button>
         </Card>
     );
 };
