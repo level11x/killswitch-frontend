@@ -3,6 +3,7 @@ import CountdownBox from '../../component/sections/countdownBox'
 import AuctionsRoadMap from '../../component/sections/auctionsRoadMap'
 import NftAuctionRewardDistribution from '../../component/sections/nftAuctionRewardDistribution'
 import { MysteryBox } from '../../component/svg'
+import { START_AUCTION_DATE_STRING } from '../../config/common'
 
 export const CountdownPage = () => {
 
@@ -175,7 +176,7 @@ export const CountdownPage = () => {
                         </svg>
                     </div>
                     <h2 className="text-2xl md:text-5xl font-bold text-white z-10">Are You Ready for Auction</h2>
-                    <CountdownBox className="z-20 flex justify-center space-x-4" hour minute second start="03/06/2021 18:00:00" end="04/06/2021 18:00:00"/>
+                    <CountdownBox className="z-20 flex justify-center space-x-4" hour minute second start="03/06/2021 18:00:00 GMT+0700" end={START_AUCTION_DATE_STRING}/>
                 </div>
             </section>
             {/* end hero */}

@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Button, Modal } from 'antd';
 import { BigNumber } from "@ethersproject/bignumber"
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ModalBid from './modal-bid'
 import useCountdown from '../../hooks/useCountdown'
-import shirt from '../../svg/font-shirt.svg'
 import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { AUCTION_ADDRESS } from "../../config/contract";
 import { useBidData } from '../../hooks/useBidData'
 import { AppContext } from "../../context";
 import { useAllowance } from '../../hooks/useAllowance'
+import IMAGES from '../../assets/auction/robots/robotImg';
 
-export default function ModalApprove({ tokenID, onApproved, onBid }) {
+export default function ModalApprove({ tokenID, onApproved, onBid ,onHoverShirtFront,onHoverShirtBack,setIsShowFront,setIsShowBack,isShowBack,isShowFront}) {
     const busdContract = useBUSDContract();
 
     const [isModalBid, setIsModalBid] = useState(false);
@@ -23,9 +23,8 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
     const { wallet, connectWallet } = useContext(AppContext);
     const [expireTimeExtend, setExpireTimeExtend] = useState(false);
     const { allowance, refreshAllowance } = useAllowance();
-
     const timeLeft = useCountdown({ timestamp: (expireTimeExtend * 1000) })
-
+ 
     useEffect(() => {
         if (lastBidTime > parseInt(expireTime) - 300) {
             setExpireTimeExtend(parseInt(lastBidTime) + 300)
@@ -39,7 +38,12 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
             setIsConnect(false)
             return
         };
-        updateEvents(tokenID)
+        if (BigNumber.from(bidData[2][tokenID]).gte(BigNumber.from("10"))) {
+            updateEvents(tokenID)
+        } else {
+            console.log('skip event no auction')
+        }
+        
         setIsConnect(true)
         setLastPrice(bidData[2][tokenID])
         setLastBidTime(bidData[3][tokenID])
@@ -76,25 +80,35 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
 
     const onCanceled = () => {
         setIsModalBid(false);
+        setIsShowFront(false);
+        setIsShowBack(false);
     };
 
     const onBidInternal = () => {
         setIsModalBid(false)
         onBid()
     }
+   
 
     return (
         <div className="bid-modal-box">
-            <div className="box-t-shirt">
-                <div className="top-t-shirt"><img className="" alt="shirt" src={shirt} /></div>
+            <div className="box-t-shirt" >
+            {isShowFront ? (
+            <div className="top-t-shirt relative" onMouseEnter={onHoverShirtBack}>     
+            <LazyLoadImage className="overlay-bid-shirt-front" alt="shirt" src="/img/auction/base-front-shirt.png"/>
+            <LazyLoadImage alt="" src={IMAGES[tokenID]} className="robot-approv-bid" />
+            </div>):(
+            <div className="top-t-shirt relative" onMouseLeave={onHoverShirtFront}>
+            <LazyLoadImage alt="shirt" src="/img/auction/base-back-shirt.png" />
+            </div>)}
                 <div className="show-more-shirt">
-                    <div className="show-more-shirt-items">
-                        <img alt="shirt" src={shirt} />
+                    <div className="show-more-shirt-items relative">
+                    <LazyLoadImage alt="shirt" src="/img/auction/base-front-shirt.png"/>
+                    <LazyLoadImage alt="" src={IMAGES[tokenID]} className="robot-approv-bid-s" />
                     </div>
-                    <div className="show-more-shirt-items">
-                        <img alt="shirt" src={shirt} />
+                    <div className="show-more-shirt-items relative">
+                    <LazyLoadImage alt="shirt" src="/img/auction/base-back-shirt.png"/>
                     </div>
-                    
                 </div>
             </div>
             <div className="box-t-shirt-b">
@@ -138,7 +152,7 @@ export default function ModalApprove({ tokenID, onApproved, onBid }) {
                 </Modal>
             </div>
             <div className="box-t-shirt-b-p">
-                <p>Place Bid by</p>
+                <p>History of bidders</p>
                 <div className="bid-price-box-show">
                     {events.map((v, index) => (
                         <div className="bid-by-box" key={v.id}>

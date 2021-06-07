@@ -21,6 +21,7 @@ export const LiveAuctionPage = () => {
 	const [auctionByNumber, setAuctionByNumber] = useState(0);
 	const [auctionByPrice, setAuctionByPrice] = useState(0);
 	const [searchMyAuction, setSearchMyAuction] = useState(0);
+	const [isSwitch, setIsSwitch]  =  useState(false)
 	
 	useEffect(() => {
 		if (!bidData || bidData.length < 4) return;
@@ -41,6 +42,11 @@ export const LiveAuctionPage = () => {
 		return () => {}
 	}, [bidData]);
 
+	const onSwitch=(checked)=> {
+		//console.log(`switch to ${checked}`);
+		setIsSwitch(checked)
+	  }
+
 	useEffect(() => {
 		if (!data) return;
 		
@@ -54,30 +60,36 @@ export const LiveAuctionPage = () => {
 		if (searchMinPrice && searchMinPrice > 0) {
 			fData = fData.filter((v) => v.bidPrice >= searchMinPrice)
 		}
-		if (auctionByNumber > 0 && auctionByNumber <= 9) {
+		if (auctionByNumber > 0 && auctionByNumber <= 10) {
 			fData = fData.filter((v) => parseInt(v.id/100) === auctionByNumber-1)
 		}
 
-		if (searchMyAuction && wallet) {
-			fData = fData.filter((v) => v.bidAddress.toLowerCase() === wallet.toLowerCase())
+		if (searchMyAuction) {
+			fData = fData.filter((v) => v.bidAddress.toLowerCase() === wallet && wallet.toLowerCase())
 		}
 
 		if (auctionByPrice === 'highest') {
+			console.log('auctionByPrice highest')
 			fData.sort(( a, b ) => {
-				if ( a.bidPrice < b.bidPrice ){
+				const aa = BigNumber.from(a.bidPrice)
+				const bb = BigNumber.from(b.bidPrice)
+				if (aa.lt(bb)) {
 					return 1;
 				}
-				if ( a.bidPrice > b.bidPrice ){
+				if (aa.gt(bb)) {
 					return -1;
 				}
 				return 0;
 			})
 		} else if (auctionByPrice === 'lowest') {
+			console.log('auctionByPrice lowest')
 			fData.sort(( a, b ) => {
-				if ( a.bidPrice < b.bidPrice ){
+				const aa = BigNumber.from(a.bidPrice)
+				const bb = BigNumber.from(b.bidPrice)
+				if (aa.lt(bb)) {
 					return -1;
 				}
-				if ( a.bidPrice > b.bidPrice ){
+				if (aa.gt(bb)) {
 					return 1;
 				}
 				return 0;
@@ -107,9 +119,6 @@ export const LiveAuctionPage = () => {
 		setSearchMyAuction(values.switch)
 	}
 
- 	// helllo
-	 // hello2
-	 // heloo3
 	return (
 		<div>
 			<Navigation />
@@ -129,10 +138,11 @@ export const LiveAuctionPage = () => {
 					endHour={18}
 				/>
 				<div className="live-auction-content">
-					<CollectibileLiveAuction onFinishSearch={onFinishSearch} />
-					<LiveAuctionContent filterData={filterData} />
+					<CollectibileLiveAuction onFinishSearch={onFinishSearch}  onSwitch={onSwitch}  />
+					<div className="curentbid-text">{isSwitch ?<div >Current bidding </div>: ''}</div>
+					<LiveAuctionContent filterData={filterData}  />
 				</div>
-				<LiveAuctionFooter />
+				<LiveAuctionFooter/>
 			</div>
 		</div>
 	)

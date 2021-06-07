@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { Input, Button, Select, Switch, InputNumber, Form } from 'antd';
 const { Option } = Select;
-const CollectibileLiveAuction = ({ onFinishSearch }) => {
-    
+const CollectibileLiveAuction = ({ onFinishSearch, onSwitch }) => {
+
     const ref = useRef();
 
     function autoSubmit(event) {
@@ -18,16 +18,14 @@ const CollectibileLiveAuction = ({ onFinishSearch }) => {
                         <div className="collectibles-search">
                             <div className="search-box">
                                 <Form.Item name="serialNumber">
-                                    <Input.Search allowClear placeholder="Search serial number" />
+                                    <Input allowClear placeholder="Search serial number" />
                                 </Form.Item>
-
                             </div>
                         </div>
                         <div className="collectibles-search-buttom">
                             <div className="button-box">
                                 <Button htmlType="submit">Search </Button>
                             </div>
-
                         </div>
                     </div>
                     <div className="action-search-selection">
@@ -51,10 +49,10 @@ const CollectibileLiveAuction = ({ onFinishSearch }) => {
                                         <Option value="5">#400 - #499</Option>
                                         <Option value="6">#500 - #599</Option>
                                         <Option value="7">#600 - #699</Option>
-                                        <Option value="8">#700 - #799</Option> 
-                                        <Option value="9">#800 - #899</Option> 
+                                        <Option value="8">#700 - #799</Option>
+                                        <Option value="9">#800 - #899</Option>
                                         <Option value="10">#900 - #999</Option>
-                                    </Select>
+                                 </Select>
                                 </Form.Item>
                             </div>
                             <div className="auction-search-action-items">

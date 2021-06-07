@@ -41,7 +41,25 @@ module.exports = {
       blue: '#2962FF',
       secondary: '#42E8E0',
       secondaryGray: '#828282',
-      gray: '#9E9E9E'
+      gray: '#9E9E9E',
+      primaries: {
+        1000: "#000051",
+        900: "#1A237E",
+        500: "#3F51B5",
+        600: "#3949AB",
+      },
+      secondaries: {
+        500: "#00BCD4",
+        400: "#26C6DA",
+        300: "#4DD0E1",
+      },
+      grey: {
+        90: "#212121",
+        70: "#616161",
+        60: "#757575",
+        30: "#E0E0E0",
+        10: "#F5F5F5",
+      },
     },
     fontFamily: {
       sans: ['Kanit', 'sans-serif'],
