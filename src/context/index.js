@@ -5,14 +5,15 @@ const AppContext = createContext()
 const AppProvider = (props) => {
   const [wallet, setWallet] = useState(null)
 
-  const value = useMemo(() => {
-    async function connectWallet() {
-      let accounts = await window.ethereum.request({
-        method: 'eth_requestAccounts',
-      })
+  const connectWallet = async () => {
+    let accounts = await window.ethereum.request({
+      method: 'eth_requestAccounts',
+    })
 
-      setWallet(accounts[0])
-    }
+    setWallet(accounts[0])
+  }
+  
+  const value = useMemo(() => {
     return {
       wallet,
       connectWallet,
@@ -20,66 +21,64 @@ const AppProvider = (props) => {
   }, [wallet])
 
   const handleETHListener = async () => {
-    if (window && window.ethereum && window.ethereum.isTrust) {
+    if (window && window.ethereum) {
       let chainId = await window.ethereum.request({ method: 'eth_chainId' })
-
       if (chainId === '0x38') {
-        let accounts = await window.ethereum.request({
-          method: 'eth_requestAccounts',
-        })
+        if (window.ethereum.isTrust) {
+          let accounts = await window.ethereum.request({
+            method: 'eth_requestAccounts',
+          })
 
-        if (accounts.length > 0) {
-          setWallet(accounts[0])
-        }
-        window.ethereum.on('accountsChanged', (accounts) => {
-          // console.log('Navigation accountsChanged', accounts)
           if (accounts.length > 0) {
             setWallet(accounts[0])
-          } else {
-            setWallet('')
           }
-        })
-      }
-    } else if (window.ethereum.isMetaMask) {
-      window.ethereum.on('accountsChanged', (accounts) => {
-        // console.log('Navigation accountsChanged', accounts)
-        if (accounts.length > 0) {
-          setWallet(accounts[0])
+          window.ethereum.on('accountsChanged', (accounts) => {
+            // console.log('Navigation accountsChanged', accounts)
+            if (accounts.length > 0) {
+              setWallet(accounts[0])
+            } else {
+              setWallet('')
+            }
+          })
+        } else if (window.ethereum.isMetaMask) {
+          window.ethereum.on('accountsChanged', (accounts) => {
+            // console.log('Navigation accountsChanged', accounts)
+            if (accounts.length > 0) {
+              setWallet(accounts[0])
+            } else {
+              setWallet('')
+            }
+          })
+
+          window.ethereum.on('connect', () => {
+            let account = window.ethereum.selectedAddress
+            setWallet(account)
+          })
+
+          if (window.ethereum.isConnected()) {
+            let account = window.ethereum.selectedAddress
+            // console.log('account', account)
+            setWallet(account)
+          }
         } else {
-          setWallet('')
+          // OTHER WALLET
+          let accounts = await window.ethereum.request({
+            method: 'eth_requestAccounts',
+          })
+
+          if (accounts.length > 0) {
+            setWallet(accounts[0])
+          }
+          
+          window.ethereum.on('accountsChanged', (accounts) => {
+            // console.log('Navigation accountsChanged', accounts)
+            if (accounts.length > 0) {
+              setWallet(accounts[0])
+            } else {
+              setWallet('')
+            }
+          })
         }
-      })
-
-      window.ethereum.on('connect', () => {
-        let account = window.ethereum.selectedAddress
-        setWallet(account)
-      })
-
-      if (window.ethereum.isConnected()) {
-        let account = window.ethereum.selectedAddress
-        // console.log('account', account)
-        setWallet(account)
-      }
-    } else {
-      // OTHER WALLET
-      window.ethereum.on('accountsChanged', (accounts) => {
-        // console.log('Navigation accountsChanged', accounts)
-        if (accounts.length > 0) {
-          setWallet(accounts[0])
-        } else {
-          setWallet('')
-        }
-      })
-
-      window.ethereum.on('connect', () => {
-        let account = window.ethereum.selectedAddress
-        setWallet(account)
-      })
-
-      if (window.ethereum.isConnected()) {
-        let account = window.ethereum.selectedAddress
-        // console.log('account', account)
-        setWallet(account)
       }
     }
   }

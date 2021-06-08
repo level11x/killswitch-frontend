@@ -73,7 +73,7 @@ export function Web3Provider({ children }) {
           }
         } else {
           const tmpWeb3 = new Web3(_window.ethereum)
-
+          
           try {
             dispatch({
               type: Web3Provider.actions.setWeb3,
