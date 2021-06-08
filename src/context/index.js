@@ -41,6 +41,14 @@ const AppProvider = (props) => {
             }
           })
         } else if (window.ethereum.isMetaMask) {
+          let accounts = await window.ethereum.request({
+            method: 'eth_requestAccounts',
+          })
+
+          if (accounts.length > 0) {
+            setWallet(accounts[0])
+          }
+          
           window.ethereum.on('accountsChanged', (accounts) => {
             // console.log('Navigation accountsChanged', accounts)
             if (accounts.length > 0) {

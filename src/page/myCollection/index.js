@@ -298,9 +298,10 @@ export const MyCollectionPage = () => {
             });
         }
 
-        value = value.filter((v) => v.bidAddress.toLowerCase() === wallet && wallet.toLowerCase());
+        value = value.filter((v) => v.bidAddress.toLowerCase() === (`${wallet}`).toLowerCase());
 
         const pp = [];
+        
         for (let i = 0; i < value.length; i++) {
             pp.push(
                 shirtContract.methods
@@ -308,7 +309,7 @@ export const MyCollectionPage = () => {
                     .call()
                     .then((result) => {
                         if (wallet) {
-                            value[i].isClaimed = result.toLowerCase() === wallet.toLowerCase();
+                            value[i].isClaimed = result.toLowerCase() === (`${wallet}`).toLowerCase();
                         } else {
                             value[i].isClaimed = false;
                         }
