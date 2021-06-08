@@ -31,23 +31,9 @@ export function Web3Provider({ children }) {
       const chainId = await _window.ethereum.request({ method: 'eth_chainId' })
       if (chainId === '0x38') {
         // BSC MAINNET
-        if (_window.ethereum.isTrust) {
-          // CONNECT TRUSTWALLET
-          const tmpWeb3 = new Web3(_window.ethereum)
-
-          try {
-            dispatch({
-              type: Web3Provider.actions.setWeb3,
-              payload: {
-                web3: tmpWeb3,
-              },
-            })
-          } catch (err) {
-            console.log(err)
-          }
-        } else {
+         if (_window.ethereum.isMetaMask) {
           // CONNECT METAMASK WALLET
-          window.ethereum.request({
+          _window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [
               {
@@ -61,6 +47,33 @@ export function Web3Provider({ children }) {
           })
 
           const tmpWeb3 = new Web3(_window.ethereum)
+          try {
+            dispatch({
+              type: Web3Provider.actions.setWeb3,
+              payload: {
+                web3: tmpWeb3,
+              },
+            })
+          } catch (err) {
+            console.log(err)
+          }
+        } else if (_window.ethereum.isTrust) {
+          // CONNECT OTHER
+          const tmpWeb3 = new Web3(_window.ethereum)
+
+          try {
+            dispatch({
+              type: Web3Provider.actions.setWeb3,
+              payload: {
+                web3: tmpWeb3,
+              },
+            })
+          } catch (err) {
+            console.log(err)
+          }
+        } else {
+          const tmpWeb3 = new Web3(_window.ethereum)
+
           try {
             dispatch({
               type: Web3Provider.actions.setWeb3,

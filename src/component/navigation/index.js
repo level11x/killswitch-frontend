@@ -133,6 +133,7 @@ export default function Navigation() {
                         <button
                             onClick={connectWallet}
                             className="px-4 py-2 bg-blue-900 rounded text-white"
+                            style={{background: '#2862FF'}}
                         >{`${wallet.substr(0, 4)}...${wallet.substring(
                             wallet.length - 4,
                             wallet.length
@@ -142,6 +143,7 @@ export default function Navigation() {
                         <button
                             onClick={connectWallet}
                             className="px-4 py-2 bg-blue-900 rounded text-white"
+                            style={{background: '#2862FF'}}
                         >
                             Connect Wallet
                         </button>

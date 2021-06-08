@@ -40,7 +40,7 @@ const AppProvider = (props) => {
           }
         })
       }
-    } else if (window.ethereum) {
+    } else if (window.ethereum.isMetaMask) {
       window.ethereum.on('accountsChanged', (accounts) => {
         // console.log('Navigation accountsChanged', accounts)
         if (accounts.length > 0) {
@@ -61,7 +61,26 @@ const AppProvider = (props) => {
         setWallet(account)
       }
     } else {
-      // CUSTOM WALLET
+      // OTHER WALLET
+      window.ethereum.on('accountsChanged', (accounts) => {
+        // console.log('Navigation accountsChanged', accounts)
+        if (accounts.length > 0) {
+          setWallet(accounts[0])
+        } else {
+          setWallet('')
+        }
+      })
+
+      window.ethereum.on('connect', () => {
+        let account = window.ethereum.selectedAddress
+        setWallet(account)
+      })
+
+      if (window.ethereum.isConnected()) {
+        let account = window.ethereum.selectedAddress
+        // console.log('account', account)
+        setWallet(account)
+      }
     }
   }
 
