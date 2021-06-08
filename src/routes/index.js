@@ -6,6 +6,8 @@ import { AppProvider } from "../context";
 import { Web3Provider } from "../hooks/useWeb3";
 import useCountdownCloseAuction from "../hooks/useCountdownCloseAuction";
 import Download from "../component/download";
+import { NftToken } from '../page/merchandise/token'
+import { TestToken } from '../page/merchandise/test'
 
 const Router = () => {
     const { isCloseAuction } = useCountdownCloseAuction();
@@ -23,6 +25,8 @@ const Router = () => {
                     <Route exact path={"/top-auction"} component={TopAuction} />
                     <Route exact path={"/my-collection"} component={MyCollectionPage} />
                     <Route path={"/download/:id"} component={Download} />
+                    <Route path={"/merchandise/nft/token"} component={NftToken} />
+                    <Route path={"/merchandise/nft/test"} component={TestToken} />
                 </BrowserRouter>
             </Web3Provider>
         </AppProvider>

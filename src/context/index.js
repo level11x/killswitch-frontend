@@ -60,6 +60,8 @@ const AppProvider = (props) => {
         // console.log('account', account)
         setWallet(account)
       }
+    } else {
+      // CUSTOM WALLET
     }
   }
 

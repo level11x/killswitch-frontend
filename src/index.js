@@ -9,5 +9,4 @@ import Router from "./routes/index";
 import "./main.css";
 import "./index.css";
 // 
-
 ReactDOM.render(<Router />, document.getElementById("root"));
