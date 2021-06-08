@@ -10,8 +10,8 @@ import { Card } from "antd";
 import IMAGES from "../../assets/auction/robots/robotImg";
 import { Moon } from "../../component/svg";
 import countryCodes from "../../countryCode.json";
-// import { AUCTION_ADDRESS } from "../../config/contract";
-// import { useBUSDContract } from "../../hooks/useBUSDContract";
+import { AUCTION_ADDRESS } from "../../config/contract";
+import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { useAuctionContract } from "../../hooks/useAuctionContract";
 import { useShirtContract } from "../../hooks/useShirtContract";
 import axios from "axios";
@@ -264,21 +264,21 @@ export const MyCollectionPage = () => {
     const [isModalOpenForTokneID, setIsModalOpenForTokneID] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    // const busdContract = useBUSDContract();
+    const busdContract = useBUSDContract();
     const [auctionContract] = useAuctionContract();
     const [shirtContract] = useShirtContract();
-    // const [tvl, setTVL] = useState(0);
+    const [tvl, setTVL] = useState(0);
 
-    // useEffect(() => {
-    //     if (!busdContract) return;
-    //     busdContract.methods
-    //         .balanceOf(AUCTION_ADDRESS)
-    //         .call()
-    //         .then((balance) => {
-    //             setTVL(balance);
-    //         });
-    //     return () => {};
-    // }, [busdContract]);
+    useEffect(() => {
+        if (!busdContract) return;
+        busdContract.methods
+            .balanceOf(AUCTION_ADDRESS)
+            .call()
+            .then((balance) => {
+                setTVL(balance);
+            });
+        return () => {};
+    }, [busdContract]);
 
     // const displayTVL = (tvl) => (tvl / 10 ** 18).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
