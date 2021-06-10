@@ -10,7 +10,7 @@ import { Card } from "antd";
 import IMAGES from "../../assets/auction/robots/robotImg";
 import { Moon } from "../../component/svg";
 import countryCodes from "../../countryCode.json";
-// import { AUCTION_ADDRESS } from "../../config/contract";
+import { AUCTION_ADDRESS } from "../../config/contract";
 // import { useBUSDContract } from "../../hooks/useBUSDContract";
 import { useAuctionContract } from "../../hooks/useAuctionContract";
 import { useShirtContract } from "../../hooks/useShirtContract";
@@ -309,7 +309,7 @@ export const MyCollectionPage = () => {
                     .call()
                     .then((result) => {
                         if (wallet) {
-                            value[i].isClaimed = result.toLowerCase() === (`${wallet}`).toLowerCase();
+                            value[i].isClaimed = result.toLowerCase() !== (AUCTION_ADDRESS).toLowerCase();
                         } else {
                             value[i].isClaimed = false;
                         }
@@ -325,7 +325,7 @@ export const MyCollectionPage = () => {
     }, [bidData, wallet]);
 
     const tvlToRewardIndex = (_tvl) => {
-        const tvl = _tvl / 10 ** 18;
+        const tvl = _tvl;
         if (tvl >= 200000) return 4;
         if (tvl >= 100000) return 3;
         if (tvl >= 60000) return 2;
