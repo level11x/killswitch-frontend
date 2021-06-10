@@ -399,7 +399,7 @@ export const MyCollectionPage = () => {
     return (
         <div className="bg-primary">
             <Navigation />
-            <div className="pt-12 container mx-auto mb-16 sm:px-0 px-4 block ml-16 w-[675px] mmd:m-4 mmd:mt-48 mmd:w-auto">
+            <div className="pt-12 container mx-auto mb-16 sm:px-0 px-4">
                 <div className="pt-16 flex sm:flex-row flex-col items-center">
                     <Moon className="h-24 sm:mr-6 sm:mb-0 mb-6" />
                     <div className="flex flex-col text-white space-y-2">
