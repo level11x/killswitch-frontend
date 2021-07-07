@@ -9,6 +9,7 @@ import {
 import { Carousel } from "antd";
 import { useHistory } from 'react-router-dom'
 
+import { KSW_APP_URL } from '../../config/common'
 import useCountdownCloseAuction from '../../hooks/useCountdownCloseAuction'
 
 import "./home.css";
@@ -95,21 +96,12 @@ const HomePage = () => {
               >
                 Home
               </a>
-              {isPopupShow ? (
-                <a
-                  className="px-6 flex h-full items-center border-transparent border-b-4 text-xl font-semibold py-6 "
-                  href="/"
-                >
-                  Auction
-                </a>
-              ) : (
-                <div
-                  className="px-6 flex h-full items-center border-transparent border-b-4 text-xl font-semibold py-6 cursor-pointer "
-                  onClick={handleOpenModal}
-                >
-                  Auction
-                </div>
-              )}
+              <a
+                className="px-6 flex h-full items-center border-transparent text-xl font-semibold py-6 "
+                href={KSW_APP_URL}
+              >
+                Launch App
+              </a>
             </div>
           </div>
 
@@ -118,9 +110,12 @@ const HomePage = () => {
               <FontAwesomeIcon icon={faBars} size="2x" />
             </button>
             <div className="h-full flex items-center flex-1 justify-end space-x-lg ">
-              <button className="px-4 py-2 bg-primaries-1000 rounded text-white" onClick={handleOpenModal}>
+              <a
+                className="px-6 flex h-full items-center border-transparent text-xl font-semibold py-6 "
+                href={KSW_APP_URL}
+              >
                 Launch App
-              </button>
+              </a>
             </div>
           </div>
           {isMenuOpen && (
@@ -136,9 +131,9 @@ const HomePage = () => {
               </a>
               <a
                 className="px-4 flex h-full items-center text-xl font-semibold py-4 bg-grey-10"
-                href="/"
+                href={KSW_APP_URL}
               >
-                {isCloseAuction ? 'My Collection' : 'Live Auction'}
+                Launch App
               </a>
             </div>
           )}
@@ -172,14 +167,15 @@ const HomePage = () => {
                       Documents
                     </button>
                   </a>
-                  <button
-                    className="border-secondaries-500 border-2 px-4 py-2 rounded text-secondaries-500 font-semibold  mmd:block"
-                    onClick={handleOpenModal}
-                  >
-                    KillSwitch Auction
-                  </button>
+                  <a className="cursor-pointer h-auto" href={KSW_APP_URL}>
+                    <button
+                      className="border-secondaries-500 border-2 px-4 py-2 rounded text-secondaries-500 font-semibold  mmd:block"
+                    >
+                      Launch App
+                    </button>
+                  </a>
                 </div>
-                <div style={{ width: "80%" }}>
+                {/* <div style={{ width: "80%" }}>
                   <Carousel>
                     <div>
                       <img
@@ -197,7 +193,7 @@ const HomePage = () => {
                       />
                     </a>
                   </Carousel>
-                </div>
+                </div> */}
                 {/* <div className="block w-max mmd:w-auto">
                     <img
                     className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
