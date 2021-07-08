@@ -98,6 +98,12 @@ const HomePage = () => {
               </a>
               <a
                 className="px-6 flex h-full items-center border-transparent text-xl font-semibold py-6 "
+                href="/live-auction"
+              >
+                Auction
+              </a>
+              <a
+                className="px-6 flex h-full items-center border-transparent text-xl font-semibold py-6 "
                 href={KSW_APP_URL}
               >
                 Launch App
