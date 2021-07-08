@@ -136,6 +136,12 @@ const HomePage = () => {
                 Home
               </a>
               <a
+                className="px-4 flex h-full items-center text-xl font-semibold py-4 border-grey-70 border-b-2 bg-grey-10"
+                href="/live-auction"
+              >
+                Auction
+              </a>
+              <a
                 className="px-4 flex h-full items-center text-xl font-semibold py-4 bg-grey-10"
                 href={KSW_APP_URL}
               >
@@ -181,16 +187,16 @@ const HomePage = () => {
                     </button>
                   </a>
                 </div>
-                {/* <div style={{ width: "80%" }}>
+                <div style={{ width: "80%" }}>
                   <Carousel>
-                    <div>
+                    {/* <div>
                       <img
                         className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
                         onClick={handleOpenModal}
                         src="/img/home/banner.png"
                         alt="banner"
                       />
-                    </div>
+                    </div> */}
                     <a href="https://northbridge.link/" target="_blank" rel="noreferrer">
                       <img
                         className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
@@ -199,7 +205,7 @@ const HomePage = () => {
                       />
                     </a>
                   </Carousel>
-                </div> */}
+                </div>
                 {/* <div className="block w-max mmd:w-auto">
                     <img
                     className="shadow-md rounded mb-4 cursor-pointer w-[540px] h-[220px] mmd:h-auto "
