@@ -89,7 +89,7 @@ const HomePage = () => {
             <a href="">
               <img src="/svg/home/logo.svg" alt="" />
             </a>
-            <div className="pr-8 h-full flex items-center flex-1 justify-end">
+            <div className="pr-7 h-full flex items-center flex-1 justify-end">
               <a
                 className="px-6 flex h-full items-center border-blue-500 border-b-4 text-xl font-semibold py-6 "
                 href="/"
@@ -97,13 +97,19 @@ const HomePage = () => {
                 Home
               </a>
               <a
-                className="px-6 flex h-full items-center border-transparent text-xl font-semibold py-6 "
+                className="px-5 flex h-full items-center border-transparent text-xl font-semibold py-6 "
                 href="/my-collection"
               >
                 Collection
               </a>
               <a
-                className="px-6 flex h-full items-center border-transparent text-xl font-semibold py-6 "
+                className="px-5 flex h-full items-center border-transparent text-xl font-semibold py-6 "
+                href="https://northbridge.link"
+              >
+                NorthBridge
+              </a>
+              <a
+                className="px-5 flex h-full items-center border-transparent text-xl font-semibold py-6 "
                 href={KSW_APP_URL}
               >
                 Launch App
@@ -140,6 +146,12 @@ const HomePage = () => {
                 href="/my-collection"
               >
                 Collection
+              </a>
+              <a
+                className="px-4 flex h-full items-center text-xl font-semibold py-4 border-grey-70 border-b-2 bg-grey-10"
+                href="https://northbridge.link"
+              >
+                NorthBridge
               </a>
               <a
                 className="px-4 flex h-full items-center text-xl font-semibold py-4 bg-grey-10"
