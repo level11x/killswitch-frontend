@@ -48,7 +48,7 @@ const HomePage = () => {
     document.body.style.overflow = "unset";
     setIsShowModal(false);
     setIsPopupShow(true);
-    history.push('/live-auction');
+    history.push('/my-collection');
   };
 
   const handleCloseDefultModal = () => {
@@ -98,9 +98,9 @@ const HomePage = () => {
               </a>
               <a
                 className="px-6 flex h-full items-center border-transparent text-xl font-semibold py-6 "
-                href="/live-auction"
+                href="/my-collection"
               >
-                Auction
+                Collection
               </a>
               <a
                 className="px-6 flex h-full items-center border-transparent text-xl font-semibold py-6 "
@@ -137,9 +137,9 @@ const HomePage = () => {
               </a>
               <a
                 className="px-4 flex h-full items-center text-xl font-semibold py-4 border-grey-70 border-b-2 bg-grey-10"
-                href="/live-auction"
+                href="/my-collection"
               >
-                Auction
+                Collection
               </a>
               <a
                 className="px-4 flex h-full items-center text-xl font-semibold py-4 bg-grey-10"
