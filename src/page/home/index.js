@@ -335,13 +335,6 @@ const HomePage = () => {
                   <div className="text-black text-base mb-4">
                     Private sale , Public sale
                   </div>
-                  <div className="text-black text-base mb-4">
-                    KillSwitch Token Launch
-                  </div>
-                  <div className="text-black text-base mb-4">
-                    Liquidity Mining and Staking
-                  </div>
-                  <div className="text-black text-base mb-4">Airdrop</div>
                 </div>
               </div>
               <div className="flex space-x-2 mlg:justify-center">
@@ -358,6 +351,13 @@ const HomePage = () => {
                     KillSwitch V.2 (Take profit /Stop lost )
                   </div>
                   <div className="text-black text-base mb-4">NFT Game</div>
+                  <div className="text-black text-base mb-4">
+                    KillSwitch Token Launch
+                  </div>
+                  <div className="text-black text-base mb-4">
+                    Liquidity Mining and Staking
+                  </div>
+                  <div className="text-black text-base mb-4">Airdrop</div>
                 </div>
               </div>
             </div>
