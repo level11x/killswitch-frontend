@@ -22,16 +22,21 @@ const Container = ({ children }) => {
   );
 };
 
+const FEATURE_KEY = {
+  ONE_CLICK: 'ONE_CLICK',
+  AUTO_COMPOUND: 'AUTO_COMPOUND',
+  KILL_POSITION: 'KILL_POSITION',
+  STOP_LOSS: 'STOP_LOSS',
+  MIXTURE: 'MIXTURE',
+}
+
 const HomePage = () => {
   const history = useHistory();
   const { isCloseAuction } = useCountdownCloseAuction()
   const [isShowModal, setIsShowModal] = useState(false);
   const [isPopupShow, setIsPopupShow] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isOneClick, setIsOneClick] = useState(true);
-  const [isAutoCompound, setIsAutoCompound] = useState(false);
-  const [isKillPosition, setIsKillPosition] = useState(false);
-  const [isStopLoss, setIsStopLoss] = useState(false);
+  const [currentFeature, setCurrentFeature] = useState(FEATURE_KEY.ONE_CLICK);
 
   const toggleMenuOpen = () => {
     setMenuOpen(!isMenuOpen);
@@ -54,31 +59,6 @@ const HomePage = () => {
   const handleCloseDefultModal = () => {
     document.body.style.overflow = "unset";
     setIsShowModal(false);
-  };
-  const handleOneClick = () => {
-    setIsOneClick(true);
-    setIsAutoCompound(false);
-    setIsKillPosition(false);
-    setIsStopLoss(false);
-  };
-
-  const handleAutoCompound = () => {
-    setIsAutoCompound(true);
-    setIsOneClick(false);
-    setIsKillPosition(false);
-    setIsStopLoss(false);
-  };
-  const handleKillPosition = () => {
-    setIsKillPosition(true);
-    setIsOneClick(false);
-    setIsAutoCompound(false);
-    setIsStopLoss(false);
-  };
-  const handleStopLoss = () => {
-    setIsStopLoss(true);
-    setIsKillPosition(false);
-    setIsOneClick(false);
-    setIsAutoCompound(false);
   };
 
   return (
@@ -348,7 +328,7 @@ const HomePage = () => {
                     Q4
                   </div>
                   <div className="text-black text-base mb-4">
-                    KillSwitch V.2 (Take profit /Stop lost )
+                    KillSwitch V.2 (Take Profit /Stop Loss)
                   </div>
                   <div className="text-black text-base mb-4">NFT Game</div>
                   <div className="text-black text-base mb-4">
@@ -376,43 +356,41 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex justify-center space-x-4 mmd:flex-wrap mxl:space-x-0 mxl:space-y-4 mxl:flex-wrap">
-              <div className="bg-white p-8 rounded h-[664px] w-[642px] mxl:h-auto">
-                {isOneClick ? (
-                  <img src="/img/home/Oneclick.png" alt="" />
+              <div className="bg-white p-8 rounded h-[744px] w-[642px] mxl:h-auto">
+                {currentFeature === FEATURE_KEY.ONE_CLICK ? (
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/Oneclick.png" alt="" />
                 ) : null}
-
-                {isAutoCompound ? (
-                  <img src="/img/home/Auto.png" alt="" />
+                {currentFeature === FEATURE_KEY.AUTO_COMPOUND ? (
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/Auto.png" alt="" />
                 ) : null}
-                {isKillPosition ? (
-                  <img src="/img/home/Kill.png" alt="" />
+                {currentFeature === FEATURE_KEY.KILL_POSITION ? (
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/Kill.png" alt="" />
                 ) : null}
-
-                {isStopLoss ? (
-                  <img src="/img/home/feature_banner.png" alt="" />
+                {currentFeature === FEATURE_KEY.STOP_LOSS ? (
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature_banner.png" alt="" />
                 ) : null}
               </div>
-              <div className="block space-y-4 h-[664px] w-[642px] mxl:h-auto">
+              <div className="block space-y-4 h-[744px] w-[642px] mxl:h-auto">
                 <div
-                  className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isOneClick ? 'bg-white' : 'bg-grey-30'}`}
-                  onClick={handleOneClick}
+                  className={`rounded p-4 cursor-pointer h-[120px] mxl:h-auto ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'bg-white' : 'bg-grey-30'}`}
+                  onClick={() => setCurrentFeature(FEATURE_KEY.ONE_CLICK)}
                 >
-                  <div className={`font-semibold text-2xl mb-4 ${isOneClick ? 'text-black' : 'text-grey-70'}`}>
+                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'text-black' : 'text-grey-70'}`}>
                     One click Stake V.1
                   </div>
-                  <div className={`flex flex-warp font-semibold text-base ${isOneClick ? 'text-black' : 'text-grey-70'}`}>
+                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'text-black' : 'text-grey-70'}`}>
                     Swap, Provide Liquidity and Stake your position in one easy
                     step
                   </div>
                 </div>
                 <div
-                  className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isAutoCompound ? 'bg-white' : 'bg-grey-30'}`}
-                  onClick={handleAutoCompound}
+                  className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.AUTO_COMPOUND ? 'bg-white' : 'bg-grey-30'}`}
+                  onClick={() => setCurrentFeature(FEATURE_KEY.AUTO_COMPOUND)}
                 >
-                  <div className={`font-semibold text-2xl mb-4 ${isAutoCompound ? 'text-black' : 'text-grey-70'}`}>
+                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.AUTO_COMPOUND ? 'text-black' : 'text-grey-70'}`}>
                     Auto Compound V.1
                   </div>
-                  <div className={`flex flex-warp font-semibold text-base ${isAutoCompound ? 'text-black' : 'text-grey-70'}`}>
+                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.AUTO_COMPOUND ? 'text-black' : 'text-grey-70'}`}>
                     All the farmed tokens will be automatically converted to add
                     into users' positions every 24 hours or will be
                     automatically reinvested when Guardian of the Galaxy takes
@@ -420,13 +398,13 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div
-                  className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isKillPosition ? 'bg-white' : 'bg-grey-30'}`}
-                  onClick={handleKillPosition}
+                  className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.KILL_POSITION ? 'bg-white' : 'bg-grey-30'}`}
+                  onClick={() => setCurrentFeature(FEATURE_KEY.KILL_POSITION)}
                 >
-                  <div className={`font-semibold text-2xl mb-4 ${isKillPosition ? 'text-black' : 'text-grey-70'}`}>
+                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.KILL_POSITION ? 'text-black' : 'text-grey-70'}`}>
                     Kill Position V.1
                   </div>
-                  <div className={`flex flex-warp font-semibold text-base ${isKillPosition ? 'text-black' : 'text-grey-70'}`}>
+                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.KILL_POSITION ? 'text-black' : 'text-grey-70'}`}>
                     Users can kill position any time. KillSwitch will
                     automatically Unstake LP tokens , withdraw liquidity form
                     liquidity providing pool and swap assets to BNB or BUSD or
@@ -434,17 +412,28 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div
-                  className={`rounded p-4 cursor-pointer h-[154px] mxl:h-auto ${isStopLoss ? 'bg-white' : 'bg-grey-30'}`}
-                  onClick={handleStopLoss}
+                  className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'bg-white' : 'bg-grey-30'}`}
+                  onClick={() => setCurrentFeature(FEATURE_KEY.STOP_LOSS)}
                 >
-                  <div className={`font-semibold text-2xl mb-4 ${isStopLoss ? 'text-black' : 'text-grey-70'}`}>
-                    Stop loss / Take profit V.2
+                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'text-black' : 'text-grey-70'}`}>
+                  Take Profit / Stop Loss V.2
                   </div>
-                  <div className={`flex flex-warp font-semibold text-base ${isStopLoss ? 'text-black' : 'text-grey-70'}`}>
+                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'text-black' : 'text-grey-70'}`}>
                     Users can set TP and SL when use one-click stake and can
                     edit . A stop loss (SL) is a value of pool limit entered by
                     a trader. When the value limit is reached the open position
                     will close to prevent further losses.
+                  </div>
+                </div>
+                <div
+                  className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.MIXTURE ? 'bg-white' : 'bg-grey-30'}`}
+                  onClick={() => setCurrentFeature(FEATURE_KEY.MIXTURE)}
+                >
+                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.MIXTURE ? 'text-black' : 'text-grey-70'}`}>
+                    Mixture
+                  </div>
+                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.MIXTURE ? 'text-black' : 'text-grey-70'}`}>
+                    
                   </div>
                 </div>
               </div>
@@ -470,8 +459,7 @@ const HomePage = () => {
                 </div>
                 <div className="flex flex-warp text-black text-base">
                   As a farmer, you can earn yield by choosing farm on KillSwitch
-                  and add your money (BUSD , BNB , any asset on pancake router)
-                  to farm.
+                  and add your money to farm.
                 </div>
               </div>
               <div className="flex-1 max-w-[310px]">
