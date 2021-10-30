@@ -358,16 +358,19 @@ const HomePage = () => {
             <div className="flex justify-center space-x-4 mmd:flex-wrap mxl:space-x-0 mxl:space-y-4 mxl:flex-wrap">
               <div className="bg-white p-8 rounded h-[744px] w-[642px] mxl:h-auto">
                 {currentFeature === FEATURE_KEY.ONE_CLICK ? (
-                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/Oneclick.png" alt="" />
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-one-click.png" alt="" />
                 ) : null}
                 {currentFeature === FEATURE_KEY.AUTO_COMPOUND ? (
-                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/Auto.png" alt="" />
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-auto-compound.png" alt="" />
                 ) : null}
                 {currentFeature === FEATURE_KEY.KILL_POSITION ? (
-                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/Kill.png" alt="" />
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-kill-position.png" alt="" />
                 ) : null}
                 {currentFeature === FEATURE_KEY.STOP_LOSS ? (
-                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature_banner.png" alt="" />
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-tp-sl.png" alt="" />
+                ) : null}
+                {currentFeature === FEATURE_KEY.MIXTURE ? (
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-mixture.png" alt="" />
                 ) : null}
               </div>
               <div className="block space-y-4 h-[744px] w-[642px] mxl:h-auto">
@@ -433,7 +436,7 @@ const HomePage = () => {
                     Mixture
                   </div>
                   <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.MIXTURE ? 'text-black' : 'text-grey-70'}`}>
-                    
+                  The supplemental feature was created to unlock all limitations of One-Click Stake and Withdraw All. Users are allowed to pick any coin or token on the whitelist to swap and report the best router swap for transparency.
                   </div>
                 </div>
               </div>
