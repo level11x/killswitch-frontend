@@ -153,8 +153,9 @@ const HomePage = () => {
           >
             <Container>
               <div className="block ml-16 w-[675px] mmd:m-4 mmd:mt-20 mmd:w-auto">
-              <div className="mmd:w-[80%] w-[40%] _mgh-at _mgt-24px _dp-f _fdrt-cl _alit-ct">
-                    <div className="_pdh-4px _mgbt-4px _cl-white _fw-700 _fs-600">
+              <div className="mmd:w-[80%] w-[100%] _mgh-at _mgt-24px lo-6-md lo-12 _gg-12px _fdrt-cl _jtfct-ct _alit-ct">
+              <div>
+                    <div className="_pdh-4px _mgbt-8px _tal-ct _cl-white _fw-700 _fs-600">
                         Audited by
                     </div>
                     <div className="lo-12 _gg-4px _mgt-4px">
@@ -173,7 +174,9 @@ const HomePage = () => {
                             />
                         </a>
                     </div>
-                    <div className="_pdh-4px _mgbt-4px _cl-white _fw-700 _fs-600 _mgt-16px">
+                  </div>
+                  <div>
+                    <div className="_pdh-4px _mgbt-8px _tal-ct _cl-white _fw-700 _fs-600">
                         Onboarding Audit
                     </div>
                     <div className="lo-12 _gg-4px _mgt-4px">
@@ -191,6 +194,7 @@ const HomePage = () => {
                                 className="_w-100pct _ojf-ct"
                             />
                         </a>
+                    </div>
                     </div>
                 </div>
                 <div className="font-semibold text-5xl flex flex-wrap text-white mb-4 leading-normal mmd:text-3xl mmd:mt-18 mt-8 whitespace-pre-line">
