@@ -1,0 +1,14 @@
+.ksw-toast {
+    @extend .ksw-card;
+
+    position: fixed;
+    bottom: 20px;
+    left: var(--sidebar-width);
+    margin-left: 20px;
+    margin-right: 20px;
+    right: 0;
+    padding: 10px 20px;
+    backdrop-filter: blur(5px);
+    z-index: 5;
+    // width: fit-content;
+}

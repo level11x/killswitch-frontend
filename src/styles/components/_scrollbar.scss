@@ -1,0 +1,14 @@
+.ksw-scollbar {
+  ::-webkit-scrollbar {
+    width: 8px;
+    background: var(--scrollbar-background);
+  }
+  ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb-background);
+      border-radius: 8px;
+  }
+  ::-webkit-scrollbar-track {
+      box-shadow: var(--scrollbar-track-shadow);
+      border-radius: 2px;
+  }
+}

@@ -1,0 +1,14 @@
+.ksw-link {
+    color: var(--link-color);
+    cursor: pointer;
+
+    &:hover {
+        color: var(--link-color-hover);
+    }
+
+    &.-fancy1 {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

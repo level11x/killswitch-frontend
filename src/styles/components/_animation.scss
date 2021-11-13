@@ -1,0 +1,69 @@
+%base-animation-diagonal-move {
+  animation: 3s ease-in-out 0s infinite normal none running;
+}
+
+.ksw-animation-diagonal-move, .ksw-animation-diagonal-move-left {
+  @extend %base-animation-diagonal-move;
+  animation-name: diagonal-move-left;
+}
+.ksw-animation-diagonal-move-right {
+  @extend %base-animation-diagonal-move;
+  animation-name: diagonal-move-right;
+}
+.ksw-animation-scale-in-out {
+  @extend %base-animation-diagonal-move;
+  animation-name: scale-in-out;
+}
+.ksw-animation-vertical {
+  @extend %base-animation-diagonal-move;
+  animation-name: vertical;
+}
+
+
+@keyframes diagonal-move-left {
+  0% {
+      transform: translate(0px, 0px);
+  }
+  50% {
+      transform: translate(-5px, -5px);
+  }
+  100% {
+      transform: translate(0px, 0px);
+  }
+}
+
+@keyframes diagonal-move-right {
+  0% {
+      transform: translate(0px, 0px);
+  }
+  50% {
+      transform: translate(-5px, 5px);
+  }
+  100% {
+      transform: translate(0px, 0px);
+  }
+}
+
+@keyframes vertical {
+  0% {
+      transform: translate(0px, 0px);
+  }
+  50% {
+      transform: translate(0px, 5px);
+  }
+  100% {
+      transform: translate(0px, 0px);
+  }
+}
+
+@keyframes scale-in-out {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+  }
+  100% {
+      transform: scale(1);
+  }
+}

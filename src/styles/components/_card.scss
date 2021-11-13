@@ -1,0 +1,47 @@
+.ksw-card {
+    border: var(--card-border);
+    box-shadow: var(--card-box-shadow);
+    border-radius: var(--card-border-radius);
+    background-color: var(--card-background-color);
+    
+    &.-light {
+        background: var(--card-light-background);
+        backdrop-filter: blur(4px);
+    }
+}
+
+.ksw-transparent-card {
+    background: var(--transparent-card-background);
+    box-shadow: var(--transparent-card-box-shadow);
+    backdrop-filter: var(--transparent-card-backdrop-filter);
+    border: var(--transparent-card-border);
+    border-radius: var(--transparent-card-border-radius);
+
+    &.-aura {
+        background: var(--transparent-card-aura-background);
+        box-shadow: 10px 10px 30px var(--transparent-card-aura-shadow-color);
+        backdrop-filter: blur(50px);
+        border-radius: 16px;
+        border: none;
+        &.-white {
+            background: var(--transparent-card-aura-white-background);
+        }
+    }
+}
+
+.ksw-ontop-transparent-card {
+    background: var(--ontop-transparent-card-background);
+    backdrop-filter: var(--ontop-transparent-card-backdrop-filter);
+    border-radius: var(--ontop-transparent-card-border-radius);
+
+    &.-center {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

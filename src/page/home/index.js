@@ -152,12 +152,52 @@ const HomePage = () => {
             }}
           >
             <Container>
-              <div className="block ml-16 w-[675px] mmd:m-4 mmd:mt-48 mmd:w-auto">
-                <div className="font-semibold text-5xl flex flex-wrap text-white mb-4 leading-normal mmd:text-3xl mmd:mt-24 mt-32 whitespace-pre-line">
+              <div className="block ml-16 w-[675px] mmd:m-4 mmd:mt-20 mmd:w-auto">
+              <div className="mmd:w-[80%] w-[40%] _mgh-at _mgt-24px _dp-f _fdrt-cl _alit-ct">
+                    <div className="_pdh-4px _mgbt-4px _cl-white _fw-700 _fs-600">
+                        Audited by
+                    </div>
+                    <div className="lo-12 _gg-4px _mgt-4px">
+                        <a
+                            href="https://app.inspex.co/library/killswitch#?scope=killswitch-autocompound"
+                            target="_blank"
+                            rel="noreferrer"
+                            title="Audited by Inspex."
+                            className="_pdh-24px _pdv-16px _bdrd-12px _mgh-12px  _mgh-8px-sm"
+                            style={{ backgroundColor: '#051026' }}
+                        >
+                            <img
+                            alt="inspex"
+                                src="/img/home/inspex.png"
+                                className="_w-100pct _ojf-ct"
+                            />
+                        </a>
+                    </div>
+                    <div className="_pdh-4px _mgbt-4px _cl-white _fw-700 _fs-600 _mgt-16px">
+                        Onboarding Audit
+                    </div>
+                    <div className="lo-12 _gg-4px _mgt-4px">
+                        <a
+                            href="https://www.certik.org/projects/killswitch"
+                            target="_blank"
+                            rel="noreferrer"
+                            title="Audited by Certik."
+                            className="_pdh-24px _pdv-16px _bdrd-12px _mgh-12px  _mgh-8px-sm"
+                            style={{ backgroundColor: '#364559' }}
+                        >
+                            <img
+                              alt="certik"
+                                src="/img/home/certik.svg"
+                                className="_w-100pct _ojf-ct"
+                            />
+                        </a>
+                    </div>
+                </div>
+                <div className="font-semibold text-5xl flex flex-wrap text-white mb-4 leading-normal mmd:text-3xl mmd:mt-18 mt-8 whitespace-pre-line">
                   {`KillSwitch is a Smart Yield
                   Farming Aggregator`}
                 </div>
-                <div className="text-base flex flex-wrap text-white leading-relaxed mb-12 mmd:mb-8 whitespace-pre-line">
+                <div className="text-base flex flex-wrap text-white leading-relaxed mb-8 mmd:mb-8 whitespace-pre-line">
                   {`KillSwitch is a smart yield farming aggregator targeting to
                   increase convenience and security for Binance Smart Chain
                   yield farmers. Users are free to unstake, withdraw Liquidity
@@ -165,7 +205,7 @@ const HomePage = () => {
                   instantly in one click.`}
                 </div>
 
-                <div className="flex space-x-5 mb-24 mmd:block mmd:space-x-0 mmd:mb-8">
+                <div className="flex space-x-5 mb-6 mmd:block mmd:space-x-0 mmd:mb-8">
                   <a className="cursor-pointer h-auto" href="https://killswitchofficial.gitbook.io/killswitch/" target="_blank" rel="noreferrer">
                     <button className="bg-secondaries-500 px-4 py-2 rounded text-white font-semibold  mmd:block mmd:mb-4 h-full">
                       Documents
@@ -220,7 +260,7 @@ const HomePage = () => {
       <section className="Hero-detail">
         <div className="bg-primaries-600 w-full flex justify-center">
           <Container>
-            <div className="block ml-16 mb-8 mt-16 mmd:mx-4 mmd:my-6">
+            <div className="block ml-16 mb-8 mt-24 mmd:mx-4 mmd:my-6">
               <div className="font-semibold text-4xl flex flex-wrap text-white mb-4 leading-normal w-[916px] mmd:w-auto mmd:text-2xl">
                 KillSwitch is created for high risk yield farmers by high risk
                 yield farmers (HRYF).
@@ -409,7 +449,7 @@ const HomePage = () => {
                   </div>
                   <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.KILL_POSITION ? 'text-black' : 'text-grey-70'}`}>
                     Users can kill position any time. KillSwitch will
-                    automatically Unstake LP tokens , withdraw liquidity form
+                    automatically Unstake LP tokens , withdraw liquidity from
                     liquidity providing pool and swap assets to BNB or BUSD or
                     another token user can chose.
                   </div>

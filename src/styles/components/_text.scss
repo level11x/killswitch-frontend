@@ -1,0 +1,195 @@
+$scale: 0.85;
+
+%ksw-text-base {
+    // font-family: Roboto;
+    font-weight: 600;
+    line-height: 150%;
+}
+
+%ksw2-text-base {
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.ksw-text-display-1 {
+    @extend %ksw-text-base;
+    font-size: 80px;
+}
+.ksw-text-display-2 {
+    @extend %ksw-text-base;
+    font-size: 72px;
+}
+.ksw-text-display-3 {
+    @extend %ksw-text-base;
+    font-size: 64px;
+}
+.ksw-text-display-4 {
+    @extend %ksw-text-base;
+    font-size: 56px;
+}
+.ksw-text-display-5 {
+    @extend %ksw-text-base;
+    font-size: 48px;
+}
+.ksw-text-display-6 {
+    @extend %ksw-text-base;
+    font-size: 40px;
+}
+.ksw-text-heading-1 {
+    @extend %ksw-text-base;
+    font-size: 40px;
+}
+.ksw-text-heading-2 {
+    @extend %ksw-text-base;
+    font-size: 32px;
+}
+.ksw-text-heading-3 {
+    @extend %ksw-text-base;
+    font-size: 28px;
+}
+.ksw-text-heading-4 {
+    @extend %ksw-text-base;
+    font-size: 24px;
+}
+.ksw-text-heading-5 {
+    @extend %ksw-text-base;
+    font-size: 20px;
+}
+.ksw-text-heading-6 {
+    @extend %ksw-text-base;
+    font-size: 16px;
+}
+.ksw-text, .ksw-text-paragraph, .ksw-text-paragraph-regular {
+    @extend %ksw-text-base;
+    font-size: 16px;
+    font-weight: normal;
+}
+.ksw-text-bold, .ksw-text-paragraph-bold {
+    @extend %ksw-text-base;
+    font-size: 16px;
+}
+.ksw-text-caption, .ksw-text-caption-regular {
+    @extend %ksw-text-base;
+    font-size: 14px;
+    font-weight: normal;
+}
+.ksw-text-caption-bold {
+    @extend %ksw-text-base;
+    font-size: 14px;
+}
+.ksw-text-button {
+    @extend %ksw-text-base;
+    font-size: 16px;
+}
+.ksw-text-link {
+    @extend %ksw-text-base;
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration-line: underline;
+}
+
+.ksw-text-h1 {
+    @extend %ksw2-text-base;
+    font-weight: 300;
+    font-size: #{$scale * 72}px;
+}
+.ksw-text-h2 {
+    @extend %ksw2-text-base;
+    font-weight: 300;
+    font-size: #{$scale * 64}px;
+}
+.ksw-text-h3 {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 48}px;
+}
+.ksw-text-h4 {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 40}px;
+}
+.ksw-text-h5 {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 32}px;
+}
+.ksw-text-h6 {
+    @extend %ksw2-text-base;
+    font-weight: 500;
+    font-size: #{$scale * 24}px;
+}
+.ksw-text-subtitle-1 {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 16}px;
+}
+.ksw-text-subtitle-2 {
+    @extend %ksw2-text-base;
+    font-weight: 500;
+    font-size: #{$scale * 14}px;
+}
+.ksw-text-body-1 {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 16}px;
+}
+.ksw-text-body-2 {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 14}px;
+}
+.ksw-text-button-large {
+    @extend %ksw2-text-base;
+    font-weight: 500;
+    font-size: #{$scale * 14}px;
+    text-transform: uppercase;
+}
+.ksw-text-button-medium {
+    @extend %ksw2-text-base;
+    font-weight: 500;
+    font-size: #{$scale * 15}px;
+    text-transform: uppercase;
+}
+.ksw-text-button-small {
+    @extend %ksw2-text-base;
+    font-weight: 500;
+    font-size: #{$scale * 14}px;
+    text-transform: uppercase;
+}
+.ksw-text-caption {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 12}px;
+}
+.ksw-text-overline {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 12}px;
+    text-transform: uppercase;
+}
+.ksw-text-avatar {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 20}px;
+}
+.ksw-text-input-label {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 12}px;
+}
+.ksw-text-input-helper {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 12}px;
+}
+.ksw-text-input-text {
+    @extend %ksw2-text-base;
+    font-weight: 400;
+    font-size: #{$scale * 16}px;
+}
+.ksw-text-tooltip {
+    @extend %ksw2-text-base;
+    font-weight: 500;
+    font-size: #{$scale * 10}px;
+}

@@ -1,0 +1,71 @@
+:root {
+    --tooltip-z-index: 20;
+}
+
+// Header
+:root {
+	--header-height: 80px;
+}
+
+// Sidebar
+:root {
+	--sidebar-width: 240px;
+
+    @media screen and (max-width: 959px) {
+        --sidebar-width: 0px;
+    }
+}
+
+// Main
+:root {
+	--main-padding-top: 68px;
+	--main-padding-left: 48px;
+	--main-padding-right: 48px;
+    --main-max-width: 1150px;
+
+    @media screen and (max-width: 959px) {
+        --main-padding-top: 32px;
+        --main-padding-left: 12px;
+        --main-padding-right: 12px;
+        --main-max-width: 1150px;
+    }
+}
+
+
+:root {
+	--font-family-primary: 'Lato', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+	--font-family-secondary: 'Lato', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: var(--scrollbar-background);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-background);
+    border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: var(--scrollbar-track-shadow);
+    border-radius: 2px;
+}
+
+//-------------------------
+// Override MUI
+//-------------------------
+[role="tooltip"] {
+    z-index: var(--tooltip-z-index);
+}
+
+// Adjust <Sidebar /> in MUI drawer
+[class^="Mui"],
+[class^="Mui"] {
+    font-family: var(--font-family-secondary);
+}
+
+.MuiDrawer-paper {
+    .sidebar {
+        margin-top: 0px;
+        width: 260px; // NOTE: 260px is default drawer whdth
+    }
+}

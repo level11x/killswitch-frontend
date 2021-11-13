@@ -1,0 +1,17 @@
+@import "./_text.scss";
+
+.ksw-badge {
+    @extend .ksw-text-caption-regular;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 10px;
+    width: fit-content;
+
+    color: var(--badge-text-color);
+
+    background: var(--badge-background-color);
+    border-radius: 8px;
+}

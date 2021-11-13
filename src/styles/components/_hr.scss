@@ -1,0 +1,12 @@
+.ksw-hr {
+    display: block;
+    height: var(--hr-height);
+    background: var(--hr-background);
+}
+
+.ksw-vt {
+    display: block;
+    width: var(--vt-width);
+    height: 100%;
+    background: var(--vt-background);
+}

@@ -1,0 +1,11 @@
+@each $key, $value in $spacings {
+	.#{$atom-prefix}bdfb-#{$key} { backdrop-filter: blur(#{$value}) !important; }
+};
+
+@each $breakpointName, $breakpointSize in $breakpoints {
+	@media (min-width: $breakpointSize) {
+		@each $key, $value in $radiuses {
+			.#{$atom-prefix}bdfb-#{$key}-#{$breakpointName} { backdrop-filter: blur(#{$value}) !important; }
+		};
+	};
+};

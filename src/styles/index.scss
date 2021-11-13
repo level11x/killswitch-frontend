@@ -1,0 +1,10 @@
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600&family=Poppins:wght@200;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@import './__global.scss';
+@import './reset';
+@import './atomic/all.scss';
+@import './layout/all.scss';
+@import './components/all.scss';
