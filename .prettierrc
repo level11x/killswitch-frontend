@@ -1,0 +1,25 @@
+{
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "options": {
+                "trailingComma": "es5",
+                "tabWidth": 4,
+                "semi": false,
+                "singleQuote": true
+            }
+        },
+        {
+            "files": "*.sol",
+            "options": {
+                "printWidth": 120,
+                "tabWidth": 4,
+                "useTabs": false,
+                "singleQuote": false,
+                "bracketSpacing": false,
+                "explicitTypes": "always"
+            }
+        }
+    ]
+}

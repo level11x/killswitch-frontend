@@ -1,3 +1,5 @@
+@import './_animation.scss';
+
 .ksw-card {
     border: var(--card-border);
     box-shadow: var(--card-box-shadow);
@@ -6,21 +8,24 @@
     
     &.-light {
         background: var(--card-light-background);
-        backdrop-filter: blur(4px);
+    }
+    
+    &.-dark-gradient {
+        border: var(--card-dark-gradient-border);
+        background: var(--card-dark-gradient-background);
+
     }
 }
 
 .ksw-transparent-card {
     background: var(--transparent-card-background);
     box-shadow: var(--transparent-card-box-shadow);
-    backdrop-filter: var(--transparent-card-backdrop-filter);
     border: var(--transparent-card-border);
     border-radius: var(--transparent-card-border-radius);
 
     &.-aura {
         background: var(--transparent-card-aura-background);
         box-shadow: 10px 10px 30px var(--transparent-card-aura-shadow-color);
-        backdrop-filter: blur(50px);
         border-radius: 16px;
         border: none;
         &.-white {
@@ -31,7 +36,6 @@
 
 .ksw-ontop-transparent-card {
     background: var(--ontop-transparent-card-background);
-    backdrop-filter: var(--ontop-transparent-card-backdrop-filter);
     border-radius: var(--ontop-transparent-card-border-radius);
 
     &.-center {
