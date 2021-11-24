@@ -18,7 +18,7 @@ export const Home = () => {
                 />
                 <img
                     id="killswitch"
-                    className="_mgt-64px ksw-animation-popup"
+                    className="_mgt-64px ksw-animation-popup _h-64px"
                     src="/images/ksw-white-icon.svg"
                 />
                 <div className="_fs-800 _fs-1000-sm _fw-500 _mgt-24px">
@@ -39,7 +39,7 @@ export const Home = () => {
                         className="ksw-button _mgr-8px"
                         href="https://app.killswitch.finance/"
                     >
-                        <i className="far fa-external-link _mgr-8px" />
+                        <i className="far fa-external-link _mgr-8px _w-16px _h-16px" />
                         Launch app
                     </a>
                     <a
@@ -54,7 +54,7 @@ export const Home = () => {
                 <div className="lo-12 lo-6-sm _gg-32px _gg-48px-sm _alit-ct _mgt-48px _mgt-48px-sm _fs-500 _fw-500">
                     <div className="_dp-f _fdrt-cl">
                         <span className="_mgbt-8px">
-                            <i className="fa fa-shield-check _cl-success-main _mgr-8px _mgbt-4px" />
+                            <i className="fa fa-shield-check _cl-success-main _mgr-8px _mgbt-4px _w-16px _h-16px" />
                             Audited By
                         </span>
                         <a
@@ -65,14 +65,15 @@ export const Home = () => {
                             className="_bdrd-16px _bgcl-shader-hover"
                         >
                             <img
-                                className="_h-48px"
+                                className="_h-48px _ojf-ct"
+                                style={{ width: 200 }}
                                 src="/images/home/audited/inspex.png"
                             />
                         </a>
                     </div>
                     <div className="_dp-f _fdrt-cl">
                         <span className="_mgbt-8px">
-                            <i className="fa fa-shield-check _cl-success-main _mgr-8px _mgbt-4px" />
+                            <i className="fa fa-shield-check _cl-success-main _mgr-8px _mgbt-4px _w-16px _h-16px" />
                             Onboarding Audit
                         </span>
                         <a
@@ -83,7 +84,8 @@ export const Home = () => {
                             className="_bdrd-16px _bgcl-shader-hover"
                         >
                             <img
-                                className="_h-48px"
+                                className="_h-48px _ojf-ct"
+                                style={{ width: 200 }}
                                 src="/images/home/audited/certik.svg"
                             />
                         </a>
@@ -100,14 +102,15 @@ export const Home = () => {
                     src="/images/home/decorators/latest-update-top-bg.png"
                 />
                 <div className="_fs-600 _fs-900-sm _fw-500">Latest Update</div>
-                <LastestUpdateList className="_mgt-24px _mxw-512px _mxh-256px _mxh-256-xs _mgh-at _h-100pct" />
+                <LastestUpdateList className="_mgt-24px _mxw-512px _mxh-256px _mxh-256-xs _mgh-at _h-256px" />
                 <div className="_fs-500 _fs-800-sm _fw-500 _tal-ct _wsp-p-sm _mgt-48px">
                     {
                         'KillSwitch is created for high risk yield farmers\n by high risk yield farmers (HRYF).'
                     }
                 </div>
                 <div className="ksw-link _fs-600 _tal-ct _mgt-24px">
-                    Learn More <i className="far fa-chevron-right _mgl-12px" />
+                    Learn More{' '}
+                    <i className="far fa-chevron-right _mgl-12px _w-16px _h-16px" />
                 </div>
             </div>
             <div

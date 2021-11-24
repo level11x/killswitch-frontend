@@ -108,13 +108,15 @@ const ALLIANCES = [
 
 const ECOSYSTEMS = [
     {
-        imageSrc: '/images/home/ecosystems/northbridge.png',
+        imageSrc: '/images/home/ecosystems/northbridge.svg',
         imageAlt: 'northbridge.link',
+        imageStyle: { filter: 'grayscale(100%)' },
         link: 'https://northbridge.link/',
     },
     {
-        imageSrc: '/images/home/ecosystems/kururu.png',
+        imageSrc: '/images/home/ecosystems/kururu.svg',
         imageAlt: 'kururu.finance',
+        imageStyle: { filter: 'grayscale(100%)' },
         link: 'https://kururu.finance/',
     },
     {
@@ -202,6 +204,7 @@ export const PartnerSection = ({ className }: PartnerSectionProps) => {
                                             height: 80,
                                             imageRendering:
                                                 '-webkit-optimize-contrast',
+                                            ...item.imageStyle,
                                         }}
                                         src={item.imageSrc}
                                         alt={item.imageAlt}

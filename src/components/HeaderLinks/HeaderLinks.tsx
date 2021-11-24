@@ -11,7 +11,7 @@ const LaunchAppButton = ({ className }) => (
         title="Launch app now!"
         href="https://app.killswitch.finance/"
     >
-        <i className="far fa-external-link _mgr-8px" />
+        <i className="far fa-external-link _mgr-8px _w-16px _h-16px" />
         Launch app
     </a>
 )
