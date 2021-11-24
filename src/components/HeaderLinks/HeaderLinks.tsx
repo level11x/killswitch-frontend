@@ -1,7 +1,5 @@
 import classNames from 'classnames'
 
-interface HeaderLinksProps {}
-
 const LaunchAppButton = ({ className }) => (
     <a
         className={classNames(

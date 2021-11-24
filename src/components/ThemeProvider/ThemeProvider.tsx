@@ -19,7 +19,7 @@ interface ThemeProviderProps {}
 export const ThemeProvider = ({
     children,
 }: React.PropsWithChildren<ThemeProviderProps>) => {
-    const key = 'theme'
+    // const key = 'theme'
 
     // const t: ThemeName = DEFAULT_THEME
     // if (localStorage) {
