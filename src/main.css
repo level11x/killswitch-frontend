@@ -757,24 +757,20 @@ video {
 	margin-left: 4rem;
 }
 
-.mt-12 {
-	margin-top: 3rem;
-}
-
-.mb-12 {
-	margin-bottom: 3rem;
-}
-
-.mb-24 {
-	margin-bottom: 6rem;
+.mt-8 {
+	margin-top: 2rem;
 }
 
 .mb-8 {
 	margin-bottom: 2rem;
 }
 
-.mt-16 {
-	margin-top: 4rem;
+.mb-6 {
+	margin-bottom: 1.5rem;
+}
+
+.mt-24 {
+	margin-top: 6rem;
 }
 
 .mb-10 {
@@ -797,20 +793,12 @@ video {
 	margin-left: 1.5rem;
 }
 
-.mb-6 {
-	margin-bottom: 1.5rem;
+.mt-12 {
+	margin-top: 3rem;
 }
 
 .mt-10 {
 	margin-top: 2.5rem;
-}
-
-.mt-8 {
-	margin-top: 2rem;
-}
-
-.mt-24 {
-	margin-top: 6rem;
 }
 
 .block {
@@ -893,16 +881,16 @@ video {
 	height: 616px;
 }
 
-.h-\[744px\] {
-	height: 744px;
+.h-\[850px\] {
+	height: 850px;
 }
 
 .h-\[100\%\] {
 	height: 100%;
 }
 
-.h-\[120px\] {
-	height: 120px;
+.h-\[900px\] {
+	height: 900px;
 }
 
 .h-\[140px\] {
@@ -915,14 +903,6 @@ video {
 
 .h-\[504px\] {
 	height: 504px;
-}
-
-.h-\[1000px\] {
-	height: 1000px;
-}
-
-.h-\[800px\] {
-	height: 800px;
 }
 
 .min-h-screen {
@@ -969,6 +949,10 @@ video {
 	width: 675px;
 }
 
+.w-\[100\%\] {
+	width: 100%;
+}
+
 .w-\[540px\] {
 	width: 540px;
 }
@@ -1001,10 +985,6 @@ video {
 	width: 642px;
 }
 
-.w-\[100\%\] {
-	width: 100%;
-}
-
 .w-\[200px\] {
 	width: 200px;
 }
@@ -1019,18 +999,6 @@ video {
 
 .w-screen {
 	width: 100vw;
-}
-
-.w-\[80\%\] {
-	width: 80%;
-}
-
-.w-\[50\%\] {
-	width: 50%;
-}
-
-.w-\[40\%\] {
-	width: 40%;
 }
 
 .max-w-screen-lg {
@@ -1519,14 +1487,14 @@ video {
 	padding-bottom: 4rem;
 }
 
-.py-28 {
-	padding-top: 7rem;
-	padding-bottom: 7rem;
-}
-
 .px-2 {
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
+}
+
+.py-28 {
+	padding-top: 7rem;
+	padding-bottom: 7rem;
 }
 
 .px-16 {
@@ -1547,6 +1515,11 @@ video {
 .px-8 {
 	padding-left: 2rem;
 	padding-right: 2rem;
+}
+
+.px-1 {
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
 }
 
 .pl-4 {
@@ -2090,8 +2063,8 @@ body {
 		margin-bottom: 1.5rem;
 	}
 
-	.mmd\:mt-12 {
-		margin-top: 3rem;
+	.mmd\:mt-20 {
+		margin-top: 5rem;
 	}
 
 	.mmd\:mb-8 {
@@ -2104,30 +2077,6 @@ body {
 
 	.mmd\:mb-2 {
 		margin-bottom: 0.5rem;
-	}
-
-	.mmd\:mt-20 {
-		margin-top: 5rem;
-	}
-
-	.mmd\:mt-10 {
-		margin-top: 2.5rem;
-	}
-
-	.mmd\:mt-14 {
-		margin-top: 3.5rem;
-	}
-
-	.mmd\:mt-5 {
-		margin-top: 1.25rem;
-	}
-
-	.mmd\:mt-24 {
-		margin-top: 6rem;
-	}
-
-	.mmd\:mb-5 {
-		margin-bottom: 1.25rem;
 	}
 
 	.mmd\:block {
@@ -2154,20 +2103,12 @@ body {
 		height: 0.75rem;
 	}
 
-	.mmd\:h-\[180\%\] {
-		height: 180%;
-	}
-
-	.mmd\:h-\[80\%\] {
-		height: 80%;
-	}
-
-	.mmd\:h-\[50\%\] {
-		height: 50%;
-	}
-
 	.mmd\:w-auto {
 		width: auto;
+	}
+
+	.mmd\:w-\[80\%\] {
+		width: 80%;
 	}
 
 	.mmd\:w-3 {
@@ -2176,10 +2117,6 @@ body {
 
 	.mmd\:w-40 {
 		width: 10rem;
-	}
-
-	.mmd\:w-\[80\%\] {
-		width: 80%;
 	}
 
 	.mmd\:flex-wrap {

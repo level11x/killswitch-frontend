@@ -1,18 +1,16 @@
-import React from "react";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChevronRight,
-  faTimes,
-  faBars,
+  faBars, faChevronRight,
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Carousel } from "antd";
-import { useHistory } from 'react-router-dom'
-
-import { KSW_APP_URL } from '../../config/common'
-import useCountdownCloseAuction from '../../hooks/useCountdownCloseAuction'
-
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
+import { KSW_APP_URL } from '../../config/common';
+import useCountdownCloseAuction from '../../hooks/useCountdownCloseAuction';
 import "./home.css";
+
+
 
 const Container = ({ children }) => {
   return (
@@ -27,6 +25,7 @@ const FEATURE_KEY = {
   AUTO_COMPOUND: 'AUTO_COMPOUND',
   KILL_POSITION: 'KILL_POSITION',
   STOP_LOSS: 'STOP_LOSS',
+  BOOST: 'BOOST',
   MIXTURE: 'MIXTURE',
 }
 
@@ -153,49 +152,49 @@ const HomePage = () => {
           >
             <Container>
               <div className="block ml-16 w-[675px] mmd:m-4 mmd:mt-20 mmd:w-auto">
-              <div className="mmd:w-[80%] w-[100%] _mgh-at _mgt-24px lo-6-md lo-12 _gg-12px _fdrt-cl _jtfct-ct _alit-ct">
-              <div>
+                <div className="mmd:w-[80%] w-[100%] _mgh-at _mgt-24px lo-6-md lo-12 _gg-12px _fdrt-cl _jtfct-ct _alit-ct">
+                  <div>
                     <div className="_pdh-4px _mgbt-8px _tal-ct _cl-white _fw-700 _fs-600">
-                        Audited by
+                      Audited by
                     </div>
                     <div className="lo-12 _gg-4px _mgt-4px">
-                        <a
-                            href="https://app.inspex.co/library/killswitch#?scope=killswitch-autocompound"
-                            target="_blank"
-                            rel="noreferrer"
-                            title="Audited by Inspex."
-                            className="_pdh-24px _pdv-16px _bdrd-12px _mgh-12px  _mgh-8px-sm"
-                            style={{ backgroundColor: '#051026' }}
-                        >
-                            <img
-                            alt="inspex"
-                                src="/img/home/inspex.png"
-                                className="_w-100pct _ojf-ct"
-                            />
-                        </a>
+                      <a
+                        href="https://app.inspex.co/library/killswitch#?scope=killswitch-autocompound"
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Audited by Inspex."
+                        className="_pdh-24px _pdv-16px _bdrd-12px _mgh-12px  _mgh-8px-sm"
+                        style={{ backgroundColor: '#051026' }}
+                      >
+                        <img
+                          alt="inspex"
+                          src="/img/home/inspex.png"
+                          className="_w-100pct _ojf-ct"
+                        />
+                      </a>
                     </div>
                   </div>
                   <div>
                     <div className="_pdh-4px _mgbt-8px _tal-ct _cl-white _fw-700 _fs-600">
-                        Onboarding Audit
+                      Onboarding Audit
                     </div>
                     <div className="lo-12 _gg-4px _mgt-4px">
-                        <a
-                            href="https://www.certik.org/projects/killswitch"
-                            target="_blank"
-                            rel="noreferrer"
-                            title="Audited by Certik."
-                            className="_pdh-24px _pdv-16px _bdrd-12px _mgh-12px  _mgh-8px-sm"
-                            style={{ backgroundColor: '#364559' }}
-                        >
-                            <img
-                              alt="certik"
-                                src="/img/home/certik.svg"
-                                className="_w-100pct _ojf-ct"
-                            />
-                        </a>
+                      <a
+                        href="https://www.certik.org/projects/killswitch"
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Audited by Certik."
+                        className="_pdh-24px _pdv-16px _bdrd-12px _mgh-12px  _mgh-8px-sm"
+                        style={{ backgroundColor: '#364559' }}
+                      >
+                        <img
+                          alt="certik"
+                          src="/img/home/certik.svg"
+                          className="_w-100pct _ojf-ct"
+                        />
+                      </a>
                     </div>
-                    </div>
+                  </div>
                 </div>
                 <div className="font-semibold text-5xl flex flex-wrap text-white mb-4 leading-normal mmd:text-3xl mmd:mt-18 mt-8 whitespace-pre-line">
                   {`KillSwitch is a Smart Yield
@@ -400,7 +399,7 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex justify-center space-x-4 mmd:flex-wrap mxl:space-x-0 mxl:space-y-4 mxl:flex-wrap">
-              <div className="bg-white p-8 rounded h-[744px] w-[642px] mxl:h-auto">
+              <div className="bg-white p-8 rounded h-[850px] w-[642px] mxl:h-auto">
                 {currentFeature === FEATURE_KEY.ONE_CLICK ? (
                   <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-one-click.png" alt="" />
                 ) : null}
@@ -413,29 +412,20 @@ const HomePage = () => {
                 {currentFeature === FEATURE_KEY.STOP_LOSS ? (
                   <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-tp-sl.png" alt="" />
                 ) : null}
+                {currentFeature === FEATURE_KEY.BOOST ? (
+                  <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-mixture.png" alt="" />
+                ) : null}
                 {currentFeature === FEATURE_KEY.MIXTURE ? (
                   <img className="w-[100%] h-[100%] object-contain" src="/img/home/feature-mixture.png" alt="" />
                 ) : null}
               </div>
-              <div className="block space-y-4 h-[744px] w-[642px] mxl:h-auto">
-                <div
-                  className={`rounded p-4 cursor-pointer h-[120px] mxl:h-auto ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'bg-white' : 'bg-grey-30'}`}
-                  onClick={() => setCurrentFeature(FEATURE_KEY.ONE_CLICK)}
-                >
-                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'text-black' : 'text-grey-70'}`}>
-                    One click Stake V.1
-                  </div>
-                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'text-black' : 'text-grey-70'}`}>
-                    Swap, Provide Liquidity and Stake your position in one easy
-                    step
-                  </div>
-                </div>
+              <div className="block space-y-4 h-[900px] w-[642px] mxl:h-auto">
                 <div
                   className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.AUTO_COMPOUND ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={() => setCurrentFeature(FEATURE_KEY.AUTO_COMPOUND)}
                 >
                   <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.AUTO_COMPOUND ? 'text-black' : 'text-grey-70'}`}>
-                    Auto Compound V.1
+                    🤖 <span className="px-1" />Auto Compound
                   </div>
                   <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.AUTO_COMPOUND ? 'text-black' : 'text-grey-70'}`}>
                     All the farmed tokens will be automatically converted to add
@@ -445,31 +435,25 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div
+                  className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'bg-white' : 'bg-grey-30'}`}
+                  onClick={() => setCurrentFeature(FEATURE_KEY.ONE_CLICK)}
+                >
+                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'text-black' : 'text-grey-70'}`}>
+                    🚀 <span className="px-1" />Deposit Mixture
+                  </div>
+                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.ONE_CLICK ? 'text-black' : 'text-grey-70'}`}>
+                    The supplemental feature was created to unlock all limitations of One-Click Stake and Withdraw All. Users are allowed to pick any coin or token on the whitelist to swap and report the best router swap for transparency.
+                  </div>
+                </div>
+                <div
                   className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.KILL_POSITION ? 'bg-white' : 'bg-grey-30'}`}
                   onClick={() => setCurrentFeature(FEATURE_KEY.KILL_POSITION)}
                 >
                   <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.KILL_POSITION ? 'text-black' : 'text-grey-70'}`}>
-                    Kill Position V.1
+                    🛸 <span className="px-1" />Withdraw Mixture
                   </div>
                   <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.KILL_POSITION ? 'text-black' : 'text-grey-70'}`}>
-                    Users can kill position any time. KillSwitch will
-                    automatically Unstake LP tokens , withdraw liquidity from
-                    liquidity providing pool and swap assets to BNB or BUSD or
-                    another token user can chose.
-                  </div>
-                </div>
-                <div
-                  className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'bg-white' : 'bg-grey-30'}`}
-                  onClick={() => setCurrentFeature(FEATURE_KEY.STOP_LOSS)}
-                >
-                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'text-black' : 'text-grey-70'}`}>
-                  Take Profit / Stop Loss V.2
-                  </div>
-                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'text-black' : 'text-grey-70'}`}>
-                    Users can set TP and SL when use one-click stake and can
-                    edit . A stop loss (SL) is a value of pool limit entered by
-                    a trader. When the value limit is reached the open position
-                    will close to prevent further losses.
+                    We have the “Kill Position” feature, A feature where LP tokens are automatically unstaked, withdraw liquidity, and swapped into any desired tokens available on KillSwitch Platform or LP in one click.
                   </div>
                 </div>
                 <div
@@ -477,10 +461,35 @@ const HomePage = () => {
                   onClick={() => setCurrentFeature(FEATURE_KEY.MIXTURE)}
                 >
                   <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.MIXTURE ? 'text-black' : 'text-grey-70'}`}>
-                    Mixture
+                    💸  <span className="px-1" />Move Mixture
                   </div>
                   <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.MIXTURE ? 'text-black' : 'text-grey-70'}`}>
-                  The supplemental feature was created to unlock all limitations of One-Click Stake and Withdraw All. Users are allowed to pick any coin or token on the whitelist to swap and report the best router swap for transparency.
+                    A feature that users can move LP from one pool to another pool in KillSwitch with zero withdrawal fee. This feature is suitable for opportunistic farmers who want to try a new pool to get a higher dividend and easy as our KillSwitch's promises.
+                  </div>
+                </div>
+                <div
+                  className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.BOOST ? 'bg-white' : 'bg-grey-30'}`}
+                  onClick={() => setCurrentFeature(FEATURE_KEY.BOOST)}
+                >
+                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.BOOST ? 'text-black' : 'text-grey-70'}`}>
+                    🔥 <span className="px-1" />Boost
+                  </div>
+                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.BOOST ? 'text-black' : 'text-grey-70'}`}>
+                    The "boost" feature allows users to enjoy higher rewards from our partners' farms so our yield farmers can get higher returns compared to the initial pool. Hence, the name "boost" more wanting our users to get a BOOST or the highest APY!
+                  </div>
+                </div>
+                <div
+                  className={`rounded p-4 cursor-pointer h-[140px] mxl:h-auto ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'bg-white' : 'bg-grey-30'}`}
+                  onClick={() => setCurrentFeature(FEATURE_KEY.STOP_LOSS)}
+                >
+                  <div className={`font-semibold text-2xl mb-1 ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'text-black' : 'text-grey-70'}`}>
+                    Take Profit / Stop Loss
+                  </div>
+                  <div className={`flex flex-warp font-semibold text-base ${currentFeature === FEATURE_KEY.STOP_LOSS ? 'text-black' : 'text-grey-70'}`}>
+                    Users can set TP and SL when use one-click stake and can
+                    edit . A stop loss (SL) is a value of pool limit entered by
+                    a trader. When the value limit is reached the open position
+                    will close to prevent further losses.
                   </div>
                 </div>
               </div>
