@@ -1,4 +1,10 @@
 import classNames from 'classnames'
+import { CHAIN } from 'config/networkSetup'
+import { formatApy, formatUSD } from 'helpers/format'
+import { fetchAPYList, useAPYList } from 'hooks/useAPYList'
+import { fetchPrice, useMarketPrice } from 'hooks/useMarketPrice'
+import { fetchTVLList, useTVLList } from 'hooks/useTVL'
+import { useEffect, useState } from 'react'
 
 interface StatProps {
     title: string
@@ -23,18 +29,81 @@ interface StatsProps {
 }
 
 export const Stats = ({ className }: StatsProps) => {
+    const [kswUSDPrice, setKswUSDPrice] = useState('0')
+    const [maxAPY, setMaxAPY] = useState('0')
+    const [tvlTotal, setTVLTotal] = useState('0')
+
+    useMarketPrice(CHAIN.BSC)
+    useAPYList(CHAIN.BSC)
+    useTVLList()
+
+    useEffect(() => {
+        const fetch = () => {
+            const oraclePrice =
+                fetchPrice({
+                    id: '0x270178366a592ba598c2e9d2971da65f7baa7c86',
+                }) || 0
+            if (!oraclePrice) {
+                setKswUSDPrice('-')
+                return
+            }
+            const kswUSDPrice = formatUSD(1, oraclePrice)
+            setKswUSDPrice(kswUSDPrice)
+        }
+        fetch()
+
+        const id = setInterval(fetch, 1000)
+        return () => clearInterval(id)
+    }, [])
+
+    useEffect(() => {
+        const fetch = () => {
+            if (Object.values(fetchAPYList()).length === 0) {
+                return setMaxAPY('-')
+            }
+            const newMaxAPY = Object.values(fetchAPYList()).reduce(
+                (memo, item) => (item.apy > memo ? item.apy : memo),
+                0
+            )
+            const formatedAPY = formatApy(newMaxAPY)
+            setMaxAPY(formatedAPY)
+        }
+        fetch()
+
+        const id = setInterval(fetch, 1000)
+        return () => clearInterval(id)
+    }, [])
+
+    useEffect(() => {
+        const fetch = () => {
+            if (Object.values(fetchTVLList()).length === 0) {
+                return setTVLTotal('-')
+            }
+            const newTVL = Object.values(fetchTVLList()).reduce(
+                (memo, item) => (memo += Number(item)),
+                0
+            )
+            const formatedTVL = formatUSD(newTVL)
+            setTVLTotal(formatedTVL)
+        }
+        fetch()
+
+        const id = setInterval(fetch, 1000)
+        return () => clearInterval(id)
+    }, [])
+
     return (
         <div
             className={classNames('lo-12 lo-6-md lo-3-lg _gg-12px', className)}
         >
             <Stat
                 title="Total Value Lock (TVL)"
-                value="$6,747,318,491"
+                value={tvlTotal}
                 subtitle="Across all LPs"
             />
             <Stat title="Total Transaction per day" value="558,616,385" />
-            <Stat title="Earn up to" value="2.06k%" subtitle="APY in Farm" />
-            <Stat title="KillSwitch Price (24 hr)" value="$0.42" />
+            <Stat title="Earn up to" value={maxAPY} subtitle="APY in Farm" />
+            <Stat title="KillSwitch Price (24 hr)" value={kswUSDPrice} />
         </div>
     )
 }

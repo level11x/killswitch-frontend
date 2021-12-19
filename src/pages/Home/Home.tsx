@@ -1,7 +1,7 @@
 import BlogList from './components/BlogList/BlogList'
 import FeatureList from './components/FeatureList'
 import LastestUpdateList from './components/LastestUpdateList'
-import PartnerSection from './components/PartnerSection'
+import PartnerSection from './components/PartnerSecrtion/PartnerSection'
 import Stats from './components/Stats'
 import './styles.scss'
 
@@ -16,15 +16,30 @@ export const Home = () => {
                     className="top-section-backgroud-image _pst-asl _t-0px _zid--1"
                     src="/images/home/decorators/top-section-backgroud.png"
                 />
+                <div
+                    className="_dp-n _dp-b-md _pst-asl _bt-0px _l-0px _r-0px _t-50pct"
+                    style={{
+                        background:
+                            'linear-gradient(rgba(5, 0, 105, 0%) 50%, rgb(22, 25, 38) 150%)',
+                    }}
+                />
+                <div
+                    className="_dp-b _dp-n-md _pst-asl _bt-0px _l-0px _r-0px _t-50pct _zid--1"
+                    style={{
+                        background:
+                            'linear-gradient(rgba(5, 0, 105, 0%) 0%, rgb(22, 25, 38) 150%)',
+                    }}
+                />
                 <img
                     id="killswitch"
                     className="_mgt-64px ksw-animation-popup _h-64px"
                     src="/images/ksw-white-icon.svg"
                 />
-                <div className="_fs-800 _fs-1000-sm _fw-500 _mgt-24px">
-                    KillSwitch is a Smart Yield{' '}
-                    <br className="_dp-n _dp-b-sm" />
-                    Farming Aggregator
+                <div className="_fs-900 _fs-1100-sm _fw-500 _mgt-24px ">
+                    KillSwitch
+                </div>
+                <div className="_fs-800 _fs-900-sm _fw-500">
+                    a smart yield aggregator
                 </div>
                 <div
                     className="_fs-600 _fs-700-sm _fw-500 _mgt-24px"

@@ -2,25 +2,39 @@ import classNames from 'classnames'
 
 const stepList = [
     {
-        title: 'One Click Stake',
-        imgPath: '/images/home/features/one-click-stake.png',
-        href: 'https://killswitchofficial.gitbook.io/killswitch/feature/one-click-stake',
-        description:
-            'Swap, Provide Liquidity and Stake your position in one easy step.',
-    },
-    {
-        title: 'Auto Compound',
+        title: '🤖 Auto Compound',
         imgPath: '/images/home/features/auto-compound.png',
         href: 'https://killswitchofficial.gitbook.io/killswitch/feature/auto-compound',
         description:
             "All the farmed tokens will be automatically converted to add into users' positions every 24 hours or will be automatically reinvested when Guardian of the Galaxy takes action.",
     },
     {
-        title: 'Kill Position',
+        title: '🚀 Deposit Mixture',
+        imgPath: '/images/home/features/one-click-stake.png',
+        href: 'https://killswitchofficial.gitbook.io/killswitch/feature/one-click-stake',
+        description:
+            'The supplemental feature was created to unlock all limitations of One-Click Stake and Withdraw All. Users are allowed to pick any coin or token on the whitelist to swap and report the best router swap for transparency.',
+    },
+    {
+        title: '🛸 Withdraw Mixture',
         imgPath: '/images/home/features/kill-position.png',
         href: 'https://killswitchofficial.gitbook.io/killswitch/feature/how-can-killswitch-work',
         description:
-            'Users can kill position any time. KillSwitch will automatically Unstake LP tokens , withdraw liquidity form liquidity providing pool and swap assets to BNB or BUSD or another token user can chose.',
+            'We have the “Kill Position” feature, A feature where LP tokens are automatically unstaked, withdraw liquidity, and swapped into any desired tokens available on KillSwitch Platform or LP in one click.',
+    },
+    {
+        title: '💸 Move Mixture',
+        imgPath: '/images/home/features/mixture-swap.png',
+        href: 'https://killswitchofficial.gitbook.io/killswitch/feature/move-mixture',
+        description:
+            "A feature that users can move LP from one pool to another pool in KillSwitch with zero withdrawal fee. This feature is suitable for opportunistic farmers who want to try a new pool to get a higher dividend and easy as our KillSwitch's promises.",
+    },
+    {
+        title: '🔥 Boost',
+        imgPath: '/images/home/features/mixture-swap.png',
+        href: 'https://killswitchofficial.gitbook.io/killswitch/feature/boost',
+        description:
+            'The "boost" feature allows users to enjoy higher rewards from our partners\' farms so our yield farmers can get higher returns compared to the initial pool. Hence, the name "boost" more wanting our users to get a BOOST or the highest APY!',
     },
     {
         title: 'Take Profit/Stop Loss',
@@ -28,13 +42,6 @@ const stepList = [
         href: 'https://killswitchofficial.gitbook.io/killswitch/feature/stop-loss-take-profit',
         description:
             'Users can set TP and SL when use one-click stake and can edit . A stop loss (SL) is a value of pool limit entered by a trader. When the value limit is reached the open position will close to prevent further losses.',
-    },
-    {
-        title: 'Mixture swap',
-        imgPath: '/images/home/features/mixture-swap.png',
-        href: 'https://killswitchofficial.gitbook.io/killswitch/feature/how-can-killswitch-work',
-        description:
-            "Mixture is an \"awakening\" version of 'One-Click Stake' and 'Withdraw All'. The supplemental feature was created to unlock all limitations of 'One-Click Stake' and 'Withdraw All' in terms of input & output as well as providing transparency. ",
     },
 ]
 

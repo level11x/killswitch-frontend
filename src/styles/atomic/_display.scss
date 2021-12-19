@@ -21,3 +21,13 @@
 		.#{$atom-prefix}dp-n-#{$breakpointName}   { display: none !important; }
 	};
 };
+
+.#{$atom-prefix}dp-b-hover   { &:hover { display: block !important; } }
+.#{$atom-prefix}dp-f-hover   { &:hover { display: flex !important; } }
+.#{$atom-prefix}dp-g-hover   { &:hover { display: grid !important; } }
+.#{$atom-prefix}dp-il-hover  { &:hover { display: inline !important; } }
+.#{$atom-prefix}dp-ilb-hover { &:hover { display: inline-block !important; } }
+.#{$atom-prefix}dp-ilf-hover { &:hover { display: inline-flex !important; } }
+.#{$atom-prefix}dp-tb-hover  { &:hover { display: table !important; } }
+.#{$atom-prefix}dp-tbc-hover { &:hover { display: table-cell !important; } }
+.#{$atom-prefix}dp-n-hover   { &:hover { display: none !important; } }
