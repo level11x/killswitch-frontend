@@ -32,13 +32,13 @@ export const Home = () => {
                 />
                 <img
                     id="killswitch"
-                    className="_mgt-64px ksw-animation-popup _h-64px"
+                    className="_mgt-48px ksw-animation-popup _h-64px"
                     src="/images/ksw-white-icon.svg"
                 />
-                <div className="_fs-900 _fs-1100-sm _fw-500 _mgt-24px ">
+                <div className="_fs-900 _fs-1100-sm _fw-500 _mgt-24px _lh-130pct ">
                     KillSwitch
                 </div>
-                <div className="_fs-800 _fs-900-sm _fw-500">
+                <div className="_fs-800 _fs-900-sm _fw-500 _lh-150pct">
                     a smart yield aggregator
                 </div>
                 <div
