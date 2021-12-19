@@ -17,7 +17,7 @@ export const Home = () => {
                     src="/images/home/decorators/top-section-backgroud.png"
                 />
                 <div
-                    className="_dp-n _dp-b-md _pst-asl _bt-0px _l-0px _r-0px _t-50pct"
+                    className="_dp-n _dp-b-md _pst-asl _bt-0px _l-0px _r-0px _t-50pct _zid--1"
                     style={{
                         background:
                             'linear-gradient(rgba(5, 0, 105, 0%) 50%, rgb(22, 25, 38) 150%)',
@@ -35,14 +35,14 @@ export const Home = () => {
                     className="_mgt-48px ksw-animation-popup _h-64px"
                     src="/images/ksw-white-icon.svg"
                 />
-                <div className="_fs-900 _fs-1100-sm _fw-500 _mgt-24px _lh-130pct ">
+                <div className="_fs-900 _fs-900-sm _fw-500 _mgt-24px _lh-130pct ">
                     KillSwitch
                 </div>
-                <div className="_fs-800 _fs-900-sm _fw-500 _lh-150pct">
+                <div className="_fs-700 _fs-700-sm _fw-500 _lh-150pct">
                     a smart yield aggregator
                 </div>
                 <div
-                    className="_fs-600 _fs-700-sm _fw-500 _mgt-24px"
+                    className="_fs-600 _fs-500-sm _fw-500 _mgt-24px"
                     style={{ maxWidth: 725 }}
                 >
                     Users are free to unstake, withdraw Liquidity Position from
@@ -66,7 +66,7 @@ export const Home = () => {
                         LEARN MORE
                     </a>
                 </div>
-                <div className="lo-12 lo-6-sm _gg-32px _gg-48px-sm _alit-ct _mgt-48px _mgt-48px-sm _fs-500 _fw-500">
+                <div className="lo-12 lo-6-sm _gg-32px _gg-48px-sm _alit-ct _mgt-48px _mgt-32px-sm _fs-500 _fw-500">
                     <div className="_dp-f _fdrt-cl">
                         <span className="_mgbt-8px">
                             <i className="fa fa-shield-check _cl-success-main _mgr-8px _mgbt-4px _w-16px _h-16px" />
@@ -106,7 +106,7 @@ export const Home = () => {
                         </a>
                     </div>
                 </div>
-                <Stats className="_mgt-48px _mgt-48px-sm" />
+                <Stats className="_mgt-48px _mgt-32px-sm" />
             </div>
             <div className="_pdv-32px _pdv-64px-sm _pdh-24px _pdh-64px-sm _pst-rlt _ovf-hd">
                 <img
