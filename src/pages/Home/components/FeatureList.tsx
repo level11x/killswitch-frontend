@@ -31,13 +31,13 @@ const stepList = [
     },
     {
         title: '🔥 Boost',
-        imgPath: '/images/home/features/mixture-swap.png',
+        imgPath: '/images/home/features/boots.png',
         href: 'https://killswitchofficial.gitbook.io/killswitch/feature/boost',
         description:
             'The "boost" feature allows users to enjoy higher rewards from our partners\' farms so our yield farmers can get higher returns compared to the initial pool. Hence, the name "boost" more wanting our users to get a BOOST or the highest APY!',
     },
     {
-        title: 'Take Profit/Stop Loss',
+        title: '📈 Take Profit/Stop Loss',
         imgPath: '/images/home/features/tp-sl.png',
         href: 'https://killswitchofficial.gitbook.io/killswitch/feature/stop-loss-take-profit',
         description:

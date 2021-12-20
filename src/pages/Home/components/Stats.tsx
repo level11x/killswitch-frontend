@@ -13,7 +13,7 @@ interface StatProps {
 }
 const Stat = ({ title, value, subtitle }: StatProps) => (
     <div
-        className="ksw-card -dark-gradient ksw-animation-popup -small _tal-l"
+        className="ksw-card -dark-gradient ksw-animation-popup -small _tal-l _mgh-12px _mgbt-24px"
         style={{ minWidth: 310, padding: 20 }}
     >
         <div className="_fw-400 _fs-400">{title}</div>
@@ -94,14 +94,14 @@ export const Stats = ({ className }: StatsProps) => {
 
     return (
         <div
-            className={classNames('lo-12 lo-6-md lo-3-lg _gg-12px', className)}
+            className={classNames('_dp-f _fw-w _alit-ct _jtfct-ct', className)}
         >
             <Stat
                 title="Total Value Lock (TVL)"
                 value={tvlTotal}
                 subtitle="Across all LPs"
             />
-            <Stat title="Total Transaction per day" value="558,616,385" />
+            {/* <Stat title="Total Transaction per day" value="558,616,385" /> */}
             <Stat title="Earn up to" value={maxAPY} subtitle="APY in Farm" />
             <Stat title="KillSwitch Price (24 hr)" value={kswUSDPrice} />
         </div>

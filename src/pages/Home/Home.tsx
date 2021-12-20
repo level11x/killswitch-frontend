@@ -9,7 +9,7 @@ export const Home = () => {
     return (
         <div className="home-page">
             <div
-                className="full-width _pst-rlt _dp-f _fdrt-cl _alit-ct _zid-1 _tal-ct _pdh-16px _pdbt-24px _pdbt-24px-lg"
+                className="full-width _pst-rlt _dp-f _fdrt-cl _alit-ct _zid-1 _tal-ct _pdh-16px"
                 style={{ paddingTop: 'var(--header-height)' }}
             >
                 <img
@@ -43,7 +43,7 @@ export const Home = () => {
                 </div>
                 <div
                     className="_fs-600 _fs-500-sm _fw-500 _mgt-24px"
-                    style={{ maxWidth: 725 }}
+                    style={{ maxWidth: 700 }}
                 >
                     Users are free to unstake, withdraw Liquidity Position from
                     their funds and sell their high risk coins instantly in one
