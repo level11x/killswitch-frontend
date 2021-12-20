@@ -9,8 +9,10 @@ import Footer from 'components/Footer/Footer'
 import Header from 'components/Header/Header'
 import HeaderLinks from 'components/HeaderLinks/HeaderLinks'
 import { useSwitchTheme } from 'components/ThemeProvider/ThemeProvider'
+import { initialize as initializeFirebase } from 'config/firebaseConfig'
+import { initialize as initializeGTM } from 'config/googleTagManager'
 import Home from 'pages/Home/Home'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.scss'
 
@@ -20,6 +22,10 @@ function App() {
     const classes = useStyles({})
     const { themeName } = useSwitchTheme()
     const theme = createTheme(themeName)
+    useEffect(() => {
+        initializeGTM()
+        initializeFirebase()
+    }, [])
     return (
         <StylesProvider injectFirst>
             <ThemeProvider theme={theme}>

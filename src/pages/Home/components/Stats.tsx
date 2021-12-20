@@ -6,6 +6,9 @@ import { fetchPrice, useMarketPrice } from 'hooks/useMarketPrice'
 import { fetchTVLList, useTVLList } from 'hooks/useTVL'
 import { useEffect, useState } from 'react'
 
+export const BUY_KSW_URL =
+    'https://exchange.foodcourt.finance/#/swap?outputCurrency=0x270178366a592bA598C2e9d2971DA65f7bAa7C86'
+
 interface StatProps {
     title: string
     value: string
@@ -103,7 +106,14 @@ export const Stats = ({ className }: StatsProps) => {
             />
             {/* <Stat title="Total Transaction per day" value="558,616,385" /> */}
             <Stat title="Earn up to" value={maxAPY} subtitle="APY in Farm" />
-            <Stat title="KillSwitch Price (24 hr)" value={kswUSDPrice} />
+            <a
+                href={BUY_KSW_URL}
+                target="_blank"
+                rel="noreferrer"
+                title="Buy KSW Token"
+            >
+                <Stat title="KillSwitch Price" value={kswUSDPrice} />
+            </a>
         </div>
     )
 }
