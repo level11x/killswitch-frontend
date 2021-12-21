@@ -311,14 +311,14 @@ const HomePage = () => {
                 <div className="absolute mmd:hidden mxl:hidden">
                   <div className="flex">
                     <img
-                      className="w-[320px] "
-                      style={{ marginLeft: "120px" }}
+                      className="w-[150px] "
+                      style={{ marginLeft: 220, marginTop: 8 }}
                       src="/svg/home/road_sym.svg"
                       alt=""
                     />
                     <img
-                      className="w-[320px] "
-                      style={{ marginLeft: "120px" }}
+                      className="w-[150px] "
+                      style={{ marginLeft: 220, marginTop: 8 }}
                       src="/svg/home/road_sym.svg"
                       alt=""
                     />
@@ -332,24 +332,7 @@ const HomePage = () => {
 
                 <div className="block w-[266px]">
                   <div className="text-primaries-900 font-semibold text-4xl mb-8">
-                    Q2
-                  </div>
-
-                  <div className="text-black text-base mb-4">Auction Event</div>
-                  <div className="text-black text-base mb-4">
-                    KillSwitch on Test net
-                  </div>
-                </div>
-              </div>
-              <div className="flex space-x-2 mlg:justify-center">
-                <img
-                  className="self-start"
-                  src="/svg/home/cube.svg"
-                  alt="cube"
-                />
-                <div className="block w-[266px]">
-                  <div className="text-primaries-900 font-semibold text-4xl mb-8">
-                    Q3
+                    Q3 (2021)
                   </div>
                   <div className="text-black text-base mb-4">
                     KillSwitch V.1
@@ -368,12 +351,15 @@ const HomePage = () => {
                 />
                 <div className="block w-[266px]">
                   <div className="text-primaries-900 font-semibold text-4xl mb-8">
-                    Q4
+                    Q4 (2021)
                   </div>
                   <div className="text-black text-base mb-4">
-                    KillSwitch V.2 (Take Profit /Stop Loss)
+                    Mixture V2
                   </div>
-                  <div className="text-black text-base mb-4">NFT Game</div>
+                  {/* <div className="text-black text-base mb-4">
+                    KillSwitch V.2
+                  </div> */}
+                  {/* <div className="text-black text-base mb-4">NFT Game</div> */}
                   <div className="text-black text-base mb-4">
                     KillSwitch Token Launch
                   </div>
@@ -381,6 +367,27 @@ const HomePage = () => {
                     Liquidity Mining and Staking
                   </div>
                   <div className="text-black text-base mb-4">Airdrop</div>
+                </div>
+              </div>
+              <div className="flex space-x-2 mlg:justify-center">
+                <img
+                  className="self-start"
+                  src="/svg/home/cube.svg"
+                  alt="cube"
+                />
+                <div className="block w-[266px]">
+                  <div className="text-primaries-900 font-semibold text-4xl mb-8">
+                    Q1 (2022)
+                  </div>
+                  <div className="text-black text-base mb-4">
+                    Take Profit /Stop Loss
+                  </div>
+                  <div className="text-black text-base mb-4">
+                    KCS Chain
+                  </div>
+                  <div className="text-black text-base mb-4">
+                    Aurora Chain
+                  </div>
                 </div>
               </div>
             </div>
