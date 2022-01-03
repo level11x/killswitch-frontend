@@ -27,43 +27,49 @@ interface RoadmapProps {
 export const Roadmap = ({ className }: RoadmapProps) => {
     return (
         <div
-            className={classNames(className, '_w-100pct _mgh-at _pdv-48px')}
+            className={classNames(
+                className,
+                '_w-100pct _mgh-at _pdv-48px _pdh-32px _pdh-64px-sm'
+            )}
             style={{
                 background:
                     'linear-gradient(108.05deg, rgba(30, 47, 147, 0.53) 3.43%, rgba(10, 16, 57, 0.1) 170.47%)',
             }}
         >
             <div className="_fs-700 _fs-900-sm _fw-500 _mgbt-48px _pdh-16px-sm _tal-ct _w-100pct">
-                KillSwitch Roadmap
+                Journey
             </div>
-            <div className="_dp-f-sm _fdrt-cl _fdrt-r-sm _jtfct-ct lo-12 _mgh-at _w-fc _mgbt-0px _mgbt-16px-sm">
+            <div className="_dp-f-sm _fdrt-cl _fdrt-r-sm _jtfct-ct lo-12 _mgh-at _w-100pct _mgbt-0px _mgbt-16px-sm _pst-rlt">
+                <div
+                    className="_pst-asl _h-2px _w-100pct _t-24px _dp-n _dp-b-sm"
+                    style={{ backgroundColor: '#FEFEFF' }}
+                />
+                <img
+                    className="_w-64px _h-64px _pst-asl _r-0px _t-24px _dp-n _dp-b-sm"
+                    style={{ transform: 'translateY(-50%)' }}
+                    alt="eggo"
+                    src="/images/home/roadmap/eggo-head-right.svg"
+                />
                 {ROADMAP_LIST.map((item, index, { length }) => (
                     <div
-                        className="_w-fc _mgh-12px _mgh-0px-lg _mgbt-24px _mgbt-0px-sm"
+                        className="_w-fc _f-1 _mgl-12px _mgl-0px-lg _mgbt-24px _mgbt-0px-sm"
                         key={item.title}
                     >
-                        <div className="_dp-f _alit-ct _wsp-nw _fs-700 _fs-800-sm _fw-600 _pst-rlt _mgbt-4px _mgbt-8px-sm">
-                            <img
-                                src="/images/home/roadmap/cube.svg"
-                                className="_mxh-48px _mxw-48px _ojf-ct _mgr-16px"
-                            />
+                        <div
+                            className="_dp-f _alit-ct _wsp-nw _cl-primary-main _fs-600 _fs-800-sm _fw-600 _pst-rlt _mgbt-8px _mgbt-12px-sm _pdh-24px _pdv-2px _w-fc _bdrd-16px"
+                            style={{ backgroundColor: '#FEFEFF' }}
+                        >
                             {item.title}
-                            {index !== length - 1 && (
-                                <img
-                                    src="/images/home/roadmap/roadmap-arrow.svg"
-                                    className="_mgh-32px _dp-n _dp-b-lg"
-                                    style={{
-                                        width: 220,
-                                        marginBottom: '-50px',
-                                    }}
-                                />
-                            )}
                         </div>
                         {item.bullets.map((bullet) => (
                             <div
                                 key={bullet}
-                                className="_fs-500 _mgbt-8px _mgl-48px"
+                                className="_fs-400 _mgbt-4px _mgt-2px _mgl-16px"
                             >
+                                <i
+                                    className="fa fa-circle _vtcal-md _mgr-8px"
+                                    style={{ fontSize: 4 }}
+                                />
                                 {bullet}
                             </div>
                         ))}
