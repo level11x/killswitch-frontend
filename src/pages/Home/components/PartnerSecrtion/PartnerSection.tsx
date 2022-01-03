@@ -163,7 +163,7 @@ export const PartnerSection = ({ className }: PartnerSectionProps) => {
     return (
         <div className={classNames(className, '')}>
             <div
-                className="_pst-rlt _pdt-48px _pdbt-48px _pdh-48px _zid-1 _ovf-hd"
+                className="_pst-rlt _pdt-48px _pdbt-64px _pdh-48px _zid-1 _ovf-hd"
                 style={{
                     background:
                         'linear-gradient(180deg, #0F004A 0%, #13141B 100%)',
@@ -216,14 +216,14 @@ export const PartnerSection = ({ className }: PartnerSectionProps) => {
                 </div>
             </div>
             <div
-                className="_pst-rlt _pdt-48px _pdbt-128px _pdh-48px _zid-1 _ovf-hd"
+                className="_pst-rlt _pdt-64px _pdbt-128px _pdh-48px _zid-1 _ovf-hd"
                 style={{
                     background:
                         'linear-gradient(180deg, #0F004A 0%, #13141B 100%)',
                 }}
             >
                 <div className=" _w-fc _mgh-at">
-                    <div className="_fs-700 _fs-900-sm _fw-500 _mgbt-32px _pdh-16px-sm _tal-ct _w-100pct">
+                    <div className="_fs-700 _fs-900-sm _fw-500 _mgbt-48px _pdh-16px-sm _tal-ct _w-100pct">
                         What they said about us
                     </div>
                     <div className="_dp-f _fdrct-r _fw-w _jtfct-ct _jtfit-ct _mgh-at _w-fc">

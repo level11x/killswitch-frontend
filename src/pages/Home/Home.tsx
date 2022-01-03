@@ -124,9 +124,16 @@ export const Home = () => {
                         'KillSwitch is created for high risk yield farmers\n by high risk yield farmers (HRYF).'
                     }
                 </div>
-                <div className="ksw-link _fs-600 _tal-ct _mgt-24px">
-                    Learn More{' '}
-                    <i className="far fa-chevron-right _mgl-12px _w-16px _h-16px" />
+                <div className="_w-fc _mgh-at _mgt-24px">
+                    <a
+                        href="https://killswitchofficial.gitbook.io/killswitch/"
+                        target="_blank"
+                        className="ksw-link _fs-600 _tal-ct _pd-12px"
+                        rel="noreferrer"
+                    >
+                        Learn More{' '}
+                        <i className="far fa-chevron-right _mgl-12px _w-16px _h-16px" />
+                    </a>
                 </div>
             </div>
             <div
