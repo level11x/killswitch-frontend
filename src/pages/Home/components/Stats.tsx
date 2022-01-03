@@ -16,8 +16,11 @@ interface StatProps {
 }
 const Stat = ({ title, value, subtitle }: StatProps) => (
     <div
-        className="ksw-card -dark-gradient ksw-animation-popup -small _tal-l _mgh-12px _mgbt-24px"
-        style={{ minWidth: 310, padding: 20 }}
+        className="ksw-card -dark-gradient2 ksw-animation-popup -small _tal-l _mgh-12px _mgbt-24px"
+        style={{
+            minWidth: 310,
+            padding: 20,
+        }}
     >
         <div className="_fw-400 _fs-400">{title}</div>
         <div className="_fw-500 _fs-800 _mgv-12px _cl-secondary-main">

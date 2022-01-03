@@ -162,7 +162,24 @@ interface PartnerSectionProps {
 export const PartnerSection = ({ className }: PartnerSectionProps) => {
     return (
         <div className={classNames(className, '')}>
-            <div className=" _w-fc _mgh-at _pdv-32px ">
+            <div
+                className="_pst-rlt _pdt-48px _pdbt-48px _pdh-48px _zid-1 _ovf-hd"
+                style={{
+                    background:
+                        'linear-gradient(180deg, #0F004A 0%, #13141B 100%)',
+                }}
+                // style={{
+                //     background:
+                //         'linear-gradient(108.05deg, rgba(30, 47, 147, 0.53) 3.43%, rgba(10, 16, 57, 0.1) 170.47%)',
+                // }}
+            >
+                {/* <img
+                    src="/images/home/decorators/what-they-said-bg.png"
+                    className="_pst-asl _t-50pct _l-50pct _zid--1 _w-100pct-sm"
+                    style={{
+                        transform: 'translate(-50%, -43%)',
+                    }}
+                /> */}
                 <div className="_fs-700 _fs-900-sm _fw-500 _mgbt-24px _pdh-16px-sm _tal-ct _w-100pct">
                     Strategic Partner
                 </div>
@@ -199,21 +216,14 @@ export const PartnerSection = ({ className }: PartnerSectionProps) => {
                 </div>
             </div>
             <div
-                className="_pst-rlt _pdt-48px _pdbt-48px _pdh-48px _zid-1 _ovf-hd"
+                className="_pst-rlt _pdt-48px _pdbt-128px _pdh-48px _zid-1 _ovf-hd"
                 style={{
                     background:
-                        'linear-gradient(108.05deg, rgba(30, 47, 147, 0.53) 3.43%, rgba(10, 16, 57, 0.1) 170.47%)',
+                        'linear-gradient(180deg, #0F004A 0%, #13141B 100%)',
                 }}
             >
-                <img
-                    src="/images/home/decorators/what-they-said-bg.png"
-                    className="_pst-asl _t-50pct _l-50pct _zid--1 _w-100pct-sm"
-                    style={{
-                        transform: 'translate(-50%, -43%)',
-                    }}
-                />
                 <div className=" _w-fc _mgh-at">
-                    <div className="_fs-700 _fs-900-sm _fw-500 _mgbt-24px _pdh-16px-sm _tal-ct _tal-l-sm _w-100pct">
+                    <div className="_fs-700 _fs-900-sm _fw-500 _mgbt-32px _pdh-16px-sm _tal-ct _w-100pct">
                         What they said about us
                     </div>
                     <div className="_dp-f _fdrct-r _fw-w _jtfct-ct _jtfit-ct _mgh-at _w-fc">
@@ -256,7 +266,7 @@ export const PartnerSection = ({ className }: PartnerSectionProps) => {
                     id="ecosystems"
                     className="_pdt-64px _pdbt-64px _pdh-4px _pdh-48px-sm"
                     style={{
-                        background: 'hsla(235, 66%, 21%, 1)',
+                        background: '#1A237E',
                     }}
                 >
                     <div className="_mgh-at _mgr-at-sm _mgh-at-md _w-fc">
@@ -290,7 +300,7 @@ export const PartnerSection = ({ className }: PartnerSectionProps) => {
                 </div>
                 <div
                     className="_pdt-64px _pdbt-64px _pdh-48px"
-                    style={{ background: 'hsla(235, 66%, 30%, 1)' }}
+                    style={{ background: '#121858' }}
                 >
                     <div className="_fs-800 _fs-900-sm _fw-500 _mgbt-32px _pdh-16px-sm _tal-ct _tal-l-sm">
                         Alliances

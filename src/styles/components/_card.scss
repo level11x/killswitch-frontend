@@ -13,7 +13,11 @@
     &.-dark-gradient {
         border: var(--card-dark-gradient-border);
         background: var(--card-dark-gradient-background);
-
+    }
+    
+    &.-dark-gradient2 {
+        border: var(--card-dark-gradient-border);
+        background: linear-gradient(180deg, #03007E 0%, #000E49 100%);
     }
 }
 

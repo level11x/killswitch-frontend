@@ -28,7 +28,10 @@ export const Roadmap = ({ className }: RoadmapProps) => {
     return (
         <div
             className={classNames(className, '_w-100pct _mgh-at _pdv-48px')}
-            style={{ background: 'rgb(1 9 94)' }}
+            style={{
+                background:
+                    'linear-gradient(108.05deg, rgba(30, 47, 147, 0.53) 3.43%, rgba(10, 16, 57, 0.1) 170.47%)',
+            }}
         >
             <div className="_fs-700 _fs-900-sm _fw-500 _mgbt-48px _pdh-16px-sm _tal-ct _w-100pct">
                 KillSwitch Roadmap

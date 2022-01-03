@@ -21,7 +21,7 @@ export const Home = () => {
                     className="_dp-n _dp-b-md _pst-asl _bt-0px _l-0px _r-0px _t-50pct _zid--1"
                     style={{
                         background:
-                            'linear-gradient(rgba(5, 0, 105, 0%) 50%, rgb(22, 25, 38) 150%)',
+                            'linear-gradient(rgba(5, 0, 105, 0%) 50%, rgb(22, 25, 38) 100%)',
                     }}
                 />
                 <div
@@ -52,10 +52,10 @@ export const Home = () => {
                 </div>
                 <div className="_dp-f _alit-ct _mgt-24px">
                     <a
-                        className="ksw-button _mgr-8px"
+                        className="ksw-button -secondary _mgr-8px"
                         href="https://app.killswitch.finance/"
                     >
-                        <i className="far fa-external-link _mgr-8px _w-16px _h-16px" />
+                        <i className="far fa-external-link _mgr-12px _w-16px _h-16px" />
                         Launch app
                     </a>
                     <a
@@ -89,8 +89,8 @@ export const Home = () => {
                     </div>
                     <div className="_dp-f _fdrt-cl">
                         <span className="_mgbt-8px">
-                            <i className="fa fa-shield-check _cl-success-main _mgr-8px _mgbt-4px _w-16px _h-16px" />
-                            Onboarding Audit
+                            <i className="fa fa-hourglass-start _cl-white _mgr-8px _mgbt-4px _w-16px _h-16px" />
+                            Onboarding Audit by
                         </span>
                         <a
                             href="https://www.certik.org/projects/killswitch"
@@ -158,8 +158,8 @@ export const Home = () => {
                 </div>
                 <FeatureList className="_w-mnc _mgh-at" />
             </div>
-            <PartnerSection className="full-width" />
             <Roadmap />
+            <PartnerSection className="full-width" />
             <BlogList />
         </div>
     )

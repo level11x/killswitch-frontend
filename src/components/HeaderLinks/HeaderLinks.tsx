@@ -3,7 +3,7 @@ import classNames from 'classnames'
 const LaunchAppButton = ({ className }) => (
     <a
         className={classNames(
-            'ksw-button _w-100pct _wsp-nw _mgv-4px _mgh-8px',
+            'ksw-button -secondary _w-100pct _wsp-nw _mgv-4px _mgh-8px',
             className
         )}
         title="Launch app now!"

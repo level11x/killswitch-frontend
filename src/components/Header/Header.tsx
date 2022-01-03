@@ -10,7 +10,7 @@ import Close from '@material-ui/icons/Close'
 import Menu from '@material-ui/icons/Menu'
 import SocialList from 'components/SocialList/SocialList'
 import { useState } from 'react'
-import { ReactComponent as Logo } from './LogoV2.svg'
+import { ReactComponent as Logo } from './ksw-finance-white.svg'
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
@@ -33,7 +33,7 @@ const Header = ({ links }: HeaderProps) => {
         <AppBar className={`${classes.header}`}>
             <Toolbar className={classes.container}>
                 <Button href="/">
-                    <Logo className="_h-32px _h-48px-sm _mgr-24px" />
+                    <Logo className="_h-32px _h-48px-sm _pdv-4px _mgr-12px" />
                 </Button>
 
                 <Hidden smDown implementation="js">

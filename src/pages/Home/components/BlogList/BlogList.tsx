@@ -17,6 +17,10 @@ export const BlogList = ({ className }: BlogListProps) => {
                 '_pst-rlt _pdt-48px _pdbt-48px _pdh-12px _zid-1 _ovf-hd',
                 className
             )}
+            style={{
+                background:
+                    'linear-gradient(274.32deg, #121858 17.19%, #1A237E 94.99%)',
+            }}
         >
             <div className="_fs-700 _fs-800-sm _fw-500 _mgbt-24px _pdh-16px-sm _tal-ct">
                 What’s new at KillSwitch
