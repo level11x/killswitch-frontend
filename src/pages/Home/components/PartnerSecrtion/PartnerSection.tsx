@@ -30,7 +30,7 @@ const WHAT_THEY_SAID = [
         link: 'https://techsauce.co/pr-news/scb-10x-bangkok-blockathon-2021-killswitch',
     },
     {
-        imageSrc: '/images/home/what-they-said/scb10x.svg',
+        imageSrc: '/images/home/what-they-said/scb10x.png',
         imageGraySrc: '/images/home/what-they-said/scb10x-gray.png',
         imageAlt: 'www.scb10x.com',
         link: 'https://www.scb10x.com/blog/winning-teams-blockathon-2021',
