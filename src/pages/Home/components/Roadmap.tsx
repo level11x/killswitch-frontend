@@ -29,7 +29,7 @@ export const Roadmap = ({ className }: RoadmapProps) => {
         <div
             className={classNames(
                 className,
-                '_w-100pct _mgh-at _pdv-48px _pdh-32px _pdh-64px-sm'
+                '_w-100pct _mgh-at _pdv-48px _pdh-32px _pdh-64px-sm _pdh-128px-lg'
             )}
             style={{
                 background:
@@ -39,7 +39,7 @@ export const Roadmap = ({ className }: RoadmapProps) => {
             <div className="_fs-700 _fs-900-sm _fw-500 _mgbt-48px _pdh-16px-sm _tal-ct _w-100pct">
                 Journey
             </div>
-            <div className="_dp-f-sm _fdrt-cl _fdrt-r-sm _jtfct-ct lo-12 _mgh-at _w-100pct _mgbt-0px _mgbt-32px-sm _pst-rlt">
+            <div className="_dp-f-sm _fdrt-cl _fdrt-r-sm _jtfct-ct lo-12 _mgh-at _w-100pct _mgbt-0px _mgbt-32px-sm _pst-rlt _w-fc-lg">
                 <div
                     className="_pst-asl _h-2px _w-100pct _t-24px _dp-n _dp-b-sm"
                     style={{ backgroundColor: '#FEFEFF' }}
@@ -52,7 +52,7 @@ export const Roadmap = ({ className }: RoadmapProps) => {
                 />
                 {ROADMAP_LIST.map((item, index, { length }) => (
                     <div
-                        className="_w-fc _f-1 _mgl-32px _mgl-64px-sm _mgl-0px-lg _mgbt-24px _mgbt-0px-sm"
+                        className="_w-fc _f-1 _mgl-32px _mgl-0px-sm _mgl-0px-lg _mgr-128px-lg _mgbt-24px _mgbt-0px-sm"
                         key={item.title}
                     >
                         <div
