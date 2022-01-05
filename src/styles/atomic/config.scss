@@ -15,6 +15,8 @@ $atom-prefix: '_';
 	'primary-800': var(--color-primary-800),
 	'primary-900': var(--color-primary-900),
 	'primary-1000': var(--color-primary-1000),
+	'primary-main': var(--color-primary-main),
+	'primary-dark': var(--color-primary-dark),
 
 	'secondary-50': var(--color-secondary-50),
 	'secondary-100': var(--color-secondary-100),
@@ -27,6 +29,7 @@ $atom-prefix: '_';
 	'secondary-800': var(--color-secondary-800),
 	'secondary-900': var(--color-secondary-900),
 	'secondary-1000': var(--color-secondary-1000),
+	'secondary-main': var(--color-secondary-main),
 
 	'base-100': var(--color-base-100),
 	'base-200': var(--color-base-200),
@@ -68,14 +71,7 @@ $atom-prefix: '_';
 	'grey-20': var(--color-grey-20),
 	'grey-10': var(--color-grey-10),
 	
-	'alert-red-a700': var(--color-alert-red-a700),
-	'alert-amber-a700': var(--color-alert-amber-a700),
-	'alert-green-a700': var(--color-alert-green-a700),
-	'alert-blue-a700': var(--color-alert-blue-a700),
-	'alert-red-bg': var(--color-alert-red-bg),
-	'alert-amber-bg': var(--color-alert-amber-bg),
-	'alert-green-bg': var(--color-alert-green-bg),
-	'alert-blue-bg': var(--color-alert-blue-bg),
+	'success-main': var(--color-success-main),
 
 	// 'info-100': var(--color-info-100),
 	// 'info-200': var(--color-info-200),

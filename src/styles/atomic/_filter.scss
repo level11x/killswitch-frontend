@@ -1,0 +1,12 @@
+.#{$atom-prefix}ft-n { filter: none !important; }
+.#{$atom-prefix}ft-gs { filter: grayscale(100%) !important; }
+
+.#{$atom-prefix}ft-n-hover { &:hover { filter: none !important; } }
+.#{$atom-prefix}ft-gs-hover { &:hover { filter: grayscale(100%) !important; } }
+
+@each $breakpointName, $breakpointSize in $breakpoints {
+  @media (min-width: $breakpointSize) {
+      .#{$atom-prefix}ft-n-#{$breakpointName} { filter: none !important; }
+      .#{$atom-prefix}ft-gs-#{$breakpointName} { filter: grayscale(100%) !important; }
+  };
+};

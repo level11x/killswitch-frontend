@@ -1,0 +1,9 @@
+.switchingHoverImage {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: var(--image-normal);
+  &:hover {
+    background-image: var(--image-hover);
+  }
+}
