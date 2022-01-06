@@ -47,8 +47,7 @@ export const Home = () => {
                     style={{ maxWidth: 700 }}
                 >
                     Users are free to unstake, withdraw Liquidity Position from
-                    their funds and sell their high risk coins instantly in one
-                    click.
+                    their funds and sell their coins instantly in one click.
                 </div>
                 <div className="_dp-f _alit-ct _mgt-24px">
                     <a
@@ -121,7 +120,7 @@ export const Home = () => {
                 <LastestUpdateList className="_mgt-24px _mxw-512px _mxh-256px _mxh-256-xs _mgh-at _h-256px" />
                 <div className="_fs-500 _fs-800-sm _fw-500 _tal-ct _wsp-p-sm _mgt-48px">
                     {
-                        'KillSwitch is created for high risk yield farmers\n by high risk yield farmers (HRYF).'
+                        'KillSwitch is created for yield farmers\n by yield farmers (YF).'
                     }
                 </div>
                 <div className="_w-fc _mgh-at _mgt-24px">
