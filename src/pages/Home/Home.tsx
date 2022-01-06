@@ -110,7 +110,7 @@ export const Home = () => {
             </div>
             <div className="_pdv-32px _pdv-64px-sm _pdh-24px _pdh-64px-sm _pst-rlt _ovf-hd">
                 <img
-                    className="_pst-asl _t-0 _l-50pct _w-150pct _w-100pct-sm"
+                    className="_pst-asl _t-0 _l-50pct _w-150pct _w-100pct-sm _ptev-n"
                     style={{
                         transform: 'translate(-50%, -30%) scale(0.70)',
                     }}
