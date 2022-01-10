@@ -12,6 +12,20 @@ const STRATEGIC_PARTNER = [
         },
     },
     {
+        link: 'https://auroraswap.medium.com/introducing-auroraswap-buidl-program-1-0-8a966c4fc430',
+        imageSrc: '/images/home/strategic-partners/auroraswap-build.png',
+        imageAlt: 'Auroraswap-buidl',
+        title: 'Auroraswap-buidl',
+        imageStyle: { padding: '5px 0px 0px 17px' },
+    },
+    {
+        link: 'https://auroraswap.medium.com/introducing-auroraswap-buidl-program-1-0-8a966c4fc430',
+        imageSrc: '/images/home/strategic-partners/auroraswap-kyc.png',
+        imageAlt: 'Auroraswap-KYC',
+        title: 'Auroraswap-KYC',
+        imageStyle: { padding: '5px 0px 0px 0px' },
+    },
+    {
         link: 'https://deficon.nyc/',
         imageSrc: '/images/home/strategic-partners/deficon.png',
         imageAlt: 'Deficon.nyc',

@@ -1,7 +1,7 @@
 import BlogList from './components/BlogList/BlogList'
 import FeatureList from './components/FeatureList'
 import LastestUpdateList from './components/LastestUpdateList'
-import PartnerSection from './components/PartnerSecrtion/PartnerSection'
+import PartnerSection from './components/PartnerSection/PartnerSection'
 import Roadmap from './components/Roadmap'
 import Stats from './components/Stats'
 import './styles.scss'
