@@ -12,14 +12,14 @@ const STRATEGIC_PARTNER = [
         },
     },
     {
-        link: 'https://www.auroraswap.finance',
+        link: 'https://app.auroraswap.finance/',
         imageSrc: '/images/home/strategic-partners/auroraswap-build.png',
         imageAlt: 'Auroraswap-buidl',
         title: 'Auroraswap-buidl',
         imageStyle: { padding: '5px 0px 0px 17px' },
     },
     {
-        link: 'https://www.auroraswap.finance',
+        link: 'https://app.auroraswap.finance/',
         imageSrc: '/images/home/strategic-partners/auroraswap-kyc.png',
         imageAlt: 'Auroraswap-KYC',
         title: 'Auroraswap-KYC',
