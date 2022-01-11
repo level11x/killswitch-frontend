@@ -66,12 +66,13 @@ export const Home = () => {
                         LEARN MORE
                     </a>
                 </div>
-                <div className="lo-12 lo-6-sm _gg-32px _gg-48px-sm _alit-ct _mgt-48px _mgt-48px-sm _fs-500 _fw-500">
+
+                <span className="_mgt-48px _mgt-48px-sm _mgbt-16px">
+                    <i className="fa fa-shield-check _cl-success-main _mgr-8px _mgbt-4px _w-16px _h-16px" />
+                    Audited By
+                </span>
+                <div className="lo-12 lo-6-sm _gg-32px _gg-48px-sm _alit-ct _fs-500 _fw-500">
                     <div className="_dp-f _fdrt-cl">
-                        <span className="_mgbt-8px">
-                            <i className="fa fa-shield-check _cl-success-main _mgr-8px _mgbt-4px _w-16px _h-16px" />
-                            Audited By
-                        </span>
                         <a
                             href="https://app.inspex.co/library/killswitch#?scope=killswitch-autocompound"
                             target="_blank"
@@ -82,25 +83,23 @@ export const Home = () => {
                             <img
                                 className="_h-48px _ojf-ct"
                                 style={{ width: 200 }}
+                                title="Audited by Inspex. (Full Report)"
                                 src="/images/home/audited/inspex.png"
                             />
                         </a>
                     </div>
                     <div className="_dp-f _fdrt-cl">
-                        <span className="_mgbt-8px">
-                            <i className="fa fa-hourglass-start _cl-white _mgr-8px _mgbt-4px _w-16px _h-16px" />
-                            Onboarding Audit by
-                        </span>
                         <a
-                            href="https://www.certik.org/projects/killswitch"
+                            href="https://www.certik.com/projects/killswitch"
                             target="_blank"
                             rel="noreferrer"
-                            title="Certik."
+                            title="Audited by Certik."
                             className="_bdrd-16px _bgcl-shader-hover"
                         >
                             <img
                                 className="_h-48px _ojf-ct"
                                 style={{ width: 200 }}
+                                title="Audited by Certik. (Full Report)"
                                 src="/images/home/audited/certik.svg"
                             />
                         </a>
