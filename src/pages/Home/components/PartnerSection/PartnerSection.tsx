@@ -12,6 +12,27 @@ const STRATEGIC_PARTNER = [
         },
     },
     {
+        link: 'https://discover.kcc.io/project_detail?name=Kill-Switch',
+        imageSrc: '/images/home/strategic-partners/kcc.svg',
+        imageAlt: 'KCC',
+        title: 'KCC',
+        imageStyle: { padding: '28px' },
+    },
+    {
+        link: 'https://aurora.dev/',
+        imageSrc: '/images/home/strategic-partners/aurora.svg',
+        imageAlt: 'Aurora Dev',
+        title: 'Aurora Dev',
+        imageStyle: { padding: '34px' },
+    },
+    {
+        link: 'https://near.foundation/',
+        imageSrc: '/images/home/strategic-partners/near.svg',
+        imageAlt: 'NEAR Foundation',
+        title: 'NEAR Foundation',
+        imageStyle: { padding: '30px' },
+    },
+    {
         link: 'https://app.auroraswap.finance/',
         imageSrc: '/images/home/strategic-partners/auroraswap-build.png',
         imageAlt: 'Auroraswap-buidl',
@@ -92,6 +113,13 @@ const WHAT_THEY_SAID = [
         imageGraySrc: '/images/home/what-they-said/efinancethai-gray.png',
         imageAlt: 'efinancethai',
         link: 'https://www.efinancethai.com/LastestNews/LatestNewsMain.aspx?id=Qjk1aFZodFIyM0U9',
+    },
+    {
+        imageSrc: '/images/home/what-they-said/kcc.svg',
+        imageGraySrc: '/images/home/what-they-said/kcc-gray.svg',
+        imageAlt: 'KCC',
+        link: 'https://twitter.com/kccofficialtw/status/1484904145228558339?s=21',
+        imageStyle: { padding: 10 },
     },
 ]
 
