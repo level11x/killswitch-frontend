@@ -16,21 +16,21 @@ const STRATEGIC_PARTNER = [
         imageSrc: '/images/home/strategic-partners/kcc.svg',
         imageAlt: 'KCC',
         title: 'KCC',
-        imageStyle: { padding: '28px' },
+        imageStyle: { padding: '0px 12px' },
     },
     {
         link: 'https://aurora.dev/',
         imageSrc: '/images/home/strategic-partners/aurora.svg',
         imageAlt: 'Aurora Dev',
         title: 'Aurora Dev',
-        imageStyle: { padding: '34px' },
+        imageStyle: { padding: '0px 4px' },
     },
     {
         link: 'https://near.foundation/',
         imageSrc: '/images/home/strategic-partners/near.svg',
         imageAlt: 'NEAR Foundation',
         title: 'NEAR Foundation',
-        imageStyle: { padding: '30px' },
+        imageStyle: { padding: '0px 30px' },
     },
     {
         link: 'https://app.auroraswap.finance/',
@@ -247,6 +247,7 @@ export const PartnerSection = ({ className }: PartnerSectionProps) => {
                                     styles.switchingHoverImage
                                 )}
                                 style={{
+                                    maxWidth: 180,
                                     imageRendering: '-webkit-optimize-contrast',
                                     ...item.imageStyle,
                                 }}
