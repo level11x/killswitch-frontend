@@ -121,6 +121,12 @@ const WHAT_THEY_SAID = [
         link: 'https://twitter.com/kccofficialtw/status/1484904145228558339?s=21',
         imageStyle: { padding: 10 },
     },
+    {
+        imageSrc: '/images/home/what-they-said/near-insider.png',
+        imageGraySrc: '/images/home/what-they-said/near-insider-gray.png',
+        imageAlt: 'Near Insider',
+        link: 'https://twitter.com/near_insider/status/1484905316378906626',
+    },
 ]
 
 const ALLIANCES = [
