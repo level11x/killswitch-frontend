@@ -18,7 +18,7 @@ const ROADMAP_LIST = [
         title: 'Q1 (2022)',
         bullets: [
             'Take Profit /Stop Loss',
-            'KUCoin Chain (KCC',
+            'KUCoin Chain (KCC)',
             'Aurora Chain',
         ],
     },
