@@ -1,5 +1,6 @@
 .switchingHoverImage {
   background-size: contain;
+  background-origin: content-box;
   background-repeat: no-repeat;
   background-position: center;
   background-image: var(--image-normal);

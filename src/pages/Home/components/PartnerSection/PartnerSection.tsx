@@ -122,6 +122,12 @@ const WHAT_THEY_SAID = [
         imageStyle: { padding: 10 },
     },
     {
+        imageSrc: '/images/home/strategic-partners/aurora.svg',
+        imageAlt: 'AuroraIsNear',
+        link: 'https://twitter.com/auroraisnear/status/1484953939162378245',
+        imageStyle: { padding: 10 },
+    },
+    {
         imageSrc: '/images/home/what-they-said/near-insider.png',
         imageGraySrc: '/images/home/what-they-said/near-insider-gray.png',
         imageAlt: 'Near Insider',
@@ -291,18 +297,26 @@ export const PartnerSection = ({ className }: PartnerSectionProps) => {
                             >
                                 <div
                                     className={classNames(
-                                        'ksw-animation-popup _ojf-ct _mg-at',
+                                        'ksw-animation-popup _ojf-ct _mg-at _ft-n-hover',
                                         styles.switchingHoverImage
                                     )}
                                     style={
                                         {
-                                            '--image-normal': `url('${item.imageGraySrc}')`,
+                                            ...(item.imageGraySrc
+                                                ? {
+                                                      '--image-normal': `url('${item.imageGraySrc}')`,
+                                                  }
+                                                : {
+                                                      '--image-normal': `url('${item.imageSrc}')`,
+                                                      filter: 'grayscale(100%)',
+                                                  }),
                                             '--image-hover': `url('${item.imageSrc}')`,
                                             width: 200,
                                             height: 75,
                                             imageRendering:
                                                 '-webkit-optimize-contrast',
-                                        } as React.CSSProperties
+                                            ...item.imageStyle,
+                                        } as unknown as React.CSSProperties
                                     }
                                 />
                             </a>
