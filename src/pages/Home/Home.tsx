@@ -43,11 +43,13 @@ export const Home = () => {
                     a smart yield aggregator
                 </div>
                 <div
-                    className="_fs-600 _fs-500-sm _fw-500 _mgt-24px"
-                    style={{ maxWidth: 700 }}
+                    className="_fs-500 _fs-500-sm _fw-500 _mgt-24px"
+                    style={{ maxWidth: 650 }}
                 >
                     Users are free to unstake, withdraw Liquidity Position from
-                    their funds and sell their coins instantly in one click.
+                    their funds, sell their high-risk coins instantly in one
+                    click. In addition, and allow users to limit their losses or
+                    set profiting targets without monitoring.
                 </div>
                 <div className="_dp-f _alit-ct _mgt-24px">
                     <a
