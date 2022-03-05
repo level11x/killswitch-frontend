@@ -1,19 +1,19 @@
 import classNames from 'classnames'
 
 const ROADMAP_LIST = [
-    {
-        title: 'Q3 (2021)',
-        bullets: ['KillSwitch V.1', 'Audit', 'Private sale , Public sale'],
-    },
-    {
-        title: 'Q4 (2021)',
-        bullets: [
-            'Mixture V2',
-            'KillSwitch Token Launch',
-            'Liquidity Mining and Staking',
-            'Airdrop',
-        ],
-    },
+    // {
+    //     title: 'Q3 (2021)',
+    //     bullets: ['KillSwitch V.1', 'Audit', 'Private sale , Public sale'],
+    // },
+    // {
+    //     title: 'Q4 (2021)',
+    //     bullets: [
+    //         'Mixture V2',
+    //         'KillSwitch Token Launch',
+    //         'Liquidity Mining and Staking',
+    //         'Airdrop',
+    //     ],
+    // },
     {
         title: 'Q1 (2022)',
         bullets: [
@@ -21,6 +21,18 @@ const ROADMAP_LIST = [
             'KUCoin Chain (KCC)',
             'Aurora Chain',
         ],
+    },
+    {
+        title: 'Q2 (2022)',
+        bullets: [
+            'Chain Expand',
+            'SSAP (Lending protocol)',
+            'Prepare index fund',
+        ],
+    },
+    {
+        title: 'Q3 (2022)',
+        bullets: ['Chain Expand', 'Index fund'],
     },
 ]
 
