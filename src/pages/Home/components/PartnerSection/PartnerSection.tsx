@@ -189,6 +189,11 @@ const ALLIANCES = [
         link: 'https://paydprotocol.finance/',
         // imageStyle: { height: 64, filter: 'grayscale(100%)' },
     },
+    {
+        imageSrc: '/images/home/alliances/oin-finance.png',
+        imageAlt: 'oin.finance',
+        link: 'https://oin.finance/',
+    },
 ]
 
 const ECOSYSTEMS = [
